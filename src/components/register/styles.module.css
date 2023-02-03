@@ -1,0 +1,608 @@
+p{
+  margin: 0;
+}
+.FatfScreen .descriptionText {
+  font-size: 24px;
+  line-height: 32px;
+  margin-top: 1.5rem;
+}
+
+.FatfScreen .descriptionText p:not(:last-child){
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  color: #2c2c51;
+  font-size: 32px;
+  line-height: 40px;
+  margin: 0;
+}
+
+.RegisterInput {
+  border: 1px solid #ccc;
+  color: #555;
+}
+
+ .FatfScreen p {
+   font-size: 1.25rem;
+   line-height: 1.75rem;
+ }
+
+.FatfScreen ul li {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.FatfScreen .item {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.space_top{
+  display: block;
+}
+
+
+.ErrorMessage {
+  color: red;
+  font-size: 14px;
+  margin-top: 4px;
+  display: block;
+}
+
+.Link {
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  max-width: max-content;
+}
+
+.Link:hover,
+.Link:focus {
+  text-decoration: underline;
+}
+
+.Slider {
+  box-shadow: 2px 2px 6px rgb(122 122 122 / 10%);
+  border-radius: 16px;
+  background-color: #fff;
+}
+
+/* .Slider :global(.slick-slide) {
+  padding: ;
+} */
+
+.Slider :global(.slick-dots) {
+  bottom: 10px;
+  left: 0;
+}
+
+.Slider :global(.slick-dots) :global(.slick-active) button::before {
+  color: #007eff;
+}
+
+.Slider :global(.slick-dots) li {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+
+.Slider :global(.slick-dots) li button {
+  width: 20px;
+  height: 20px;
+}
+
+.Slider :global(.slick-dots) li button::before {
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  line-height: 20px;
+  color: #5e5858;
+}
+
+.Slider :global(.slick-dots) li button:hover:before {
+  color: #007eff;
+}
+
+.PhoneSelect {
+  font-size: 14px;
+  border: none;
+  padding: 0 1rem;
+  background: transparent;
+}
+
+.CustomSelect {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: auto;
+  width: 25%;
+}
+
+.CustomSelect::after {
+  content: "";
+  border-left: 1px solid #c4c4c4;
+  height: 70%;
+}
+
+
+.PhoneInput {
+  padding-left: 33%;
+  width: 100%;
+  border-radius: 0.25rem;
+  height: 56px;
+}
+
+.phonenumber_container button{
+  width: 90%;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.RegisterScreen {
+  flex: 1;
+  max-width: 992px;
+}
+
+
+.discountChristmas {
+  width: 100%;
+  text-align: center;
+  margin-top: 16px;
+  margin-bottom: 26px;
+}
+
+.discountChristmas :global .box-discount {
+  display: inline-block;
+  position: relative;
+  border-radius: 55px;
+  padding: 10px 20px 10px 65px;
+  background: #fff;
+  filter: drop-shadow(0px 5.9625px 10.6px rgba(0, 0, 0, 0.25));
+}
+
+.discountChristmas :global .box-discount .number-discount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0px;
+  top: -1px;
+  width: 57.42px;
+  height: 57.42px;
+  border-radius: 100%;
+  background: #ffab00;
+  border: 2.87112px solid #fff;
+  box-shadow: 2.87112px 0px 10.7667px rgba(0, 0, 0, 0.15);
+}
+
+.discountChristmas :global .box-discount .number-discount .number {
+  font-size: 35px;
+  font-weight: 700;
+  line-height: 39px;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+.discountChristmas :global .box-discount .number-discount .number span {
+  font-size: 23px;
+}
+
+.discountChristmas :global .box-discount .box-content {
+  text-align: left;
+}
+
+.discountChristmas :global .box-discount .box-content .title-discount {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  color: #36b37e;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+}
+
+.discountChristmas :global .box-discount .box-content .des-discount {
+  text-transform: capitalize;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 16px;
+  color: #333;
+  margin-bottom: 0;
+}
+
+@media (min-width: 992px) {
+  .discountChristmas :global {
+    display: none;
+  }
+}
+
+
+.CheckBox label {
+  cursor: pointer;
+}
+
+.button_wrapper{
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.Button {
+  background-color: #677294;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.25rem;
+  border: none;
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.RegisterButton{
+  display: block;
+  margin-top: 1.5rem;
+}
+
+.RegisterLink{
+  display: block;
+  margin-top: 1.5rem;
+  color: #007eff;
+  text-decoration: none;
+}
+
+.Button:hover{
+  background-color: #2c2c51;
+}
+
+.restricted_countries_wrapper{
+  padding: 1.5rem;
+}
+
+.restricted_countries_container{
+  position: relative;
+  padding-bottom: 3rem;
+}
+
+
+.restricted_countries_cols{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.restricted_countries_cols_md {
+ display: none;
+}
+
+
+.listCollapse {
+  max-height: 60px;
+  overflow: hidden;
+  transition: all 0.35s linear;
+}
+
+.listCollapse.active {
+  max-height: 100vh;
+}
+
+.buttonCollapse {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding-bottom: 0;
+}
+
+.isCollapse{
+  padding-top: 2.5rem;
+}
+
+.buttonCollapse button {
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  background: none;
+  border: 0;
+  color: #007eff;
+  cursor: pointer;
+}
+
+.buttonCollapse button:hover,
+.buttonCollapse button:focus {
+  outline: none;
+}
+
+.buttonCollapse svg {
+  transition: all 0.35s linear;
+  margin-left: 4px;
+  margin-right: 4px;
+  font-size: 14px;
+}
+
+.buttonCollapse .iconCollapse {
+  transform: rotate(180deg);
+}
+
+.RegisterScreen .RegisterText {
+  margin-top: 1.5rem;
+}
+
+.RegisterScreen .RegisterForm{
+  position: relative;
+}
+
+.RegisterForm .formControl{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.RegisterForm .inputWrapper{
+  position: relative;
+  width: 49%;
+}
+
+.inputWrapper input{
+  width: 100%;
+  height: 56px;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  padding: 8px 12px;
+}
+
+.RegisterForm .SelectWrapper{
+  width: 49%;
+}
+
+.RegisterForm .SelectWrapper span:not(:last-child){
+  position: absolute;
+}
+
+.RegisterForm input:focus-visible{
+  outline: none;
+}
+
+.CountrySelectWrapper {
+  height: 56px;
+}
+
+.dropdown_container{
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 0.25rem;
+}
+
+.nationalitySelect{
+  position: relative;
+  display: flex;
+  height: 100%;
+}
+
+.nationalitySelect button {
+    border: none;
+    padding-left: 33%;
+    padding-right: 12px;
+    height: 100%;
+    border-radius: 0.25rem;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.nationalitySelect .nationalityLabel {
+    transform: translateY(-50%);
+    padding: 8px 8px 8px 16px;
+    top: 50%;
+    border-right: 1px solid rgb(204, 204, 204);
+    color: #333;
+    font-size: 14px;
+    min-width: 25%;
+  }
+
+.phonenumber_wrapper{
+  width: 49%;
+  margin-top: 0;
+}
+
+.phonenumber_container{
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.trustpilot_wrapper{
+  display: block;
+  width: 60%;
+}
+
+@media (max-width: 575px) {}
+
+@media (max-width: 767px) {
+  .CustomSelect {
+      width: 92px;
+  }
+  .restricted_countries_cols {
+      display: none;
+    }
+  .restricted_countries_cols_md {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .FormFooter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 991px) {
+  .button_wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  .CustomSelect{
+    height: 40px;
+  }
+  .PhoneInput{
+    height: 40px;
+  }
+  .inputWrapper input{
+    height: 40px;
+  }
+  .RegisterForm .SelectWrapper {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  .RegisterForm .inputWrapper{
+    width: 100%;
+  }
+  .RegisterButton {
+    display: block;
+    margin-top: 1rem;
+  }
+  .RegisterLink {
+    margin-top: 1rem;
+  }
+  .trustpilot_wrapper{
+    width: 100%;
+  }
+  .PhoneSelect {
+      padding: 0 0.5rem;
+    }
+  .phonenumber_wrapper {
+    margin-top: 1rem;
+    width: 100%;
+  }
+  .nationalitySelect .nationalityLabel {
+      padding: 4px 8px;
+      min-width: 0%;
+    }
+  .nationalitySelect button {
+    padding-left: 100px;
+  }
+  .CountrySelectWrapper {
+      height: 40px;
+    }
+  .RegisterForm .formControl {
+    margin-top: 1rem;
+  }
+  .RegisterScreen .RegisterText {
+    margin-top: 1rem;
+  }
+  .FatfScreen .descriptionText p:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+  .buttonCollapse{
+    padding-bottom: 1rem;
+  }
+  .buttonCollapse button{
+    font-size: 1rem;
+  }
+  .isCollapse {
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+  }
+  .restricted_countries_wrapper {
+      padding: 0 1rem;
+  }
+    .FatfScreen .descriptionText{
+      margin-top: 0.5rem;
+    }
+  .FatfScreen .descriptionText p {
+      margin-bottom: 0.5rem;
+  }
+  .PhoneInput {
+      padding-left: 100px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+  }
+  .space_top {
+      display: none;
+  }
+
+  .title {
+    color: #2c2c51;
+    margin-top: 1.25rem;
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .Body {
+    max-height: calc(80vh - 60px);
+    overflow-y: auto;
+    padding: 0 15px;
+    margin: 0 -15px;
+  }
+
+  /* .Menu {
+    position: fixed !important;
+    max-width: max-content;
+  } */
+  
+  .FatfScreen .Button,
+  .RegisterScreen .Button {
+    background-color: #2c2c51;
+  }
+  
+  .CheckBox input[type="checkbox"] {
+    appearance: none;
+    background-color: #fff;
+    width: 13px;
+    height: 13px;
+    border-radius: 2px;
+  }
+
+  .CheckBox input[type="checkbox"]:checked::before {
+    position: absolute;
+    content: "";
+    left: 25.27%;
+    right: 68.39%;
+    top: 49.3%;
+    bottom: 25.7%;
+    background: #111;
+    transform: rotate(-45deg);
+  }
+
+  .CheckBox input[type="checkbox"]:checked::after {
+    position: absolute;
+    content: "";
+    left: 75.32%;
+    right: 14.34%;
+    top: 37.5%;
+    bottom: 16.65%;
+    background: #111;
+    border-radius: 13.3333px;
+    transform: matrix(-1.71, 0.29, -0.71, 0.9, -4, -1);
+  }
+  .FatfScreen .descriptionText p,
+  .FatfScreen .restricted_countries_wrapper,
+  .FatfScreen .restricted_countries_cols_md .item,
+  .FatfScreen .noteText{
+    font-size: 1rem;
+  }
+
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .FormFooter {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .CheckBox,
+  .RegisterInput {
+    max-width: 398px;
+  }
+}
+@media (max-width: 1199px) {}
+@media (max-width: 1399px) {}
