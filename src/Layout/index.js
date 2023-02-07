@@ -74,6 +74,19 @@ const Component = ({ head, fatf, pattern, children }) => {
   const [isPay, setIsPay] = useState(false)
   const [isIncorpToBank, setIsIncorpToBank] = useState(false)
 
+  const getUrlVars = () => {
+    let vars = {}
+    let parts = window.location.href.replace(
+      /[?&]+([^=&]+)=([^&]*)/gi,
+      function (m, key, value) {
+        vars[key] = value
+      }
+    )
+    return vars
+  }
+
+  const queryOrderCode = getUrlVars()['order_code']
+
   useEffect(() => {
     const data = JSON.parse(window.localStorage.getItem('data_onboarding'))
     setDataOnboarding(data)
@@ -82,8 +95,8 @@ const Component = ({ head, fatf, pattern, children }) => {
     setType(layout?.type ? layout?.type : null)
     setIsIncorpToBank(layout?.incorp_to_bank)
 
-    if (router.isReady && router.query.order_code) {
-      let orderCode = router.query.order_code
+    if (window.location && queryOrderCode) {
+      let orderCode = queryOrderCode
       let urlApi = ''
       let queryCode = getQueryCode(router)
       let queryCodeChristmas = getQueryCodeChristmas()

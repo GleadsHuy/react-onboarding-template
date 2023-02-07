@@ -4,16 +4,37 @@
   box-sizing: border-box;
   margin: 0;
 }
-.Register {
+
+body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   color: #677294;
   padding: 48px 64px;
 }
+
+p {
+  margin: 0;
+}
+
+h2,
+.h2 {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: bold;
+  color: #2c2c51;
+  font-weight: 500;
+}
+
+
 @media (max-width: 991px) {
-  .Register {
+  body {
       padding: 84px 24px;
     }
+  h2{
+    font-size: 24px;
+      line-height: 32px;
+  }
+  
 }
 
 

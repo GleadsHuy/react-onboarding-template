@@ -1,19 +1,18 @@
 import React, { useRef, useState, useEffect } from 'react'
 import styles from '../styles.module.css'
 import { Form, Spinner } from 'react-bootstrap'
-// import { useRouter } from 'next/router'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
-import Selects from './Selects/SelectSearchInside'
+import Selects from '../../common/Selects/SelectSearchInside'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import ReCAPTCHA from 'react-google-recaptcha'
-// import { getGAUserID } from 'common/functions'
+import { getGAUserID } from '../../common/functions'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import _, { set } from 'lodash'
-import trustpilotImg from '../../../assets/building.png'
+import trust_pilot from 'assets/trust-pilot.svg'
 
 const FormSwal = withReactContent(Swal)
 
@@ -43,7 +42,7 @@ const Trustpilot = ({ data }) => {
           key={index}
         >
           <img
-            src='https://test-site.bbcincorp.com/onboarding/custom-public/image/onboarding/trust-pilot.svg'
+            src={trust_pilot}
             className='w-auto h-auto object-center object-cover'
             style={{ width: `auto`, height: `auto` }}
             alt='trustpilot'
@@ -85,19 +84,17 @@ const RegisterScreen = ({ trustpilot, isTypeChristmas }) => {
   const [queryPackageId, setQueryPackageId] = useState()
   const recaptchaRef = useRef()
 
-  // const router = useRouter()
-
+  const getUrlVars = () => {
+    let vars = {}
+    let parts = window.location.href.replace(
+      /[?&]+([^=&]+)=([^&]*)/gi,
+      function (m, key, value) {
+        vars[key] = value
+      }
+    )
+    return vars
+  }
   useEffect(() => {
-    const getUrlVars = () => {
-      let vars = {}
-      let parts = window.location.href.replace(
-        /[?&]+([^=&]+)=([^&]*)/gi,
-        function (m, key, value) {
-          vars[key] = value
-        }
-      )
-      return vars
-    }
     setQueryCountryId(getUrlVars()['country_id'])
     setQueryCompanyName(getUrlVars()['company_name'])
     setQueryEntityTypeId(getUrlVars()['entity_type_id'])
@@ -270,11 +267,11 @@ const RegisterScreen = ({ trustpilot, isTypeChristmas }) => {
     }
   }, [])
 
-  // useEffect(() => {
-  //   if (router.isReady && !_.isEmpty(router.query)) {
-  //     window.localStorage.removeItem('data_onboarding')
-  //   }
-  // }, [router])
+  useEffect(() => {
+    if (window.location && !_.isEmpty(window.location.search)) {
+      window.localStorage.removeItem('data_onboarding')
+    }
+  }, [])
 
   useEffect(() => {
     let promotion_code = JSON.parse(
@@ -350,6 +347,7 @@ const RegisterScreen = ({ trustpilot, isTypeChristmas }) => {
                           (item) => item.value == customerCountry
                         )
                       }
+                      selectBorder={true}
                       dropdown_container={styles.dropdown_container}
                       options={countryList}
                       toggleClass={`${styles.CountrySelect} ${styles.CheckBox}`}

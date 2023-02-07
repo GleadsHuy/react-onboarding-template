@@ -1,10 +1,14 @@
 import React from 'react'
 
-import { ExampleComponent } from 'react-onboarding-template'
+import { IncorporationCountry } from 'react-onboarding-template'
 import 'react-onboarding-template/dist/index.css'
 
 const App = () => {
-  return <ExampleComponent />
+  return (
+    <div>
+      <IncorporationCountry />
+    </div>
+  )
 }
 
 export default App

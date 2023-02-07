@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import FatfScreen from './FatfScreen'
 import RegisterScreen from './RegisterScreen'
 import data from './data.json'
+import styles from './styles.module.css'
 
 export default function Register({ isTypeChristmas }) {
   const [fatfScreen, setFatfScreen] = useState(true)
@@ -32,7 +33,7 @@ export default function Register({ isTypeChristmas }) {
   }, [])
 
   return (
-    <div>
+    <div className={styles.Register}>
       {fatfScreen ? (
         <FatfScreen onReceiveData={receiveData} />
       ) : (

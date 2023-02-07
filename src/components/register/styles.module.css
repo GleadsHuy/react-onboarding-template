@@ -1,6 +1,4 @@
-p{
-  margin: 0;
-}
+
 .FatfScreen .descriptionText {
   font-size: 24px;
   line-height: 32px;
@@ -13,8 +11,6 @@ p{
 
 .title {
   color: #2c2c51;
-  font-size: 32px;
-  line-height: 40px;
   margin: 0;
 }
 
@@ -331,7 +327,7 @@ p{
 }
 
 .RegisterScreen .RegisterText {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 .RegisterScreen .RegisterForm{
@@ -373,11 +369,6 @@ p{
 
 .CountrySelectWrapper {
   height: 56px;
-}
-
-.dropdown_container{
-  border: 1px solid rgb(204, 204, 204);
-  border-radius: 0.25rem;
 }
 
 .nationalitySelect{
@@ -426,9 +417,6 @@ p{
 @media (max-width: 575px) {}
 
 @media (max-width: 767px) {
-  .CustomSelect {
-      width: 92px;
-  }
   .restricted_countries_cols {
       display: none;
     }
@@ -452,6 +440,7 @@ p{
   }
   .CustomSelect{
     height: 40px;
+    width: 92px;
   }
   .PhoneInput{
     height: 40px;
@@ -515,9 +504,6 @@ p{
   .restricted_countries_wrapper {
       padding: 0 1rem;
   }
-    .FatfScreen .descriptionText{
-      margin-top: 0.5rem;
-    }
   .FatfScreen .descriptionText p {
       margin-bottom: 0.5rem;
   }
@@ -533,8 +519,7 @@ p{
   .title {
     color: #2c2c51;
     margin-top: 1.25rem;
-    font-size: 24px;
-    line-height: 32px;
+   
   }
 
   .Body {

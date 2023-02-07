@@ -65,7 +65,6 @@ const FatfScreen = ({ onReceiveData }) => {
       setIsCollapse(true)
     }
   }
-
   return (
     <section className={styles.FatfScreen}>
       <div className={styles.space_top} style={{ height: '95px' }}></div>
