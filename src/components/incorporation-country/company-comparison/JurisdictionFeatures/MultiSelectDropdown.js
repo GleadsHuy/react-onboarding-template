@@ -1,18 +1,16 @@
-import { colors } from 'react-select/lib/theme'
-import Blanket from 'react-multiselect-checkboxes/lib/Blanket'
 import React from 'react'
+import Blanket from 'react-multiselect-checkboxes/lib/Blanket'
 import styles from './styles.module.css'
 
 const Menu = (props) => {
-  const shadow = colors.neutral10a
   const style = {
     backgroundColor: 'white',
-    borderRadius: 4,
+    borderRadius: '4px',
     boxShadow: `rgba(131, 131, 131, 0.2) 12px 14px 15px`,
-    marginTop: 35,
+    marginTop: '35px',
     position: 'absolute',
     width: '100%',
-    minWidth: 180,
+    minWidth: '180px',
     zIndex: 2
   }
   if (props.rightAligned) {

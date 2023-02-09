@@ -99,7 +99,8 @@ export default function SelectSearchInside({
             borderWidth: 1,
             // borderColor: show ? '#9c9c9c' : '#ccc',
             border: `${selectBorder ? '1px solid rgb(204, 204, 204)' : ''}`,
-            borderRadius: '0.25rem'
+            borderRadius: '0.25rem',
+            cursor: 'pointer'
           }}
           className={`select-with-search-inside text-dark ${
             styles.dropdown_toggle

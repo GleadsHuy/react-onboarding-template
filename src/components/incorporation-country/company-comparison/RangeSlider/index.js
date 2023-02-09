@@ -1,3 +1,4 @@
+import React from 'react'
 import { Range, getTrackBackground } from 'react-range'
 export default function RangeSlider({ values, setValues }) {
   const STEP = 1
@@ -60,7 +61,7 @@ export default function RangeSlider({ values, setValues }) {
       />
       <div
         className='text-center'
-        style={{ marginTop: '10px', marginBottom: '7px' }}
+        style={{ marginTop: '10px', marginBottom: '7px', textAlign: 'center' }}
         id='output'
       >
         {values[0]}% - {values[1]}%

@@ -1,7 +1,7 @@
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var React$1 = require('react');
-var React$1__default = _interopDefault(React$1);
+var React = require('react');
+var React__default = _interopDefault(React);
 var fa = require('react-icons/fa');
 var _ = require('lodash');
 var ___default = _interopDefault(_);
@@ -23,10 +23,15 @@ var incorpImg = _interopDefault(require('./incorporation~BKidfgKY.png'));
 var fi = require('react-icons/fi');
 var ReactMultiSelectCheckboxes = _interopDefault(require('react-multiselect-checkboxes'));
 var _DropdownButton = _interopDefault(require('react-multiselect-checkboxes/lib/DropdownButton'));
-require('react-select/lib/theme');
 var Blanket = _interopDefault(require('react-multiselect-checkboxes/lib/Blanket'));
 var parser = _interopDefault(require('html-react-parser'));
 var reactRange = require('react-range');
+var annualCompliance = _interopDefault(require('./annual-compliance~hxUQxQXW.png'));
+var localTax = _interopDefault(require('./local-tax-profile~bowpEaUS.png'));
+var businessStructure = _interopDefault(require('./business-structure~YXCLGhtj.png'));
+var initialRequirement = _interopDefault(require('./initial-requirement~xRxcNttm.png'));
+var legalStructure = _interopDefault(require('./legal-structure~bcmAHTxj.png'));
+var internationalCompliance = _interopDefault(require('./international-compliance~tYiEjqmz.png'));
 var reactIcons = require('react-icons');
 var gr = require('react-icons/gr');
 var io = require('react-icons/io');
@@ -38,7 +43,7 @@ var styles = {"FatfScreen":"_styles-module__FatfScreen__2ROgK","descriptionText"
 var restricted_countries = ['Cambodia', 'Jordan', 'Myanmar', 'Pakistan', 'Philippines', 'Syria', 'Turkey', 'Yemen', 'Iran', 'The Democratic People’s Republic of Korea', 'Iraq', 'Afghanistan', 'Turkmenistan', 'Albania', 'Gibraltar', 'Barbados', 'Haiti', 'Jamaica', 'US Virgin Islands', 'Trinidad and Tobago', 'Venezuela', 'Burkina Faso', 'Mali', 'Morocco', 'Senegal', 'South Sudan', 'Uganda', 'Somalia', 'Democratic Republic of the Congo', 'Sudan', 'Libya', 'Central African Republic', 'Nigeria', 'Burundi', 'Equatorial Guinea', 'Guinea-Bissau', 'Samoa', 'Fiji', 'Palau', 'American Samoa', 'Vanuatu', 'Guam', 'Niger', 'Crimea Region', 'Donetsk Region', 'Luhansk Region', 'Cuba', 'Tanzania', 'Mozambique'];
 var FatfScreen = function FatfScreen(_ref) {
   var onReceiveData = _ref.onReceiveData;
-  var _useState = React$1.useState(true),
+  var _useState = React.useState(true),
     isCollapse = _useState[0],
     setIsCollapse = _useState[1];
   var handleCollapseToggle = function handleCollapseToggle() {
@@ -48,35 +53,35 @@ var FatfScreen = function FatfScreen(_ref) {
       setIsCollapse(true);
     }
   };
-  return /*#__PURE__*/React$1__default.createElement("section", {
+  return /*#__PURE__*/React__default.createElement("section", {
     className: styles.FatfScreen
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: styles.space_top,
     style: {
       height: '95px'
     }
-  }), /*#__PURE__*/React$1__default.createElement("h2", {
+  }), /*#__PURE__*/React__default.createElement("h2", {
     className: styles.title
-  }, "Restricted Industries"), /*#__PURE__*/React$1__default.createElement("div", {
+  }, "Restricted Industries"), /*#__PURE__*/React__default.createElement("div", {
     className: styles.descriptionText
-  }, /*#__PURE__*/React$1__default.createElement("p", null, "Pursuant to the anti-money laundering and countering terrorism regulations, BBCIncorp will not provide our services for customers, who are involved in restricted industries including but not limited to:"), /*#__PURE__*/React$1__default.createElement("p", null, "Weapons dealing; Pornography/adult entertainment; Marijuana-related business; Money service business; Gambling-related business; Money remittance and payment services; Tobacco business; Alcohol business; Debt loan collection business; Precious metal trading business; sensitive virtual asset businesses.")), /*#__PURE__*/React$1__default.createElement("h2", {
+  }, /*#__PURE__*/React__default.createElement("p", null, "Pursuant to the anti-money laundering and countering terrorism regulations, BBCIncorp will not provide our services for customers, who are involved in restricted industries including but not limited to:"), /*#__PURE__*/React__default.createElement("p", null, "Weapons dealing; Pornography/adult entertainment; Marijuana-related business; Money service business; Gambling-related business; Money remittance and payment services; Tobacco business; Alcohol business; Debt loan collection business; Precious metal trading business; sensitive virtual asset businesses.")), /*#__PURE__*/React__default.createElement("h2", {
     className: styles.title,
     style: {
       marginTop: "16px"
     }
-  }, "Restricted Territories List"), /*#__PURE__*/React$1__default.createElement("div", {
+  }, "Restricted Territories List"), /*#__PURE__*/React__default.createElement("div", {
     className: styles.descriptionText
-  }, /*#__PURE__*/React$1__default.createElement("p", null, "Before proceeding to the incorporation process, kindly note that BBCIncorp DOES NOT provide services for nationalities under the below list."), /*#__PURE__*/React$1__default.createElement("p", null, "The list is made based on recommendations by credible sources such as FATF as part of our effort to comply with AML/CTF regulations and is reviewed and updated from time to time.")), /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("p", null, "Before proceeding to the incorporation process, kindly note that BBCIncorp DOES NOT provide services for nationalities under the below list."), /*#__PURE__*/React__default.createElement("p", null, "The list is made based on recommendations by credible sources such as FATF as part of our effort to comply with AML/CTF regulations and is reviewed and updated from time to time.")), /*#__PURE__*/React__default.createElement("div", {
     className: "px-3 p-lg-4 " + styles.restricted_countries_wrapper
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: "" + styles.restricted_countries_container
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: styles.listCollapse + " " + (!isCollapse && styles.active)
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: "" + styles.restricted_countries_cols
   }, new Array(3).fill(3).map(function (item, idx) {
     var count = restricted_countries.length / 3;
-    return /*#__PURE__*/React$1__default.createElement("div", {
+    return /*#__PURE__*/React__default.createElement("div", {
       key: idx,
       style: {
         flex: "1"
@@ -84,16 +89,16 @@ var FatfScreen = function FatfScreen(_ref) {
     }, ___default.sortBy(restricted_countries).filter(function (item, index) {
       return index < (idx + 1) * count && index >= idx * count;
     }).map(function (item, index) {
-      return /*#__PURE__*/React$1__default.createElement("div", {
+      return /*#__PURE__*/React__default.createElement("div", {
         key: index,
         className: styles.item + " mb-1"
       }, item);
     }));
-  })), /*#__PURE__*/React$1__default.createElement("div", {
+  })), /*#__PURE__*/React__default.createElement("div", {
     className: "" + styles.restricted_countries_cols_md
   }, new Array(2).fill(2).map(function (item, idx) {
     var count = restricted_countries.length / 2;
-    return /*#__PURE__*/React$1__default.createElement("div", {
+    return /*#__PURE__*/React__default.createElement("div", {
       key: idx,
       style: {
         flex: "1"
@@ -101,22 +106,22 @@ var FatfScreen = function FatfScreen(_ref) {
     }, ___default.sortBy(restricted_countries).filter(function (item, index) {
       return index < (idx + 1) * count && index >= idx * count;
     }).map(function (item, index) {
-      return /*#__PURE__*/React$1__default.createElement("div", {
+      return /*#__PURE__*/React__default.createElement("div", {
         key: index,
         className: styles.item + " mb-1"
       }, item);
     }));
-  }))), /*#__PURE__*/React$1__default.createElement("div", {
+  }))), /*#__PURE__*/React__default.createElement("div", {
     className: styles.buttonCollapse + " " + (isCollapse && styles.isCollapse)
-  }, /*#__PURE__*/React$1__default.createElement("button", {
+  }, /*#__PURE__*/React__default.createElement("button", {
     onClick: handleCollapseToggle
-  }, isCollapse ? 'Expand' : 'Collapse', /*#__PURE__*/React$1__default.createElement(fa.FaAngleDoubleUp, {
+  }, isCollapse ? 'Expand' : 'Collapse', /*#__PURE__*/React__default.createElement(fa.FaAngleDoubleUp, {
     className: isCollapse && styles.iconCollapse
-  }))))), /*#__PURE__*/React$1__default.createElement("p", {
+  }))))), /*#__PURE__*/React__default.createElement("p", {
     className: "mb-0 mt-2 mt-lg-0 " + styles.noteText
-  }, /*#__PURE__*/React$1__default.createElement("b", null, "Note:"), " Nationalities under consideration are applicable to all members of your company, including directors, shareholders and beneficial owners."), /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("b", null, "Note:"), " Nationalities under consideration are applicable to all members of your company, including directors, shareholders and beneficial owners."), /*#__PURE__*/React__default.createElement("div", {
     className: styles.button_wrapper
-  }, /*#__PURE__*/React$1__default.createElement("button", {
+  }, /*#__PURE__*/React__default.createElement("button", {
     className: styles.Button + " btn py-2 px-4 rounded border-0 m-0",
     onClick: onReceiveData
   }, "I understand")));
@@ -150,7 +155,7 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 }
 
 var useOnClickOutside = function useOnClickOutside(ref, handler) {
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     var listener = function listener(event) {
       if (!ref.current || ref.current.contains(event.target)) {
         return;
@@ -498,12 +503,12 @@ var _Option = function Option(_ref) {
     result = _ref.result,
     children = _ref.children,
     props = _objectWithoutPropertiesLoose(_ref, _excluded);
-  return /*#__PURE__*/React$1__default.createElement(Select.components.Option, _extends({
+  return /*#__PURE__*/React__default.createElement(Select.components.Option, _extends({
     style: {
       padding: "0"
     },
     className: "" + (data && result && data.value === result.value ? "" + styles$1.selected_option : '')
-  }, props), /*#__PURE__*/React$1__default.createElement("div", {
+  }, props), /*#__PURE__*/React__default.createElement("div", {
     style: {
       cursor: 'pointer'
     }
@@ -518,11 +523,11 @@ function SelectSearchInside(_ref2) {
     selectBorder = _ref2.selectBorder,
     dropdown_container = _ref2.dropdown_container,
     props = _objectWithoutPropertiesLoose(_ref2, _excluded2);
-  var wrapperRef = React$1.useRef(null);
-  var _useState = React$1.useState(false),
+  var wrapperRef = React.useRef(null);
+  var _useState = React.useState(false),
     show = _useState[0],
     setShow = _useState[1];
-  var _useState2 = React$1.useState(value),
+  var _useState2 = React.useState(value),
     temp = _useState2[0],
     setTemp = _useState2[1];
   var openMenu = function openMenu() {
@@ -534,7 +539,7 @@ function SelectSearchInside(_ref2) {
   var getLabel = function getLabel() {
     if (value) {
       if (value.value && value.label && value.value !== '') {
-        return /*#__PURE__*/React$1__default.createElement("div", {
+        return /*#__PURE__*/React__default.createElement("div", {
           style: {
             whiteSpace: 'break-spaces'
           }
@@ -543,25 +548,25 @@ function SelectSearchInside(_ref2) {
     }
     if (temp) {
       if (temp.value && temp.label && temp.value !== '') {
-        return /*#__PURE__*/React$1__default.createElement("div", {
+        return /*#__PURE__*/React__default.createElement("div", {
           style: {
             whiteSpace: 'break-spaces'
           }
         }, temp.label);
       }
     }
-    return /*#__PURE__*/React$1__default.createElement("div", {
+    return /*#__PURE__*/React__default.createElement("div", {
       className: "text-muted",
       style: {
         whiteSpace: 'break-spaces'
       }
     }, placeholder ? placeholder : '');
   };
-  return /*#__PURE__*/React$1__default.createElement("div", {
+  return /*#__PURE__*/React__default.createElement("div", {
     style: {
       width: "100%"
     }
-  }, /*#__PURE__*/React$1__default.createElement(Dropdown, {
+  }, /*#__PURE__*/React__default.createElement(Dropdown, {
     className: dropdown_container ? dropdown_container : '',
     ref: wrapperRef,
     style: {
@@ -569,31 +574,32 @@ function SelectSearchInside(_ref2) {
       height: "100%"
     },
     show: show
-  }, /*#__PURE__*/React$1__default.createElement(Dropdown.Toggle, {
+  }, /*#__PURE__*/React__default.createElement(Dropdown.Toggle, {
     style: {
       display: "flex",
       justifyContent: "space-between",
       borderWidth: 1,
       border: "" + (selectBorder ? '1px solid rgb(204, 204, 204)' : ''),
-      borderRadius: '0.25rem'
+      borderRadius: '0.25rem',
+      cursor: 'pointer'
     },
     className: "select-with-search-inside text-dark " + styles$1.dropdown_toggle + " " + (toggleClass ? ' ' + toggleClass : ''),
     onClick: openMenu
-  }, getLabel(), /*#__PURE__*/React$1__default.createElement("div", {
+  }, getLabel(), /*#__PURE__*/React__default.createElement("div", {
     style: {
       minWidth: 13,
       marginTop: "4px"
     }
-  }, /*#__PURE__*/React$1__default.createElement(fa.FaChevronDown, {
+  }, /*#__PURE__*/React__default.createElement(fa.FaChevronDown, {
     size: 13,
     color: show ? '#6e6e6e' : '#ccc'
-  }))), /*#__PURE__*/React$1__default.createElement(Dropdown.Menu, {
+  }))), /*#__PURE__*/React__default.createElement(Dropdown.Menu, {
     className: styles$1.dropdown_menu + " " + (menuClass ? ' ' + menuClass : ''),
     show: show
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     id: "select-panel",
     className: styles$1.select_panel
-  }, show ? /*#__PURE__*/React$1__default.createElement(Select__default, _extends({}, props, {
+  }, show ? /*#__PURE__*/React__default.createElement(Select__default, _extends({}, props, {
     styles: customStyles,
     autoFocus: true,
     menuIsOpen: true,
@@ -605,7 +611,7 @@ function SelectSearchInside(_ref2) {
         return null;
       },
       Option: function Option(props) {
-        return /*#__PURE__*/React$1__default.createElement(_Option, _extends({
+        return /*#__PURE__*/React__default.createElement(_Option, _extends({
           result: value ? value : temp
         }, props));
       }
@@ -617,7 +623,7 @@ function SelectSearchInside(_ref2) {
       setTemp(value);
       setShow(false);
     }
-  })) : /*#__PURE__*/React$1__default.createElement("div", null)))));
+  })) : /*#__PURE__*/React__default.createElement("div", null)))));
 }
 
 var FormSwal = withReactContent(Swal);
@@ -635,19 +641,19 @@ var Trustpilot = function Trustpilot(_ref) {
     initialSlide: 0,
     pauseOnHover: true
   };
-  return /*#__PURE__*/React$1__default.createElement(Slider, _extends({}, settings, {
+  return /*#__PURE__*/React__default.createElement(Slider, _extends({}, settings, {
     className: styles.Slider,
     style: {
       padding: "16px 20px 30px 20px"
     }
   }), data.map(function (item, index) {
-    return /*#__PURE__*/React$1__default.createElement("div", {
+    return /*#__PURE__*/React__default.createElement("div", {
       className: "" + styles.sliderItem,
       style: {
         height: "100%"
       },
       key: index
-    }, /*#__PURE__*/React$1__default.createElement("img", {
+    }, /*#__PURE__*/React__default.createElement("img", {
       src: trust_pilot$1,
       className: "w-auto h-auto object-center object-cover",
       style: {
@@ -655,20 +661,20 @@ var Trustpilot = function Trustpilot(_ref) {
         height: "auto"
       },
       alt: "trustpilot"
-    }), /*#__PURE__*/React$1__default.createElement("p", {
+    }), /*#__PURE__*/React__default.createElement("p", {
       style: {
         marginBottom: "0",
         marginTop: '0.625rem',
         color: '#717171'
       }
-    }, item.content), /*#__PURE__*/React$1__default.createElement("p", {
+    }, item.content), /*#__PURE__*/React__default.createElement("p", {
       style: {
         textAlign: "right",
         marginBottom: "0",
         marginTop: '0.625rem',
         color: '#717171'
       }
-    }, "Feedback from", ' ', /*#__PURE__*/React$1__default.createElement("span", {
+    }, "Feedback from", ' ', /*#__PURE__*/React__default.createElement("span", {
       style: {
         fontWeight: "bold"
       }
@@ -679,31 +685,31 @@ var RegisterScreen = function RegisterScreen(_ref2) {
   var _errors$first_name, _errors$email;
   var trustpilot = _ref2.trustpilot,
     isTypeChristmas = _ref2.isTypeChristmas;
-  var _useState = React$1.useState(),
+  var _useState = React.useState(),
     customerCountry = _useState[0],
     setCustomerCountry = _useState[1];
-  var _useState2 = React$1.useState(),
+  var _useState2 = React.useState(),
     countryList = _useState2[0],
     setCountryList = _useState2[1];
-  var _useState3 = React$1.useState(),
+  var _useState3 = React.useState(),
     phoneCountry = _useState3[0],
     setPhoneCountry = _useState3[1];
-  var _useState4 = React$1.useState(),
+  var _useState4 = React.useState(),
     phoneCodeList = _useState4[0],
     setPhoneCodeList = _useState4[1];
-  var _useState5 = React$1.useState(),
+  var _useState5 = React.useState(),
     queryCountryId = _useState5[0],
     setQueryCountryId = _useState5[1];
-  var _useState6 = React$1.useState(),
+  var _useState6 = React.useState(),
     queryCompanyName = _useState6[0],
     setQueryCompanyName = _useState6[1];
-  var _useState7 = React$1.useState(),
+  var _useState7 = React.useState(),
     queryEntityTypeId = _useState7[0],
     setQueryEntityTypeId = _useState7[1];
-  var _useState8 = React$1.useState(),
+  var _useState8 = React.useState(),
     queryPackageId = _useState8[0],
     setQueryPackageId = _useState8[1];
-  var recaptchaRef = React$1.useRef();
+  var recaptchaRef = React.useRef();
   var getUrlVars = function getUrlVars() {
     var vars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
@@ -711,7 +717,7 @@ var RegisterScreen = function RegisterScreen(_ref2) {
     });
     return vars;
   };
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     setQueryCountryId(getUrlVars()['country_id']);
     setQueryCompanyName(getUrlVars()['company_name']);
     setQueryEntityTypeId(getUrlVars()['entity_type_id']);
@@ -825,7 +831,7 @@ var RegisterScreen = function RegisterScreen(_ref2) {
       return Promise.reject(e);
     }
   };
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     axios.get("https://core.test-lp.bbcincorp.com/api/onboarding/country/cooperative").then(function (result) {
       var _result$data, _result$data2;
       var phoneList = result === null || result === void 0 ? void 0 : (_result$data = result.data) === null || _result$data === void 0 ? void 0 : _result$data.data.map(function (item) {
@@ -844,7 +850,7 @@ var RegisterScreen = function RegisterScreen(_ref2) {
       setCountryList(countryList);
     });
   }, []);
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     var data = JSON.parse(window.localStorage.getItem('customer'));
     if (data && data !== null && data !== void 0 && data.country_id && data !== null && data !== void 0 && data.phone_country_id) {
       setValue('first_name', data.first_name);
@@ -860,53 +866,53 @@ var RegisterScreen = function RegisterScreen(_ref2) {
       });
     }
   }, []);
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     if (window.location && !___default.isEmpty(window.location.search)) {
       window.localStorage.removeItem('data_onboarding');
     }
   }, []);
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     var promotion_code = JSON.parse(window.localStorage.getItem('promotion_code'));
     if (promotion_code) {
       window.localStorage.removeItem('promotion_code');
     }
   }, []);
-  return /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement("section", {
+  return /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("section", {
     className: styles.RegisterScreen
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: styles.space_top,
     style: {
       height: '50px',
       marginBottom: "40px"
     }
-  }), /*#__PURE__*/React$1__default.createElement("h2", {
+  }), /*#__PURE__*/React__default.createElement("h2", {
     className: styles.title
-  }, "Ready to start your company in just a few steps"), /*#__PURE__*/React$1__default.createElement("div", {
+  }, "Ready to start your company in just a few steps"), /*#__PURE__*/React__default.createElement("div", {
     className: styles.Body
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: styles.RegisterText
-  }, "Please share a bit about yourself to stay connected. All information will be kept confidential and subject to our Privacy Policy."), isTypeChristmas && /*#__PURE__*/React$1__default.createElement("div", {
+  }, "Please share a bit about yourself to stay connected. All information will be kept confidential and subject to our Privacy Policy."), isTypeChristmas && /*#__PURE__*/React__default.createElement("div", {
     className: styles.discountChristmas
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: "box-discount"
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: "number-discount"
-  }, /*#__PURE__*/React$1__default.createElement("p", {
+  }, /*#__PURE__*/React__default.createElement("p", {
     className: "number"
-  }, "5", /*#__PURE__*/React$1__default.createElement("span", null, "%"))), /*#__PURE__*/React$1__default.createElement("div", {
+  }, "5", /*#__PURE__*/React__default.createElement("span", null, "%"))), /*#__PURE__*/React__default.createElement("div", {
     className: "box-content"
-  }, /*#__PURE__*/React$1__default.createElement("p", {
+  }, /*#__PURE__*/React__default.createElement("p", {
     className: "title-discount"
-  }, "Discount is here"), /*#__PURE__*/React$1__default.createElement("p", {
+  }, "Discount is here"), /*#__PURE__*/React__default.createElement("p", {
     className: "des-discount"
-  }, "Start your company with us!")))), /*#__PURE__*/React$1__default.createElement("form", {
+  }, "Start your company with us!")))), /*#__PURE__*/React__default.createElement("form", {
     onSubmit: handleSubmit(onSubmit),
     className: styles.RegisterForm
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: styles.formControl
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: styles.inputWrapper
-  }, /*#__PURE__*/React$1__default.createElement("input", _extends({
+  }, /*#__PURE__*/React__default.createElement("input", _extends({
     type: "text",
     className: styles.RegisterInput,
     placeholder: "Your name"
@@ -919,17 +925,17 @@ var RegisterScreen = function RegisterScreen(_ref2) {
       value: 40,
       message: 'test'
     }
-  }))), (errors === null || errors === void 0 ? void 0 : errors.first_name) && /*#__PURE__*/React$1__default.createElement("span", {
+  }))), (errors === null || errors === void 0 ? void 0 : errors.first_name) && /*#__PURE__*/React__default.createElement("span", {
     className: styles.ErrorMessage
-  }, errors === null || errors === void 0 ? void 0 : (_errors$first_name = errors.first_name) === null || _errors$first_name === void 0 ? void 0 : _errors$first_name.message)), /*#__PURE__*/React$1__default.createElement("div", {
+  }, errors === null || errors === void 0 ? void 0 : (_errors$first_name = errors.first_name) === null || _errors$first_name === void 0 ? void 0 : _errors$first_name.message)), /*#__PURE__*/React__default.createElement("div", {
     className: styles.SelectWrapper
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: styles.CountrySelectWrapper
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: styles.nationalitySelect
-  }, /*#__PURE__*/React$1__default.createElement("span", {
+  }, /*#__PURE__*/React__default.createElement("span", {
     className: styles.nationalityLabel
-  }, "Nationality"), /*#__PURE__*/React$1__default.createElement(SelectSearchInside, {
+  }, "Nationality"), /*#__PURE__*/React__default.createElement(SelectSearchInside, {
     value: countryList && countryList.find(function (item) {
       return item.value == customerCountry;
     }),
@@ -939,11 +945,11 @@ var RegisterScreen = function RegisterScreen(_ref2) {
     toggleClass: styles.CountrySelect + " " + styles.CheckBox,
     onChange: handleChangeCountry,
     menuClass: styles.Menu
-  }))))), /*#__PURE__*/React$1__default.createElement("div", {
+  }))))), /*#__PURE__*/React__default.createElement("div", {
     className: styles.formControl
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: styles.inputWrapper
-  }, /*#__PURE__*/React$1__default.createElement("input", _extends({
+  }, /*#__PURE__*/React__default.createElement("input", _extends({
     type: "email",
     className: styles.RegisterInput,
     placeholder: "Your email address"
@@ -956,15 +962,15 @@ var RegisterScreen = function RegisterScreen(_ref2) {
       value: /^[a-z0-9]+([-._][a-z0-9]+)*@([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]/,
       message: 'Invalid e-mail'
     }
-  }))), (errors === null || errors === void 0 ? void 0 : errors.email) && /*#__PURE__*/React$1__default.createElement("span", {
+  }))), (errors === null || errors === void 0 ? void 0 : errors.email) && /*#__PURE__*/React__default.createElement("span", {
     className: styles.ErrorMessage
-  }, errors === null || errors === void 0 ? void 0 : (_errors$email = errors.email) === null || _errors$email === void 0 ? void 0 : _errors$email.message)), /*#__PURE__*/React$1__default.createElement("div", {
+  }, errors === null || errors === void 0 ? void 0 : (_errors$email = errors.email) === null || _errors$email === void 0 ? void 0 : _errors$email.message)), /*#__PURE__*/React__default.createElement("div", {
     className: styles.SelectWrapper
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: styles.phonenumber_container
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: styles.CustomSelect
-  }, /*#__PURE__*/React$1__default.createElement(SelectSearchInside, {
+  }, /*#__PURE__*/React__default.createElement(SelectSearchInside, {
     value: phoneCodeList && phoneCodeList.find(function (item) {
       return item.value == phoneCountry;
     }),
@@ -972,7 +978,7 @@ var RegisterScreen = function RegisterScreen(_ref2) {
     toggleClass: styles.PhoneSelect,
     menuClass: "mt-2 " + styles.Menu,
     onChange: handleChangePhoneCountry
-  })), /*#__PURE__*/React$1__default.createElement("input", _extends({
+  })), /*#__PURE__*/React__default.createElement("input", _extends({
     type: "text",
     placeholder: "Phone number"
   }, register('phone_number'), {
@@ -982,9 +988,9 @@ var RegisterScreen = function RegisterScreen(_ref2) {
       }
     },
     className: styles.RegisterInput + " " + styles.PhoneInput
-  }))))), /*#__PURE__*/React$1__default.createElement("div", {
+  }))))), /*#__PURE__*/React__default.createElement("div", {
     className: styles.RegisterText
-  }, /*#__PURE__*/React$1__default.createElement("input", _extends({
+  }, /*#__PURE__*/React__default.createElement("input", _extends({
     id: "register_checkbox",
     type: "checkbox",
     style: {
@@ -992,43 +998,43 @@ var RegisterScreen = function RegisterScreen(_ref2) {
       cursor: "pointer"
     },
     className: "rounded " + styles.CheckBox
-  }, register('register_checkbox'))), /*#__PURE__*/React$1__default.createElement("label", {
+  }, register('register_checkbox'))), /*#__PURE__*/React__default.createElement("label", {
     htmlFor: "register_checkbox",
     style: {
       marginLeft: "10px",
       cursor: "pointer"
     }
-  }, "Sign up to BBCIncorp's mailing list for latest news and exclusive offers.")), /*#__PURE__*/React$1__default.createElement("div", {
+  }, "Sign up to BBCIncorp's mailing list for latest news and exclusive offers.")), /*#__PURE__*/React__default.createElement("div", {
     className: styles.FormFooter
-  }, /*#__PURE__*/React$1__default.createElement("button", {
+  }, /*#__PURE__*/React__default.createElement("button", {
     type: "submit",
     className: styles.RegisterButton + " " + styles.Button,
     disabled: isSubmitting
-  }, isSubmitting ? /*#__PURE__*/React$1__default.createElement("span", {
+  }, isSubmitting ? /*#__PURE__*/React__default.createElement("span", {
     className: "d-flex align-items-center"
-  }, /*#__PURE__*/React$1__default.createElement("span", {
+  }, /*#__PURE__*/React__default.createElement("span", {
     className: "mr-2"
-  }, "Loading"), /*#__PURE__*/React$1__default.createElement(reactBootstrap.Spinner, {
+  }, "Loading"), /*#__PURE__*/React__default.createElement(reactBootstrap.Spinner, {
     as: "span",
     animation: "border",
     role: "status",
     "aria-hidden": "true",
     size: "sm"
-  })) : 'Start my business'), /*#__PURE__*/React$1__default.createElement("a", {
+  })) : 'Start my business'), /*#__PURE__*/React__default.createElement("a", {
     style: {
       fontWeight: "600"
     },
     className: styles.RegisterLink + " " + styles.Link,
     href: "https://test-dashboard.bbcincorp.com/auth/login"
-  }, "Already have an account?"))))), /*#__PURE__*/React$1__default.createElement("section", {
+  }, "Already have an account?"))))), /*#__PURE__*/React__default.createElement("section", {
     style: {
       width: "100%",
       display: "flex",
       marginTop: "1.5rem"
     }
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: styles.trustpilot_wrapper
-  }, /*#__PURE__*/React$1__default.createElement(Trustpilot, {
+  }, /*#__PURE__*/React__default.createElement(Trustpilot, {
     data: trustpilot
   }))));
 };
@@ -1081,7 +1087,7 @@ var data = {
 
 function Register(_ref) {
   var isTypeChristmas = _ref.isTypeChristmas;
-  var _useState = React$1.useState(true),
+  var _useState = React.useState(true),
     fatfScreen = _useState[0],
     setFatfScreen = _useState[1];
   var onReceiveData = function onReceiveData(value) {
@@ -1092,7 +1098,7 @@ function Register(_ref) {
     onReceiveData(false);
     localStorage.setItem('setExpirationDateObd', new Date().getTime());
   };
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     var hours = 24;
     var now = new Date().getTime();
     var expirationDateObd = localStorage.getItem('setExpirationDateObd');
@@ -1103,11 +1109,11 @@ function Register(_ref) {
       localStorage.removeItem('setExpirationDateObd');
     }
   }, []);
-  return /*#__PURE__*/React$1__default.createElement("div", {
+  return /*#__PURE__*/React__default.createElement("div", {
     className: styles.Register
-  }, fatfScreen ? /*#__PURE__*/React$1__default.createElement(FatfScreen, {
+  }, fatfScreen ? /*#__PURE__*/React__default.createElement(FatfScreen, {
     onReceiveData: receiveData
-  }) : /*#__PURE__*/React$1__default.createElement(RegisterScreen, {
+  }) : /*#__PURE__*/React__default.createElement(RegisterScreen, {
     trustpilot: data.trust_pilot,
     isTypeChristmas: isTypeChristmas
   }));
@@ -1116,7 +1122,7 @@ function Register(_ref) {
 var styles$2 = {"select_title":"_styles-module__select_title__2K9oK","descriptionText":"_styles-module__descriptionText__39yY1","btn_back_top":"_styles-module__btn_back_top__1Wixw","btn_back_bottom":"_styles-module__btn_back_bottom__15HAn","selecttype_container":"_styles-module__selecttype_container__1Rr4C","select_type":"_styles-module__select_type__22Dgm","Package":"_styles-module__Package__1diqG","Package_title":"_styles-module__Package_title__2CKOy","SelectServiceScreen":"_styles-module__SelectServiceScreen__2YoN5","Link":"_styles-module__Link__2qWh0","promotion":"_styles-module__promotion__3HJX6","arrow_circle":"_styles-module__arrow_circle__3e_eN","Header":"_styles-module__Header__BIlvy","Body":"_styles-module__Body__iHyQI"};
 
 function SelectService(params) {
-  var _useState = React$1.useState(false),
+  var _useState = React.useState(false),
     promotion = _useState[0],
     setPromotion = _useState[1];
   var getUrlVars = function getUrlVars() {
@@ -1148,7 +1154,7 @@ function SelectService(params) {
       }
     }
   };
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     var data_onboarding = JSON.parse(window.localStorage.getItem('data_onboarding'));
     if (window.location) {
       var data_customer = JSON.parse(window.localStorage.getItem('customer'));
@@ -1182,32 +1188,32 @@ function SelectService(params) {
       }
     }
   }, [querySignature, queryPromotionCode]);
-  return /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement("section", {
+  return /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("section", {
     className: styles$2.SelectServiceScreen
-  }, /*#__PURE__*/React$1__default.createElement("a", {
+  }, /*#__PURE__*/React__default.createElement("a", {
     href: "/register",
     className: styles$2.Link + " " + styles$2.Header + " " + styles$2.btn_back_top
-  }, "Back"), /*#__PURE__*/React$1__default.createElement("h2", {
+  }, "Back"), /*#__PURE__*/React__default.createElement("h2", {
     className: styles$2.select_title
-  }, "Select service you want to proceed"), /*#__PURE__*/React$1__default.createElement("div", {
+  }, "Select service you want to proceed"), /*#__PURE__*/React__default.createElement("div", {
     className: styles$2.Body
-  }, /*#__PURE__*/React$1__default.createElement("p", {
+  }, /*#__PURE__*/React__default.createElement("p", {
     className: styles$2.descriptionText
-  }, "Incorporation packages already entail banking option. Should you need banking support only, kindly select Banking."), /*#__PURE__*/React$1__default.createElement("div", {
+  }, "Incorporation packages already entail banking option. Should you need banking support only, kindly select Banking."), /*#__PURE__*/React__default.createElement("div", {
     className: styles$2.selecttype_container,
     style: {
       marginLeft: '-23px',
       marginRight: '-23px'
     }
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: styles$2.select_type
-  }, /*#__PURE__*/React$1__default.createElement("a", {
+  }, /*#__PURE__*/React__default.createElement("a", {
     style: {
       border: "none",
       textDecoration: "none"
     },
     href: "/incorporation-country"
-  }, /*#__PURE__*/React$1__default.createElement("button", {
+  }, /*#__PURE__*/React__default.createElement("button", {
     className: styles$2.Package,
     style: {
       cursor: "pointer",
@@ -1217,22 +1223,22 @@ function SelectService(params) {
     onClick: function onClick() {
       return handleClick('incorporation');
     }
-  }, promotion && /*#__PURE__*/React$1__default.createElement("div", {
+  }, promotion && /*#__PURE__*/React__default.createElement("div", {
     className: styles$2.promotion
-  }, "-5%"), /*#__PURE__*/React$1__default.createElement("img", {
+  }, "-5%"), /*#__PURE__*/React__default.createElement("img", {
     src: incorpImg,
     alt: "incorporation"
-  }), /*#__PURE__*/React$1__default.createElement("h3", null, "INCORPORATION"), /*#__PURE__*/React$1__default.createElement("p", {
+  }), /*#__PURE__*/React__default.createElement("h3", null, "INCORPORATION"), /*#__PURE__*/React__default.createElement("p", {
     className: styles$2.arrow_circle
-  }, "\u2192")))), /*#__PURE__*/React$1__default.createElement("div", {
+  }, "\u2192")))), /*#__PURE__*/React__default.createElement("div", {
     className: styles$2.select_type
-  }, /*#__PURE__*/React$1__default.createElement("a", {
+  }, /*#__PURE__*/React__default.createElement("a", {
     style: {
       position: "relative",
       textDecoration: "none"
     },
     href: "/banking-package"
-  }, /*#__PURE__*/React$1__default.createElement("button", {
+  }, /*#__PURE__*/React__default.createElement("button", {
     className: styles$2.Package,
     style: {
       cursor: "pointer",
@@ -1242,34 +1248,34 @@ function SelectService(params) {
     onClick: function onClick() {
       return handleClick('banking');
     }
-  }, /*#__PURE__*/React$1__default.createElement("img", {
+  }, /*#__PURE__*/React__default.createElement("img", {
     src: bankingImg,
     alt: "banking"
-  }), /*#__PURE__*/React$1__default.createElement("h3", null, "BANKING"), /*#__PURE__*/React$1__default.createElement("p", {
+  }), /*#__PURE__*/React__default.createElement("h3", null, "BANKING"), /*#__PURE__*/React__default.createElement("p", {
     className: styles$2.arrow_circle
-  }, "\u2192"))))))), /*#__PURE__*/React$1__default.createElement("a", {
+  }, "\u2192"))))))), /*#__PURE__*/React__default.createElement("a", {
     href: "/register",
     className: styles$2.Link + " " + styles$2.btn_back_bottom
   }, "Back"));
 }
 
-var style = {"featuresTable":"_styles-module__featuresTable__RLphK","tableColumn":"_styles-module__tableColumn__10sZ0","tableColumnTitle":"_styles-module__tableColumnTitle__AUegg","tableColumnItem":"_styles-module__tableColumnItem__qvn8_","titleDefault":"_styles-module__titleDefault__1sZVx","titleMobile":"_styles-module__titleMobile__w4CCu","tableColumnCountry":"_styles-module__tableColumnCountry__32w8z","selectFilter":"_styles-module__selectFilter__2Wejd","tableColumnTax":"_styles-module__tableColumnTax__20J5S","commonTag":"_styles-module__commonTag__uD5xU","btnClearAll":"_styles-module__btnClearAll__20yrn","btnCompare":"_styles-module__btnCompare__2GrPb","btnTalkto":"_styles-module__btnTalkto__jCdVc","dropdownBtn":"_styles-module__dropdownBtn__v22dK","multiSelectCustom":"_styles-module__multiSelectCustom__3lMgY","commonUsed_Filter":"_styles-module__commonUsed_Filter__s0T05","common_Container":"_styles-module__common_Container__19GeQ","common_Button":"_styles-module__common_Button__3Tera","common_FilterContainer":"_styles-module__common_FilterContainer__2MQvj","common_ColumnSpacing":"_styles-module__common_ColumnSpacing__2Osel","common_Column":"_styles-module__common_Column__1Mg92","common_Tag":"_styles-module__common_Tag__3p2Gk","chooseFeatures_FilterContainerMobile":"_styles-module__chooseFeatures_FilterContainerMobile__39Gjj","common_FilterMenu":"_styles-module__common_FilterMenu__5JuuW","features_Menu":"_styles-module__features_Menu__33Rw4","common_Clickable":"_styles-module__common_Clickable__1KL3B","common_UnClickable":"_styles-module__common_UnClickable__38yu2","common_LevelTop":"_styles-module__common_LevelTop__3o1V9","feature_ItemActive":"_styles-module__feature_ItemActive__GTqJ-"};
+var style = {"featuresTable":"_styles-module__featuresTable__RLphK","tableColumn":"_styles-module__tableColumn__10sZ0","tableColumnTitle":"_styles-module__tableColumnTitle__AUegg","tableColumnItem":"_styles-module__tableColumnItem__qvn8_","tableColumn_cur":"_styles-module__tableColumn_cur__yyHcR","tableColumnCountry":"_styles-module__tableColumnCountry__32w8z","selectFilter":"_styles-module__selectFilter__2Wejd","tableColumnTax":"_styles-module__tableColumnTax__20J5S","commonTag":"_styles-module__commonTag__uD5xU","tag":"_styles-module__tag__5r1Aj","btnClearAll":"_styles-module__btnClearAll__20yrn","btnCompare":"_styles-module__btnCompare__2GrPb","btnTalkto":"_styles-module__btnTalkto__jCdVc","dropdownBtn":"_styles-module__dropdownBtn__v22dK","dropdown_rangeSlider":"_styles-module__dropdown_rangeSlider__1BZTI","dropdown_menu":"_styles-module__dropdown_menu__YI60L","multiSelectCustom":"_styles-module__multiSelectCustom__3lMgY","commonUsed_Filter":"_styles-module__commonUsed_Filter__s0T05","common_Container":"_styles-module__common_Container__19GeQ","common_Button":"_styles-module__common_Button__3Tera","common_FilterContainer":"_styles-module__common_FilterContainer__2MQvj","common_ColumnSpacing":"_styles-module__common_ColumnSpacing__2Osel","common_Column":"_styles-module__common_Column__1Mg92","common_Tag":"_styles-module__common_Tag__3p2Gk","common_FilterMenu":"_styles-module__common_FilterMenu__5JuuW","features_Menu":"_styles-module__features_Menu__33Rw4","common_Clickable":"_styles-module__common_Clickable__1KL3B","common_UnClickable":"_styles-module__common_UnClickable__38yu2","common_LevelTop":"_styles-module__common_LevelTop__3o1V9","feature_ItemActive":"_styles-module__feature_ItemActive__GTqJ-","titleDefault":"_styles-module__titleDefault__1sZVx","titleMobile":"_styles-module__titleMobile__w4CCu","chooseFeatures_FilterContainerMobile":"_styles-module__chooseFeatures_FilterContainerMobile__39Gjj"};
 
 var Menu = function Menu(props) {
   var style = {
     backgroundColor: 'white',
-    borderRadius: 4,
+    borderRadius: '4px',
     boxShadow: "rgba(131, 131, 131, 0.2) 12px 14px 15px",
-    marginTop: 35,
+    marginTop: '35px',
     position: 'absolute',
     width: '100%',
-    minWidth: 180,
+    minWidth: '180px',
     zIndex: 2
   };
   if (props.rightAligned) {
     style.right = 0;
   }
-  return /*#__PURE__*/React$1__default.createElement("div", _extends({
+  return /*#__PURE__*/React__default.createElement("div", _extends({
     style: style
   }, props));
 };
@@ -1278,18 +1284,19 @@ function MultiSelectDropdown(_ref) {
     isOpen = _ref.isOpen,
     target = _ref.target,
     onClose = _ref.onClose;
-  return /*#__PURE__*/React$1__default.createElement("div", {
+  return /*#__PURE__*/React__default.createElement("div", {
     className: style.multiSelectCustom
-  }, target, isOpen ? /*#__PURE__*/React$1__default.createElement(Menu, null, children) : null, isOpen ? /*#__PURE__*/React$1__default.createElement(Blanket, {
+  }, target, isOpen ? /*#__PURE__*/React__default.createElement(Menu, null, children) : null, isOpen ? /*#__PURE__*/React__default.createElement(Blanket, {
     onClick: onClose
   }) : null);
 }
 
 var Menu$1 = function Menu(props) {
   var style = {
+    color: '#333!important',
     backgroundColor: 'white',
     boxShadow: '12px 14px 15px rgb(131 131 131 / 20%)',
-    marginTop: 38,
+    marginTop: '38px',
     position: 'absolute',
     width: '100%',
     zIndex: 2
@@ -1297,7 +1304,7 @@ var Menu$1 = function Menu(props) {
   if (props.rightAligned) {
     style.right = 0;
   }
-  return /*#__PURE__*/React$1__default.createElement("div", _extends({
+  return /*#__PURE__*/React__default.createElement("div", _extends({
     style: style
   }, props));
 };
@@ -1349,22 +1356,29 @@ function CommonDropdown(_ref) {
     }
     return false;
   };
-  return /*#__PURE__*/React$1__default.createElement("div", {
+  return /*#__PURE__*/React__default.createElement("div", {
     className: style.multiSelectCustom
-  }, target, isOpen ? /*#__PURE__*/React$1__default.createElement(Menu$1, null, /*#__PURE__*/React$1__default.createElement("ul", {
-    className: "list-unstyled " + style.common_FilterMenu
+  }, target, isOpen ? /*#__PURE__*/React__default.createElement(Menu$1, null, /*#__PURE__*/React__default.createElement("ul", {
+    style: {
+      listStyleType: 'none',
+      padding: '0'
+    },
+    className: " " + style.common_FilterMenu
   }, options.map(function (item, index) {
-    return /*#__PURE__*/React$1__default.createElement("li", {
+    return /*#__PURE__*/React__default.createElement("li", {
       key: index,
       onClick: function onClick() {
         return updateData(item);
       },
-      className: "position-relative " + (item.clickable ? style.common_Clickable : style.common_UnClickable) + (item.level === 0 ? ' ' + style.common_LevelTop : '')
-    }, item.label, isActive(item) ? /*#__PURE__*/React$1__default.createElement("span", null, /*#__PURE__*/React$1__default.createElement(fa.FaCheck, {
+      style: {
+        position: 'relative'
+      },
+      className: "" + (item.clickable ? style.common_Clickable : style.common_UnClickable) + (item.level === 0 ? ' ' + style.common_LevelTop : '')
+    }, item.label, isActive(item) ? /*#__PURE__*/React__default.createElement("span", null, /*#__PURE__*/React__default.createElement(fa.FaCheck, {
       size: 12,
       color: "#10C400"
-    })) : /*#__PURE__*/React$1__default.createElement("div", null));
-  }))) : null, isOpen ? /*#__PURE__*/React$1__default.createElement(Blanket, {
+    })) : /*#__PURE__*/React__default.createElement("div", null));
+  }))) : null, isOpen ? /*#__PURE__*/React__default.createElement(Blanket, {
     onClick: onClose
   }) : null);
 }
@@ -1373,7 +1387,7 @@ var Menu$2 = function Menu(props) {
   var style = {
     backgroundColor: 'white',
     boxShadow: '12px 14px 15px rgb(131 131 131 / 20%)',
-    marginTop: 38,
+    marginTop: '38px',
     position: 'absolute',
     width: '100%',
     zIndex: 2
@@ -1381,7 +1395,7 @@ var Menu$2 = function Menu(props) {
   if (props.rightAligned) {
     style.right = 0;
   }
-  return /*#__PURE__*/React$1__default.createElement("div", _extends({
+  return /*#__PURE__*/React__default.createElement("div", _extends({
     style: style
   }, props));
 };
@@ -1392,20 +1406,26 @@ function FeatureDropdown(_ref) {
     options = _ref.options,
     value = _ref.value,
     onChange = _ref.onChange;
-  return /*#__PURE__*/React$1__default.createElement("div", {
+  return /*#__PURE__*/React__default.createElement("div", {
     className: style.multiSelectCustom
-  }, target, isOpen ? /*#__PURE__*/React$1__default.createElement(Menu$2, null, /*#__PURE__*/React$1__default.createElement("ul", {
-    className: "list-unstyled " + style.features_Menu
+  }, target, isOpen ? /*#__PURE__*/React__default.createElement(Menu$2, null, /*#__PURE__*/React__default.createElement("ul", {
+    style: {
+      listStyleType: 'none'
+    },
+    className: "" + style.features_Menu
   }, options.map(function (item, index) {
-    return /*#__PURE__*/React$1__default.createElement("li", {
+    return /*#__PURE__*/React__default.createElement("li", {
       key: index,
       onClick: function onClick() {
         onChange(item.id);
         onClose();
       },
-      className: "position-relative" + (item.id === value ? ' ' + style.feature_ItemActive : '')
+      style: {
+        position: 'relative'
+      },
+      className: "" + (item.id === value ? ' ' + style.feature_ItemActive : '')
     }, item.label);
-  }))) : null, isOpen ? /*#__PURE__*/React$1__default.createElement(Blanket, {
+  }))) : null, isOpen ? /*#__PURE__*/React__default.createElement(Blanket, {
     onClick: onClose
   }) : null);
 }
@@ -1416,7 +1436,7 @@ function RangeSlider(_ref) {
   var STEP = 1;
   var MIN = 0;
   var MAX = 33;
-  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(reactRange.Range, {
+  return /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(reactRange.Range, {
     values: values,
     step: STEP,
     min: MIN,
@@ -1427,7 +1447,7 @@ function RangeSlider(_ref) {
     renderTrack: function renderTrack(_ref2) {
       var props = _ref2.props,
         children = _ref2.children;
-      return /*#__PURE__*/React.createElement("div", {
+      return /*#__PURE__*/React__default.createElement("div", {
         onMouseDown: props.onMouseDown,
         onTouchStart: props.onTouchStart,
         style: _extends({}, props.style, {
@@ -1436,7 +1456,7 @@ function RangeSlider(_ref) {
           width: '100%',
           marginTop: '30px'
         })
-      }, /*#__PURE__*/React.createElement("div", {
+      }, /*#__PURE__*/React__default.createElement("div", {
         ref: props.ref,
         style: {
           height: '3px',
@@ -1454,7 +1474,7 @@ function RangeSlider(_ref) {
     },
     renderThumb: function renderThumb(_ref3) {
       var props = _ref3.props;
-      return /*#__PURE__*/React.createElement("div", _extends({}, props, {
+      return /*#__PURE__*/React__default.createElement("div", _extends({}, props, {
         style: _extends({}, props.style, {
           height: '15px',
           width: '15px',
@@ -1464,11 +1484,12 @@ function RangeSlider(_ref) {
         })
       }));
     }
-  }), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: "text-center",
     style: {
       marginTop: '10px',
-      marginBottom: '7px'
+      marginBottom: '7px',
+      textAlign: 'center'
     },
     id: "output"
   }, values[0], "% - ", values[1], "%"));
@@ -1523,31 +1544,31 @@ function JurisdictionFeatures(props) {
     commonUsedList = props.commonUsedList,
     auditList = props.auditList,
     exemptionList = props.exemptionList;
-  var _useState = React$1.useState(data || []),
+  var _useState = React.useState(data || []),
     dataFiltered = _useState[0],
     setDataFiltered = _useState[1];
-  var _useState2 = React$1.useState([]),
+  var _useState2 = React.useState([]),
     filteredCountries = _useState2[0],
     setFilteredCountries = _useState2[1];
-  var _useState3 = React$1.useState([]),
+  var _useState3 = React.useState([]),
     filteredPublicRegisters = _useState3[0],
     setFilteredPublicRegisters = _useState3[1];
-  var _useState4 = React$1.useState([]),
+  var _useState4 = React.useState([]),
     filteredEUs = _useState4[0],
     setFilteredEUs = _useState4[1];
-  var _useState5 = React$1.useState([]),
+  var _useState5 = React.useState([]),
     filteredAuditedAccounts = _useState5[0],
     setFilteredAuditedAccounts = _useState5[1];
-  var _useState6 = React$1.useState([]),
+  var _useState6 = React.useState([]),
     filteredExemptions = _useState6[0],
     setFilteredExemptions = _useState6[1];
-  var _useState7 = React$1.useState([0, 33]),
+  var _useState7 = React.useState([0, 33]),
     corporateIncomeTax = _useState7[0],
     setCorporateIncomeTax = _useState7[1];
-  var _useState8 = React$1.useState([]),
+  var _useState8 = React.useState([]),
     filteredCommonUsed = _useState8[0],
     setFilteredCommonUsed = _useState8[1];
-  var _useState9 = React$1.useState(1),
+  var _useState9 = React.useState(1),
     currentFeatureId = _useState9[0],
     setCurrentFeatureId = _useState9[1];
   var getCommonTagItem = function getCommonTagItem(item) {
@@ -1589,7 +1610,7 @@ function JurisdictionFeatures(props) {
     setCorporateIncomeTax([0, 33]);
     setFilteredCommonUsed([]);
   };
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     var newData = [].concat(data);
     if (filteredCommonUsed.length > 0) {
       newData = newData.filter(function (item) {
@@ -1742,13 +1763,13 @@ function JurisdictionFeatures(props) {
     }
   };
   var renderCommonUsedFilter = function renderCommonUsedFilter() {
-    return /*#__PURE__*/React$1__default.createElement("div", {
+    return /*#__PURE__*/React__default.createElement("div", {
       className: style.commonUsed_Filter
-    }, /*#__PURE__*/React$1__default.createElement("div", {
+    }, /*#__PURE__*/React__default.createElement("div", {
       className: style.common_Container
-    }, /*#__PURE__*/React$1__default.createElement("div", {
+    }, /*#__PURE__*/React__default.createElement("div", {
       className: style.common_Button
-    }, /*#__PURE__*/React$1__default.createElement(ReactMultiSelectCheckboxes, {
+    }, /*#__PURE__*/React__default.createElement(ReactMultiSelectCheckboxes, {
       hideSearch: true,
       options: commonUsedList,
       placeholderButtonLabel: "Commonly used for",
@@ -1758,15 +1779,15 @@ function JurisdictionFeatures(props) {
       },
       components: {
         DropdownButton: function DropdownButton(props) {
-          return /*#__PURE__*/React$1__default.createElement(_DropdownButton, _extends({}, props, {
-            iconAfter: /*#__PURE__*/React$1__default.createElement(fi.FiFilter, {
+          return /*#__PURE__*/React__default.createElement(_DropdownButton, _extends({}, props, {
+            iconAfter: /*#__PURE__*/React__default.createElement(fi.FiFilter, {
               size: 13,
               color: "#333"
             })
           }));
         },
         Dropdown: function Dropdown(props) {
-          return /*#__PURE__*/React$1__default.createElement(CommonDropdown, _extends({}, props, {
+          return /*#__PURE__*/React__default.createElement(CommonDropdown, _extends({}, props, {
             options: commonUsedList,
             value: filteredCommonUsed,
             onChange: setFilteredCommonUsed
@@ -1775,50 +1796,58 @@ function JurisdictionFeatures(props) {
       }
     }))));
   };
-  return /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement("p", {
-    className: "mb-1 mt-4"
-  }, "The following tables demonstrate 20 jurisdictions with key elements to take into account when establishing your overseas business"), /*#__PURE__*/React$1__default.createElement("button", {
+  return /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("p", {
+    style: {
+      marginBottom: '4px',
+      marginTop: '24px'
+    }
+  }, "The following tables demonstrate 20 jurisdictions with key elements to take into account when establishing your overseas business"), /*#__PURE__*/React__default.createElement("button", {
     onClick: clearAllFilter,
     className: "" + style.btnClearAll
-  }, "Clear all filter"), /*#__PURE__*/React$1__default.createElement("div", {
+  }, "Clear all filter"), /*#__PURE__*/React__default.createElement("div", {
     className: style.common_FilterContainer
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: style.common_Column
-  }, renderCommonUsedFilter()), /*#__PURE__*/React$1__default.createElement("div", {
-    className: "" + style.common_Column + (filteredCommonUsed.length > 0 ? ' ' + style.common_ColumnSpacing : '')
+  }, renderCommonUsedFilter()), /*#__PURE__*/React__default.createElement("div", {
+    className: style.common_Column + " " + (filteredCommonUsed.length > 0 ? ' ' + style.common_ColumnSpacing : '')
   }, filteredCommonUsed.filter(function (item) {
     return item.id !== 0;
   }).map(function (item, index) {
     var tag = CommonTag(item.label);
-    return /*#__PURE__*/React$1__default.createElement("div", {
+    return /*#__PURE__*/React__default.createElement("div", {
       key: index,
-      className: "rounded-pill " + style.common_Tag,
+      className: "" + style.common_Tag,
       style: {
         backgroundColor: tag.backgroundColor,
         color: tag.color
       }
-    }, /*#__PURE__*/React$1__default.createElement("span", null, item.label), /*#__PURE__*/React$1__default.createElement(fa.FaTimes, {
+    }, /*#__PURE__*/React__default.createElement("span", null, item.label), /*#__PURE__*/React__default.createElement(fa.FaTimes, {
       style: {
         color: '#ff756e',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        marginLeft: '8px',
+        marginRight: '4px'
       },
       size: 15,
-      className: "ml-2 mr-1",
       onClick: function onClick() {
         setFilteredCommonUsed(filteredCommonUsed.filter(function (common) {
           return common.id !== item.id;
         }));
       }
     }));
-  }))), /*#__PURE__*/React$1__default.createElement("div", {
+  }))), /*#__PURE__*/React__default.createElement("div", {
     className: style.chooseFeatures_FilterContainerMobile
-  }, /*#__PURE__*/React$1__default.createElement("div", {
-    className: "d-flex"
-  }, /*#__PURE__*/React$1__default.createElement("div", {
-    className: "w-100"
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
+    style: {
+      display: 'flex'
+    }
+  }, /*#__PURE__*/React__default.createElement("div", {
+    style: {
+      width: '100%'
+    }
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: style.common_Button
-  }, /*#__PURE__*/React$1__default.createElement(ReactMultiSelectCheckboxes, {
+  }, /*#__PURE__*/React__default.createElement(ReactMultiSelectCheckboxes, {
     classNamePrefix: "filter",
     hideSearch: true,
     options: commonUsedList,
@@ -1829,30 +1858,36 @@ function JurisdictionFeatures(props) {
     },
     components: {
       DropdownButton: function DropdownButton(props) {
-        return /*#__PURE__*/React$1__default.createElement(_DropdownButton, _extends({}, props, {
-          iconAfter: /*#__PURE__*/React$1__default.createElement(fa.FaAngleDoubleDown, {
+        return /*#__PURE__*/React__default.createElement(_DropdownButton, _extends({}, props, {
+          iconAfter: /*#__PURE__*/React__default.createElement(fa.FaAngleDoubleDown, {
             size: 16,
             color: "#333"
           })
         }));
       },
       Dropdown: function Dropdown(props) {
-        return /*#__PURE__*/React$1__default.createElement(FeatureDropdown, _extends({}, props, {
+        return /*#__PURE__*/React__default.createElement(FeatureDropdown, _extends({}, props, {
           options: features,
           value: currentFeatureId,
           onChange: setCurrentFeatureId
         }));
       }
     }
-  }))))), /*#__PURE__*/React$1__default.createElement("div", {
-    className: "mb-40 " + style.featuresTable
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }))))), /*#__PURE__*/React__default.createElement("div", {
+    style: {
+      marginBottom: '40px'
+    },
+    className: "" + style.featuresTable
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: style.tableColumn + " " + style.tableColumnCountry
-  }, /*#__PURE__*/React$1__default.createElement("div", {
-    className: style.tableColumnTitle + " font-weight-bold"
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
+    style: {
+      fontWeight: 'bold'
+    },
+    className: "" + style.tableColumnTitle
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: style.selectFilter + " table-select"
-  }, /*#__PURE__*/React$1__default.createElement(ReactMultiSelectCheckboxes, {
+  }, /*#__PURE__*/React__default.createElement(ReactMultiSelectCheckboxes, {
     classNamePrefix: "filter",
     hideSearch: true,
     options: countries,
@@ -1863,8 +1898,8 @@ function JurisdictionFeatures(props) {
     },
     components: {
       DropdownButton: function DropdownButton(props) {
-        return /*#__PURE__*/React$1__default.createElement(_DropdownButton, _extends({}, props, {
-          iconAfter: /*#__PURE__*/React$1__default.createElement(fi.FiFilter, {
+        return /*#__PURE__*/React__default.createElement(_DropdownButton, _extends({}, props, {
+          iconAfter: /*#__PURE__*/React__default.createElement(fi.FiFilter, {
             size: 14,
             color: "#FFF"
           })
@@ -1875,51 +1910,58 @@ function JurisdictionFeatures(props) {
     value: filteredCountries,
     onChange: filterByCountries
   }))), dataFiltered.map(function (item, index) {
-    return /*#__PURE__*/React$1__default.createElement("div", {
+    return /*#__PURE__*/React__default.createElement("div", {
       key: index,
-      className: style.tableColumnItem + " justify-content-between"
-    }, /*#__PURE__*/React$1__default.createElement("div", {
-      className: "d-flex"
-    }, /*#__PURE__*/React$1__default.createElement("div", {
+      style: {
+        justifyContent: 'space-between'
+      },
+      className: "" + style.tableColumnItem
+    }, /*#__PURE__*/React__default.createElement("div", {
+      style: {
+        display: 'flex'
+      }
+    }, /*#__PURE__*/React__default.createElement("div", {
       className: "mr-2 rounded-circle overflow-hidden embed-responsive embed-responsive-16by9",
       style: {
         width: 20,
-        height: 20
+        height: 20,
+        marginRight: '8px'
       }
-    }, /*#__PURE__*/React$1__default.createElement("img", {
+    }, /*#__PURE__*/React__default.createElement("img", {
       loading: "eager",
       width: 20,
       height: 20,
-      src: "/onboarding/custom-public/flags/4x3/" + getCountry(item.id).flag + ".svg",
+      src: "https://test-site.bbcincorp.com/onboarding/custom-public/flags/4x3/" + getCountry(item.id).flag + ".svg",
       alt: "flag",
       className: "embed-responsive-item",
       style: {
-        objectFit: 'cover'
+        objectFit: 'cover',
+        borderRadius: '50%'
       }
-    })), parser(item.name)), /*#__PURE__*/React$1__default.createElement("div", {
+    })), parser(item.name)), /*#__PURE__*/React__default.createElement("div", {
       className: "tooltip-bottom",
       style: {
         color: '#BDBDBD'
       }
-    }, /*#__PURE__*/React$1__default.createElement(fa.FaInfoCircle, {
+    }, /*#__PURE__*/React__default.createElement(fa.FaInfoCircle, {
       className: "svg-inline--fa fa-w-16"
-    }), /*#__PURE__*/React$1__default.createElement("div", {
+    }), /*#__PURE__*/React__default.createElement("div", {
       className: "tooltip-content"
     }, item.commonly_used_ids.map(function (i, index) {
       var tagObject = getCommonTagItem(i);
-      return /*#__PURE__*/React$1__default.createElement("span", {
+      return /*#__PURE__*/React__default.createElement("span", {
         key: index,
-        className: "d-inline-block " + style.commonTag,
+        className: style.tag + " " + style.commonTag,
         style: CommonTag(tagObject.label)
       }, tagObject.label);
     }))));
-  })), /*#__PURE__*/React$1__default.createElement("div", {
-    className: "" + style.tableColumn + (currentFeatureId === 1 ? '' : ' d-none') + " d-lg-block"
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  })), /*#__PURE__*/React__default.createElement("div", {
+    className: style.tableColumn + " " + (currentFeatureId === 1 ? '' : style.tableColumn_cur) + " d-lg-block"
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: "" + style.tableColumnTitle
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: style.selectFilter + " table-select"
-  }, /*#__PURE__*/React$1__default.createElement(ReactMultiSelectCheckboxes, {
+  }, /*#__PURE__*/React__default.createElement(ReactMultiSelectCheckboxes, {
     classNamePrefix: "filter",
     hideSearch: true,
     options: publicRegister,
@@ -1930,8 +1972,8 @@ function JurisdictionFeatures(props) {
     },
     components: {
       DropdownButton: function DropdownButton(props) {
-        return /*#__PURE__*/React$1__default.createElement(_DropdownButton, _extends({}, props, {
-          iconAfter: /*#__PURE__*/React$1__default.createElement(fi.FiFilter, {
+        return /*#__PURE__*/React__default.createElement(_DropdownButton, _extends({}, props, {
+          iconAfter: /*#__PURE__*/React__default.createElement(fi.FiFilter, {
             size: 14,
             color: "#FFF"
           })
@@ -1942,60 +1984,65 @@ function JurisdictionFeatures(props) {
     value: filteredPublicRegisters,
     onChange: filterByPublicRegister
   }))), dataFiltered.map(function (item, index) {
-    return /*#__PURE__*/React$1__default.createElement("div", {
+    return /*#__PURE__*/React__default.createElement("div", {
       key: index,
       className: style.tableColumnItem
-    }, item.public_register === true ? /*#__PURE__*/React$1__default.createElement(fa.FaCheck, {
+    }, item.public_register === true ? /*#__PURE__*/React__default.createElement(fa.FaCheck, {
       style: {
         color: '#10C400'
       }
-    }) : item.public_register === false ? /*#__PURE__*/React$1__default.createElement(fa.FaTimes, {
+    }) : item.public_register === false ? /*#__PURE__*/React__default.createElement(fa.FaTimes, {
       style: {
         color: '#FF0000'
       }
     }) : parser(item.public_register));
-  })), /*#__PURE__*/React$1__default.createElement("div", {
-    className: style.tableColumn + " " + style.tableColumnTax + (currentFeatureId === 2 ? '' : ' d-none') + " d-lg-block"
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  })), /*#__PURE__*/React__default.createElement("div", {
+    className: style.tableColumn + " " + style.tableColumnTax + " " + (currentFeatureId === 2 ? '' : style.tableColumn_cur) + " d-lg-block"
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: style.tableColumnTitle
-  }, /*#__PURE__*/React$1__default.createElement(Dropdown, {
-    className: "w-100"
-  }, /*#__PURE__*/React$1__default.createElement(Dropdown.Toggle, {
+  }, /*#__PURE__*/React__default.createElement(Dropdown, {
+    style: {
+      width: "100%",
+      position: 'relative'
+    }
+  }, /*#__PURE__*/React__default.createElement(Dropdown.Toggle, {
     id: "dropdown-basic",
-    className: "w-100 p-0 rounded-0 border-0 " + style.dropdownBtn
-  }, /*#__PURE__*/React$1__default.createElement("span", {
+    className: style.dropdown_rangeSlider + " " + style.dropdownBtn
+  }, /*#__PURE__*/React__default.createElement("span", {
     className: style.titleDefault
-  }, "Corporate income Tax"), /*#__PURE__*/React$1__default.createElement("span", {
+  }, "Corporate income Tax"), /*#__PURE__*/React__default.createElement("span", {
     className: style.titleMobile
-  }, "CIA"), /*#__PURE__*/React$1__default.createElement(fi.FiFilter, {
-    size: 13,
+  }, "CIA"), /*#__PURE__*/React__default.createElement(fi.FiFilter, {
+    size: 14,
     color: "#FFF",
-    className: "ml-2"
-  })), /*#__PURE__*/React$1__default.createElement(Dropdown.Menu, {
-    className: "p-0 w-100"
-  }, /*#__PURE__*/React$1__default.createElement(Dropdown.ItemText, null, /*#__PURE__*/React$1__default.createElement(RangeSlider, {
+    style: {
+      marginLeft: '8px'
+    }
+  })), /*#__PURE__*/React__default.createElement(Dropdown.Menu, {
+    className: style.dropdown_menu
+  }, /*#__PURE__*/React__default.createElement(Dropdown.ItemText, null, /*#__PURE__*/React__default.createElement(RangeSlider, {
     values: corporateIncomeTax,
     setValues: setCorporateIncomeTax
   }))))), dataFiltered.map(function (item, index) {
-    return /*#__PURE__*/React$1__default.createElement("div", {
+    return /*#__PURE__*/React__default.createElement("div", {
       key: index,
       className: style.tableColumnItem
-    }, item.corporate_income_tax === true ? /*#__PURE__*/React$1__default.createElement(fa.FaCheck, {
+    }, item.corporate_income_tax === true ? /*#__PURE__*/React__default.createElement(fa.FaCheck, {
       style: {
         color: '#10C400'
       }
-    }) : item.corporate_income_tax === false ? /*#__PURE__*/React$1__default.createElement(fa.FaTimes, {
+    }) : item.corporate_income_tax === false ? /*#__PURE__*/React__default.createElement(fa.FaTimes, {
       style: {
         color: '#FF0000'
       }
     }) : parser(item.corporate_income_tax));
-  })), /*#__PURE__*/React$1__default.createElement("div", {
-    className: "" + style.tableColumn + (currentFeatureId === 3 ? '' : ' d-none') + " d-lg-block"
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  })), /*#__PURE__*/React__default.createElement("div", {
+    className: style.tableColumn + " " + (currentFeatureId === 3 ? '' : style.tableColumn_cur) + " d-lg-block"
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: "" + style.tableColumnTitle
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: style.selectFilter + " table-select"
-  }, /*#__PURE__*/React$1__default.createElement(ReactMultiSelectCheckboxes, {
+  }, /*#__PURE__*/React__default.createElement(ReactMultiSelectCheckboxes, {
     classNamePrefix: "filter",
     hideSearch: true,
     options: exemptionList,
@@ -2006,8 +2053,8 @@ function JurisdictionFeatures(props) {
     },
     components: {
       DropdownButton: function DropdownButton(props) {
-        return /*#__PURE__*/React$1__default.createElement(_DropdownButton, _extends({}, props, {
-          iconAfter: /*#__PURE__*/React$1__default.createElement(fi.FiFilter, {
+        return /*#__PURE__*/React__default.createElement(_DropdownButton, _extends({}, props, {
+          iconAfter: /*#__PURE__*/React__default.createElement(fi.FiFilter, {
             size: 14,
             color: "#FFF"
           })
@@ -2018,25 +2065,25 @@ function JurisdictionFeatures(props) {
     value: filteredExemptions,
     onChange: filterByExemptions
   }))), dataFiltered.map(function (item, index) {
-    return /*#__PURE__*/React$1__default.createElement("div", {
+    return /*#__PURE__*/React__default.createElement("div", {
       key: index,
       className: style.tableColumnItem
-    }, item.offshore_exemption === true ? /*#__PURE__*/React$1__default.createElement(fa.FaCheck, {
+    }, item.offshore_exemption === true ? /*#__PURE__*/React__default.createElement(fa.FaCheck, {
       style: {
         color: '#10C400'
       }
-    }) : item.offshore_exemption === false ? /*#__PURE__*/React$1__default.createElement(fa.FaTimes, {
+    }) : item.offshore_exemption === false ? /*#__PURE__*/React__default.createElement(fa.FaTimes, {
       style: {
         color: '#FF0000'
       }
     }) : parser(item.offshore_exemption));
-  })), /*#__PURE__*/React$1__default.createElement("div", {
-    className: "" + style.tableColumn + (currentFeatureId === 4 ? '' : ' d-none') + " d-lg-block"
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  })), /*#__PURE__*/React__default.createElement("div", {
+    className: style.tableColumn + " " + (currentFeatureId === 4 ? '' : style.tableColumn_cur) + " d-lg-block"
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: "" + style.tableColumnTitle
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: style.selectFilter + " table-select"
-  }, /*#__PURE__*/React$1__default.createElement(ReactMultiSelectCheckboxes, {
+  }, /*#__PURE__*/React__default.createElement(ReactMultiSelectCheckboxes, {
     classNamePrefix: "filter",
     hideSearch: true,
     options: euList,
@@ -2047,8 +2094,8 @@ function JurisdictionFeatures(props) {
     },
     components: {
       DropdownButton: function DropdownButton(props) {
-        return /*#__PURE__*/React$1__default.createElement(_DropdownButton, _extends({}, props, {
-          iconAfter: /*#__PURE__*/React$1__default.createElement(fi.FiFilter, {
+        return /*#__PURE__*/React__default.createElement(_DropdownButton, _extends({}, props, {
+          iconAfter: /*#__PURE__*/React__default.createElement(fi.FiFilter, {
             size: 14,
             color: "#FFF"
           })
@@ -2059,39 +2106,40 @@ function JurisdictionFeatures(props) {
     value: filteredEUs,
     onChange: filterByEUs
   }))), dataFiltered.map(function (item, index) {
-    return /*#__PURE__*/React$1__default.createElement("div", {
+    return /*#__PURE__*/React__default.createElement("div", {
       key: index,
       className: style.tableColumnItem
-    }, item.eu_list !== 'N/A' && /*#__PURE__*/React$1__default.createElement(fa.FaCircle, {
-      className: "mr-2 svg-inline--fa fa-w-8",
+    }, item.eu_list !== 'N/A' && /*#__PURE__*/React__default.createElement(fa.FaCircle, {
+      className: "svg-inline--fa fa-w-8",
       style: {
+        marginRight: '8px',
         color: item.eu_list === 'Cleared' ? '#10C300' : item.eu_list === 'Greylist' ? '#706F6F' : '#000'
       },
       size: 8
     }), item.eu_list);
-  })), /*#__PURE__*/React$1__default.createElement("div", {
-    className: "" + style.tableColumn + (currentFeatureId === 5 ? '' : ' d-none') + " d-lg-block"
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  })), /*#__PURE__*/React__default.createElement("div", {
+    className: style.tableColumn + " " + (currentFeatureId === 5 ? '' : style.tableColumn_cur) + " d-lg-block"
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: "" + style.tableColumnTitle
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: style.selectFilter + " table-select"
-  }, /*#__PURE__*/React$1__default.createElement(ReactMultiSelectCheckboxes, {
+  }, /*#__PURE__*/React__default.createElement(ReactMultiSelectCheckboxes, {
     classNamePrefix: "filter",
     hideSearch: true,
     options: auditList,
     placeholderButtonLabel: "Audited accounts",
     getDropdownButtonLabel: function getDropdownButtonLabel(_ref7) {
       var placeholderButtonLabel = _ref7.placeholderButtonLabel;
-      return /*#__PURE__*/React$1__default.createElement("span", null, /*#__PURE__*/React$1__default.createElement("span", {
+      return /*#__PURE__*/React__default.createElement("span", null, /*#__PURE__*/React__default.createElement("span", {
         className: style.titleDefault
-      }, placeholderButtonLabel), /*#__PURE__*/React$1__default.createElement("span", {
+      }, placeholderButtonLabel), /*#__PURE__*/React__default.createElement("span", {
         className: style.titleMobile
       }, "AA"));
     },
     components: {
       DropdownButton: function DropdownButton(props) {
-        return /*#__PURE__*/React$1__default.createElement(_DropdownButton, _extends({}, props, {
-          iconAfter: /*#__PURE__*/React$1__default.createElement(fi.FiFilter, {
+        return /*#__PURE__*/React__default.createElement(_DropdownButton, _extends({}, props, {
+          iconAfter: /*#__PURE__*/React__default.createElement(fi.FiFilter, {
             size: 14,
             color: "#FFF"
           })
@@ -2102,14 +2150,14 @@ function JurisdictionFeatures(props) {
     value: filteredAuditedAccounts,
     onChange: filterByAuditedAccounts
   }))), dataFiltered.map(function (item, index) {
-    return /*#__PURE__*/React$1__default.createElement("div", {
+    return /*#__PURE__*/React__default.createElement("div", {
       key: index,
       className: style.tableColumnItem
-    }, item.audited_accounts === true ? /*#__PURE__*/React$1__default.createElement(fa.FaCheck, {
+    }, item.audited_accounts === true ? /*#__PURE__*/React__default.createElement(fa.FaCheck, {
       style: {
         color: '#10C400'
       }
-    }) : item.audited_accounts === false ? /*#__PURE__*/React$1__default.createElement(fa.FaTimes, {
+    }) : item.audited_accounts === false ? /*#__PURE__*/React__default.createElement(fa.FaTimes, {
       style: {
         color: '#FF0000'
       }
@@ -2133,7 +2181,7 @@ var Menu$3 = function Menu(props) {
   if (props.rightAligned) {
     style.right = 0;
   }
-  return /*#__PURE__*/React$1__default.createElement("div", _extends({
+  return /*#__PURE__*/React__default.createElement("div", _extends({
     style: style
   }, props));
 };
@@ -2144,126 +2192,150 @@ function CountriesDropdown(_ref) {
     options = _ref.options,
     value = _ref.value,
     onChange = _ref.onChange;
-  return /*#__PURE__*/React$1__default.createElement("div", {
+  return /*#__PURE__*/React__default.createElement("div", {
     className: "" + styles$3.offshoreComCompare_MenuFilter
-  }, target, isOpen ? /*#__PURE__*/React$1__default.createElement(Menu$3, null, /*#__PURE__*/React$1__default.createElement("ul", {
-    className: "list-unstyled"
+  }, target, isOpen ? /*#__PURE__*/React__default.createElement(Menu$3, null, /*#__PURE__*/React__default.createElement("ul", {
+    style: {
+      listStyleType: 'none',
+      padding: 0
+    }
   }, options.map(function (item, index) {
-    return index > 0 && /*#__PURE__*/React$1__default.createElement("li", {
+    return index > 0 && /*#__PURE__*/React__default.createElement("li", {
       key: index,
       onClick: function onClick() {
         onChange(item.id);
         onClose();
       },
-      className: "position-relative" + (value.id === item.id ? ' ' + styles$3.offshoreComCompare_ActiveOption : '')
+      style: {
+        position: 'relative'
+      },
+      className: "" + (value.id === item.id ? ' ' + styles$3.offshoreComCompare_ActiveOption : '')
     }, item.label);
-  }))) : null, isOpen ? /*#__PURE__*/React$1__default.createElement(Blanket, {
+  }))) : null, isOpen ? /*#__PURE__*/React__default.createElement(Blanket, {
     onClick: onClose
   }) : null);
 }
 
 var CountryElement = function CountryElement(_ref) {
+  var _ref2;
   var country = _ref.country,
     onPress = _ref.onPress;
-  return /*#__PURE__*/React$1__default.createElement("div", {
+  return /*#__PURE__*/React__default.createElement("div", {
     className: "d-flex"
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     onClick: onPress,
-    className: "d-flex justify-content-center align-items-center " + styles$3.offshoreComCompare_CountryElement
-  }, /*#__PURE__*/React$1__default.createElement("div", {
+    style: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    className: " " + styles$3.offshoreComCompare_CountryElement
+  }, /*#__PURE__*/React__default.createElement("div", {
+    style: {
+      marginRight: '8px',
+      overflow: 'hidden'
+    },
     className: "mr-2 overflow-hidden embed-responsive embed-responsive-16by9 " + styles$3.offshoreComCompare_CountryFlag
-  }, /*#__PURE__*/React$1__default.createElement("img", {
+  }, /*#__PURE__*/React__default.createElement("img", {
     loading: "eager",
     width: 20,
     height: 20,
-    src: "/onboarding/custom-public/flags/4x3/" + country.flag + ".svg",
+    src: "https://test-site.bbcincorp.com/onboarding/custom-public/flags/4x3/" + country.flag + ".svg",
     alt: country.label.toLowerCase() + " flag",
     className: "embed-responsive-item",
     style: {
-      objectFit: 'cover'
+      objectFit: 'cover',
+      width: '100%'
     }
-  })), /*#__PURE__*/React$1__default.createElement("span", null, country.label), /*#__PURE__*/React$1__default.createElement(fa.FaAngleDoubleDown, {
+  })), /*#__PURE__*/React__default.createElement("span", null, country.label), /*#__PURE__*/React__default.createElement(fa.FaAngleDoubleDown, {
     size: 14,
     color: "#FFF",
-    className: "d-inline ml-1",
-    style: {
-      marginBottom: 1
-    }
+    style: (_ref2 = {
+      display: 'inline',
+      marginBottom: 1,
+      marginLeft: 1
+    }, _ref2["display"] = 'inline', _ref2)
   })));
 };
-var EuElement = function EuElement(_ref2) {
-  var eu_id = _ref2.eu_id;
+var EuElement = function EuElement(_ref3) {
+  var eu_id = _ref3.eu_id;
   switch (eu_id) {
     case 1:
-      return /*#__PURE__*/React$1__default.createElement("div", {
+      return /*#__PURE__*/React__default.createElement("div", {
         className: styles$3.offshoreComCompare_EuValue
-      }, /*#__PURE__*/React$1__default.createElement("span", {
+      }, /*#__PURE__*/React__default.createElement("span", {
         style: {
           backgroundColor: '#333'
         }
-      }), /*#__PURE__*/React$1__default.createElement("span", null, "Blacklist"));
+      }), /*#__PURE__*/React__default.createElement("span", null, "Blacklist"));
     case 2:
-      return /*#__PURE__*/React$1__default.createElement("div", {
+      return /*#__PURE__*/React__default.createElement("div", {
         className: styles$3.offshoreComCompare_EuValue
-      }, /*#__PURE__*/React$1__default.createElement("span", {
+      }, /*#__PURE__*/React__default.createElement("span", {
         style: {
           backgroundColor: '#333'
         }
-      }), /*#__PURE__*/React$1__default.createElement("span", null, "Greylist"));
+      }), /*#__PURE__*/React__default.createElement("span", null, "Greylist"));
     case 3:
-      return /*#__PURE__*/React$1__default.createElement("div", {
+      return /*#__PURE__*/React__default.createElement("div", {
         className: styles$3.offshoreComCompare_EuValue
-      }, /*#__PURE__*/React$1__default.createElement("span", {
+      }, /*#__PURE__*/React__default.createElement("span", {
         style: {
           backgroundColor: '#10C400'
         }
-      }), /*#__PURE__*/React$1__default.createElement("span", null, "Cleared"));
+      }), /*#__PURE__*/React__default.createElement("span", null, "Cleared"));
     default:
-      return /*#__PURE__*/React$1__default.createElement("div", null, "N/A");
+      return /*#__PURE__*/React__default.createElement("div", null, "N/A");
   }
 };
-var OECD = function OECD(_ref3) {
-  var array = _ref3.array;
+var OECD = function OECD(_ref4) {
+  var array = _ref4.array;
   var result = '';
   if (array && Array.isArray(array)) {
     array.forEach(function (item, index) {
       result += index > 0 ? ', ' + item : item;
     });
   }
-  return /*#__PURE__*/React$1__default.createElement("div", null, result);
+  return /*#__PURE__*/React__default.createElement("div", null, result);
 };
-var CellItem = function CellItem(_ref4) {
-  var data = _ref4.data,
-    showMore = _ref4.showMore;
+var CellItem = function CellItem(_ref5) {
+  var data = _ref5.data,
+    showMore = _ref5.showMore;
   if (showMore) {
-    return /*#__PURE__*/React$1__default.createElement("div", {
-      className: "w-100"
-    }, /*#__PURE__*/React$1__default.createElement("div", {
+    return /*#__PURE__*/React__default.createElement("div", {
+      style: {
+        width: '100%'
+      }
+    }, /*#__PURE__*/React__default.createElement("div", {
       className: "tooltip-bottom justify-content-center",
       style: {
         color: '#BDBDBD'
       }
-    }, /*#__PURE__*/React$1__default.createElement(fa.FaInfoCircle, null), /*#__PURE__*/React$1__default.createElement("div", {
+    }, /*#__PURE__*/React__default.createElement(fa.FaInfoCircle, null), /*#__PURE__*/React__default.createElement("div", {
       className: "tooltip-content"
-    }, parser(showMore))), /*#__PURE__*/React$1__default.createElement("span", {
-      className: "ml-2 mr-4 text-center",
+    }, parser(showMore))), /*#__PURE__*/React__default.createElement("span", {
       style: {
-        flex: 1
+        flex: 1,
+        marginLeft: '8px',
+        marginRight: '16px',
+        textAlign: 'center'
       }
     }, parser(data)));
   } else {
     if (typeof data === 'string') {
-      return /*#__PURE__*/React$1__default.createElement("div", {
-        className: "text-center"
+      return /*#__PURE__*/React__default.createElement("div", {
+        style: {
+          textAlign: 'center'
+        }
       }, parser(data));
     }
     if (data) {
-      return /*#__PURE__*/React$1__default.createElement(fa.FaCheck, {
+      return /*#__PURE__*/React__default.createElement(fa.FaCheck, {
         size: 14,
         color: "#10C300"
       });
     }
-    return /*#__PURE__*/React$1__default.createElement(fa.FaTimes, {
+    return /*#__PURE__*/React__default.createElement(fa.FaTimes, {
       size: 14,
       color: "#FF0000"
     });
@@ -2281,19 +2353,19 @@ var getVisibleColClass = function getVisibleColClass(visibleCol) {
       return '';
   }
 };
-function JurisdictionComparison(_ref5) {
-  var data = _ref5.data,
-    countries = _ref5.countries;
-  var _useState = React$1.useState(data[0] || {}),
+function JurisdictionComparison(_ref6) {
+  var data = _ref6.data,
+    countries = _ref6.countries;
+  var _useState = React.useState(data[0] || {}),
     dataColumn1 = _useState[0],
     setDataColumn1 = _useState[1];
-  var _useState2 = React$1.useState(data[1] || {}),
+  var _useState2 = React.useState(data[1] || {}),
     dataColumn2 = _useState2[0],
     setDataColumn2 = _useState2[1];
-  var _useState3 = React$1.useState(data[2] || {}),
+  var _useState3 = React.useState(data[2] || {}),
     dataColumn3 = _useState3[0],
     setDataColumn3 = _useState3[1];
-  var _useState4 = React$1.useState(1),
+  var _useState4 = React.useState(1),
     mobileColVisible = _useState4[0],
     setMobileColVisible = _useState4[1];
   var handleNext = function handleNext() {
@@ -2341,614 +2413,659 @@ function JurisdictionComparison(_ref5) {
       }
     }
   };
-  return /*#__PURE__*/React$1__default.createElement("div", {
+  return /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_CompareTableContainer
-  }, /*#__PURE__*/React$1__default.createElement("table", {
+  }, /*#__PURE__*/React__default.createElement("table", {
     className: styles$3.offshoreComCompare_CompareTable + getVisibleColClass(mobileColVisible)
-  }, /*#__PURE__*/React$1__default.createElement("thead", null, /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("th", null, /*#__PURE__*/React$1__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("thead", null, /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("th", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_HeaderFeature
-  }, "Features")), /*#__PURE__*/React$1__default.createElement("th", null, /*#__PURE__*/React$1__default.createElement("div", {
-    className: "position-relative " + styles$3.offshoreComCompare_HeaderColumn
-  }, /*#__PURE__*/React$1__default.createElement(ReactMultiSelectCheckboxes, {
+  }, "Features")), /*#__PURE__*/React__default.createElement("th", null, /*#__PURE__*/React__default.createElement("div", {
+    style: {
+      position: 'relative'
+    },
+    className: "" + styles$3.offshoreComCompare_HeaderColumn
+  }, /*#__PURE__*/React__default.createElement(ReactMultiSelectCheckboxes, {
     hideSearch: true,
     options: [],
     components: {
       DropdownButton: function DropdownButton(props) {
-        return /*#__PURE__*/React$1__default.createElement(CountryElement, _extends({}, props, {
+        return /*#__PURE__*/React__default.createElement(CountryElement, _extends({}, props, {
           country: getCountry(dataColumn1.country_id)
         }));
       },
       Dropdown: function Dropdown(props) {
-        return /*#__PURE__*/React$1__default.createElement(CountriesDropdown, _extends({}, props, {
+        return /*#__PURE__*/React__default.createElement(CountriesDropdown, _extends({}, props, {
           options: countries,
           value: getCountry(dataColumn1.country_id),
           onChange: getColumn1ByCountry
         }));
       }
     }
-  }), /*#__PURE__*/React$1__default.createElement("button", {
+  }), /*#__PURE__*/React__default.createElement("button", {
+    style: {
+      border: 'none'
+    },
     className: "btn " + styles$3.offshoreComCompare_ArrowButton + " " + styles$3.offshoreComCompare_NextButton,
     onClick: handleNext
-  }, /*#__PURE__*/React$1__default.createElement(fa.FaChevronRight, {
+  }, /*#__PURE__*/React__default.createElement(fa.FaChevronRight, {
     size: 20,
     color: "#fff"
-  })))), /*#__PURE__*/React$1__default.createElement("th", null, /*#__PURE__*/React$1__default.createElement("div", {
-    className: "position-relative " + styles$3.offshoreComCompare_HeaderColumn
-  }, /*#__PURE__*/React$1__default.createElement("button", {
+  })))), /*#__PURE__*/React__default.createElement("th", null, /*#__PURE__*/React__default.createElement("div", {
+    style: {
+      position: 'relative'
+    },
+    className: "" + styles$3.offshoreComCompare_HeaderColumn
+  }, /*#__PURE__*/React__default.createElement("button", {
+    style: {
+      border: 'none',
+      background: 'transparent'
+    },
     className: "btn " + styles$3.offshoreComCompare_ArrowButton + " " + styles$3.offshoreComCompare_PrevButton,
     onClick: handlePrev
-  }, /*#__PURE__*/React$1__default.createElement(fa.FaChevronLeft, {
+  }, /*#__PURE__*/React__default.createElement(fa.FaChevronLeft, {
     size: 20,
     color: "#fff"
-  })), /*#__PURE__*/React$1__default.createElement(ReactMultiSelectCheckboxes, {
+  })), /*#__PURE__*/React__default.createElement(ReactMultiSelectCheckboxes, {
     hideSearch: true,
     options: [],
     components: {
       DropdownButton: function DropdownButton(props) {
-        return /*#__PURE__*/React$1__default.createElement(CountryElement, _extends({}, props, {
+        return /*#__PURE__*/React__default.createElement(CountryElement, _extends({}, props, {
           country: getCountry(dataColumn2.country_id)
         }));
       },
       Dropdown: function Dropdown(props) {
-        return /*#__PURE__*/React$1__default.createElement(CountriesDropdown, _extends({}, props, {
+        return /*#__PURE__*/React__default.createElement(CountriesDropdown, _extends({}, props, {
           options: countries,
           value: getCountry(dataColumn2.country_id),
           onChange: getColumn2ByCountry
         }));
       }
     }
-  }), /*#__PURE__*/React$1__default.createElement("button", {
+  }), /*#__PURE__*/React__default.createElement("button", {
+    style: {
+      border: 'none'
+    },
     className: "btn " + styles$3.offshoreComCompare_ArrowButton + " " + styles$3.offshoreComCompare_NextButton,
     onClick: handleNext
-  }, /*#__PURE__*/React$1__default.createElement(fa.FaChevronRight, {
+  }, /*#__PURE__*/React__default.createElement(fa.FaChevronRight, {
     size: 20,
     color: "#fff"
-  })))), /*#__PURE__*/React$1__default.createElement("th", null, /*#__PURE__*/React$1__default.createElement("div", {
-    className: "position-relative " + styles$3.offshoreComCompare_HeaderColumn,
+  })))), /*#__PURE__*/React__default.createElement("th", null, /*#__PURE__*/React__default.createElement("div", {
+    className: "" + styles$3.offshoreComCompare_HeaderColumn,
     style: {
-      borderTopRightRadius: 15
+      borderTopRightRadius: 15,
+      position: 'relative'
     }
-  }, /*#__PURE__*/React$1__default.createElement("button", {
+  }, /*#__PURE__*/React__default.createElement("button", {
+    style: {
+      border: 'none',
+      background: 'transparent'
+    },
     className: "btn " + styles$3.offshoreComCompare_ArrowButton + " " + styles$3.offshoreComCompare_PrevButton,
     onClick: handlePrev
-  }, /*#__PURE__*/React$1__default.createElement(fa.FaChevronLeft, {
+  }, /*#__PURE__*/React__default.createElement(fa.FaChevronLeft, {
     size: 20,
     color: "#fff"
-  })), /*#__PURE__*/React$1__default.createElement(ReactMultiSelectCheckboxes, {
+  })), /*#__PURE__*/React__default.createElement(ReactMultiSelectCheckboxes, {
     hideSearch: true,
     options: [],
     components: {
       DropdownButton: function DropdownButton(props) {
-        return /*#__PURE__*/React$1__default.createElement(CountryElement, _extends({}, props, {
+        return /*#__PURE__*/React__default.createElement(CountryElement, _extends({}, props, {
           country: getCountry(dataColumn3.country_id)
         }));
       },
       Dropdown: function Dropdown(props) {
-        return /*#__PURE__*/React$1__default.createElement(CountriesDropdown, _extends({}, props, {
+        return /*#__PURE__*/React__default.createElement(CountriesDropdown, _extends({}, props, {
           options: countries,
           value: getCountry(dataColumn3.country_id),
           onChange: getColumn3ByCountry
         }));
       }
     }
-  }))))), /*#__PURE__*/React$1__default.createElement("tbody", null, /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  }))))), /*#__PURE__*/React__default.createElement("tbody", null, /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_TitleCell
-  }, /*#__PURE__*/React$1__default.createElement("img", {
-    src: "/onboarding/custom-public/image/offshore/international-compliance.png",
-    className: "mb-1",
+  }, /*#__PURE__*/React__default.createElement("img", {
+    src: internationalCompliance,
+    style: {
+      marginBottom: '4px'
+    },
     loading: "lazy",
     width: 22,
     height: 22,
     alt: "INTERNATIONAL COMPLIANCE"
-  }), /*#__PURE__*/React$1__default.createElement("span", {
-    className: "ml-1"
-  }, "INTERNATIONAL COMPLIANCE"))), /*#__PURE__*/React$1__default.createElement("td", null), /*#__PURE__*/React$1__default.createElement("td", null), /*#__PURE__*/React$1__default.createElement("td", null)), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("span", {
+    style: {
+      marginLeft: '4px'
+    }
+  }, "INTERNATIONAL COMPLIANCE"))), /*#__PURE__*/React__default.createElement("td", null), /*#__PURE__*/React__default.createElement("td", null), /*#__PURE__*/React__default.createElement("td", null)), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "EU list")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement(EuElement, {
+  }, "EU list")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement(EuElement, {
     eu_id: dataColumn1.international_compliance.eu_id
-  })), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(EuElement, {
+  })), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(EuElement, {
     eu_id: dataColumn2.international_compliance.eu_id
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(EuElement, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(EuElement, {
     eu_id: dataColumn3.international_compliance.eu_id
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "OECD")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement(OECD, {
+  }, "OECD")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement(OECD, {
     array: dataColumn1.international_compliance.oecd
-  })), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(OECD, {
+  })), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(OECD, {
     array: dataColumn2.international_compliance.oecd
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(OECD, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(OECD, {
     array: dataColumn3.international_compliance.oecd
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_TitleCell
-  }, /*#__PURE__*/React$1__default.createElement("img", {
-    src: "/onboarding/custom-public/image/offshore/legal-structure.png",
-    className: "mb-1",
+  }, /*#__PURE__*/React__default.createElement("img", {
+    src: legalStructure,
+    style: {
+      marginBottom: '4px'
+    },
     loading: "lazy",
     width: 22,
     height: 22,
     alt: "INTERNATIONAL COMPLIANCE"
-  }), /*#__PURE__*/React$1__default.createElement("span", {
-    className: "ml-1"
-  }, "LEGAL STRUCTURE"))), /*#__PURE__*/React$1__default.createElement("td", null), /*#__PURE__*/React$1__default.createElement("td", null), /*#__PURE__*/React$1__default.createElement("td", null)), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("span", {
+    style: {
+      marginLeft: '4px'
+    }
+  }, "LEGAL STRUCTURE"))), /*#__PURE__*/React__default.createElement("td", null), /*#__PURE__*/React__default.createElement("td", null), /*#__PURE__*/React__default.createElement("td", null)), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "Legal basis")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Legal basis")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.legal_structure.legal_basic
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.legal_structure.legal_basic
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.legal_structure.legal_basic
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "Foreign exchange control")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Foreign exchange control")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.legal_structure.foreign_exchange_control
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.legal_structure.foreign_exchange_control
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.legal_structure.foreign_exchange_control
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "Foreign ownership allowed")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Foreign ownership allowed")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.legal_structure.foreign_ownership_control
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.legal_structure.foreign_ownership_control
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.legal_structure.foreign_ownership_control
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_TitleCell
-  }, /*#__PURE__*/React$1__default.createElement("img", {
-    src: "/onboarding/custom-public/image/offshore/business-structure.png",
-    className: "mb-1",
+  }, /*#__PURE__*/React__default.createElement("img", {
+    src: businessStructure,
+    style: {
+      marginBottom: '4px'
+    },
     loading: "lazy",
     width: 22,
     height: 22,
     alt: "INTERNATIONAL COMPLIANCE"
-  }), /*#__PURE__*/React$1__default.createElement("span", {
-    className: "ml-1"
-  }, "BUSINESS STRUCTURE"))), /*#__PURE__*/React$1__default.createElement("td", null), /*#__PURE__*/React$1__default.createElement("td", null), /*#__PURE__*/React$1__default.createElement("td", null)), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("span", {
+    style: {
+      marginLeft: '4px'
+    }
+  }, "BUSINESS STRUCTURE"))), /*#__PURE__*/React__default.createElement("td", null), /*#__PURE__*/React__default.createElement("td", null), /*#__PURE__*/React__default.createElement("td", null)), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_SubTitleCell
-  }, "Company type")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Company type")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.business_structure.company_type
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.business_structure.company_type
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.business_structure.company_type
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_SubTitleCell
-  }, "Director")), /*#__PURE__*/React$1__default.createElement("td", null), /*#__PURE__*/React$1__default.createElement("td", null), /*#__PURE__*/React$1__default.createElement("td", null)), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  }, "Director")), /*#__PURE__*/React__default.createElement("td", null), /*#__PURE__*/React__default.createElement("td", null), /*#__PURE__*/React__default.createElement("td", null)), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
-  }, "Minimum number")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Minimum number")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.business_structure.director.minimum_number
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.business_structure.director.minimum_number
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.business_structure.director.minimum_number
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
-  }, "Local resident required")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Local resident required")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.business_structure.director.local_resident_required
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.business_structure.director.local_resident_required
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.business_structure.director.local_resident_required
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
-  }, "Public register of director")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Public register of director")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.business_structure.director.public_register
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.business_structure.director.public_register
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.business_structure.director.public_register
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
-  }, "Nominee director")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Nominee director")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.business_structure.director.nominee
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.business_structure.director.nominee
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.business_structure.director.nominee
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
-  }, "Corporate director")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Corporate director")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.business_structure.director.corporate
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.business_structure.director.corporate
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.business_structure.director.corporate
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_SubTitleCell
-  }, "Shareholder")), /*#__PURE__*/React$1__default.createElement("td", null), /*#__PURE__*/React$1__default.createElement("td", null), /*#__PURE__*/React$1__default.createElement("td", null)), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  }, "Shareholder")), /*#__PURE__*/React__default.createElement("td", null), /*#__PURE__*/React__default.createElement("td", null), /*#__PURE__*/React__default.createElement("td", null)), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
-  }, "Minimum number")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Minimum number")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.business_structure.shareholder.minimum_number
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.business_structure.shareholder.minimum_number
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.business_structure.shareholder.minimum_number
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
-  }, "Local resident required")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Local resident required")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.business_structure.shareholder.local_resident_required
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.business_structure.shareholder.local_resident_required
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.business_structure.shareholder.local_resident_required
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
-  }, "Public register of shareholder")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Public register of shareholder")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.business_structure.shareholder.public_register
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.business_structure.shareholder.public_register
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.business_structure.shareholder.public_register
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
-  }, "Nominee shareholder")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Nominee shareholder")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.business_structure.shareholder.nominee
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.business_structure.shareholder.nominee
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.business_structure.shareholder.nominee
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
-  }, "Corporate shareholder")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Corporate shareholder")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.business_structure.shareholder.corporate
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.business_structure.shareholder.corporate
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.business_structure.shareholder.corporate
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_SubTitleCell
-  }, "Beneficial owner")), /*#__PURE__*/React$1__default.createElement("td", null), /*#__PURE__*/React$1__default.createElement("td", null), /*#__PURE__*/React$1__default.createElement("td", null)), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  }, "Beneficial owner")), /*#__PURE__*/React__default.createElement("td", null), /*#__PURE__*/React__default.createElement("td", null), /*#__PURE__*/React__default.createElement("td", null)), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
-  }, "Public register of beneficial owner")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Public register of beneficial owner")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.business_structure.beneficial_owner.public_register
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.business_structure.beneficial_owner.public_register
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.business_structure.beneficial_owner.public_register
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
-  }, "Central register of beneficial owner")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Central register of beneficial owner")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.business_structure.beneficial_owner.central_register
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.business_structure.beneficial_owner.central_register
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.business_structure.beneficial_owner.central_register
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_SubTitleCell
-  }, "Share capital")), /*#__PURE__*/React$1__default.createElement("td", null), /*#__PURE__*/React$1__default.createElement("td", null), /*#__PURE__*/React$1__default.createElement("td", null)), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  }, "Share capital")), /*#__PURE__*/React__default.createElement("td", null), /*#__PURE__*/React__default.createElement("td", null), /*#__PURE__*/React__default.createElement("td", null)), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
-  }, "Standard registered capital")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Standard registered capital")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.business_structure.share_capital.standard_register
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.business_structure.share_capital.standard_register
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.business_structure.share_capital.standard_register
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
-  }, "Min paid-up capital")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Min paid-up capital")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.business_structure.share_capital.min_paid_up
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.business_structure.share_capital.min_paid_up
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.business_structure.share_capital.min_paid_up
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
-  }, "Capital currency")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Capital currency")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.business_structure.share_capital.capital_currency
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.business_structure.share_capital.capital_currency
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.business_structure.share_capital.capital_currency
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
-  }, "Bearer shares")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Bearer shares")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.business_structure.share_capital.bearer_shares
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.business_structure.share_capital.bearer_shares
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.business_structure.share_capital.bearer_shares
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_TitleCell
-  }, /*#__PURE__*/React$1__default.createElement("img", {
-    src: "/onboarding/custom-public/image/offshore/initial-requirement.png",
-    className: "mb-1",
+  }, /*#__PURE__*/React__default.createElement("img", {
+    src: initialRequirement,
+    style: {
+      marginBottom: '4px'
+    },
     loading: "lazy",
     width: 22,
     height: 22,
     alt: "INTERNATIONAL COMPLIANCE"
-  }), /*#__PURE__*/React$1__default.createElement("span", {
-    className: "ml-1"
-  }, "INITIAL REQUIREMENT"))), /*#__PURE__*/React$1__default.createElement("td", null), /*#__PURE__*/React$1__default.createElement("td", null), /*#__PURE__*/React$1__default.createElement("td", null)), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("span", {
+    style: {
+      marginLeft: '4px'
+    }
+  }, "INITIAL REQUIREMENT"))), /*#__PURE__*/React__default.createElement("td", null), /*#__PURE__*/React__default.createElement("td", null), /*#__PURE__*/React__default.createElement("td", null)), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "Local registered address")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Local registered address")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.initial_requirement.local_registered_address
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.initial_requirement.local_registered_address
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.initial_requirement.local_registered_address
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "Company secretary")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Company secretary")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.initial_requirement.company_secretary
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.initial_requirement.company_secretary
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.initial_requirement.company_secretary
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "Local registered agent")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Local registered agent")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.initial_requirement.local_registered_agent
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.initial_requirement.local_registered_agent
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.initial_requirement.local_registered_agent
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_TitleCell
-  }, /*#__PURE__*/React$1__default.createElement("img", {
-    src: "/onboarding/custom-public/image/offshore/annual-compliance.png",
-    className: "mb-1",
+  }, /*#__PURE__*/React__default.createElement("img", {
+    src: annualCompliance,
+    style: {
+      marginBottom: '4px'
+    },
     loading: "lazy",
     width: 22,
     height: 22,
     alt: "INTERNATIONAL COMPLIANCE"
-  }), /*#__PURE__*/React$1__default.createElement("span", {
-    className: "ml-1"
-  }, "ANNUAL COMPLIANCE"))), /*#__PURE__*/React$1__default.createElement("td", null), /*#__PURE__*/React$1__default.createElement("td", null), /*#__PURE__*/React$1__default.createElement("td", null)), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("span", {
+    style: {
+      marginLeft: '4px'
+    }
+  }, "ANNUAL COMPLIANCE"))), /*#__PURE__*/React__default.createElement("td", null), /*#__PURE__*/React__default.createElement("td", null), /*#__PURE__*/React__default.createElement("td", null)), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "Annual return")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Annual return")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.annual_compliance.annual_return
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.annual_compliance.annual_return
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.annual_compliance.annual_return
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "Annual tax return")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Annual tax return")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.annual_compliance.annual_tax_return
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.annual_compliance.annual_tax_return
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.annual_compliance.annual_tax_return
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "Records keeping")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Records keeping")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.annual_compliance.records_keeping
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.annual_compliance.records_keeping
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.annual_compliance.records_keeping
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "Audited accounts")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Audited accounts")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.annual_compliance.audited_accounts
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.annual_compliance.audited_accounts
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.annual_compliance.audited_accounts
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "Annual general meeting")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Annual general meeting")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.annual_compliance.annual_general_meeting
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.annual_compliance.annual_general_meeting
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.annual_compliance.annual_general_meeting
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "Location of annual general meeting")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Location of annual general meeting")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.annual_compliance.location_of_meeting
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.annual_compliance.location_of_meeting
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.annual_compliance.location_of_meeting
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "Economic substance")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Economic substance")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.annual_compliance.economic_substance
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.annual_compliance.economic_substance
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.annual_compliance.economic_substance
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_TitleCell
-  }, /*#__PURE__*/React$1__default.createElement("img", {
-    src: "/onboarding/custom-public/image/offshore/local-tax-profile.png",
-    className: "mb-1",
+  }, /*#__PURE__*/React__default.createElement("img", {
+    src: localTax,
+    style: {
+      marginBottom: '4px'
+    },
     loading: "lazy",
     width: 22,
     height: 22,
     alt: "INTERNATIONAL COMPLIANCE"
-  }), /*#__PURE__*/React$1__default.createElement("span", {
-    className: "ml-1"
-  }, "LOCAL TAX PROFILE"))), /*#__PURE__*/React$1__default.createElement("td", null), /*#__PURE__*/React$1__default.createElement("td", null), /*#__PURE__*/React$1__default.createElement("td", null)), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("span", {
+    style: {
+      marginLeft: '4px'
+    }
+  }, "LOCAL TAX PROFILE"))), /*#__PURE__*/React__default.createElement("td", null), /*#__PURE__*/React__default.createElement("td", null), /*#__PURE__*/React__default.createElement("td", null)), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "Offshore tax exemption")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Offshore tax exemption")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.local_tax_profile.offshore_tax_exemption,
     showMore: dataColumn1.local_tax_profile.offshore_tax_exemption_show_more
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.local_tax_profile.offshore_tax_exemption,
     showMore: dataColumn2.local_tax_profile.offshore_tax_exemption_show_more
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.local_tax_profile.offshore_tax_exemption,
     showMore: dataColumn3.local_tax_profile.offshore_tax_exemption_show_more
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "Corporate income tax")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Corporate income tax")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.local_tax_profile.corporate_income_tax,
     showMore: dataColumn1.local_tax_profile.corporate_income_tax_show_more
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.local_tax_profile.corporate_income_tax,
     showMore: dataColumn2.local_tax_profile.corporate_income_tax_show_more
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.local_tax_profile.corporate_income_tax,
     showMore: dataColumn3.local_tax_profile.corporate_income_tax_show_more
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "Sales tax (VAT/Business tax/GST)")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Sales tax (VAT/Business tax/GST)")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.local_tax_profile.sales_tax,
     showMore: dataColumn1.local_tax_profile.sales_tax_show_more
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.local_tax_profile.sales_tax,
     showMore: dataColumn2.local_tax_profile.sales_tax_show_more
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.local_tax_profile.sales_tax,
     showMore: dataColumn3.local_tax_profile.sales_tax_show_more
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "Capital gain tax")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Capital gain tax")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.local_tax_profile.capital_gain_tax,
     showMore: dataColumn1.local_tax_profile.capital_gain_tax_show_more
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.local_tax_profile.capital_gain_tax,
     showMore: dataColumn2.local_tax_profile.capital_gain_tax_show_more
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.local_tax_profile.capital_gain_tax,
     showMore: dataColumn3.local_tax_profile.capital_gain_tax_show_more
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "Dividend tax")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Dividend tax")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.local_tax_profile.dividend_tax,
     showMore: dataColumn1.local_tax_profile.dividend_tax_show_more
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.local_tax_profile.dividend_tax,
     showMore: dataColumn2.local_tax_profile.dividend_tax_show_more
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.local_tax_profile.dividend_tax,
     showMore: dataColumn3.local_tax_profile.dividend_tax_show_more
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "Property tax")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Property tax")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.local_tax_profile.property_tax,
     showMore: dataColumn1.local_tax_profile.property_tax_show_more
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.local_tax_profile.property_tax,
     showMore: dataColumn2.local_tax_profile.property_tax_show_more
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.local_tax_profile.property_tax,
     showMore: dataColumn3.local_tax_profile.property_tax_show_more
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "Withholding tax")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Withholding tax")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.local_tax_profile.withholding_tax,
     showMore: dataColumn1.local_tax_profile.withholding_tax_show_more
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.local_tax_profile.withholding_tax,
     showMore: dataColumn2.local_tax_profile.withholding_tax_show_more
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.local_tax_profile.withholding_tax,
     showMore: dataColumn3.local_tax_profile.withholding_tax_show_more
-  })))), /*#__PURE__*/React$1__default.createElement("tr", null, /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", {
+  })))), /*#__PURE__*/React__default.createElement("tr", null, /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureHidden
-  }), /*#__PURE__*/React$1__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.offshoreComCompare_FeatureCell
-  }, "Transfer tax")), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }, "Transfer tax")), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn1.local_tax_profile.transfer_tax,
     showMore: dataColumn1.local_tax_profile.transfer_tax_show_more
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn2.local_tax_profile.transfer_tax,
     showMore: dataColumn2.local_tax_profile.transfer_tax_show_more
-  }))), /*#__PURE__*/React$1__default.createElement("td", null, /*#__PURE__*/React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement(CellItem, {
+  }))), /*#__PURE__*/React__default.createElement("td", null, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(CellItem, {
     data: dataColumn3.local_tax_profile.transfer_tax,
     showMore: dataColumn3.local_tax_profile.transfer_tax_show_more
   })))))));
@@ -5446,37 +5563,37 @@ var Title = function Title(props) {
     as = props.as,
     hasid = props.hasid;
   var As = as ? as : 'h2';
-  return /*#__PURE__*/React$1__default.createElement(As, _extends({
+  return /*#__PURE__*/React__default.createElement(As, _extends({
     id: text && hasid ? sanitizeTitle(text) : ''
   }, mergeProps(props)), text);
 };
 
-var styles$4 = {"btn_back_container":"_styles-module__btn_back_container__k-p5u","btn_wrapper":"_styles-module__btn_wrapper__1UAjB","button":"_styles-module__button__TWj4B","btn_show":"_styles-module__btn_show__1ag_K","searchContainer":"_styles-module__searchContainer__1mjEu","btn_back_top":"_styles-module__btn_back_top__3zVi-","select_country":"_styles-module__select_country__vdbQ8","select_wrapper":"_styles-module__select_wrapper__2IKE1","select_title":"_styles-module__select_title__2Tj9L","comparison_table_btn":"_styles-module__comparison_table_btn__1zUBn","comparison_container_mb":"_styles-module__comparison_container_mb__3mgL7","comparison_wrapper_mb":"_styles-module__comparison_wrapper_mb__3MbTE","col_auto":"_styles-module__col_auto__15j2P","btn_show_mb":"_styles-module__btn_show_mb__2MGIM","comparisonTable_mb":"_styles-module__comparisonTable_mb__3Hskw","comparison_text_mb":"_styles-module__comparison_text_mb__3Gvzn","search":"_styles-module__search__1siYd","slider":"_styles-module__slider__3h_MZ","slider_container":"_styles-module__slider_container__3P27V","slide_btn":"_styles-module__slide_btn__3b_Q7","sliderNext":"_styles-module__sliderNext__3oxJl","sliderPrev":"_styles-module__sliderPrev__2TxT7","slider_item":"_styles-module__slider_item__2efBa","card":"_styles-module__card__o0GI0","card_wrapper":"_styles-module__card_wrapper__1OSoD","card_inside":"_styles-module__card_inside__3-3OD","img_wrapper":"_styles-module__img_wrapper__3kGrt","cardImg":"_styles-module__cardImg__4kBhB","cardTitle":"_styles-module__cardTitle__1FF3S","contentWrapper":"_styles-module__contentWrapper__1SQUQ","content":"_styles-module__content__35To1","cardIconNext":"_styles-module__cardIconNext__1-hWb","company_type":"_styles-module__company_type__GQ_B1","dialog":"_styles-module__dialog__3O3Dw","nav":"_styles-module__nav__C1Laj","navLink":"_styles-module__navLink__4KplV","back":"_styles-module__back__jlBD8","backMobile_wrapper":"_styles-module__backMobile_wrapper__2RUrM","btn_back_bottom":"_styles-module__btn_back_bottom__1XmGT","backMobile":"_styles-module__backMobile__-JcIK","Header":"_styles-module__Header__2PqMP","Body":"_styles-module__Body__1qDX-"};
+var styles$4 = {"btn_back_container":"_styles-module__btn_back_container__k-p5u","btn_wrapper":"_styles-module__btn_wrapper__1UAjB","button":"_styles-module__button__TWj4B","btn_show":"_styles-module__btn_show__1ag_K","searchContainer":"_styles-module__searchContainer__1mjEu","btn_back_top":"_styles-module__btn_back_top__3zVi-","select_country":"_styles-module__select_country__vdbQ8","select_wrapper":"_styles-module__select_wrapper__2IKE1","select_title":"_styles-module__select_title__2Tj9L","comparison_table_btn":"_styles-module__comparison_table_btn__1zUBn","comparison_container_mb":"_styles-module__comparison_container_mb__3mgL7","comparison_wrapper_mb":"_styles-module__comparison_wrapper_mb__3MbTE","col_auto":"_styles-module__col_auto__15j2P","btn_show_mb":"_styles-module__btn_show_mb__2MGIM","comparisonTable_mb":"_styles-module__comparisonTable_mb__3Hskw","comparison_text_mb":"_styles-module__comparison_text_mb__3Gvzn","search":"_styles-module__search__1siYd","slider":"_styles-module__slider__3h_MZ","slider_container":"_styles-module__slider_container__3P27V","slide_btn":"_styles-module__slide_btn__3b_Q7","sliderNext":"_styles-module__sliderNext__3oxJl","sliderPrev":"_styles-module__sliderPrev__2TxT7","slider_item":"_styles-module__slider_item__2efBa","card":"_styles-module__card__o0GI0","card_wrapper":"_styles-module__card_wrapper__1OSoD","card_inside":"_styles-module__card_inside__3-3OD","img_wrapper":"_styles-module__img_wrapper__3kGrt","cardImg":"_styles-module__cardImg__4kBhB","cardTitle":"_styles-module__cardTitle__1FF3S","contentWrapper":"_styles-module__contentWrapper__1SQUQ","content":"_styles-module__content__35To1","cardIconNext":"_styles-module__cardIconNext__1-hWb","company_type":"_styles-module__company_type__GQ_B1","dialog":"_styles-module__dialog__3O3Dw","nav":"_styles-module__nav__C1Laj","navLink":"_styles-module__navLink__4KplV","back":"_styles-module__back__jlBD8","backMobile_wrapper":"_styles-module__backMobile_wrapper__2RUrM","btn_back_bottom":"_styles-module__btn_back_bottom__1XmGT","backMobile":"_styles-module__backMobile__-JcIK","Header":"_styles-module__Header__2PqMP","modal_container":"_styles-module__modal_container__1THqU","modal_wrapper":"_styles-module__modal_wrapper__CagOn","fadeIn":"_styles-module__fadeIn__3ISmH","closeModal":"_styles-module__closeModal__34XBz","modal_backdrop":"_styles-module__modal_backdrop__25fsQ","tab_container":"_styles-module__tab_container__TXdw8","tab_wrapper":"_styles-module__tab_wrapper__4AX0J","tab_item":"_styles-module__tab_item__rIwNt","active_tab":"_styles-module__active_tab__2y820","Body":"_styles-module__Body__1qDX-"};
 
 var NextArrow = function NextArrow(props) {
   var onClick = props.onClick;
-  return /*#__PURE__*/React$1__default.createElement("button", {
+  return /*#__PURE__*/React__default.createElement("button", {
     className: styles$4.sliderNext + " btn rounded-circle position-absolute " + styles$4.slide_btn,
     onClick: onClick
-  }, /*#__PURE__*/React$1__default.createElement(reactIcons.IconContext.Provider, {
+  }, /*#__PURE__*/React__default.createElement(reactIcons.IconContext.Provider, {
     value: {
       color: '#c4c4c4'
     }
-  }, /*#__PURE__*/React$1__default.createElement(gr.GrNext, null)));
+  }, /*#__PURE__*/React__default.createElement(gr.GrNext, null)));
 };
 var PrevArrow = function PrevArrow(props) {
   var onClick = props.onClick;
-  return /*#__PURE__*/React$1__default.createElement("button", {
+  return /*#__PURE__*/React__default.createElement("button", {
     className: styles$4.sliderPrev + " btn rounded-circle position-absolute " + styles$4.slide_btn,
     onClick: onClick
-  }, /*#__PURE__*/React$1__default.createElement(reactIcons.IconContext.Provider, {
+  }, /*#__PURE__*/React__default.createElement(reactIcons.IconContext.Provider, {
     value: {
       color: '#c4c4c4'
     }
-  }, /*#__PURE__*/React$1__default.createElement(gr.GrPrevious, null)));
+  }, /*#__PURE__*/React__default.createElement(gr.GrPrevious, null)));
 };
 function IncorporationCountry(_ref) {
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     if (window.history && window.history.pushState) {
       window.history.pushState('forward', null, './incorporation-country');
       window.onpopstate = function () {
@@ -5484,32 +5601,32 @@ function IncorporationCountry(_ref) {
       };
     }
   }, []);
-  var _useState = React$1.useState({}),
+  var _useState = React.useState({}),
     dataOnboarding = _useState[0],
     setDataOnboarding = _useState[1];
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     var dataOnboardingLocalStorage = window.localStorage.getItem('data_onboarding');
     if (dataOnboardingLocalStorage) {
       var _data = JSON.parse(dataOnboardingLocalStorage);
       setDataOnboarding(_data);
     }
   }, []);
-  var _useState2 = React$1.useState([]),
+  var _useState2 = React.useState([]),
     dataCountries = _useState2[0],
     setDataCountries = _useState2[1];
-  var _useState3 = React$1.useState([]),
+  var _useState3 = React.useState([]),
     dataSlider = _useState3[0],
     setDataSlider = _useState3[1];
-  var _useState4 = React$1.useState({
+  var _useState4 = React.useState({
       value: 'all',
       label: 'All'
     }),
     optionSelected = _useState4[0],
     setOptionSelected = _useState4[1];
-  var _useState5 = React$1.useState(true),
+  var _useState5 = React.useState(true),
     loading = _useState5[0],
     setLoading = _useState5[1];
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     axios.get("https://core.test-lp.bbcincorp.com/api/onboarding/country/entity_suffix").then(function (res) {
       var data = ___default.sortBy(res.data.data, function (item) {
         return item.name;
@@ -5561,7 +5678,7 @@ function IncorporationCountry(_ref) {
     }
     window.location.href = pathname;
   };
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     var customer = JSON.parse(window.localStorage.getItem('customer'));
     if (Array.isArray(dataSlider) && dataSlider.length > 0) {
       if (customer !== null && customer !== void 0 && customer.company_country_id) {
@@ -5600,13 +5717,13 @@ function IncorporationCountry(_ref) {
     slidesPerRow: 3,
     rows: 2,
     appendDots: function appendDots(dots) {
-      return /*#__PURE__*/React$1__default.createElement("ul", null, dots);
+      return /*#__PURE__*/React__default.createElement("ul", null, dots);
     },
     customPaging: function customPaging(i) {
-      return /*#__PURE__*/React$1__default.createElement("span", null, i + 1);
+      return /*#__PURE__*/React__default.createElement("span", null, i + 1);
     },
-    nextArrow: /*#__PURE__*/React$1__default.createElement(NextArrow, null),
-    prevArrow: /*#__PURE__*/React$1__default.createElement(PrevArrow, null),
+    nextArrow: /*#__PURE__*/React__default.createElement(NextArrow, null),
+    prevArrow: /*#__PURE__*/React__default.createElement(PrevArrow, null),
     responsive: [{
       breakpoint: 1399,
       settings: {
@@ -5623,7 +5740,8 @@ function IncorporationCountry(_ref) {
       settings: 'unslick'
     }]
   };
-  var _useState6 = React$1.useState(false),
+  var wrapperRef = React.useRef(null);
+  var _useState6 = React.useState(false),
     show = _useState6[0],
     setShow = _useState6[1];
   var handleClose = function handleClose() {
@@ -5632,27 +5750,33 @@ function IncorporationCountry(_ref) {
   var handleShow = function handleShow() {
     return setShow(true);
   };
+  var _useState7 = React.useState(1),
+    tab = _useState7[0],
+    setTab = _useState7[1];
+  useOnClickOutside(wrapperRef, function () {
+    setShow(false);
+  });
   return (
     /*#__PURE__*/
-    React$1__default.createElement("div", null, /*#__PURE__*/React$1__default.createElement("section", null, /*#__PURE__*/React$1__default.createElement("div", {
+    React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("section", null, /*#__PURE__*/React__default.createElement("div", {
       className: styles$4.btn_back_top + "  " + styles$4.Header
-    }, /*#__PURE__*/React$1__default.createElement("div", {
+    }, /*#__PURE__*/React__default.createElement("div", {
       className: styles$4.btn_back_container
-    }, /*#__PURE__*/React$1__default.createElement("div", {
+    }, /*#__PURE__*/React__default.createElement("div", {
       className: styles$4.btn_wrapper
-    }, /*#__PURE__*/React$1__default.createElement("button", {
+    }, /*#__PURE__*/React__default.createElement("button", {
       className: styles$4.back,
       onClick: handleBack
-    }, "Back")))), /*#__PURE__*/React$1__default.createElement("div", {
+    }, "Back")))), /*#__PURE__*/React__default.createElement("div", {
       className: styles$4.select_country
-    }, /*#__PURE__*/React$1__default.createElement("div", {
+    }, /*#__PURE__*/React__default.createElement("div", {
       className: styles$4.select_wrapper
-    }, /*#__PURE__*/React$1__default.createElement(Title, {
+    }, /*#__PURE__*/React__default.createElement(Title, {
       text: "Country and Company Type",
       className: styles$4.select_title
-    }), /*#__PURE__*/React$1__default.createElement("div", {
+    }), /*#__PURE__*/React__default.createElement("div", {
       className: styles$4.searchContainer
-    }, /*#__PURE__*/React$1__default.createElement(SelectSearchInside, {
+    }, /*#__PURE__*/React__default.createElement(SelectSearchInside, {
       instanceId: "incorporation-country-search",
       value: optionSelected,
       options: [{
@@ -5668,143 +5792,130 @@ function IncorporationCountry(_ref) {
       placeholder: "Search country here",
       toggleClass: "" + styles$4.search,
       onChange: setSelectedOption
-    }))), /*#__PURE__*/React$1__default.createElement("div", {
+    }))), /*#__PURE__*/React__default.createElement("div", {
       className: styles$4.comparison_table_btn
-    }, /*#__PURE__*/React$1__default.createElement("button", {
+    }, /*#__PURE__*/React__default.createElement("button", {
       className: styles$4.button + " " + styles$4.btn_show,
       onClick: handleShow
-    }, /*#__PURE__*/React$1__default.createElement("img", {
+    }, /*#__PURE__*/React__default.createElement("img", {
       src: comparisonTable,
       alt: "bg-left-obd"
-    }), /*#__PURE__*/React$1__default.createElement("div", {
+    }), /*#__PURE__*/React__default.createElement("div", {
       className: "mt-1"
-    }, "Comparison table")))), /*#__PURE__*/React$1__default.createElement("div", {
+    }, "Comparison table")))), /*#__PURE__*/React__default.createElement("div", {
       className: styles$4.Body
-    }, loading ? /*#__PURE__*/React$1__default.createElement("div", {
+    }, loading ? /*#__PURE__*/React__default.createElement("div", {
       className: "embed-responsive embed-responsive-21by9 mt-4 mt-lg-5"
-    }, /*#__PURE__*/React$1__default.createElement("div", {
+    }, /*#__PURE__*/React__default.createElement("div", {
       className: "embed-responsive-item d-flex align-items-center justify-content-center"
-    }, /*#__PURE__*/React$1__default.createElement(reactBootstrap.Spinner, {
+    }, /*#__PURE__*/React__default.createElement(reactBootstrap.Spinner, {
       animation: "border",
       variant: "primary"
-    }))) : dataSlider.length > 0 ? /*#__PURE__*/React$1__default.createElement(Slider, _extends({
+    }))) : dataSlider.length > 0 ? /*#__PURE__*/React__default.createElement(Slider, _extends({
       className: styles$4.slider + " " + styles$4.slider_container
     }, sliderSettings), dataSlider.map(function (item, index) {
-      return /*#__PURE__*/React$1__default.createElement("div", {
+      return /*#__PURE__*/React__default.createElement("div", {
         className: "" + styles$4.slider_item,
         key: index
-      }, /*#__PURE__*/React$1__default.createElement("div", {
+      }, /*#__PURE__*/React__default.createElement("div", {
         className: styles$4.card + " " + styles$4.card_wrapper,
         onClick: function onClick() {
           return handleClick(item.id, item.name);
         }
-      }, /*#__PURE__*/React$1__default.createElement("div", {
+      }, /*#__PURE__*/React__default.createElement("div", {
         className: "" + styles$4.card_inside
-      }, /*#__PURE__*/React$1__default.createElement("div", {
+      }, /*#__PURE__*/React__default.createElement("div", {
         className: styles$4.img_wrapper
-      }, /*#__PURE__*/React$1__default.createElement("img", {
+      }, /*#__PURE__*/React__default.createElement("img", {
         src: "https://test.bbcincorp.com/flags/1x1/" + item.country_code.toLowerCase() + ".svg",
         className: styles$4.cardImg + " rounded-circle shadow-sm",
         alt: "" + item.name
-      })), /*#__PURE__*/React$1__default.createElement("div", {
+      })), /*#__PURE__*/React__default.createElement("div", {
         className: styles$4.contentWrapper
-      }, /*#__PURE__*/React$1__default.createElement("div", {
+      }, /*#__PURE__*/React__default.createElement("div", {
         className: styles$4.content
-      }, /*#__PURE__*/React$1__default.createElement("div", {
+      }, /*#__PURE__*/React__default.createElement("div", {
         className: "" + styles$4.cardTitle
-      }, item.name), item.EntityTypes.length > 0 && /*#__PURE__*/React$1__default.createElement("ul", {
+      }, item.name), item.EntityTypes.length > 0 && /*#__PURE__*/React__default.createElement("ul", {
         className: styles$4.company_type
       }, item.EntityTypes.map(function (item, index) {
-        return /*#__PURE__*/React$1__default.createElement("li", {
+        return /*#__PURE__*/React__default.createElement("li", {
           key: index
         }, item.name);
-      }))))), /*#__PURE__*/React$1__default.createElement("div", {
+      }))))), /*#__PURE__*/React__default.createElement("div", {
         className: "" + styles$4.cardIconNext
-      }, /*#__PURE__*/React$1__default.createElement("span", {
+      }, /*#__PURE__*/React__default.createElement("span", {
         className: "mb-1"
       }, "\u2192"))));
-    })) : /*#__PURE__*/React$1__default.createElement("div", null)), /*#__PURE__*/React$1__default.createElement("div", {
+    })) : /*#__PURE__*/React__default.createElement("div", null)), /*#__PURE__*/React__default.createElement("div", {
       className: styles$4.comparison_container_mb
-    }, /*#__PURE__*/React$1__default.createElement("div", {
+    }, /*#__PURE__*/React__default.createElement("div", {
       className: styles$4.comparison_wrapper_mb
-    }, /*#__PURE__*/React$1__default.createElement("div", {
+    }, /*#__PURE__*/React__default.createElement("div", {
       className: styles$4.col_auto
-    }, /*#__PURE__*/React$1__default.createElement("button", {
+    }, /*#__PURE__*/React__default.createElement("button", {
       className: styles$4.button + " " + styles$4.btn_show_mb,
       onClick: handleShow
-    }, /*#__PURE__*/React$1__default.createElement("div", {
+    }, /*#__PURE__*/React__default.createElement("div", {
       className: styles$4.comparisonTable_mb
-    }, /*#__PURE__*/React$1__default.createElement("div", {
+    }, /*#__PURE__*/React__default.createElement("div", {
       className: styles$4.col_auto
-    }, /*#__PURE__*/React$1__default.createElement("img", {
+    }, /*#__PURE__*/React__default.createElement("img", {
       src: comparisonTable,
       alt: "bg-left-obd",
       style: {
         width: '20px'
       }
-    })), /*#__PURE__*/React$1__default.createElement("div", {
+    })), /*#__PURE__*/React__default.createElement("div", {
       className: styles$4.comparison_text_mb
-    }, "Comparison table"))))))), /*#__PURE__*/React$1__default.createElement("section", null, /*#__PURE__*/React$1__default.createElement("div", {
+    }, "Comparison table"))))))), /*#__PURE__*/React__default.createElement("section", null, /*#__PURE__*/React__default.createElement("div", {
       className: styles$4.backMobile_wrapper
-    }, /*#__PURE__*/React$1__default.createElement("div", {
+    }, /*#__PURE__*/React__default.createElement("div", {
       className: styles$4.col_auto
-    }, /*#__PURE__*/React$1__default.createElement("button", {
+    }, /*#__PURE__*/React__default.createElement("button", {
       className: styles$4.backMobile + " " + styles$4.btn_back_bottom,
       onClick: handleBack
-    }, "Back")))), /*#__PURE__*/React$1__default.createElement(reactBootstrap.Modal, {
-      show: show,
-      onHide: handleClose,
-      dialogClassName: styles$4.dialog + " mx-2 mx-sm-4 mx-xl-auto"
-    }, /*#__PURE__*/React$1__default.createElement("div", {
-      className: "px-3 py-4 px-sm-4"
-    }, /*#__PURE__*/React$1__default.createElement("div", {
-      className: "relative",
-      style: {
-        position: "relative"
-      }
-    }, /*#__PURE__*/React$1__default.createElement("div", {
-      className: "position-absolute",
+    }, "Back")))), show && /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("div", {
+      className: styles$4.modal_backdrop
+    }), /*#__PURE__*/React__default.createElement("div", {
+      className: styles$4.modal_container
+    }, /*#__PURE__*/React__default.createElement("div", {
+      ref: wrapperRef,
+      className: styles$4.modal_wrapper
+    }, /*#__PURE__*/React__default.createElement("div", {
+      className: styles$4.closeModal,
       style: {
         position: 'absolute',
         top: '0.25rem',
         right: '0.25rem',
         zIndex: 1
       }
-    }, /*#__PURE__*/React$1__default.createElement("button", {
+    }, /*#__PURE__*/React__default.createElement("button", {
       className: "btn",
       onClick: handleClose
-    }, /*#__PURE__*/React$1__default.createElement(reactIcons.IconContext.Provider, {
+    }, /*#__PURE__*/React__default.createElement(reactIcons.IconContext.Provider, {
       value: {
         style: {
           color: 'c4c4c4'
         }
       }
-    }, /*#__PURE__*/React$1__default.createElement(io.IoMdCloseCircle, {
+    }, /*#__PURE__*/React__default.createElement(io.IoMdCloseCircle, {
       size: "2rem"
-    })))), /*#__PURE__*/React$1__default.createElement("div", {
-      className: "position-relative"
-    }, /*#__PURE__*/React$1__default.createElement(reactBootstrap.Tab.Container, {
-      id: "tabs",
-      defaultActiveKey: "jurisdictions-features"
-    }, /*#__PURE__*/React$1__default.createElement("div", {
-      className: "row justify-content-center"
-    }, /*#__PURE__*/React$1__default.createElement("div", {
-      className: "col-md-8 col-lg-6 col-xl-5"
-    }, /*#__PURE__*/React$1__default.createElement(reactBootstrap.Nav, {
-      fill: true,
-      variant: "pills",
-      className: styles$4.nav + " flex-nowrap rounded-pill shadow-sm p-1"
-    }, /*#__PURE__*/React$1__default.createElement(reactBootstrap.Nav.Item, null, /*#__PURE__*/React$1__default.createElement(reactBootstrap.Nav.Link, {
-      className: styles$4.navLink + " py-2 font-weight-bold rounded-pill",
-      eventKey: "jurisdictions-features"
-    }, "Jurisdiction's Features")), /*#__PURE__*/React$1__default.createElement(reactBootstrap.Nav.Item, null, /*#__PURE__*/React$1__default.createElement(reactBootstrap.Nav.Link, {
-      className: styles$4.navLink + " py-2 font-weight-bold rounded-pill",
-      eventKey: "jurisdiction-comparison"
-    }, "Jurisdiction Comparison"))))), /*#__PURE__*/React$1__default.createElement(reactBootstrap.Tab.Content, {
-      className: "pt-3"
-    }, /*#__PURE__*/React$1__default.createElement(reactBootstrap.Tab.Pane, {
-      eventKey: "jurisdictions-features"
-    }, /*#__PURE__*/React$1__default.createElement(JurisdictionFeatures, {
+    })))), /*#__PURE__*/React__default.createElement("div", {
+      className: styles$4.tab_container
+    }, /*#__PURE__*/React__default.createElement("div", {
+      className: styles$4.tab_wrapper
+    }, /*#__PURE__*/React__default.createElement("button", {
+      onClick: function onClick() {
+        return setTab(1);
+      },
+      className: (tab === 1 ? styles$4.active_tab : '') + " " + styles$4.tab_item
+    }, "Jurisdiction's Features"), /*#__PURE__*/React__default.createElement("button", {
+      onClick: function onClick() {
+        return setTab(2);
+      },
+      className: (tab === 2 ? styles$4.active_tab : '') + " " + styles$4.tab_item
+    }, "Jurisdiction Comparison"))), tab === 1 ? /*#__PURE__*/React__default.createElement(JurisdictionFeatures, {
       data: dataComparison.DataFeatures,
       countries: dataComparison.countries,
       publicRegister: dataComparison.public_register,
@@ -5813,12 +5924,10 @@ function IncorporationCountry(_ref) {
       auditList: dataComparison.audited_accounts,
       exemptionList: dataComparison.offshore_exemptions,
       commonUsedList: dataComparison.common_used
-    })), /*#__PURE__*/React$1__default.createElement(reactBootstrap.Tab.Pane, {
-      eventKey: "jurisdiction-comparison"
-    }, /*#__PURE__*/React$1__default.createElement("p", null, "The following table compares different jurisdictions (maximum 3 at one time) in regard to crucial aspects that you need to know when incorporating."), /*#__PURE__*/React$1__default.createElement("p", null, /*#__PURE__*/React$1__default.createElement("b", null, "How to use: "), "Please select the jurisdiction you want to compare in the header ", /*#__PURE__*/React$1__default.createElement("b", null, "[Country Name]"), " in the table to see the information"), /*#__PURE__*/React$1__default.createElement(JurisdictionComparison, {
+    }) : /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("p", null, "The following table compares different jurisdictions (maximum 3 at one time) in regard to crucial aspects that you need to know when incorporating."), /*#__PURE__*/React__default.createElement("p", null, /*#__PURE__*/React__default.createElement("b", null, "How to use: "), "Please select the jurisdiction you want to compare in the header ", /*#__PURE__*/React__default.createElement("b", null, "[Country Name]"), " in the table to see the information"), /*#__PURE__*/React__default.createElement(JurisdictionComparison, {
       data: dataComparison.DataComparison,
       countries: dataComparison.countries
-    })))))))))
+    }))))))
   );
 }
 

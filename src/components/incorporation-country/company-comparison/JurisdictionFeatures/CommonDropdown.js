@@ -1,13 +1,14 @@
+import React from 'react'
 import { FaCheck } from 'react-icons/fa'
 import Blanket from 'react-multiselect-checkboxes/lib/Blanket'
-import React from 'react'
 import styles from './styles.module.css'
 
 const Menu = (props) => {
   const style = {
+    color: '#333!important',
     backgroundColor: 'white',
     boxShadow: '12px 14px 15px rgb(131 131 131 / 20%)',
-    marginTop: 38,
+    marginTop: '38px',
     position: 'absolute',
     width: '100%',
     zIndex: 2
@@ -67,12 +68,16 @@ export default function CommonDropdown({
       {target}
       {isOpen ? (
         <Menu>
-          <ul className={`list-unstyled ${styles.common_FilterMenu}`}>
+          <ul
+            style={{ listStyleType: 'none', padding: '0' }}
+            className={` ${styles.common_FilterMenu}`}
+          >
             {options.map((item, index) => (
               <li
                 key={index}
                 onClick={() => updateData(item)}
-                className={`position-relative ${
+                style={{ position: 'relative' }}
+                className={`${
                   item.clickable
                     ? styles.common_Clickable
                     : styles.common_UnClickable

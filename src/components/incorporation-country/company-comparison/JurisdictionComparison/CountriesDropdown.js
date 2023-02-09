@@ -1,6 +1,6 @@
+import React from 'react'
 import Blanket from 'react-multiselect-checkboxes/lib/Blanket'
 import styles from './styles.module.css'
-import React from 'react'
 
 const Menu = (props) => {
   const style = {
@@ -32,7 +32,7 @@ export default function CountriesDropdown({
       {target}
       {isOpen ? (
         <Menu>
-          <ul className={`list-unstyled`}>
+          <ul style={{ listStyleType: 'none', padding: 0 }}>
             {options.map(
               (item, index) =>
                 index > 0 && (
@@ -42,7 +42,8 @@ export default function CountriesDropdown({
                       onChange(item.id)
                       onClose()
                     }}
-                    className={`position-relative${
+                    style={{ position: 'relative' }}
+                    className={`${
                       value.id === item.id
                         ? ' ' + styles.offshoreComCompare_ActiveOption
                         : ''

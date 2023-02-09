@@ -9,6 +9,12 @@ import {
 } from 'react-icons/fa'
 import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes'
 import CountriesDropdown from './CountriesDropdown'
+import annualCompliance from 'assets/annual-compliance.png'
+import localTax from 'assets/local-tax-profile.png'
+import businessStructure from 'assets/business-structure.png'
+import initialRequirement from 'assets/initial-requirement.png'
+import legalStructure from 'assets/legal-structure.png'
+import internationalCompliance from 'assets/international-compliance.png'
 import parser from 'html-react-parser'
 import styles from './styles.module.css'
 
@@ -17,27 +23,40 @@ const CountryElement = ({ country, onPress }) => {
     <div className='d-flex'>
       <div
         onClick={onPress}
-        className={`d-flex justify-content-center align-items-center ${styles.offshoreComCompare_CountryElement}`}
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+        className={` ${styles.offshoreComCompare_CountryElement}`}
       >
         <div
+          style={{
+            marginRight: '8px',
+            overflow: 'hidden'
+          }}
           className={`mr-2 overflow-hidden embed-responsive embed-responsive-16by9 ${styles.offshoreComCompare_CountryFlag}`}
         >
           <img
             loading='eager'
             width={20}
             height={20}
-            src={`/onboarding/custom-public/flags/4x3/${country.flag}.svg`}
+            src={`https://test-site.bbcincorp.com/onboarding/custom-public/flags/4x3/${country.flag}.svg`}
             alt={`${country.label.toLowerCase()} flag`}
             className='embed-responsive-item'
-            style={{ objectFit: 'cover' }}
+            style={{ objectFit: 'cover', width: '100%' }}
           />
         </div>
         <span>{country.label}</span>
         <FaAngleDoubleDown
           size={14}
           color='#FFF'
-          className='d-inline ml-1'
-          style={{ marginBottom: 1 }}
+          style={{
+            display: 'inline',
+            marginBottom: 1,
+            marginLeft: 1,
+            display: 'inline'
+          }}
         />
       </div>
     </div>
@@ -85,7 +104,7 @@ const OECD = ({ array }) => {
 const CellItem = ({ data, showMore }) => {
   if (showMore) {
     return (
-      <div className='w-100'>
+      <div style={{ width: '100%' }}>
         <div
           className='tooltip-bottom justify-content-center'
           style={{ color: '#BDBDBD' }}
@@ -93,14 +112,21 @@ const CellItem = ({ data, showMore }) => {
           <FaInfoCircle />
           <div className='tooltip-content'>{parser(showMore)}</div>
         </div>
-        <span className='ml-2 mr-4 text-center' style={{ flex: 1 }}>
+        <span
+          style={{
+            flex: 1,
+            marginLeft: '8px',
+            marginRight: '16px',
+            textAlign: 'center'
+          }}
+        >
           {parser(data)}
         </span>
       </div>
     )
   } else {
     if (typeof data === 'string') {
-      return <div className='text-center'>{parser(data)}</div>
+      return <div style={{ textAlign: 'center' }}>{parser(data)}</div>
     }
     if (data) {
       return <FaCheck size={14} color='#10C300' />
@@ -204,7 +230,8 @@ export default function JurisdictionComparison({ data, countries }) {
             </th>
             <th>
               <div
-                className={`position-relative ${styles.offshoreComCompare_HeaderColumn}`}
+                style={{ position: 'relative' }}
+                className={`${styles.offshoreComCompare_HeaderColumn}`}
               >
                 <ReactMultiSelectCheckboxes
                   hideSearch={true}
@@ -227,6 +254,7 @@ export default function JurisdictionComparison({ data, countries }) {
                   }}
                 />
                 <button
+                  style={{ border: 'none' }}
                   className={`btn ${styles.offshoreComCompare_ArrowButton} ${styles.offshoreComCompare_NextButton}`}
                   onClick={handleNext}
                 >
@@ -236,9 +264,11 @@ export default function JurisdictionComparison({ data, countries }) {
             </th>
             <th>
               <div
-                className={`position-relative ${styles.offshoreComCompare_HeaderColumn}`}
+                style={{ position: 'relative' }}
+                className={`${styles.offshoreComCompare_HeaderColumn}`}
               >
                 <button
+                  style={{ border: 'none', background: 'transparent' }}
                   className={`btn ${styles.offshoreComCompare_ArrowButton} ${styles.offshoreComCompare_PrevButton}`}
                   onClick={handlePrev}
                 >
@@ -265,6 +295,7 @@ export default function JurisdictionComparison({ data, countries }) {
                   }}
                 />
                 <button
+                  style={{ border: 'none' }}
                   className={`btn ${styles.offshoreComCompare_ArrowButton} ${styles.offshoreComCompare_NextButton}`}
                   onClick={handleNext}
                 >
@@ -274,10 +305,11 @@ export default function JurisdictionComparison({ data, countries }) {
             </th>
             <th>
               <div
-                className={`position-relative ${styles.offshoreComCompare_HeaderColumn}`}
-                style={{ borderTopRightRadius: 15 }}
+                className={`${styles.offshoreComCompare_HeaderColumn}`}
+                style={{ borderTopRightRadius: 15, position: 'relative' }}
               >
                 <button
+                  style={{ border: 'none', background: 'transparent' }}
                   className={`btn ${styles.offshoreComCompare_ArrowButton} ${styles.offshoreComCompare_PrevButton}`}
                   onClick={handlePrev}
                 >
@@ -319,14 +351,16 @@ export default function JurisdictionComparison({ data, countries }) {
                 }
               >
                 <img
-                  src='/onboarding/custom-public/image/offshore/international-compliance.png'
-                  className='mb-1'
+                  src={internationalCompliance}
+                  style={{ marginBottom: '4px' }}
                   loading='lazy'
                   width={22}
                   height={22}
                   alt='INTERNATIONAL COMPLIANCE'
                 />
-                <span className='ml-1'>INTERNATIONAL COMPLIANCE</span>
+                <span style={{ marginLeft: '4px' }}>
+                  INTERNATIONAL COMPLIANCE
+                </span>
               </div>
             </td>
             <td></td>
@@ -384,14 +418,14 @@ export default function JurisdictionComparison({ data, countries }) {
                 }
               >
                 <img
-                  src='/onboarding/custom-public/image/offshore/legal-structure.png'
-                  className='mb-1'
+                  src={legalStructure}
+                  style={{ marginBottom: '4px' }}
                   loading='lazy'
                   width={22}
                   height={22}
                   alt='INTERNATIONAL COMPLIANCE'
                 />
-                <span className='ml-1'>LEGAL STRUCTURE</span>
+                <span style={{ marginLeft: '4px' }}>LEGAL STRUCTURE</span>
               </div>
             </td>
             <td></td>
@@ -490,14 +524,14 @@ export default function JurisdictionComparison({ data, countries }) {
                 }
               >
                 <img
-                  src='/onboarding/custom-public/image/offshore/business-structure.png'
-                  className='mb-1'
+                  src={businessStructure}
+                  style={{ marginBottom: '4px' }}
                   loading='lazy'
                   width={22}
                   height={22}
                   alt='INTERNATIONAL COMPLIANCE'
                 />
-                <span className='ml-1'>BUSINESS STRUCTURE</span>
+                <span style={{ marginLeft: '4px' }}>BUSINESS STRUCTURE</span>
               </div>
             </td>
             <td></td>
@@ -1250,14 +1284,14 @@ export default function JurisdictionComparison({ data, countries }) {
                 }
               >
                 <img
-                  src='/onboarding/custom-public/image/offshore/initial-requirement.png'
-                  className='mb-1'
+                  src={initialRequirement}
+                  style={{ marginBottom: '4px' }}
                   loading='lazy'
                   width={22}
                   height={22}
                   alt='INTERNATIONAL COMPLIANCE'
                 />
-                <span className='ml-1'>INITIAL REQUIREMENT</span>
+                <span style={{ marginLeft: '4px' }}>INITIAL REQUIREMENT</span>
               </div>
             </td>
             <td></td>
@@ -1368,14 +1402,14 @@ export default function JurisdictionComparison({ data, countries }) {
                 }
               >
                 <img
-                  src='/onboarding/custom-public/image/offshore/annual-compliance.png'
-                  className='mb-1'
+                  src={annualCompliance}
+                  style={{ marginBottom: '4px' }}
                   loading='lazy'
                   width={22}
                   height={22}
                   alt='INTERNATIONAL COMPLIANCE'
                 />
-                <span className='ml-1'>ANNUAL COMPLIANCE</span>
+                <span style={{ marginLeft: '4px' }}>ANNUAL COMPLIANCE</span>
               </div>
             </td>
             <td></td>
@@ -1590,14 +1624,14 @@ export default function JurisdictionComparison({ data, countries }) {
                 }
               >
                 <img
-                  src='/onboarding/custom-public/image/offshore/local-tax-profile.png'
-                  className='mb-1'
+                  src={localTax}
+                  style={{ marginBottom: '4px' }}
                   loading='lazy'
                   width={22}
                   height={22}
                   alt='INTERNATIONAL COMPLIANCE'
                 />
-                <span className='ml-1'>LOCAL TAX PROFILE</span>
+                <span style={{ marginLeft: '4px' }}>LOCAL TAX PROFILE</span>
               </div>
             </td>
             <td></td>

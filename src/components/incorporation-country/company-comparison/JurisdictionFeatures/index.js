@@ -262,7 +262,7 @@ export default function JurisdictionFeatures(props) {
 
   return (
     <div>
-      <p className='mb-1 mt-4'>
+      <p style={{ marginBottom: '4px', marginTop: '24px' }}>
         The following tables demonstrate 20 jurisdictions with key elements to
         take into account when establishing your overseas business
       </p>
@@ -272,7 +272,7 @@ export default function JurisdictionFeatures(props) {
       <div className={style.common_FilterContainer}>
         <div className={style.common_Column}>{renderCommonUsedFilter()}</div>
         <div
-          className={`${style.common_Column}${
+          className={`${style.common_Column} ${
             filteredCommonUsed.length > 0
               ? ' ' + style.common_ColumnSpacing
               : ''
@@ -285,7 +285,7 @@ export default function JurisdictionFeatures(props) {
               return (
                 <div
                   key={index}
-                  className={`rounded-pill ${style.common_Tag}`}
+                  className={`${style.common_Tag}`}
                   style={{
                     backgroundColor: tag.backgroundColor,
                     color: tag.color
@@ -293,9 +293,13 @@ export default function JurisdictionFeatures(props) {
                 >
                   <span>{item.label}</span>
                   <FaTimes
-                    style={{ color: '#ff756e', cursor: 'pointer' }}
+                    style={{
+                      color: '#ff756e',
+                      cursor: 'pointer',
+                      marginLeft: '8px',
+                      marginRight: '4px'
+                    }}
                     size={15}
-                    className='ml-2 mr-1'
                     onClick={() => {
                       setFilteredCommonUsed(
                         filteredCommonUsed.filter(
@@ -311,8 +315,8 @@ export default function JurisdictionFeatures(props) {
       </div>
       <div className={style.chooseFeatures_FilterContainerMobile}>
         {/* {renderCommonUsedFilter()} */}
-        <div className='d-flex'>
-          <div className='w-100'>
+        <div style={{ display: 'flex' }}>
+          <div style={{ width: '100%' }}>
             <div className={style.common_Button}>
               <ReactMultiSelectCheckboxes
                 classNamePrefix='filter'
@@ -345,12 +349,18 @@ export default function JurisdictionFeatures(props) {
           </div>
         </div>
       </div>
-      <div className={`mb-40 ${style.featuresTable}`}>
+      <div
+        style={{ marginBottom: '40px' }}
+        className={`${style.featuresTable}`}
+      >
         <div className={`${style.tableColumn} ${style.tableColumnCountry}`}>
           {/* <div className={style.common_FilterContainerDefault}>
             {renderCommonUsedFilter()}
           </div> */}
-          <div className={`${style.tableColumnTitle} font-weight-bold`}>
+          <div
+            style={{ fontWeight: 'bold' }}
+            className={`${style.tableColumnTitle}`}
+          >
             <div className={`${style.selectFilter} table-select`}>
               <ReactMultiSelectCheckboxes
                 classNamePrefix='filter'
@@ -377,23 +387,29 @@ export default function JurisdictionFeatures(props) {
           {dataFiltered.map((item, index) => (
             <div
               key={index}
-              className={`${style.tableColumnItem} justify-content-between`}
+              style={{
+                justifyContent: 'space-between'
+              }}
+              className={`${style.tableColumnItem}`}
             >
-              <div className='d-flex'>
+              <div style={{ display: 'flex' }}>
                 <div
                   className='mr-2 rounded-circle overflow-hidden embed-responsive embed-responsive-16by9'
-                  style={{ width: 20, height: 20 }}
+                  style={{ width: 20, height: 20, marginRight: '8px' }}
                 >
                   <img
                     loading='eager'
                     width={20}
                     height={20}
-                    src={`/onboarding/custom-public/flags/4x3/${
+                    src={`https://test-site.bbcincorp.com/onboarding/custom-public/flags/4x3/${
                       getCountry(item.id).flag
                     }.svg`}
                     alt='flag'
                     className='embed-responsive-item'
-                    style={{ objectFit: 'cover' }}
+                    style={{
+                      objectFit: 'cover',
+                      borderRadius: '50%'
+                    }}
                   />
                 </div>
                 {parser(item.name)}
@@ -406,7 +422,7 @@ export default function JurisdictionFeatures(props) {
                     return (
                       <span
                         key={index}
-                        className={`d-inline-block ${style.commonTag}`}
+                        className={`${style.tag} ${style.commonTag}`}
                         style={CommonTag(tagObject.label)}
                       >
                         {tagObject.label}
@@ -419,8 +435,8 @@ export default function JurisdictionFeatures(props) {
           ))}
         </div>
         <div
-          className={`${style.tableColumn}${
-            currentFeatureId === 1 ? '' : ' d-none'
+          className={`${style.tableColumn} ${
+            currentFeatureId === 1 ? '' : style.tableColumn_cur
           } d-lg-block`}
         >
           <div className={`${style.tableColumnTitle}`}>
@@ -460,22 +476,26 @@ export default function JurisdictionFeatures(props) {
           ))}
         </div>
         <div
-          className={`${style.tableColumn} ${style.tableColumnTax}${
-            currentFeatureId === 2 ? '' : ' d-none'
+          className={`${style.tableColumn} ${style.tableColumnTax} ${
+            currentFeatureId === 2 ? '' : style.tableColumn_cur
           } d-lg-block`}
         >
           <div className={style.tableColumnTitle}>
-            <Dropdown className='w-100'>
+            <Dropdown style={{ width: `100%`, position: 'relative' }}>
               <Dropdown.Toggle
                 id='dropdown-basic'
-                className={`w-100 p-0 rounded-0 border-0 ${style.dropdownBtn}`}
+                className={`${style.dropdown_rangeSlider} ${style.dropdownBtn}`}
               >
                 <span className={style.titleDefault}>Corporate income Tax</span>
                 <span className={style.titleMobile}>CIA</span>
-                <FiFilter size={13} color='#FFF' className='ml-2' />
+                <FiFilter
+                  size={14}
+                  color='#FFF'
+                  style={{ marginLeft: '8px' }}
+                />
               </Dropdown.Toggle>
 
-              <Dropdown.Menu className='p-0 w-100'>
+              <Dropdown.Menu className={style.dropdown_menu}>
                 <Dropdown.ItemText>
                   <RangeSlider
                     values={corporateIncomeTax}
@@ -498,8 +518,8 @@ export default function JurisdictionFeatures(props) {
           ))}
         </div>
         <div
-          className={`${style.tableColumn}${
-            currentFeatureId === 3 ? '' : ' d-none'
+          className={`${style.tableColumn} ${
+            currentFeatureId === 3 ? '' : style.tableColumn_cur
           } d-lg-block`}
         >
           <div className={`${style.tableColumnTitle}`}>
@@ -539,8 +559,8 @@ export default function JurisdictionFeatures(props) {
           ))}
         </div>
         <div
-          className={`${style.tableColumn}${
-            currentFeatureId === 4 ? '' : ' d-none'
+          className={`${style.tableColumn} ${
+            currentFeatureId === 4 ? '' : style.tableColumn_cur
           } d-lg-block`}
         >
           <div className={`${style.tableColumnTitle}`}>
@@ -571,8 +591,9 @@ export default function JurisdictionFeatures(props) {
             <div key={index} className={style.tableColumnItem}>
               {item.eu_list !== 'N/A' && (
                 <FaCircle
-                  className='mr-2 svg-inline--fa fa-w-8'
+                  className='svg-inline--fa fa-w-8'
                   style={{
+                    marginRight: '8px',
                     color:
                       item.eu_list === 'Cleared'
                         ? '#10C300'
@@ -588,8 +609,8 @@ export default function JurisdictionFeatures(props) {
           ))}
         </div>
         <div
-          className={`${style.tableColumn}${
-            currentFeatureId === 5 ? '' : ' d-none'
+          className={`${style.tableColumn} ${
+            currentFeatureId === 5 ? '' : style.tableColumn_cur
           } d-lg-block`}
         >
           <div className={`${style.tableColumnTitle}`}>

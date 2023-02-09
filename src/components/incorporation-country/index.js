@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import JurisdictionFeatures from './company-comparison/JurisdictionFeatures'
 import JurisdictionComparison from './company-comparison/JurisdictionComparison'
 import dataComparison from './data.json'
-
+import { useOnClickOutside } from '../common/functions'
 /**
  * vendor
  */
@@ -246,9 +246,17 @@ export default function IncorporationCountry({ data }) {
    * Modal
    */
 
+  const wrapperRef = useRef(null)
+
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
+  const [tab, setTab] = useState(1)
+
+  useOnClickOutside(wrapperRef, () => {
+    setShow(false)
+  })
+
   return (
     // <Layout
     //   head={{
@@ -396,99 +404,79 @@ export default function IncorporationCountry({ data }) {
         </div>
       </section>
       {/** Modal */}
-      <Modal
-        show={show}
-        onHide={handleClose}
-        dialogClassName={`${styles.dialog} mx-2 mx-sm-4 mx-xl-auto`}
-      >
-        <div className='px-3 py-4 px-sm-4'>
-          <div className='relative' style={{ position: `relative` }}>
-            <div
-              className='position-absolute'
-              style={{
-                position: 'absolute',
-                top: '0.25rem',
-                right: '0.25rem',
-                zIndex: 1
-              }}
-            >
-              <button className='btn' onClick={handleClose}>
-                <IconContext.Provider value={{ style: { color: 'c4c4c4' } }}>
-                  <IoMdCloseCircle size={`2rem`} />
-                </IconContext.Provider>
-              </button>
-            </div>
-            <div className='position-relative'>
-              <Tab.Container
-                id='tabs'
-                defaultActiveKey='jurisdictions-features'
+      {show && (
+        <div>
+          <div className={styles.modal_backdrop}></div>
+          <div className={styles.modal_container}>
+            <div ref={wrapperRef} className={styles.modal_wrapper}>
+              <div
+                className={styles.closeModal}
+                style={{
+                  position: 'absolute',
+                  top: '0.25rem',
+                  right: '0.25rem',
+                  zIndex: 1
+                }}
               >
-                <div className='row justify-content-center'>
-                  <div className='col-md-8 col-lg-6 col-xl-5'>
-                    <Nav
-                      fill
-                      variant='pills'
-                      className={`${styles.nav} flex-nowrap rounded-pill shadow-sm p-1`}
-                    >
-                      <Nav.Item>
-                        <Nav.Link
-                          className={`${styles.navLink} py-2 font-weight-bold rounded-pill`}
-                          eventKey='jurisdictions-features'
-                        >
-                          Jurisdiction's Features
-                        </Nav.Link>
-                      </Nav.Item>
-                      <Nav.Item>
-                        <Nav.Link
-                          className={`${styles.navLink} py-2 font-weight-bold rounded-pill`}
-                          eventKey='jurisdiction-comparison'
-                        >
-                          Jurisdiction Comparison
-                        </Nav.Link>
-                      </Nav.Item>
-                    </Nav>
-                  </div>
+                <button className='btn' onClick={handleClose}>
+                  <IconContext.Provider value={{ style: { color: 'c4c4c4' } }}>
+                    <IoMdCloseCircle size={`2rem`} />
+                  </IconContext.Provider>
+                </button>
+              </div>
+              <div className={styles.tab_container}>
+                <div className={styles.tab_wrapper}>
+                  <button
+                    onClick={() => setTab(1)}
+                    className={`${tab === 1 ? styles.active_tab : ''} ${
+                      styles.tab_item
+                    }`}
+                  >
+                    Jurisdiction's Features
+                  </button>
+                  <button
+                    onClick={() => setTab(2)}
+                    className={`${tab === 2 ? styles.active_tab : ''} ${
+                      styles.tab_item
+                    }`}
+                  >
+                    Jurisdiction Comparison
+                  </button>
                 </div>
-                <Tab.Content className='pt-3'>
-                  <Tab.Pane eventKey='jurisdictions-features'>
-                    {/* <p>
-                      The following tables demonstrate 18 jurisdictions with key
-                      elements to take into account when establishing your
-                      overseas business
-                    </p> */}
-                    <JurisdictionFeatures
-                      data={dataComparison.DataFeatures}
-                      countries={dataComparison.countries}
-                      publicRegister={dataComparison.public_register}
-                      euList={dataComparison.eu_list}
-                      selectDefault={dataComparison.select_default}
-                      auditList={dataComparison.audited_accounts}
-                      exemptionList={dataComparison.offshore_exemptions}
-                      commonUsedList={dataComparison.common_used}
-                    />
-                  </Tab.Pane>
-                  <Tab.Pane eventKey='jurisdiction-comparison'>
-                    <p>
-                      The following table compares different jurisdictions
-                      (maximum 3 at one time) in regard to crucial aspects that
-                      you need to know when incorporating.
-                    </p>
-                    <p>
-                      <b>How to use: </b>Please select the jurisdiction you want
-                      to compare in the header <b>[Country Name]</b> in the
-                      table to see the information
-                    </p>
-                    <JurisdictionComparison
-                      data={dataComparison.DataComparison}
-                      countries={dataComparison.countries}
-                    />
-                  </Tab.Pane>
-                </Tab.Content>
-              </Tab.Container>
+              </div>
+              {tab === 1 ? (
+                <JurisdictionFeatures
+                  data={dataComparison.DataFeatures}
+                  countries={dataComparison.countries}
+                  publicRegister={dataComparison.public_register}
+                  euList={dataComparison.eu_list}
+                  selectDefault={dataComparison.select_default}
+                  auditList={dataComparison.audited_accounts}
+                  exemptionList={dataComparison.offshore_exemptions}
+                  commonUsedList={dataComparison.common_used}
+                />
+              ) : (
+                <div>
+                  <p>
+                    The following table compares different jurisdictions
+                    (maximum 3 at one time) in regard to crucial aspects that
+                    you need to know when incorporating.
+                  </p>
+                  <p>
+                    <b>How to use: </b>Please select the jurisdiction you want
+                    to compare in the header <b>[Country Name]</b> in the table
+                    to see the information
+                  </p>
+                  <JurisdictionComparison
+                    data={dataComparison.DataComparison}
+                    countries={dataComparison.countries}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
-      </Modal>
+      )}
     </div>
   )
 }

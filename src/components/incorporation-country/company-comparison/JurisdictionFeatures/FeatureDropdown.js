@@ -1,12 +1,12 @@
-import Blanket from 'react-multiselect-checkboxes/lib/Blanket'
 import React from 'react'
+import Blanket from 'react-multiselect-checkboxes/lib/Blanket'
 import styles from './styles.module.css'
 
 const Menu = (props) => {
   const style = {
     backgroundColor: 'white',
     boxShadow: '12px 14px 15px rgb(131 131 131 / 20%)',
-    marginTop: 38,
+    marginTop: '38px',
     position: 'absolute',
     width: '100%',
     zIndex: 2
@@ -30,7 +30,10 @@ export default function FeatureDropdown({
       {target}
       {isOpen ? (
         <Menu>
-          <ul className={`list-unstyled ${styles.features_Menu}`}>
+          <ul
+            style={{ listStyleType: 'none' }}
+            className={`${styles.features_Menu}`}
+          >
             {options.map((item, index) => (
               <li
                 key={index}
@@ -38,7 +41,8 @@ export default function FeatureDropdown({
                   onChange(item.id)
                   onClose()
                 }}
-                className={`position-relative${
+                style={{ position: 'relative' }}
+                className={`${
                   item.id === value ? ' ' + styles.feature_ItemActive : ''
                 }`}
               >

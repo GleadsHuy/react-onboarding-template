@@ -25,7 +25,7 @@
     padding: 10px;
     margin-top: 10px;
     box-sizing: border-box;
-    box-shadow: #000 0 0 15px 0;
+    box-shadow: 0 0 15px 0 rgb(119 119 119 / 50%);
     z-index: 1;
     top: 100%;
     transform: translateX(-50%);
@@ -67,45 +67,7 @@
     flex: 1;
 }
 
-@media (max-width: 991px) {
-    .featuresTable .tableColumn:nth-child(2) {
-        width: 39%;
-    }
 
-    .featuresTable .tableColumn:nth-child(3) {
-        width: 39%;
-    }
-
-    .featuresTable .tableColumn:nth-child(4) {
-        width: 39%;
-    }
-
-    .featuresTable .tableColumn:nth-child(5) {
-        width: 39%;
-    }
-
-    .featuresTable .tableColumn:nth-child(6) {
-        width: 39%;
-    }
-}
-
-@media (min-width: 1200px) {
-    .featuresTable .tableColumn:nth-child(3) {
-        flex: 0 0 230px;
-    }
-
-    .featuresTable .tableColumn:nth-child(4) {
-        flex: 0 0 162px;
-    }
-
-    .featuresTable .tableColumn:nth-child(5) {
-        flex: 0 0 94px;
-    }
-
-    .featuresTable .tableColumn:nth-child(6) {
-        flex: 0 0 192px;
-    }
-}
 
 .featuresTable .tableColumn:last-child .tableColumnTitle {
     border-top-right-radius: 15px;
@@ -123,6 +85,14 @@
     line-height: 22px;
 }
 
+.featuresTable .tableColumnItem a{
+    text-decoration: none;
+}
+
+.tableColumn_cur{
+    display: none;
+}
+
 @media (max-width: 575px) {
 
     .featuresTable .tableColumnItem button,
@@ -136,28 +106,12 @@
 
 .featuresTable .tableColumnTitle {
     background-color: #00a6ff;
-    color: #fff;
+    color: #333;
     border-top: 0;
     padding: 8px 5px;
 }
 
-@media (max-width: 991px) {
-    .featuresTable .tableColumnTitle {
-        border-top-right-radius: 15px;
-    }
-}
 
-@media (max-width: 575px) {
-    .featuresTable .titleDefault {
-        display: none;
-    }
-}
-
-@media (min-width: 576px) {
-    .featuresTable .titleMobile {
-        display: none;
-    }
-}
 
 .featuresTable .tableColumnCountry {
     box-shadow: 12px 14px 15px rgba(131, 131, 131, 0.2);
@@ -191,23 +145,6 @@
     padding: 0 8px 0 25px;
 }
 
-@media (min-width: 576px) {
-    .featuresTable .tableColumnCountry .tableColumnItem {
-        padding: 0 49px 0 45px;
-    }
-}
-
-@media (min-width: 992px) {
-    .featuresTable .tableColumnCountry .tableColumnItem {
-        padding: 0 8px 0 25px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .featuresTable .tableColumnCountry .tableColumnItem {
-        padding: 0 49px 0 45px;
-    }
-}
 
 .featuresTable .tableColumnCountry .selectFilter button {
     font-size: 20px;
@@ -216,14 +153,7 @@
     font-weight: bold;
 }
 
-@media (max-width: 575px) {
-    .featuresTable .tableColumnCountry .selectFilter button {
-        font-size: 16px;
-        line-height: 24px;
-        letter-spacing: 0.25px;
-        font-weight: 500;
-    }
-}
+
 
 .featuresTable .tableColumnTax .tableColumnItem {
     color: #0d68b6;
@@ -269,7 +199,13 @@
     line-height: 15px;
 }
 
+.tag{
+    display: inline-block;
+}
+
 .btnClearAll {
+    font-size: 16px;
+    line-height: 24px;
     background: none;
     border: none;
     padding: 0;
@@ -292,6 +228,7 @@
 }
 
 .dropdownBtn {
+    cursor: pointer;
     background-color: transparent !important;
     font-weight: 500;
 }
@@ -304,6 +241,26 @@
 
 .dropdownBtn:after {
     content: none;
+}
+
+.dropdown_rangeSlider{
+position: relative;
+   width: 100%;
+   padding: 0;
+   border: none; 
+   color: #fff;
+   font-size: 16px;
+   line-height: 24px;
+}
+
+.dropdown_menu{
+    position: relative;
+    padding: 0 20px;
+    background-color: #fff;
+    border: 1px solid #f0f0f0;
+    border-radius: 5px;
+    width: 100%;
+    z-index: 1070;
 }
 
 .multiSelectCustom {
@@ -319,12 +276,6 @@
 
 .commonUsed_Filter {
     display: flex;
-}
-
-@media (max-width: 991px) {
-    .commonUsed_Filter {
-        margin-bottom: 16px;
-    }
 }
 
 .commonUsed_Filter .common_Container {
@@ -356,22 +307,11 @@
     margin-bottom: 38px;
 }
 
-@media (max-width: 991px) {
-    .common_FilterContainer {
-        flex-direction: column;
-        margin-bottom: 0;
-    }
-}
 
 .common_FilterContainer .common_ColumnSpacing {
     margin-bottom: 0px !important;
 }
 
-@media (max-width: 991px) {
-    .common_FilterContainer .common_ColumnSpacing {
-        margin-bottom: 16px !important;
-    }
-}
 
 .common_FilterContainer .common_Column:first-child {
     flex: 1;
@@ -384,26 +324,7 @@
     margin-bottom: 7px;
 }
 
-@media (max-width: 992px) {
-    .common_FilterContainer .common_Column:last-child {
-        margin-bottom: 0;
-        min-height: auto;
-    }
-}
 
-@media (min-width: 992px) and (max-width: 1199px) {
-    .common_FilterContainer .common_Column:last-child {
-        flex: 0 0 707.34px;
-        padding-left: 50px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .common_FilterContainer .common_Column:last-child {
-        flex: 0 0 817px;
-        padding-left: 100px;
-    }
-}
 
 .common_FilterContainer .common_Tag {
     padding: 8px;
@@ -421,17 +342,6 @@
     flex: 1;
 }
 
-@media (max-width: 991px) {
-    .chooseFeatures_FilterContainerMobile {
-        margin-bottom: 42px;
-    }
-}
-
-@media (min-width: 992px) {
-    .chooseFeatures_FilterContainerMobile {
-        display: none;
-    }
-}
 
 .common_FilterMenu li,
 .features_Menu li {
@@ -488,4 +398,144 @@
 .features_Menu .feature_ItemActive {
     color: #fff !important;
     background-color: #00a6ff !important;
+}
+
+@media (max-width: 991px) {
+    .featuresTable .tableColumnTitle {
+        border-top-right-radius: 15px;
+    }
+}
+
+@media (max-width: 575px) {
+    .featuresTable .titleDefault {
+        display: none;
+    }
+}
+
+@media (min-width: 576px) {
+    .featuresTable .titleMobile {
+        display: none;
+    }
+}
+
+@media (min-width: 576px) {
+    .featuresTable .tableColumnCountry .tableColumnItem {
+        padding: 0 49px 0 45px;
+    }
+}
+
+@media (min-width: 992px) {
+    .featuresTable .tableColumnCountry .tableColumnItem {
+        padding: 0 8px 0 25px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .featuresTable .tableColumnCountry .tableColumnItem {
+        padding: 0 49px 0 45px;
+    }
+}
+
+@media (max-width: 575px) {
+    .featuresTable .tableColumnCountry .selectFilter button {
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.25px;
+        font-weight: 500;
+    }
+}
+
+@media (max-width: 991px) {
+    .common_FilterContainer {
+        flex-direction: column;
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 991px) {
+    .chooseFeatures_FilterContainerMobile {
+        margin-bottom: 42px;
+    }
+}
+
+@media (min-width: 992px) {
+    .chooseFeatures_FilterContainerMobile {
+        display: none;
+    }
+    .tableColumn{
+        display: block;
+    }
+}
+
+@media (max-width: 991px) {
+    .commonUsed_Filter {
+        margin-bottom: 16px;
+    }
+}
+
+@media (max-width: 992px) {
+    .common_FilterContainer .common_Column:last-child {
+        margin-bottom: 0;
+        min-height: auto;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .common_FilterContainer .common_Column:last-child {
+        flex: 0 0 707.34px;
+        padding-left: 50px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .common_FilterContainer .common_Column:last-child {
+        flex: 0 0 817px;
+        padding-left: 100px;
+    }
+}
+
+@media (max-width: 991px) {
+    .common_FilterContainer .common_ColumnSpacing {
+        margin-bottom: 16px !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .featuresTable .tableColumn:nth-child(2) {
+        width: 39%;
+    }
+
+    .featuresTable .tableColumn:nth-child(3) {
+        width: 39%;
+    }
+
+    .featuresTable .tableColumn:nth-child(4) {
+        width: 39%;
+    }
+
+    .featuresTable .tableColumn:nth-child(5) {
+        width: 39%;
+    }
+
+    .featuresTable .tableColumn:nth-child(6) {
+        width: 39%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .featuresTable .tableColumn:nth-child(3) {
+        flex: 0 0 230px;
+    }
+
+    .featuresTable .tableColumn:nth-child(4) {
+        flex: 0 0 162px;
+    }
+
+    .featuresTable .tableColumn:nth-child(5) {
+        flex: 0 0 94px;
+    }
+
+    .featuresTable .tableColumn:nth-child(6) {
+        flex: 0 0 192px;
+    }
 }
