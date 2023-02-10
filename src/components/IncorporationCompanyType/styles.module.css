@@ -1,0 +1,596 @@
+.block_on_md {
+  display: block;
+}
+
+.block_on_lg {
+  display: block;
+}
+
+.none_on_md {
+  display: none;
+}
+
+.flex_on_md {
+  display: flex;
+}
+
+.btn_back_top {
+  display: block;
+}
+
+.btn_back_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn_primary {
+  padding: 0;
+  color: #007eff;
+  cursor: pointer;
+}
+
+.title {
+  margin-top: 40px;
+}
+
+.description_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comparison_wrapper {
+  flex: 0 0 auto;
+  display: flex;
+}
+
+.button {
+  width: 118px;
+  color: #677294;
+  background-color: white;
+  font-weight: 500;
+  box-shadow: 0 2px 8px #c9c9c9;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.2;
+  margin-top: 2rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: white;
+  background-color: #677294;
+}
+
+.button:hover img {
+  filter: brightness(0) invert(1);
+}
+
+.spinner_wrapper {
+  margin-top: 32px;
+}
+
+.card_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.card_responsive {
+  width: 50%;
+  padding: 0 15px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 4px 20px 8px 20px;
+  box-shadow: 0 2px 8px rgb(201 201 201 / 25%);
+  min-height: 154px;
+  margin: 0 0 30px 0;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid transparent !important;
+}
+
+.card .cardImg {
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
+}
+
+.card .cardTitle {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: #2c2c51;
+  margin-bottom: 0;
+}
+
+.card:hover {
+  background-color: #007eff;
+  box-shadow: 0 0 22.5px 2.5px rgb(119 119 119 / 40%);
+  color: white;
+}
+
+.card:hover .cardTitle {
+  color: white;
+}
+
+.comparison_bottom {
+  display: none;
+}
+
+.dialog {
+  position: relative;
+  width: 721px;
+  max-width: 721px;
+  margin: auto;
+  z-index: 1050;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.dialog :global(.modal-content) {
+  border-radius: 16px;
+  border: none;
+}
+
+.dialog .content {
+  color: #2c2c51;
+  overflow: hidden;
+  font-size: 14px !important;
+  border-radius: 16px;
+}
+
+.dialog .headerModal {
+  position: absolute;
+  border: 0;
+  right: -8px;
+  top: -12px;
+  z-index: 99;
+}
+
+.dialog .headerModal svg {
+  font-size: 28px;
+}
+
+.dialog .bodyModal {
+  position: relative;
+  border-radius: 10px;
+  color: #2c2c51;
+  background: #fff;
+  overflow: hidden;
+  padding-bottom: 5px;
+  overflow-y: auto;
+}
+
+.dialog .bodyModal .rowItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dialog .bodyModal .rowItem span {
+  padding: 16px;
+}
+
+.dialog .bodyModal .rowItem span:nth-child(1) {
+  width: 40%;
+  color: #677294;
+}
+
+.dialog .bodyModal .rowItem span:nth-child(2) {
+  width: 30%;
+  color: #2c2c51;
+  border-left: 1px solid #f3f3f3;
+}
+
+.dialog .bodyModal .rowItem span:nth-child(3) {
+  width: 30%;
+  color: #2c2c51;
+  border-left: 1px solid #f3f3f3;
+}
+
+.dialog .bodyModal .item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dialog .bodyModal .item span {
+  padding: 0 16px 4px 16px;
+}
+
+.dialog .bodyModal .item span:nth-child(1) {
+  width: 40%;
+  color: #677294;
+}
+
+.dialog .bodyModal .item span:nth-child(2) {
+  width: 30%;
+  color: #2c2c51;
+  border-left: 1px solid #f3f3f3;
+}
+
+.dialog .bodyModal .item span:nth-child(3) {
+  width: 30%;
+  color: #2c2c51;
+  border-left: 1px solid #f3f3f3;
+}
+
+.dialog .bodyModal .tableBody .grouptitle {
+  color: #fff;
+  background: #007eff;
+  font-weight: 500;
+  padding: 4px 16px;
+}
+
+.dialog .check {
+  position: relative;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-color: #21b250;
+  border-radius: 50%;
+  margin-top: 4px;
+}
+
+.dialog .check:before {
+  content: '\2714';
+  color: #fff;
+  font-size: 8px;
+  position: absolute;
+  left: 3px;
+  top: 1px;
+}
+
+.dialog .checkX {
+  position: relative;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.dialog .checkX:before {
+  content: '\2A09';
+  color: #fff;
+  font-size: 10px;
+  position: absolute;
+  left: 2px;
+  top: -1px;
+}
+
+.dialogVietnam {
+  width: 900px;
+  max-width: 900px;
+  margin: auto;
+  padding: 0;
+}
+
+.dialogVietnam .content {
+  overflow: auto;
+}
+
+.dialogVietnam .modalVietnam {
+  position: relative;
+}
+
+.dialogVietnam .modalVietnam .rowItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dialogVietnam .modalVietnam .rowItem span {
+  padding: 16px;
+  width: 25%;
+}
+
+.dialogVietnam .modalVietnam .rowItem span:nth-child(1) {
+  width: 25%;
+  color: #677294;
+}
+
+.dialogVietnam .modalVietnam .rowItem span:nth-child(2) {
+  border-left: 1px solid #f3f3f3;
+}
+
+.dialogVietnam .modalVietnam .rowItem span:nth-child(5) {
+  border-left: 1px solid #f3f3f3;
+}
+
+.dialogVietnam .modalVietnam .item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dialogVietnam .modalVietnam .item span {
+  padding: 0 16px 4px;
+  width: 25%;
+}
+
+.dialogVietnam .modalVietnam .item span:nth-child(1) {
+  width: 25%;
+  color: #677294;
+}
+
+.dialogVietnam .modalVietnam .item span:nth-child(2) {
+  border-left: 1px solid #f3f3f3;
+}
+
+.dialogVietnam .modalVietnam .item span:nth-child(5) {
+  border-left: 1px solid #f3f3f3;
+}
+
+.dialogVietnam .modalVietnam .tableBody .grouptitle {
+  color: #fff;
+  background: #007eff;
+  font-weight: 500;
+  padding: 4px 16px;
+}
+
+.dialogVietnam .check {
+  position: relative;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-color: #21b250;
+  border-radius: 50%;
+  margin-top: 4px;
+}
+
+.dialogVietnam .check:before {
+  content: '\2714';
+  color: #fff;
+  font-size: 8px;
+  position: absolute;
+  left: 3px;
+  top: 1px;
+}
+
+.Header {
+  height: 50px;
+}
+
+.bottom {
+  padding-top: 16px;
+  display: none;
+}
+
+.btn_back_bottom_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn_back_bottom {
+  flex: 0 0 auto;
+}
+
+.modal_container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1050;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100vh;
+}
+
+.modal_wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.modal_backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  opacity: 0.5;
+  transition: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(-2%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.closeModal button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 440px) {
+  .dialogVietnam {
+    max-width: 315px;
+  }
+}
+
+@media (max-width: 575px) {
+  .Body {
+    max-height: calc(100vh - 284px);
+    overflow-y: auto;
+    margin: 0 -15px;
+    padding: 0 15px;
+  }
+  .card_responsive {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .none_on_md {
+    display: block;
+  }
+  .flex_on_md {
+    display: block;
+  }
+  .block_on_md {
+    display: none;
+  }
+  .dialog {
+    width: 325px;
+    max-width: 325px;
+  }
+  .dialog .headerModal {
+    right: -12px;
+    top: -13px;
+  }
+
+  .dialog .headerModal svg {
+    font-size: 24px;
+  }
+  .dialog .bodyModal .rowItem {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .dialog .bodyModal .rowItem span {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .dialog .bodyModal .rowItem span:nth-child(1) {
+    width: 100%;
+    font-weight: 500;
+    color: #007eff;
+    background: #f3f3f3;
+  }
+  .dialog .bodyModal .rowItem span:nth-child(2) {
+    width: 50%;
+  }
+  .dialog .bodyModal .item {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .dialog .bodyModal .rowItem span:nth-child(3) {
+    width: 50%;
+  }
+  .dialog .bodyModal .item span:nth-child(2) {
+    width: 50%;
+  }
+  .dialog .bodyModal .item span {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .dialog .bodyModal .item span:nth-child(1) {
+    width: 100%;
+    font-weight: 500;
+    color: #007eff;
+    background: #f3f3f3;
+  }
+  .dialog .bodyModal .item span:nth-child(3) {
+    width: 50%;
+  }
+  .dialog .bodyModal .tableBody .grouptitle {
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .dialog .checkX {
+    display: none;
+  }
+  .dialog .check {
+    display: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .block_on_lg {
+    display: none;
+  }
+  .bottom {
+    display: block;
+  }
+  .comparison_bottom {
+    display: block;
+  }
+  .card_wrapper {
+    margin-top: 24px;
+  }
+  .spinner_wrapper {
+    margin-top: 24px;
+  }
+  .comparison_wrapper {
+    display: none;
+  }
+  .title {
+    margin-top: 0;
+  }
+  .btn_back_top {
+    display: none;
+  }
+  .dialogVietnam {
+    max-width: 400px;
+  }
+  .dialogVietnam .modalVietnam .rowItem span {
+    text-align: center;
+  }
+  .dialogVietnam .modalVietnam {
+    padding-top: 12px;
+    width: 400px;
+    max-width: 400px;
+  }
+  .dialogVietnam .modalVietnam .rowItem span:nth-child(1) {
+    width: 100%;
+    font-weight: 500;
+    color: #007eff;
+    background: #f3f3f3;
+  }
+  .dialogVietnam .modalVietnam .rowItem {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .dialogVietnam .modalVietnam .item span {
+    text-align: center;
+  }
+  .dialogVietnam .modalVietnam .item {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .dialogVietnam .modalVietnam .item span:nth-child(1) {
+    width: 100%;
+    font-weight: 500;
+    color: #007eff;
+    background: #f3f3f3;
+  }
+  .dialogVietnam .modalVietnam .tableBody .grouptitle {
+    text-align: center;
+  }
+}
+
+@media (min-width: 991px) {
+  .dialogVietnam .check {
+    display: none;
+  }
+}
+
+@media (min-width: 1400px) {
+  .card .cardImg {
+    width: 64px;
+    height: 64px;
+    flex: 0 0 64px;
+  }
+}

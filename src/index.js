@@ -4,20 +4,19 @@ import FatfScreen from './components/register/FatfScreen'
 import RegisterScreen from './components/register/RegisterScreen'
 import SelectService from './components/select-service'
 import IncorporationCountry from './components/incorporation-country'
+import IncorporationCompanyType from './components/IncorporationCompanyType'
 import './styles.module.css'
 
 export {
   Register,
-  FatfScreen,
-  RegisterScreen,
   SelectService,
-  IncorporationCountry
+  IncorporationCountry,
+  IncorporationCompanyType
 }
 
 export default {
   Register,
-  FatfScreen,
-  RegisterScreen,
   SelectService,
-  IncorporationCountry
+  IncorporationCountry,
+  IncorporationCompanyType
 }

@@ -1,3 +1,5 @@
+
+
 .featuresTable {
     display: flex;
     box-shadow: 0px 0px 15px rgba(131, 131, 131, 0.5);
@@ -244,7 +246,7 @@
 }
 
 .dropdown_rangeSlider{
-position: relative;
+   position: relative;
    width: 100%;
    padding: 0;
    border: none; 
@@ -398,6 +400,68 @@ position: relative;
 .features_Menu .feature_ItemActive {
     color: #fff !important;
     background-color: #00a6ff !important;
+}
+
+.custom_menuDropdown{
+    background-color: #000;
+}
+
+:global(.filter__menu-list){
+    overflow-x:initial!important;
+}
+
+:global(.filter__menu){
+    padding: 5px 0;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    box-shadow: 0 6px 12px #000;
+}
+
+:global(.filter__option)  {
+    position: relative;
+    cursor: pointer!important;
+    font-weight: 400;
+    min-width: 100%!important;
+    padding: 3px 20px;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+:global(.filter__option):hover  {
+    color: #262626;
+    background-color: #f5f5f5!important;
+}
+
+:global(.filter__option::after)  {
+    content: "\2714";
+    height: 13px;
+    width: 13px;
+    /* background-image: url('assets/check-li.png'); */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    position: absolute;
+    right: 14px;
+    top: 40%;
+    opacity: 0;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+
+:global(.filter__option--is-selected)  {
+    background-color: transparent!important;
+}
+
+
+:global(.filter__option--is-selected::after)  {
+    opacity: 1!important;
+}
+
+
+:global(.table-select)>div>div {
+    width: 100%;
 }
 
 @media (max-width: 991px) {

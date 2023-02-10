@@ -426,13 +426,13 @@ const RegisterScreen = ({ trustpilot, isTypeChristmas }) => {
                 exclusive offers.
               </label>
             </div>
-            {/* <ReCAPTCHA
+            <ReCAPTCHA
               ref={recaptchaRef}
-              sitekey={process.env.NEXT_PUBLIC_G_RECAPTCHA_V3_SITE_KEY}
+              sitekey='6LeJZ68UAAAAAJZ8jxdgylEXeWL8P9Ckv7CLtE6t'
               badge='bottomright'
               size='invisible'
               className='d-flex justify-content-center justify-content-xl-start'
-            /> */}
+            />
             <div className={styles.FormFooter}>
               <button
                 type='submit'

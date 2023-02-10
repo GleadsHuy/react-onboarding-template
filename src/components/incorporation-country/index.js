@@ -142,7 +142,7 @@ export default function IncorporationCountry({ data }) {
    * Handle click
    */
   const handleClick = (id, name) => {
-    dataLayer.push({ event: 'choose_country', country_name: name })
+    // dataLayer.push({ event: 'choose_country', country_name: name })
     let data = _.filter(dataCountries, (item) => item.id == id)[0]
     let isCompanyType = data?.EntityTypes && data?.EntityTypes.length > 1
     let entity_type_id = isCompanyType ? null : data?.EntityTypes[0]?.id
@@ -456,13 +456,13 @@ export default function IncorporationCountry({ data }) {
                   commonUsedList={dataComparison.common_used}
                 />
               ) : (
-                <div>
-                  <p>
+                <div style={{ color: '#333' }}>
+                  <p style={{ marginBottom: '16px' }}>
                     The following table compares different jurisdictions
                     (maximum 3 at one time) in regard to crucial aspects that
                     you need to know when incorporating.
                   </p>
-                  <p>
+                  <p style={{ marginBottom: '16px' }}>
                     <b>How to use: </b>Please select the jurisdiction you want
                     to compare in the header <b>[Country Name]</b> in the table
                     to see the information

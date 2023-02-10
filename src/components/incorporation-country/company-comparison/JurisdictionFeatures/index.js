@@ -262,7 +262,7 @@ export default function JurisdictionFeatures(props) {
 
   return (
     <div>
-      <p style={{ marginBottom: '4px', marginTop: '24px' }}>
+      <p style={{ marginBottom: '4px', marginTop: '24px', color: '#333' }}>
         The following tables demonstrate 20 jurisdictions with key elements to
         take into account when establishing your overseas business
       </p>
