@@ -11,7 +11,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 import { getGAUserID } from '../../common/functions'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-import _, { set } from 'lodash'
+import _ from 'lodash'
 import trust_pilot from 'assets/trust-pilot.svg'
 
 const FormSwal = withReactContent(Swal)

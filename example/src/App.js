@@ -5,22 +5,30 @@ import {
   Register,
   SelectService,
   IncorporationCountry,
-  IncorporationCompanyType
+  IncorporationCompanyType,
+  IncorporationEntityNameCheck
 } from 'react-onboarding-template'
 import 'react-onboarding-template/dist/index.css'
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Route path='/register' component={Register}></Route>
-      <Route path='/select-service' component={SelectService}></Route>
+      <Route path='/register' component={Register} exact></Route>
+      <Route path='/select-service' component={SelectService} exact></Route>
       <Route
         path='/incorporation-country'
         component={IncorporationCountry}
+        exact
       ></Route>
       <Route
         path='/incorporation-company-type'
         component={IncorporationCompanyType}
+        exact
+      ></Route>
+      <Route
+        path='/incorporation-entity-name-check'
+        component={IncorporationEntityNameCheck}
+        exact
       ></Route>
     </BrowserRouter>
   )

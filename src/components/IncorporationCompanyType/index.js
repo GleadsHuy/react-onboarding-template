@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react'
-import PropTypes from 'prop-types'
 import { IconContext } from 'react-icons'
 import { IoMdCloseCircle } from 'react-icons/io'
 import axios from 'axios'
@@ -7,7 +6,7 @@ import { useOnClickOutside } from '../common/functions'
 /**
  * vendor
  */
-import { Modal, Nav, Tab, Spinner } from 'react-bootstrap'
+import { Spinner } from 'react-bootstrap'
 
 /**
  * components

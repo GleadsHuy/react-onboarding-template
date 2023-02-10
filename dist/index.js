@@ -3,8 +3,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 var React = require('react');
 var React__default = _interopDefault(React);
 var fa = require('react-icons/fa');
-var _ = require('lodash');
-var ___default = _interopDefault(_);
+var _ = _interopDefault(require('lodash'));
 var reactBootstrap = require('react-bootstrap');
 var axios = _interopDefault(require('axios'));
 var reactHookForm = require('react-hook-form');
@@ -38,6 +37,9 @@ var io = require('react-icons/io');
 var comparisonTable = _interopDefault(require('./comparison-table~bpwyRZHM.png'));
 var mergeProps = _interopDefault(require('merge-props'));
 var buildingImg = _interopDefault(require('./building~IFwjSqIH.png'));
+var md = require('react-icons/md');
+var hi = require('react-icons/hi');
+var bs = require('react-icons/bs');
 
 var styles = {"FatfScreen":"_styles-module__FatfScreen__2ROgK","descriptionText":"_styles-module__descriptionText__2Vd8e","title":"_styles-module__title__35EYE","RegisterInput":"_styles-module__RegisterInput__gW7RG","item":"_styles-module__item__3hx7A","space_top":"_styles-module__space_top__yST6I","ErrorMessage":"_styles-module__ErrorMessage__qZ3vy","Link":"_styles-module__Link__1wNX0","Slider":"_styles-module__Slider__1Th7t","PhoneSelect":"_styles-module__PhoneSelect__1B3qM","CustomSelect":"_styles-module__CustomSelect__3bJjM","PhoneInput":"_styles-module__PhoneInput__2_4Q0","phonenumber_container":"_styles-module__phonenumber_container__HLp-P","RegisterScreen":"_styles-module__RegisterScreen__3hn-F","discountChristmas":"_styles-module__discountChristmas__i1zWx","CheckBox":"_styles-module__CheckBox__3klwe","button_wrapper":"_styles-module__button_wrapper__RJ7yj","Button":"_styles-module__Button__26moK","RegisterButton":"_styles-module__RegisterButton__1WoJs","RegisterLink":"_styles-module__RegisterLink__2p_CN","restricted_countries_wrapper":"_styles-module__restricted_countries_wrapper__5339W","restricted_countries_container":"_styles-module__restricted_countries_container__30wCB","restricted_countries_cols":"_styles-module__restricted_countries_cols__17jba","restricted_countries_cols_md":"_styles-module__restricted_countries_cols_md__wx9cR","listCollapse":"_styles-module__listCollapse__P54fa","active":"_styles-module__active__1yv7q","buttonCollapse":"_styles-module__buttonCollapse__BL6zk","isCollapse":"_styles-module__isCollapse__38GJw","iconCollapse":"_styles-module__iconCollapse__3YmIy","RegisterText":"_styles-module__RegisterText__3dZ-C","RegisterForm":"_styles-module__RegisterForm__2sn5j","formControl":"_styles-module__formControl__MkpSE","inputWrapper":"_styles-module__inputWrapper__u_8Hb","SelectWrapper":"_styles-module__SelectWrapper__2wTl0","CountrySelectWrapper":"_styles-module__CountrySelectWrapper__cRn99","nationalitySelect":"_styles-module__nationalitySelect__3tlRp","nationalityLabel":"_styles-module__nationalityLabel__1-615","phonenumber_wrapper":"_styles-module__phonenumber_wrapper__3q5qp","trustpilot_wrapper":"_styles-module__trustpilot_wrapper__1PI3w","FormFooter":"_styles-module__FormFooter__29TuF","Body":"_styles-module__Body__3J0ny","noteText":"_styles-module__noteText__9TPd0"};
 
@@ -87,7 +89,7 @@ var FatfScreen = function FatfScreen(_ref) {
       style: {
         flex: "1"
       }
-    }, ___default.sortBy(restricted_countries).filter(function (item, index) {
+    }, _.sortBy(restricted_countries).filter(function (item, index) {
       return index < (idx + 1) * count && index >= idx * count;
     }).map(function (item, index) {
       return /*#__PURE__*/React__default.createElement("div", {
@@ -104,7 +106,7 @@ var FatfScreen = function FatfScreen(_ref) {
       style: {
         flex: "1"
       }
-    }, ___default.sortBy(restricted_countries).filter(function (item, index) {
+    }, _.sortBy(restricted_countries).filter(function (item, index) {
       return index < (idx + 1) * count && index >= idx * count;
     }).map(function (item, index) {
       return /*#__PURE__*/React__default.createElement("div", {
@@ -871,7 +873,7 @@ var RegisterScreen = function RegisterScreen(_ref2) {
     }
   }, []);
   React.useEffect(function () {
-    if (window.location && !___default.isEmpty(window.location.search)) {
+    if (window.location && !_.isEmpty(window.location.search)) {
       window.localStorage.removeItem('data_onboarding');
     }
   }, []);
@@ -5639,7 +5641,7 @@ function IncorporationCountry(_ref) {
     setLoading = _useState5[1];
   React.useEffect(function () {
     axios.get("https://core.test-lp.bbcincorp.com/api/onboarding/country/entity_suffix").then(function (res) {
-      var data = ___default.sortBy(res.data.data, function (item) {
+      var data = _.sortBy(res.data.data, function (item) {
         return item.name;
       }).filter(function (item) {
         return item.id !== 111;
@@ -5662,7 +5664,7 @@ function IncorporationCountry(_ref) {
   };
   var handleClick = function handleClick(id, name) {
     var _data$EntityTypes$, _customer$signature;
-    var data = ___default.filter(dataCountries, function (item) {
+    var data = _.filter(dataCountries, function (item) {
       return item.id == id;
     })[0];
     var isCompanyType = (data === null || data === void 0 ? void 0 : data.EntityTypes) && (data === null || data === void 0 ? void 0 : data.EntityTypes.length) > 1;
@@ -5710,7 +5712,7 @@ function IncorporationCountry(_ref) {
   var setSelectedOption = function setSelectedOption(e) {
     setOptionSelected(e);
     if (e.value && e.value !== 'all') {
-      setDataSlider(___default.filter(dataCountries, function (item) {
+      setDataSlider(_.filter(dataCountries, function (item) {
         return item.id == e.value;
       }));
     } else {
@@ -6542,16 +6544,1938 @@ function IncorporationCompanyType(_ref) {
   );
 }
 
-var index = {
-  Register: Register,
-  SelectService: SelectService,
-  IncorporationCountry: IncorporationCountry,
-  IncorporationCompanyType: IncorporationCompanyType
+var styles$7 = {"d_block":"_styles-module__d_block__37VJP","d_none":"_styles-module__d_none__e2m6o","form_header":"_styles-module__form_header__14RQs","top_wrapper":"_styles-module__top_wrapper__1cf-F","btn":"_styles-module__btn__3-FhX","title":"_styles-module__title__2A7Fl","title_page":"_styles-module__title_page__2lh4k","guideText":"_styles-module__guideText__WzeAY","description_wrapper":"_styles-module__description_wrapper__1fK2-","checkname_wrapper":"_styles-module__checkname_wrapper__uX092","fields":"_styles-module__fields__2W625","field_name":"_styles-module__field_name__1HTlU","company_name_input":"_styles-module__company_name_input__3SaA_","row_reverse":"_styles-module__row_reverse__1DOqB","entity_name":"_styles-module__entity_name__2yaHq","note_wrapper":"_styles-module__note_wrapper__3-mbi","note":"_styles-module__note__2V0Dw","input":"_styles-module__input__1COQd","search":"_styles-module__search__2fPee","nameHints":"_styles-module__nameHints__BWjaJ","nameHintsBadge":"_styles-module__nameHintsBadge__I_OHu","iconQuestionCircle":"_styles-module__iconQuestionCircle__1Z0DY","spinner_wrapper":"_styles-module__spinner_wrapper__3fos9","bottom_wrapper":"_styles-module__bottom_wrapper__2I_7D","back":"_styles-module__back__2zmPd","backMobile":"_styles-module__backMobile__1eN5O","Header":"_styles-module__Header__2oHKa","nextButton":"_styles-module__nextButton__2Lmoq","Body":"_styles-module__Body__r4L_A"};
+
+var name_restricted = [
+	{
+		id: 191,
+		restricted: [
+			"architect",
+			"Real Estate Agent",
+			"Real Estate Agency",
+			"spot commodity trading",
+			"rubber",
+			"Military",
+			"Defence",
+			"school",
+			"learning centre",
+			"education centre",
+			"training centre",
+			"Academy",
+			"College",
+			"Institute",
+			"Institution",
+			"University",
+			"National",
+			"Singapore",
+			"Association of Southeast Asian Nations",
+			"ASEAN",
+			"Law",
+			"Legal",
+			"Counsel",
+			"Chamber",
+			"Advocate",
+			"Solicitor",
+			"Law Corporation",
+			"LLC",
+			"Bank",
+			"banking",
+			"banque",
+			"banco",
+			"Bancaire",
+			"Banca",
+			"Banche",
+			"Finance Company",
+			"Finance",
+			"Futures Exchange",
+			"Clearing House",
+			"Securities Exchange",
+			"stock exchange",
+			"clearing corporation",
+			"clearing organisation",
+			"Professional Engineering",
+			"Professional Engineers",
+			"PE",
+			"Merlion",
+			"Accountancy",
+			"Accounting",
+			"Audit",
+			"hospital",
+			"medical clinic",
+			"medical centre",
+			"dental clinic",
+			"dental centre",
+			"surgery",
+			"medical laboratory",
+			"clinical laboratory",
+			"healthcare establishment",
+			"Co-op",
+			"Co-operative",
+			"temasek"
+		]
+	},
+	{
+		id: 98,
+		restricted: [
+			"Department",
+			"Government",
+			"Commission",
+			"Bureau",
+			"Federation",
+			"Council",
+			"Authority",
+			"Building Society",
+			"Chamber of Commerce",
+			"Cooperative",
+			"Kaifong",
+			"Mass Transit",
+			"Municipal",
+			"Savings",
+			"Tourist Association",
+			"Trust",
+			"Trustee",
+			"Underground Railway",
+			"Bank",
+			"Stock Exchange",
+			"Unified Exchange",
+			"certified public accountant (practising)",
+			"public accountant",
+			"CPA (practising)",
+			"PA"
+		]
+	},
+	{
+		id: 58,
+		restricted: [
+			"National",
+			"International",
+			"Republic",
+			"European Union",
+			"Europe",
+			"Euro",
+			"co-operative",
+			"municipal",
+			"privileged",
+			"recognised",
+			"bank",
+			"savings bank",
+			"credit institution",
+			"cooperative credit institution",
+			"university",
+			"polytechnic",
+			"school",
+			"academy",
+			"college",
+			"insurance company",
+			"reinsurance company",
+			"casino",
+			"radio",
+			"television",
+			"Payment Institution",
+			"Electronic Money Institution",
+			"e-money",
+			"Bureau de Change",
+			"Exchange",
+			"Fixed Capital Investment Company",
+			"F.C.I.C.",
+			"Variable Capital Investment Company",
+			"V.C.I.C.",
+			"Alternative Investment Fund",
+			"AIF",
+			"Alternative Investment Fund with Limited Number of Persons",
+			"AIF with Limited Number of Persons",
+			"AIFLNP",
+			"Registered Alternative Investment Fund",
+			"RAIF"
+		]
+	},
+	{
+		id: 236,
+		restricted: [
+			"Accredited",
+			"Adjudicator",
+			"Ajman",
+			"Al Ain",
+			"Annuity",
+			"Anonyme",
+			"Arab",
+			"Arbitrage",
+			"Association",
+			"Assurance",
+			"Assurer",
+			"Authorized Representative",
+			"Banc",
+			"Banco",
+			"Bancorp",
+			"Bank",
+			"Banker",
+			"Bankrupt",
+			"Bankruptcy",
+			"Banque",
+			"Betting",
+			"Bingo",
+			"Building Society",
+			"Bureau",
+			"Captive",
+			"Casualty",
+			"Chamber of Commerce",
+			"Change",
+			"Charity / Charitable",
+			"Chartered",
+			"Church",
+			"College",
+			"Commission",
+			"Companies Registry",
+			"Cooperative",
+			"Cooperative Society",
+			"Council",
+			"Credit",
+			"Currency",
+			"Decree",
+			"Dubai",
+			"e-bank",
+			"E-change",
+			"e-commerce",
+			"e-gaming",
+			"Emirate/s",
+			"e-savings",
+			"Exchange",
+			"Federation",
+			"Fidelity",
+			"Fiduciaire",
+			"Fiduciare",
+			"Fiduciary",
+			"Financing",
+			"Financing Business",
+			"Forex",
+			"Foundation",
+			"Fujairah",
+			"Fund",
+			"Funding",
+			"Gambling",
+			"Gaming",
+			"Government",
+			"Governor",
+			"Guarantee",
+			"Guaranteed",
+			"Gulf",
+			"Hedge",
+			"Hedge Fund",
+			"HMS",
+			"i-bank",
+			"IBC",
+			"ICC",
+			"i-financing",
+			"i-fund",
+			"i-gaming",
+			"i-insurance",
+			"i-investment",
+			"i-money services",
+			"Indemnity",
+			"Insolvency",
+			"Insolvent",
+			"Inspectorate",
+			"Insurance",
+			"Insurer",
+			"Int",
+			"Intl",
+			"i-trust",
+			"Khalifa",
+			"Law",
+			"Lease",
+			"Leasing",
+			"Life",
+			"Limited Partnership",
+			"Liquidation",
+			"Liquidator",
+			"LLC",
+			"LLP",
+			"Loan",
+			"Lottery",
+			"LP",
+			"Money",
+			"Money Services",
+			"Mutual",
+			"Mutual Fund",
+			"National",
+			"NTL",
+			"Official Liquidator",
+			"Official Receiver",
+			"Official Trustee",
+			"Partnership",
+			"Pharmacy",
+			"Protected Cell",
+			"Provident",
+			"Qasimi",
+			"RAK",
+			"RAK ICC",
+			"Ras Al Khaimah",
+			"Reassurance",
+			"Reassurer",
+			"Receiver",
+			"Receivership",
+			"Registrar",
+			"Registry",
+			"Regulator",
+			"Reinsurance",
+			"Re-insurance",
+			"Reinsurer",
+			"Risk",
+			"Saving",
+			"Savings and Loans",
+			"School",
+			"Sharjah",
+			"Sheik",
+			"Sovereign",
+			"Surety",
+			"Transmission",
+			"Tribunal",
+			"Trust",
+			"Trust Company",
+			"Trust Corporation",
+			"Trustee",
+			"Trustee Company",
+			"UAE",
+			"Um Al Quwain",
+			"Underwrite",
+			"Underwriter",
+			"Underwriting",
+			"United",
+			"United Arab Emirates",
+			"University",
+			"Zayed"
+		]
+	},
+	{
+		id: 8,
+		restricted: [
+			"Assurance",
+			"Assurance Broker",
+			"Assurer",
+			"Authority",
+			"Banc",
+			"Banca",
+			"Bancaria",
+			"Bancaire",
+			"Bancario",
+			"Banco",
+			"Bancomer",
+			"Bancorp",
+			"Bancos",
+			"Bangko",
+			"Bank",
+			"Banka",
+			"Bankas",
+			"Bankasi",
+			"Banke",
+			"Banken",
+			"Banker",
+			"Bankhaus",
+			"Banki",
+			"Bankiers",
+			"Banking",
+			"Bankin'ny",
+			"Bankirsky",
+			"Bankos",
+			"Bankverein",
+			"Banky",
+			"Banque",
+			"Banquier",
+			"Banquiers",
+			"Betting",
+			"British",
+			"Building Society",
+			"Chamber of Commerce",
+			"Charity",
+			"Charitable",
+			"Co-operative",
+			"Co-op",
+			"Credit",
+			"Creditbank",
+			"Credit Union",
+			"Creditanstalt",
+			"Credito",
+			"Discontobank",
+			"European",
+			"Friendly Society",
+			"Fiduciary",
+			"Foundation",
+			"Fund",
+			"Gaming",
+			"Gennossenschaftsbank",
+			"Girobank",
+			"Girozentrale",
+			"Government",
+			"Great Britain",
+			"Handelsbank",
+			"Hypothekenbank",
+			"Indemnity",
+			"Insurance",
+			"Insurance Broker",
+			"Insurer",
+			"Iraq",
+			"Iraqi",
+			"Kantonalbank",
+			"King",
+			"Kontrolbank",
+			"Kretit",
+			"Kredietbank",
+			"Landesbank",
+			"Libya",
+			"Libyan",
+			"Lottery",
+			"Lotto",
+			"Majesty",
+			"Mutual",
+			"Nationalbank",
+			"Pankki",
+			"Patent",
+			"Patent Office",
+			"Police",
+			"Post Office",
+			"Prince",
+			"Princess",
+			"Privatbank",
+			"Queen",
+			"Raiffeisenbank",
+			"Re-assurance",
+			"Re-assurance Broker",
+			"Re-assurer",
+			"Red Cross",
+			"Re-insurance",
+			"Re-insurance Broker",
+			"Re-insurer",
+			"Royal",
+			"Royale",
+			"Royalty",
+			"Sparbank",
+			"Stock Exchange",
+			"Trade Union",
+			"Trust",
+			"Underwriter",
+			"Vereinsbank",
+			"Volksbank",
+			"Windsor"
+		]
+	},
+	{
+		id: 17,
+		restricted: [
+			"Assurance",
+			"Bank",
+			"Building Society",
+			"Chamber of Commerce",
+			"Chartered",
+			"Cooperative",
+			"Imperial",
+			"Insurance",
+			"Municipal",
+			"Royal",
+			"Trust"
+		]
+	},
+	{
+		id: 23,
+		restricted: [
+			"Building",
+			"Society",
+			"Chamber of Commerce",
+			"Chartered",
+			"Cooperative",
+			"Imperial",
+			"Monarchy",
+			"Municipal",
+			"Royal",
+			"Academy",
+			"AssetManagement",
+			"Assurance",
+			"Bank",
+			"Brokerage",
+			"CreditUnion",
+			"Education",
+			"Fiduciary",
+			"Financial",
+			"Foreign Exchange",
+			"Forex",
+			"Fund",
+			"InvestmentManagement",
+			"Insurance",
+			"Lending",
+			"Securities",
+			"Trust",
+			"University",
+			".com",
+			".org",
+			".net",
+			".bz"
+		]
+	},
+	{
+		id: 32,
+		restricted: [
+			"Adjuster",
+			"Ahorra",
+			"Annuity",
+			"Anonima",
+			"Anonyme",
+			"Arbitrage",
+			"Asset Management",
+			"Association",
+			"Assurance",
+			"Assurer",
+			"Authorised Representative",
+			"Banc",
+			"Banco",
+			"Bancorp",
+			"Bank",
+			"Banker",
+			"Bankrupt",
+			"Bankruptcy",
+			"Banque",
+			"Belegginsfonds",
+			"(Belegginsfonds)",
+			"Betting",
+			"Bingo",
+			"British",
+			"Broker",
+			"Brokerage",
+			"Building Society",
+			"Bureau",
+			"Caja",
+			"Capital Markets",
+			"Captive",
+			"Casualty",
+			"Chamber of Commerce",
+			"Change",
+			"Chartered",
+			"Church",
+			"College",
+			"Companies Registry",
+			"Company Registry",
+			"Cooperative",
+			"Cooperative Society",
+			"Credit",
+			"Critical Illness",
+			"Crown",
+			"Currency",
+			"Deposit",
+			"E-change",
+			"Exchange",
+			"e-bank",
+			"e-commerce",
+			"e-Financing",
+			"e-Fund",
+			"e-gaming",
+			"e-Insurance",
+			"e-Investment",
+			"e-money",
+			"e-Money Services",
+			"e-savings",
+			"e-Trust",
+			"Extended Coverage",
+			"Extended Warranty",
+			"Fidelity",
+			"Fiduciaire",
+			"Fiduciare",
+			"Fiduciary",
+			"Financing",
+			"Financing Business",
+			"Fondo",
+			"Fondos Mutude",
+			"Fondos Mutuds",
+			"Fondos Mutuos",
+			"Foreign Exchange",
+			"Foreign Insurer",
+			"Forex",
+			"Foundation",
+			"Fund",
+			"Funding",
+			"FX",
+			"Gambling",
+			"Gaming",
+			"Geldmittl",
+			"Government",
+			"Governor",
+			"Guarantee",
+			"Guaranteed",
+			"Hedge",
+			"Hedge Fund",
+			"HMS",
+			"IBC",
+			"Imperial",
+			"Indemnity",
+			"Insolvency",
+			"Insolvent",
+			"Insurance",
+			"Insured",
+			"Insurer",
+			"Insurance Agent",
+			"Insurance Broker",
+			"Insurance Brokerage",
+			"Insurance Consultant",
+			"Insurance Manager",
+			"Intermediary",
+			"Island",
+			"i-bank",
+			"i-financing",
+			"i-Forex",
+			"i-fund",
+			"i-gaming",
+			"i-insurance",
+			"i-investment",
+			"i-Money",
+			"i-Money Services",
+			"i-Securities",
+			"i-Trust",
+			"Law",
+			"Lease",
+			"Leasing",
+			"Liability",
+			"Life",
+			"Life and Health",
+			"Limited Partnership",
+			"Liquidation",
+			"Liquidator",
+			"Litigation Insurance",
+			"LLC",
+			"LLP",
+			"Lloyds",
+			"Loan",
+			"Loss Adjuster",
+			"Lottery",
+			"LP",
+			"Majesty",
+			"Malpractice",
+			"Money",
+			"Money Services",
+			"Mutual",
+			"Mutual Fund",
+			"Official Liquidator",
+			"Official Receiver",
+			"Official Trustee",
+			"Partnership",
+			"Permanent Health",
+			"Pharmacy",
+			"Portfolio",
+			"Property and Casualty",
+			"Protected Cells",
+			"Provident",
+			"Prudential",
+			"Reassured",
+			"Reassurer",
+			"Receiver",
+			"Receivership",
+			"Registry",
+			"Registered Agent",
+			"Reinsurance",
+			"Reinsured",
+			"Reinsurer",
+			"Re-assured",
+			"Re-Assurer",
+			"Re-insurance",
+			"Risk",
+			"Royal",
+			"Saving",
+			"Savings and Loans",
+			"School",
+			"Securities",
+			"Sovereign",
+			"Surety",
+			"Suretyship",
+			"Third Party Administrator",
+			"Transmission",
+			"Trust",
+			"Trust Company",
+			"Trust Corporation",
+			"Trustee",
+			"Trustee Company",
+			"Underwrite",
+			"Underwriter",
+			"Underwriting",
+			"University"
+		]
+	},
+	{
+		id: 41,
+		restricted: [
+			"Chamber of Commerce",
+			"building society",
+			"Limited Duration Company",
+			"LDC",
+			"Special Economic Zone Company",
+			"SEZC",
+			"royal",
+			"imperial",
+			"empire",
+			"municipal",
+			"chartered",
+			"co-operative",
+			"assurance",
+			"bank",
+			"insurance",
+			"gaming",
+			"lottery"
+		]
+	},
+	{
+		id: 139,
+		restricted: [
+			"Authority",
+			"Corporation",
+			"Government",
+			"Mauritius",
+			"National",
+			"President",
+			"Presidential",
+			"Regional",
+			"Republic",
+			"State",
+			"Municipal",
+			"Chartered",
+			"co-operative",
+			"Chamber of Commerce"
+		]
+	},
+	{
+		id: 189,
+		restricted: [
+			"Bank",
+			"Building Society",
+			"Chartered",
+			"Cooperative",
+			"Credit Union",
+			"Government",
+			"Licensing",
+			"Municipal",
+			"Parliament",
+			"Police",
+			"Royal",
+			"Tribunal",
+			"Stock Exchange",
+			"Airline",
+			"Assurance",
+			"Bitcoin",
+			"Bureau de Change",
+			"Casino",
+			"Charity",
+			"College",
+			"Council",
+			"Foundation",
+			"Fund",
+			"Gambling",
+			"Gaming",
+			"Hospital",
+			"Insurance",
+			"Insurer",
+			"Lottery",
+			"Military",
+			"Mutual Fund",
+			"Pharmacy",
+			"Polytechnic",
+			"Reinsurance",
+			"School",
+			"Securities",
+			"Seychelles",
+			"Sovereign",
+			"State",
+			"Trust",
+			"Trustee",
+			"Union",
+			"University"
+		]
+	},
+	{
+		id: 205,
+		restricted: [
+			"Annuity",
+			"Assurance",
+			"Assurer",
+			"Bronze",
+			"Captive",
+			"Casualty",
+			"Charitable",
+			"Charity",
+			"Charter",
+			"FDN",
+			"Fiduciary",
+			"Finance",
+			"Financial",
+			"Foundation",
+			"Fund",
+			"Funding",
+			"Gold",
+			"Guarantee",
+			"Guaranteed",
+			"Hedge",
+			"Hedge Fund",
+			"Indemnity",
+			"Insurance",
+			"Insurer",
+			"Life",
+			"Mutual",
+			"Mutual Fund",
+			"Nevis",
+			"Prudential",
+			"Queen",
+			"Reassurance",
+			"Reassurer",
+			"Reinsurance",
+			"Reinsurer",
+			"Risk",
+			"Risk Management",
+			"Royal",
+			"Silver",
+			"Surety",
+			"Trade",
+			"Trust Company",
+			"Trust Corporation",
+			"Trustee",
+			"Trustee Company",
+			"Underwrite",
+			"Underwriter",
+			"Underwriting",
+			"‘Precious Metals and Stones’",
+			"Association",
+			"Authority",
+			"Banc",
+			"Banco",
+			"Bancorp",
+			"Bancshare",
+			"Bank",
+			"Banker",
+			"Banque",
+			"Betting",
+			"Broker",
+			"Brokerage",
+			"Building Society",
+			"Bureau",
+			"Casino",
+			"Cash",
+			"Change",
+			"Church",
+			"College",
+			"Cooperative",
+			"Cooperative Society",
+			"Council",
+			"Credit",
+			"Credit Union",
+			"Crown",
+			"Companies Registry",
+			"Company Registry",
+			"Commission",
+			"Currency",
+			"Deposit",
+			"Depository",
+			"E - Commerce",
+			"Exchange",
+			"Equities",
+			"Federation",
+			"Foreign Exchange",
+			"Forex",
+			"FX",
+			"Gambling",
+			"Gaming",
+			"God",
+			"Government",
+			"Governor",
+			"HMS",
+			"Institution",
+			"Lending",
+			"Loan",
+			"Lotto",
+			"Lottery",
+			"Majesty",
+			"Ministry",
+			"Monetary",
+			"Money",
+			"Moneymaker",
+			"Money Services",
+			"Mortgage",
+			"Municipal",
+			"National",
+			"Offshore",
+			"Onshore",
+			"Parliament",
+			"Partnership",
+			"Payment",
+			"Police",
+			"Register",
+			"Registered",
+			"Registrar",
+			"Regulator",
+			"Regulatory",
+			"Savings",
+			"Scheme",
+			"School",
+			"Secured",
+			"Securities",
+			"Sovereign",
+			"St.Christopher",
+			"St.Christopher and Nevis",
+			"St.Kitts",
+			"St.Kitts and Nevis",
+			"Treasurer",
+			"Treasury",
+			"University"
+		]
+	},
+	{
+		id: 237,
+		restricted: [
+			"Accounts Commission",
+			"Accounts Commission For Scotland",
+			"Accredit",
+			"Accreditation",
+			"Accredited",
+			"Accrediting",
+			"Adjudicator",
+			"Alba",
+			"Albannach",
+			"Archwilydd Cyffredinol Cymru",
+			"Association",
+			"Assurance",
+			"Assurer",
+			"Audit Commission",
+			"Audit Office",
+			"Audit Scotland",
+			"Audit Wales",
+			"Auditor General",
+			"Auditor General For Northern Ireland",
+			"Auditor General For Scotland",
+			"Auditor General For Wales",
+			"Bana-Phrionnsa",
+			"Bana-Prionnsaichean",
+			"Banc",
+			"Bank",
+			"Banking",
+			"Banrigrean",
+			"Benevolent",
+			"Bhanrigh",
+			"Bhanrighrean",
+			"Bhreatainn",
+			"Bhreatanaich",
+			"Breatainn",
+			"Breatannach",
+			"Breatannaich",
+			"Brenhines",
+			"Brenhiniaeth",
+			"Brenhinol",
+			"Brenin",
+			"Brifysgol",
+			"Britain",
+			"British",
+			"Brydain",
+			"Brydeinig",
+			"Charitable",
+			"Charitable Trust",
+			"Charity",
+			"Charter",
+			"Chartered",
+			"Chartered Accountant",
+			"Chartered Certified Accountant",
+			"Chartered Management Accountant",
+			"Chartered Secretary",
+			"Chartered Surveyor",
+			"Child Maintenance",
+			"Child Support",
+			"Choimisean",
+			"Choimisein",
+			"Chomhairle",
+			"Chomhairlean",
+			"Chomisiwn",
+			"Chymraeg",
+			"Chymreig ",
+			"Chymru",
+			"Chyngor",
+			"Coimisean",
+			"Coimisein",
+			"Comhairle",
+			"Comhairlean",
+			"Comisiwn",
+			"Comisiwn Cynulliad Cenedlaethol Cymru",
+			"Comisiwn Y Senedd",
+			"Commission",
+			"Community Benefit Society",
+			"Comptroller And Auditor General",
+			"Comptroller And Auditor General For Northern Ireland",
+			"Co-Operative",
+			"Council",
+			"Cymraeg",
+			"Cymreig",
+			"Cymru",
+			"Cyngor",
+			"Cynulliad Cenedlaethol Cymru",
+			"Ddug",
+			"Dduges",
+			"Dental",
+			"Dental Surgeon",
+			"Dentist",
+			"Dentistry",
+			"Deyrnas Gyfunol",
+			"Deyrnas Unedig",
+			"Duchess",
+			"Dug",
+			"Duges",
+			"Duke",
+			"Dywysog",
+			"Dywysoges",
+			"Ei Fawrhydi",
+			"Ei Mawrhydi",
+			"England",
+			"English",
+			"Family Trust",
+			"Federation",
+			"Financial Conduct Authority",
+			"Financial Reporting Council",
+			"Financial Reporting Review Panel",
+			"Foundation",
+			"Frenhines",
+			"Frenhiniaeth",
+			"Frenhinol",
+			"Frenin",
+			"Friendly Society",
+			"Fund",
+			"Gomisiwn",
+			"Gwasanaeth Iechyd",
+			"Gymraeg",
+			"Gymreig",
+			"Gymru",
+			"Gyngor",
+			"Health And Safety Executive",
+			"Health And Social Care Board",
+			"Health Centre",
+			"Health Service",
+			"Health Visitor",
+			"Her Majesty",
+			"His Majesty",
+			"H-Oilthighean",
+			"House Of Commons",
+			"House Of Lords",
+			"Hpss",
+			"Hsc",
+			"Inspectorate",
+			"Institute",
+			"Institution",
+			"Insurance",
+			"Insurer",
+			"Investment Trust",
+			"Judicial Appointment",
+			"King",
+			"Law Commission",
+			"Llywodraeth",
+			"Lywodraeth",
+			"Medical Centre",
+			"Midwife",
+			"Midwifery",
+			"Mutual",
+			"National Assembly For Wales",
+			"National Assembly For Wales Commission",
+			"National Audit Office",
+			"Nghymru",
+			"Nhs",
+			"Northern Ireland",
+			"Northern Ireland Assembly",
+			"Northern Ireland Assembly Commission",
+			"Northern Ireland Audit Office",
+			"Northern Ireland Executive",
+			"Northern Irish",
+			"Nurse",
+			"Nursing",
+			"O Prydain",
+			"O Prydain Maw",
+			"Of Britain",
+			"Of England",
+			"Of Great Britain",
+			"Of Northern Ireland",
+			"Of Wales",
+			"Oilthigh",
+			"Oilthighean",
+			"Ombudsman",
+			"Ombwdsmon",
+			"Parlamaid",
+			"Parlamaidean",
+			"Parliament",
+			"Parliamentarian",
+			"Parliamentary",
+			"Patent",
+			"Patentee",
+			"Pharlamaid",
+			"Phrifysgol",
+			"Phrionnsa",
+			"Phrionnsaichean",
+			"Phrydain",
+			"Phrydeinig",
+			"Police",
+			"Polytechnic",
+			"Post Office",
+			"Prifysgol",
+			"Prince",
+			"Princess",
+			"Prionnsa",
+			"Prionnsaichean",
+			"Prudential Regulation Authority",
+			"Prydain",
+			"Prydeinig",
+			"Queen",
+			"Reassurance",
+			"Reassurer",
+			"Regional Health And Social Care Board",
+			"Registered Society",
+			"Registrar",
+			"Regulator",
+			"Reinsurance",
+			"Reinsurer",
+			"Riaghaltais",
+			"Riaghaltas",
+			"Riaghaltasan",
+			"Royal",
+			"Royalty",
+			"School Trust",
+			"Scotland",
+			"Scottish",
+			"Senedd",
+			"Senedd Cymru",
+			"Sheffield",
+			"Siambr Fasnach",
+			"Siamrau Masnach",
+			"Social Service",
+			"Society",
+			"Special School",
+			"Standards",
+			"Stock Exchange",
+			"Swyddfa Archwilio Cymru",
+			"Teyrnas Gyfunol",
+			"Teyrnas Unedig",
+			"The Governor And Company Of The Bank Of England",
+			"Theyrnas Gyfunol",
+			"Theyrnas Unedig",
+			"Thywysog",
+			"Thywysoges",
+			"T-Oilthigh",
+			"Trade Union",
+			"Tribunal",
+			"Trust",
+			"Tywysog",
+			"Tywysoges",
+			"Underwrite",
+			"Underwriting",
+			"Unit Trust",
+			"University",
+			"Wales",
+			"Wales Audit Office",
+			"Wasanaeth Iechyd",
+			"Welsh",
+			"Welsh Assembly Government",
+			"Welsh Government",
+			"Welsh Parliament",
+			"Accounting Council",
+			"Actuarial Council",
+			"Advocate General",
+			"Agency",
+			"Assembly",
+			"Audit And Assurance Council",
+			"Authority",
+			"Border Agency",
+			"Border Force",
+			"Cabinet Office",
+			"Cadw",
+			"Care Inspectorate Wales",
+			"Comeptition And Markets Authority",
+			"Corporate Reporting Council",
+			"Court",
+			"Crime Squad",
+			"Criminal Injuries Compensation Authority",
+			"Criminal Intelligence Service",
+			"Crown Estate",
+			"Cssiw",
+			"Employment Medical Advisory Service",
+			"Financial Reporting Review Panel",
+			"Further Education",
+			"Health And Social Care",
+			"Higher Education",
+			"Home Office",
+			"Iechyd Cyhoeddus Cymru",
+			"Industrial And Provident Society",
+			"Intellectual Property Office",
+			"Lord Advocate",
+			"National Crime Agency",
+			"National Health Service",
+			"Notarial",
+			"Notary",
+			"Notary Public",
+			"Office Of The Public Guardian",
+			"Ordnance Survey",
+			"Public Health England",
+			"Public Health Northern Ireland",
+			"Public Health Ni",
+			"Public Health Scotland",
+			"Public Health Wales",
+			"Revenue And Customs",
+			"Scrivener",
+			"Scrivener Notary",
+			"Select Committee",
+			"Serious Organised Crime",
+			"Social Security And Child Support",
+			"Uk Government",
+			"Ukipo",
+			"Welsh Government",
+			"Welsh Assembly Government",
+			"Anzac",
+			"Apothecary",
+			"Architect",
+			"Arts Therapist",
+			"Arts Psychotherapist",
+			"Bachelor Of Medicine",
+			"Biomedical Scientist",
+			"Building Society",
+			"Chemist",
+			"Chiropodist",
+			"Chiropractic",
+			"Chiropractic Physician",
+			"Chiropractic Practitioner",
+			"Chiropractioner",
+			"Chiropractor",
+			"Chiropractor",
+			"Citius Altius Fortius",
+			"Clinical Psychologist",
+			"Clinical Scientist",
+			"Commonhold Association",
+			"Community Benefit Society",
+			"Counselling Psychologist",
+			"Credit Union",
+			"Dental Practitioner",
+			"Dental Surgeon",
+			"Dentist",
+			"Diagnostic Radiographer",
+			"Dietician",
+			"Dietitian",
+			"Dispensing Chemist",
+			"Dispensing Druggist",
+			"Dispensing Optician",
+			"Doctor Of Medicine",
+			"Drama Therapist",
+			"Druggist",
+			"Educational Psychologist",
+			"Enrolled Optician",
+			"Faster",
+			"Higher",
+			"Stronger",
+			"Forensic Psychologist",
+			"General Practitioner",
+			"Geneva Cross",
+			"Health Psychologist",
+			"Hearing Aid Dispenser",
+			"Industrial And Provident Society",
+			"Language Therapist",
+			"Licentiate In Medicine And Surgery",
+			"Music Therapist",
+			"Occupational Psychologist",
+			"Occupational Therapist",
+			"Olympiad",
+			"Olympian",
+			"Olympic",
+			"Operating Department Practitioner",
+			"Opthalmic Optician",
+			"Opthalmologist",
+			"Optician",
+			"Optometrist",
+			"Orthoptist",
+			"Orthotist",
+			"Paralympiad",
+			"Paralympian",
+			"Paralympic",
+			"Paramedic",
+			"Pharmaceutical Chemist",
+			"Pharmaceutical Druggist",
+			"Pharmaceutist",
+			"Pharmacist",
+			"Pharmacy",
+			"Physical Therapist",
+			"Physician",
+			"Physiotherapist",
+			"Podiatrist",
+			"Practitioner Psychologist",
+			"Prosthetist",
+			"Radiographer",
+			"Red Crescent ",
+			"Red Cross",
+			"Red Lion And Sun",
+			"Registered Optician",
+			"Registered Psychologist",
+			"Registered Society",
+			"Social Worker",
+			"Solicitor",
+			"Speech And Language Therapist",
+			"Speech Therapist",
+			"Spirit In Motion",
+			"Sport And Exercise Psychologist",
+			"Surgeon ",
+			"Therapeutic Radiographer",
+			"Vet ",
+			"Veterinary",
+			"Veterinary Practitioner",
+			"Veterinary Surgeon"
+		]
+	},
+	{
+		id: 250,
+		restricted: [
+			"Bank",
+			"Trust",
+			"University",
+			"College"
+		]
+	}
+];
+var dataJson = {
+	name_restricted: name_restricted
 };
+
+var _excluded$1 = ["ref", "onChange"];
+var startupNameGenerator = require('@rstacruz/startup-name-generator');
+var nameHint = [{
+  id: 8,
+  EntityTypes: [{
+    id: '5',
+    title: 'Anguilla',
+    content: "<div class='scroll-content__sidebar'><p class='consist'>NAMING RESTRICTIONS:</p><p>A company name shall not:</p><p>Be the same as, or similar to, the name or business name of any other person or of any association, partnership or firm, if the use of that name would be likely to confuse or mislead unless the person, association, partnership or firm consents in writing to the use of that name in whole or in part.</p><p>Be identical to the name of a body corporate incorporated under the laws of Anguilla before 1st January, 1995</p><p>Suggest or imply:</p><ul class='list-disc pl-3'><li>The patronage of Her Majesty or any member of the Royal Family or connection with Her Majesty’s Government or any department thereof in the United Kingdom or elsewhere;</li><li>A connection with a political party or a leader of a political party;</li><li>A connection with a university or a professional association recognized by the laws of Anguilla unless the university or professional association concerned consents in writing to the use of the proposed name;</li></ul><p>Use of names of dissolved companies in following cases:</p><p class='consist'>NAMING RESTRICTIONS:</p><p>The company has been struck off the Register for a continuous period of more than 3 years; and</p><p>No application for the company to be restored to the Register has been filed and remains undetermined by the Registrar; and</p><p>No appeal against a refusal of the Registrar to restore the company to the Register pending.</p></div>"
+  }]
+}, {
+  id: 17,
+  EntityTypes: [{
+    id: '5',
+    title: 'Bahamas',
+    content: "<div class='scroll-content__sidebar'><p class='consist'>NAMING RESTRICTIONS:</p><p>A company name shall not:</p><ul class='list-disc pl-3'><li>Be identical to existing companies incorporated under Bahamas IBC Act or the Companies act, or nearly resembles the name of another company as to be calculated to deceive, except where the company in existence gives its consent;</li><li>Contain, without express prior permission of the Registrar which permission may be withheld without assigning a reason, prohibited words by the regulations, or</li><li>Contain any other word that, in the opinion of the Registrar, suggests or is calculated to suggest the patronage of or any connection with Her Majesty or any member of the Royal Family or the Government of The Bahamas, a department thereof, a statutory corporation or board or a local or municipal authority;</li><li>Be indecent, offensive or, in the opinion of the Registrar is otherwise objectionable.</li></ul></div>"
+  }]
+}, {
+  id: 32,
+  EntityTypes: [{
+    id: '2',
+    title: 'BVI',
+    content: "<div class='scroll-content__sidebar'><p class='consist'>NAMING RESTRICTIONS:</p><p>No company shall be registered under the name:</p><ul class='list-disc pl-3'><li>That the use of which would contravene the Regulations;</li><li>That is identical or so similar to the name of an existing company that the use of the name would, in the opinion of the Registrar, be likely to confuse or mislead;</li><li>That is identical or so similar to a name that has been reserved that the use of both names by different companies would, in the opinion of the Registrar, be likely to confuse or mislead;</li><li>That contains a restricted word or phrase, unless the Commission has given its prior written consent to the use of the word or phrase; or</li><li>That, in the opinion of the Registrar, is offensive or, for any other reason, objectionable.</li></ul><p>The name of a company may comprise the expression “BVI Company Number” followed by its company number in figures and the required ending that is appropriate for the company.</p><p class='consist'>Language of a company name:</p><p>A company may be registered with an additional foreign character name approved by the Registrar.</p><p class='consist'>Reuse of names previously used by companies that:</p><p> Have changed their name; or</p><p> Have been struck off the Register, but not dissolved; or</p><p> Have been  dissolved ; or</p><p> Have been registered but, in respect of which, the Registrar has issued a certificate of discontinuance.</p></div>"
+  }]
+}, {
+  id: 23,
+  EntityTypes: [{
+    id: '5',
+    title: 'Belize',
+    content: "<div class='scroll-content__sidebar'><p class='consist'>NAMING RESTRICTIONS:</p><p>A company name shall not:</p><ul class='list-disc pl-3'><li>Be identical with that under which a company in existence is already incorporated or so nearly resembles the name as to be calculated to deceive;</li><li>Contain the words “Building Society”, “Chamber of  Commerce”,  “Chartered”,  “Cooperative”,  “Imperial”,  “Monarchy”, “Municipal”,  “Royal”,  or  a  word  conveying a similar meaning, or any other word that, in the opinion of the Registrar, suggests or is calculated to suggest the patronage of Her Majesty or that of a member of the Royal Family; or a  connection  with  the  Government  of  Belize or a department thereof;</li><li>Be indecent, offensive or, in the opinion of the Registrar, objectionable;</li><li>Contain any one or more of the words  “Academy”, “Asset Management”, “Assurance”, “Bank”, “Brokerage”, “Credit Union”, “Education”, “Fiduciary”, “Financial”, “Foreign Exchange”, “Forex”, “Fund”, “Investment Management”, “Insurance”, “Lending”, “Securities”, “Trust”, or  “University”  or any of their derivatives or cognate expressions, unless  it is licensed under the enactment or enactments that authorize it to carry on the business or activities associated with the word or words, so contained;</li><li>Contain the top level domain such as “.com”, “.org”, “.net” or “.bz”of a domain name.</li></ul><p class='consist'>Language of a company name:</p><p>The name of a company shall be registered in Roman script, but a company may elect to register as an alternative name an accurate translation of the name registered in Roman script, and which name may be expressed in any script.</p></div>"
+  }]
+}, {
+  id: 41,
+  EntityTypes: [{
+    id: '4',
+    title: 'Cayman Islands',
+    content: "<div class='scroll-content__sidebar'><p class='consist'>NAMING RESTRICTIONS:</p><p>No company shall be registered by a name which</p><ul class='list-disc pl-3'><li>Is identical with a name by which a company in existence is already registered or any translated name entered on the register of companies, or so nearly resembles such name or translated name so as to be calculated to deceive, except where the company in existence is in the course of being dissolved and signified its consent in such manner as the Registrar requires;</li><li>Contains the words “Chamber of Commerce” unless the company is a company which is to be registered under a licence granted by the Governor without the addition of the word “Limited” or the abbreviation “Ltd.” to its name;</li><li>Contains the words “building society”;</li><li>Includes at its end “Limited Duration Company” or “LDC” unless it was an exempted limited duration company.</li><li>Includes the words “Special Economic Zone Company” or the letters “SEZC” unless it was a special economic zone company.</li></ul><p>Except with the consent of the Registrar, no company shall be registered by a name which</p><ul class='list-disc pl-3'><li>Contains the words “royal”, “imperial” or “empire” or in the opinion of the Registrar suggests, or is calculated to suggest the patronage of Her Majesty or of any member of the Royal Family or connection with Her Majesty’s Government or any department thereof in the United Kingdom or elsewhere;</li><li>Contains the words “municipal” or “chartered” or any words which in the opinion of the Registrar suggest, or are calculated to suggest, connection with any public board or other local authority or with any society or body incorporated by Royal Charter;</li><li>Contains the words “co-operative”, “assurance”, “bank”, “insurance”, or any similar word which in the opinion of the Registrar connotes any of such activities or any derivative of any of such four words or of such similar words, whether in English or in any other language, or in the opinion of the Registrar suggests or is calculated to suggest any of such activities; or</li><li>Contains the word “gaming” or “lottery” or any similar word which in the opinion of the Registrar connotes any such activity or any derivative of such words or of such similar word, whether in English or in any other language, or in the opinion of the Registrar suggests or is calculated to suggest any such activity.</li></ul></div>"
+  }]
+}, {
+  id: 139,
+  EntityTypes: [{
+    id: '1',
+    title: 'Mauritius',
+    content: "<div class='scroll-content__sidebar'><p class='consist'>NAMING RESTRICTIONS:</p><p>No company shall be registered under a name which is identical with that of an existing company, or statutory corporation, except where the existing company or statutory corporation is in the course of being dissolved and signifies its consent in such manner as the Registrar requires.</p> <p>Except with  the Registrar’s written consent, no  company shall be registered under a name which includes:</p><ul class='list-disc pl-3'><li>The word “Authority”, “Corporation”, “Government”, “Mauritius”,“National”,“President”,“Presidential”,“Regional”, ''Republic'',“State”, or any other word which in the Registrar’s opinion suggests, or is likely to suggest, that it enjoys the patronage of the Government or of a statutory  corporation, or of the Government of any other State;</li> <li>The word “Municipal” or “Chartered” or any other word which inthe Registrar’s opinion suggests, or is likely to suggest, connection with a local authority in Mauritius or elsewhere;</li> <li>The word “co-operative”;</li> <li>The words “Chamber of Commerce”.</li></ul> <p>Except with the consent of the Court no company shall be registered by a name, which in the opinion of the Registrar is undesirable or misleading.</p></div>"
+  }]
+}, {
+  id: 183,
+  EntityTypes: [{
+    id: '6',
+    title: 'Samoa',
+    content: "<div class='scroll-content__sidebar'><p class='consist'>NAMING RESTRICTIONS:</p><p>Except with the consent of the Authority, an international company shall not be registered by a name that, in the opinion of the Registrar, is undesirable or is a name, or includes a name, of a kind that the Registrar is not otherwise willing to accept for registration.</p></div>"
+  }]
+}, {
+  id: 205,
+  EntityTypes: [{
+    id: '5',
+    title: 'Saint Kitts (BC)',
+    content: "<div class='scroll-content__sidebar'><p class='consist'>NAMING RESTRICTIONS:</p> <p>The name of a corporation:</p><ul class='list-disc pl-3'><li>Shall not be the same as the name of a corporation of any type or kind, as such name appears on the register of corporations or on the reserved namelist of corporations maintained by the Registrar of Corporations or a name so similar to any such name as to tend to confuse or deceive.</li><li>Shall not be the same as the name of a corporation of any type or kind, as such name appears on the register of corporations or on the reserved namelist of corporations maintained by the Registrar of Corporations or a name so similar to any such name as to tend to confuse or deceive.</li></ul> <p class='consist'>Language of a company name:</p><p>The name of the corporation on the Articles of Incorporation may be written in characters using the Latin alphabet or any other alphabet.</p><p>If the name of the corporation is not written in the Latin alphabet, then the name on the Articles of Incorporation must also include an authenticated translation.</p></div>"
+  }, {
+    id: '11',
+    title: 'Saint Kitts (LLC)',
+    content: "<div class='scroll-content__sidebar'><p class='consist'>NAMING RESTRICTIONS:</p><p>The name of a limited liability company shall not be the same as the name of a limited liability company or of any other company of any type or kind, as such name appears on the register of companies or on the reserved name list of companies maintained by the Registrar of Companies or a name so similar to any such name as to tend to confuse or deceive.</p><p class='consist'>Language of a company name:</p><p>The name of the limited liability company on the articles of organisation may bewritten in characters using the Latin alphabet or any other alphabet.</p><p>If the name of the limited liability company is not written in the Latin alphabet, thename on the articles of organisation must also include an authenticated translatio</p></div>"
+  }]
+}, {
+  id: 189,
+  EntityTypes: [{
+    id: '5',
+    title: 'Seychelles',
+    content: "<div class='scroll-content__sidebar'><p class='consist'>Restrictions on company names</p><p>A company name shall not:</p><ul class='list-disc pl-3'><li>be identical or so similar to the name under which another company is registered that the use of the name would, in the opinion of the Registrar, be likely to confuse or mislead;</li><li>include a prohibited or restricted word, phrase or abbreviation , unless the prior written consent to the use of the word, phrase or abbreviation has been given by the Registrar and any other regulatory body whose consent  thereto is required under Seychelles law; or</li><li>in the opinion of the Registrar<ul><li>suggest or is calculated to suggest the patronage or any connection with the Government of Seychelles or the government of any other country; or</li><li>is in any way offensive, misleading, objectionable or contrary to public policy or to the public interest.</li></ul></li></ul><p>Language of company name:</p><p>A company name may be expressed in any language.</p><p>Where the name is not in the English or French language a translation of the name in the English or French language shall be given to the Registrar certified as true and accurate by an acceptable translator.</p><p>Where the name of a company is in the English or French language, it may have an additional foreign character name.</p><p class='consist'>Reuse of a company name in following cases:</p><p>A company that has</p><ul class='list-disc pl-3'><li>changed its name; or</li><li>been  dissolved; or</li></ul><p>A discontinued company</p></div>"
+  }]
+}];
+function IncorporationEntityNameCheck(_ref) {
+  React.useEffect(function () {
+    if (window.history && window.history.pushState) {
+      window.history.pushState('forward', null, './incorporation-entity-name-check');
+      window.onpopstate = function () {
+        handleBack();
+      };
+    }
+  }, []);
+  var _useState = React.useState(false),
+    submitting = _useState[0],
+    setSubmitting = _useState[1];
+  var _useForm = reactHookForm.useForm(),
+    register = _useForm.register,
+    control = _useForm.control,
+    handleSubmit = _useForm.handleSubmit,
+    clearErrors = _useForm.clearErrors,
+    setError = _useForm.setError,
+    setValue = _useForm.setValue;
+  var _useFormState = reactHookForm.useFormState({
+      control: control
+    }),
+    errors = _useFormState.errors;
+  var _useFieldArray = reactHookForm.useFieldArray({
+      control: control,
+      name: 'companyName'
+    }),
+    fields = _useFieldArray.fields,
+    append = _useFieldArray.append,
+    remove = _useFieldArray.remove;
+  var addCompanyName = function addCompanyName(entityType, name) {
+    if (name === void 0) {
+      name = '';
+    }
+    if (fields.length < 3) {
+      var _entityType$CompanySu, _entityType$CompanySu2;
+      append({
+        name: name,
+        suffix: {
+          value: (entityType === null || entityType === void 0 ? void 0 : entityType.CompanySuffixes) && (entityType === null || entityType === void 0 ? void 0 : (_entityType$CompanySu = entityType.CompanySuffixes[0]) === null || _entityType$CompanySu === void 0 ? void 0 : _entityType$CompanySu.id),
+          label: (entityType === null || entityType === void 0 ? void 0 : entityType.CompanySuffixes) && (entityType === null || entityType === void 0 ? void 0 : (_entityType$CompanySu2 = entityType.CompanySuffixes[0]) === null || _entityType$CompanySu2 === void 0 ? void 0 : _entityType$CompanySu2.name)
+        }
+      });
+    }
+  };
+  var _useState2 = React.useState({}),
+    dataOnboarding = _useState2[0],
+    setDataOnboarding = _useState2[1];
+  var _useState3 = React.useState({}),
+    dataCountry = _useState3[0],
+    setDataCountry = _useState3[1];
+  var _useState4 = React.useState({}),
+    dataEntityType = _useState4[0],
+    setDataEntityType = _useState4[1];
+  var _useState5 = React.useState(false),
+    setSidebar = _useState5[1];
+  React.useEffect(function () {
+    var dataOnboardingLocalStorage = window.localStorage.getItem('data_onboarding');
+    if (dataOnboardingLocalStorage) {
+      var _data$incorporation, _data$incorporation2, _data$incorporation2$, _data$incorporation4, _data$incorporation5;
+      var _data = JSON.parse(dataOnboardingLocalStorage);
+      setDataOnboarding(_data);
+      setDataCountry(_data === null || _data === void 0 ? void 0 : (_data$incorporation = _data.incorporation) === null || _data$incorporation === void 0 ? void 0 : _data$incorporation.country);
+      var entityType = _data === null || _data === void 0 ? void 0 : (_data$incorporation2 = _data.incorporation) === null || _data$incorporation2 === void 0 ? void 0 : (_data$incorporation2$ = _data$incorporation2.country) === null || _data$incorporation2$ === void 0 ? void 0 : _data$incorporation2$.EntityTypes.find(function (item) {
+        var _data$incorporation3;
+        return item && item.id == (_data === null || _data === void 0 ? void 0 : (_data$incorporation3 = _data.incorporation) === null || _data$incorporation3 === void 0 ? void 0 : _data$incorporation3.entity_type_id);
+      });
+      setDataEntityType(entityType);
+      if (fields.length == 0) {
+        var customer = JSON.parse(window.localStorage.getItem('customer'));
+        if (customer !== null && customer !== void 0 && customer.company_name) {
+          addCompanyName(entityType, customer === null || customer === void 0 ? void 0 : customer.company_name);
+        } else {
+          addCompanyName(entityType);
+        }
+      }
+      if (_data !== null && _data !== void 0 && (_data$incorporation4 = _data.incorporation) !== null && _data$incorporation4 !== void 0 && _data$incorporation4.company_name && (_data === null || _data === void 0 ? void 0 : (_data$incorporation5 = _data.incorporation) === null || _data$incorporation5 === void 0 ? void 0 : _data$incorporation5.company_name.length) > 0) {
+        var _data$incorporation6;
+        _data === null || _data === void 0 ? void 0 : (_data$incorporation6 = _data.incorporation) === null || _data$incorporation6 === void 0 ? void 0 : _data$incorporation6.company_name.map(function (item, index) {
+          if (index > 0) addCompanyName(entityType);
+          setValue("companyName." + index + ".name", item.name);
+          if (item !== null && item !== void 0 && item.suffix) {
+            setValue("companyName." + index + ".suffix", item.suffix);
+          }
+        });
+      }
+    }
+  }, []);
+  var _useState6 = React.useState(null),
+    suggestNamePosition = _useState6[0],
+    setSuggestNamePosition = _useState6[1];
+  var _useState7 = React.useState([]),
+    suggestName = _useState7[0],
+    setSuggestName = _useState7[1];
+  var _useState8 = React.useState(false),
+    loadingSuggest = _useState8[0],
+    setLoadingSuggest = _useState8[1];
+  var _useState9 = React.useState({
+      title: '',
+      content: ''
+    }),
+    dataSideBar = _useState9[0],
+    setDataSideBar = _useState9[1];
+  var handleSuggestName = function handleSuggestName(name, position) {
+    if (position === void 0) {
+      position = 0;
+    }
+    setSuggestNamePosition(position);
+    setSuggestName(name && position !== null ? startupNameGenerator(name).filter(function (item, index) {
+      return item && index < 3;
+    }) : []);
+  };
+  var handleClickSuggestName = function handleClickSuggestName(name, suggestNamePosition) {
+    var fieldName = "companyName." + suggestNamePosition + ".name";
+    setValue(fieldName, name);
+    handleRestricted(name, fieldName);
+  };
+  var handleCheckName = function handleCheckName(name) {
+    return new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        setSubmitting(true);
+        axios.get("https://core.test-lp.bbcincorp.com/api/onboarding/check_name/find_company", {
+          params: {
+            key: name
+          }
+        }).then(function (response) {
+          resolve(response);
+        })["catch"](function (err) {
+          reject(err);
+        });
+      }, 500);
+    });
+  };
+  var handleRestricted = function handleRestricted(name, fieldName) {
+    var hasRestricted = dataJson.name_restricted.find(function (item) {
+      return item.id === dataCountry.id;
+    });
+    if (hasRestricted) {
+      var dataRestricted = hasRestricted.restricted.map(function (item) {
+        return item.toLowerCase();
+      });
+      var inputName = name.trim().toLowerCase();
+      var isNameRestricted = dataRestricted.some(function (item) {
+        return item === inputName || inputName.search(" " + item) > -1 || inputName.search(item + " ") > -1;
+      });
+      if (isNameRestricted) {
+        setError(fieldName, {
+          type: 'manual',
+          message: 'Your company name contains restricted words or phrases'
+        });
+      } else {
+        clearErrors(fieldName);
+      }
+    }
+  };
+  var handleNext = function handleNext(dataOnboarding, dataCompanyName) {
+    if (errors && Object.keys(errors).length === 0 && Object.getPrototypeOf(errors) === Object.prototype) {
+      var _dataCompanyName$, _customer$signature;
+      var propsed_name = (_dataCompanyName$ = dataCompanyName[0]) === null || _dataCompanyName$ === void 0 ? void 0 : _dataCompanyName$.name;
+      var entity_type = dataEntityType.CompanySuffixes.find(function (item) {
+        return item.id === dataCompanyName[0].suffix.value;
+      });
+      if (entity_type.is_prefix) {
+        propsed_name = entity_type.name + ' ' + propsed_name;
+      } else {
+        propsed_name = propsed_name + ' ' + entity_type.name;
+      }
+      window.localStorage.setItem('form_name', JSON.stringify(propsed_name));
+      window.localStorage.setItem('data_onboarding', JSON.stringify(_extends({}, dataOnboarding, {
+        incorporation: _extends({}, dataOnboarding.incorporation, {
+          company_name: dataCompanyName
+        })
+      })));
+      var customer = JSON.parse(window.localStorage.getItem('customer'));
+      if (customer !== null && customer !== void 0 && (_customer$signature = customer.signature) !== null && _customer$signature !== void 0 && _customer$signature.signature) {
+        var _customer$signature2;
+        axios.put("https://core.test-lp.bbcincorp.com/api/onboarding/order/client/" + (customer === null || customer === void 0 ? void 0 : (_customer$signature2 = customer.signature) === null || _customer$signature2 === void 0 ? void 0 : _customer$signature2.signature), {
+          company_name: dataCompanyName[0].name,
+          company_suffix_id: dataCompanyName[0].suffix.value
+        });
+      }
+      window.location.href = '/incorporation-package';
+    } else {
+      setSubmitting(false);
+    }
+  };
+  var handleBack = function handleBack() {
+    var customer = JSON.parse(window.localStorage.getItem('customer'));
+    delete customer.company_country_id;
+    delete customer.company_name;
+    delete customer.entity_type_id;
+    delete customer.package_id;
+    window.localStorage.setItem('customer', JSON.stringify(customer));
+    window.location.href = "/incorporation-" + (dataCountry !== null && dataCountry !== void 0 && dataCountry.EntityTypes && (dataCountry === null || dataCountry === void 0 ? void 0 : dataCountry.EntityTypes.length) > 1 ? 'company-type' : 'country');
+  };
+  var onSubmit = function onSubmit(data, e) {
+    setSubmitting(true);
+    var dataCompanyName = data.companyName.map(function (item, index) {
+      return _extends({}, item, {
+        fieldName: "companyName." + index + ".name"
+      });
+    }).filter(function (item) {
+      return item && item.name;
+    });
+    dataCompanyName.map(function (item) {
+      handleRestricted(item.name, item.fieldName);
+    });
+    if (dataCountry.id == 237) {
+      var waiting = [];
+      dataCompanyName.map(function (item, index) {
+        return waiting.push(handleCheckName(item.name));
+      });
+      Promise.all(waiting).then(function (allRes) {
+        var check = true;
+        allRes.forEach(function (item, index) {
+          if (!item.data.data.useable) {
+            check = false;
+            setError(dataCompanyName[index].fieldName, {
+              type: 'manual',
+              message: 'This company name already exists'
+            });
+          }
+        });
+        if (check) {
+          handleNext(dataOnboarding, dataCompanyName);
+        } else {
+          setSubmitting(false);
+        }
+      })["catch"](function () {
+        setSubmitting(false);
+      });
+    } else {
+      handleNext(dataOnboarding, dataCompanyName);
+    }
+  };
+  React.useEffect(function () {
+    if (dataCountry !== null && dataCountry !== void 0 && dataCountry.id && dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.id) {
+      var _nameHint$find, _nameHint$find$Entity;
+      setDataSideBar((_nameHint$find = nameHint.find(function (el) {
+        return el.id === (dataCountry === null || dataCountry === void 0 ? void 0 : dataCountry.id);
+      })) === null || _nameHint$find === void 0 ? void 0 : (_nameHint$find$Entity = _nameHint$find.EntityTypes) === null || _nameHint$find$Entity === void 0 ? void 0 : _nameHint$find$Entity.find(function (el1) {
+        return el1.id == (dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.id);
+      }));
+    }
+  }, [dataCountry, dataEntityType]);
+  return (
+    /*#__PURE__*/
+    React__default.createElement("div", {
+      style: {
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between'
+      }
+    }, /*#__PURE__*/React__default.createElement(reactBootstrap.Form, {
+      noValidate: true
+    }, /*#__PURE__*/React__default.createElement("div", {
+      className: styles$7.form_header + " " + styles$7.Header
+    }, /*#__PURE__*/React__default.createElement("div", {
+      className: styles$7.top_wrapper
+    }, /*#__PURE__*/React__default.createElement("div", {
+      style: {
+        flex: '0 0 auto'
+      }
+    }, /*#__PURE__*/React__default.createElement("a", {
+      className: styles$7.back + " " + styles$7.btn,
+      onClick: handleBack
+    }, "Back")), dataSideBar && /*#__PURE__*/React__default.createElement("div", {
+      style: {
+        flex: '0 0 auto'
+      }
+    }, /*#__PURE__*/React__default.createElement("p", {
+      className: styles$7.guideText
+    }, "Need a guide for naming?", ' ', /*#__PURE__*/React__default.createElement("button", {
+      type: "button",
+      className: styles$7.btn + " ",
+      style: {
+        fontWeight: 500,
+        fontSize: 'inherit',
+        color: '#007eff',
+        textTransform: 'uppercase',
+        border: 'none',
+        background: 'transparent'
+      },
+      onClick: function onClick() {
+        return setSidebar(true);
+      }
+    }, "Click here"))))), /*#__PURE__*/React__default.createElement(Title, {
+      text: "Entity Name Check",
+      className: styles$7.title_page
+    }), /*#__PURE__*/React__default.createElement("div", {
+      className: dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes && dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix ? '' : styles$7.Body
+    }, /*#__PURE__*/React__default.createElement("div", {
+      className: styles$7.description_wrapper
+    }, /*#__PURE__*/React__default.createElement("div", {
+      style: {
+        flex: '1'
+      }
+    }, /*#__PURE__*/React__default.createElement(Component, null, "Country:", ' ', /*#__PURE__*/React__default.createElement("span", {
+      style: {
+        fontWeight: 500
+      }
+    }, dataCountry === null || dataCountry === void 0 ? void 0 : dataCountry.name)), /*#__PURE__*/React__default.createElement(Component, null, "Company type:", ' ', /*#__PURE__*/React__default.createElement("span", {
+      style: {
+        fontWeight: 500
+      }
+    }, dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.name))), /*#__PURE__*/React__default.createElement("a", {
+      onClick: function onClick() {
+        return setSidebar(true);
+      },
+      className: styles$7.iconQuestionCircle
+    }, dataSideBar && /*#__PURE__*/React__default.createElement(bs.BsQuestionCircle, null))), /*#__PURE__*/React__default.createElement("div", {
+      className: styles$7.checkname_wrapper
+    }, /*#__PURE__*/React__default.createElement("div", {
+      className: "" + styles$7.title
+    }, "Proposed company name"), /*#__PURE__*/React__default.createElement("div", {
+      style: {
+        maxWidth: '992px'
+      }
+    }, fields.map(function (item, index) {
+      var _errors$companyName, _errors$companyName$n, _errors$companyName2, _errors$companyName2$;
+      return /*#__PURE__*/React__default.createElement("div", {
+        key: item.id
+      }, /*#__PURE__*/React__default.createElement("div", {
+        className: "" + styles$7.fields
+      }, /*#__PURE__*/React__default.createElement("div", {
+        style: {
+          flexGrow: '1',
+          flexBasis: '0',
+          maxWidth: '100%',
+          padding: '0 8px'
+        }
+      }, /*#__PURE__*/React__default.createElement("div", {
+        className: styles$7.field_name + " " + (dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes && dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix ? styles$7.row_reverse : '')
+      }, /*#__PURE__*/React__default.createElement("div", {
+        style: {
+          flexGrow: '1',
+          flexBasis: '0',
+          maxWidth: '100%',
+          padding: '0 8px'
+        }
+      }, /*#__PURE__*/React__default.createElement(reactBootstrap.Form.Control, _extends({}, register("companyName." + index + ".name", {
+        onChange: function onChange(e) {
+          setTimeout(function () {
+            handleRestricted(e.target.value, "companyName." + index + ".name");
+          }, 100);
+          handleSuggestName(e.target.value, index);
+        },
+        onBlur: function onBlur(e) {
+          handleRestricted(e.target.value, "companyName." + index + ".name");
+          setTimeout(function () {
+            handleSuggestName('');
+            setLoadingSuggest(false);
+          }, 400);
+        },
+        required: {
+          value: index === 0,
+          message: 'Your company name is required'
+        }
+      }), {
+        className: styles$7.company_name_input + " " + (errors !== null && errors !== void 0 && errors.companyName && errors !== null && errors !== void 0 && (_errors$companyName = errors.companyName["" + index]) !== null && _errors$companyName !== void 0 && (_errors$companyName$n = _errors$companyName.name) !== null && _errors$companyName$n !== void 0 && _errors$companyName$n.message ? 'is-invalid' : '') + " " + styles$7.input,
+        placeholder: dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes && dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix ? 'Parent company name' : 'Company name',
+        disabled: submitting
+      }))), /*#__PURE__*/React__default.createElement("div", {
+        className: styles$7.entity_name
+      }, /*#__PURE__*/React__default.createElement(reactHookForm.Controller, {
+        render: function render(_ref2) {
+          var field = _ref2.field;
+          var fieldTemp = _objectWithoutPropertiesLoose(field, _excluded$1);
+          return /*#__PURE__*/React__default.createElement(SelectSearchInside, _extends({
+            instanceId: item.id,
+            selectBorder: true,
+            options: (dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.CompanySuffixes) && (dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.CompanySuffixes.map(function (item) {
+              return {
+                value: item.id,
+                label: item.name
+              };
+            })),
+            onChange: function onChange(newValue) {
+              if (!(Array.isArray(newValue) && newValue.length === 0)) {
+                setValue(field.name, newValue);
+              }
+            },
+            placeholder: "Search suffix",
+            toggleClass: "" + styles$7.search,
+            isDisabled: submitting
+          }, fieldTemp));
+        },
+        name: "companyName." + index + ".suffix",
+        control: control
+      }))), /*#__PURE__*/React__default.createElement("div", {
+        className: styles$7.field_name + " " + (dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes && dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix ? styles$7.row_reverse : '')
+      }, /*#__PURE__*/React__default.createElement("div", {
+        style: {
+          flexGrow: '1',
+          flexBasis: '0',
+          maxWidth: '100%',
+          padding: '0 8px'
+        }
+      }, /*#__PURE__*/React__default.createElement(reactBootstrap.Form.Control.Feedback, {
+        type: "invalid",
+        className: "" + (errors !== null && errors !== void 0 && errors.companyName ? styles$7.d_block : styles$7.d_none)
+      }, /*#__PURE__*/React__default.createElement("span", {
+        style: {
+          textAlign: 'left'
+        }
+      }, (errors === null || errors === void 0 ? void 0 : errors.companyName) && (errors === null || errors === void 0 ? void 0 : (_errors$companyName2 = errors.companyName["" + index]) === null || _errors$companyName2 === void 0 ? void 0 : (_errors$companyName2$ = _errors$companyName2.name) === null || _errors$companyName2$ === void 0 ? void 0 : _errors$companyName2$.message)))), /*#__PURE__*/React__default.createElement("div", {
+        style: {
+          flex: '0 0 33.3333333333%',
+          maxWidth: '33.3333333333%',
+          padding: '0 8px'
+        }
+      }))), /*#__PURE__*/React__default.createElement("div", {
+        style: {
+          width: '42px',
+          flex: '0 0 auto',
+          padding: '0 8px'
+        }
+      }, index !== 0 && /*#__PURE__*/React__default.createElement("button", {
+        type: "button",
+        style: {
+          padding: '0',
+          border: 'none',
+          background: 'transparent',
+          cursor: 'pointer'
+        },
+        onClick: function onClick() {
+          remove(index);
+        }
+      }, /*#__PURE__*/React__default.createElement(reactIcons.IconContext.Provider, {
+        value: {
+          color: '#007eff'
+        }
+      }, /*#__PURE__*/React__default.createElement(hi.HiMinusCircle, {
+        size: "1.5rem"
+      }))))), (dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.CompanySuffixes) && !(dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix) && suggestNamePosition == index && suggestName.length > 0 && /*#__PURE__*/React__default.createElement("div", {
+        className: styles$7.nameHints
+      }, /*#__PURE__*/React__default.createElement("div", {
+        style: {
+          position: 'relative'
+        }
+      }, /*#__PURE__*/React__default.createElement("div", {
+        style: {
+          position: 'relative'
+        }
+      }, /*#__PURE__*/React__default.createElement("div", {
+        style: {
+          display: 'flex',
+          flexWrap: 'wrap',
+          margin: '0 -4px'
+        }
+      }, /*#__PURE__*/React__default.createElement("div", {
+        style: {
+          flex: '0 0 auto',
+          marginTop: '8px',
+          padding: '0 4px'
+        }
+      }, "Name hints:"), suggestName && suggestName.map(function (item, index) {
+        return /*#__PURE__*/React__default.createElement("div", {
+          style: {
+            flex: '0 0 auto',
+            marginTop: '8px',
+            padding: '0 4px'
+          },
+          key: index
+        }, /*#__PURE__*/React__default.createElement("div", {
+          type: "button",
+          className: styles$7.nameHintsBadge,
+          onClick: function onClick(e) {
+            return handleClickSuggestName(e.target.innerText, suggestNamePosition);
+          }
+        }, item));
+      }))), loadingSuggest && /*#__PURE__*/React__default.createElement("div", {
+        className: styles$7.spinner_wrapper,
+        style: {
+          top: 0,
+          left: 0,
+          zIndex: 2,
+          opacity: 0.7
+        }
+      }, /*#__PURE__*/React__default.createElement(reactBootstrap.Spinner, {
+        animation: "border",
+        variant: "primary",
+        size: "sm"
+      })))));
+    }), (dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.CompanySuffixes) && !(dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix) && /*#__PURE__*/React__default.createElement("button", {
+      type: "button",
+      style: {
+        padding: '0',
+        marginTop: '16px',
+        cursor: 'pointer',
+        border: 'none',
+        background: 'transparent'
+      },
+      onClick: function onClick() {
+        addCompanyName(dataEntityType);
+      },
+      disabled: fields.length >= 3 || submitting
+    }, /*#__PURE__*/React__default.createElement("div", {
+      style: {
+        display: 'flex',
+        alignItems: 'center'
+      }
+    }, /*#__PURE__*/React__default.createElement(reactIcons.IconContext.Provider, {
+      value: {
+        color: fields.length >= 3 ? '#677294' : '#007eff'
+      }
+    }, /*#__PURE__*/React__default.createElement(md.MdAddCircle, {
+      size: "1.5rem"
+    })), /*#__PURE__*/React__default.createElement("span", {
+      style: {
+        fontWeight: 500,
+        color: fields.length >= 3 ? '#677294' : '#007eff',
+        marginLeft: '8px',
+        marginRight: '4px',
+        fontSize: '16px',
+        lineHeight: '24px'
+      }
+    }, "Add more company name")))), (dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.CompanySuffixes) && !(dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix) && /*#__PURE__*/React__default.createElement("div", {
+      style: {
+        display: 'flex',
+        flexWrap: 'wrap'
+      }
+    }, /*#__PURE__*/React__default.createElement("div", {
+      className: styles$7.note_wrapper
+    }, /*#__PURE__*/React__default.createElement("p", {
+      className: styles$7.note
+    }, "**The fact that a proposed name is available does NOT mean that name will be approved. The name approval solely depends on the government\u2019s decision.")))))), /*#__PURE__*/React__default.createElement("section", {
+      style: {
+        margintop: '32px'
+      }
+    }, /*#__PURE__*/React__default.createElement("div", {
+      style: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems: 'center'
+      }
+    }, /*#__PURE__*/React__default.createElement("div", {
+      className: styles$7.bottom_wrapper
+    }, /*#__PURE__*/React__default.createElement("a", {
+      className: styles$7.backMobile,
+      style: {
+        padding: '0',
+        cursor: 'pointer',
+        border: 'none',
+        background: 'transparent'
+      },
+      onClick: handleBack
+    }, "Back")), /*#__PURE__*/React__default.createElement("div", {
+      style: {
+        flex: ' 0 0 auto'
+      }
+    }, /*#__PURE__*/React__default.createElement("button", {
+      type: "submit",
+      onClick: handleSubmit(onSubmit),
+      disabled: submitting,
+      className: styles$7.nextButton
+    }, /*#__PURE__*/React__default.createElement("div", {
+      style: {
+        display: 'flex',
+        alignItems: 'center'
+      }
+    }, "Next", submitting && /*#__PURE__*/React__default.createElement(reactBootstrap.Spinner, {
+      animation: "border",
+      size: "sm",
+      style: {
+        marginLeft: '8px'
+      }
+    })))))))
+  );
+}
 
 exports.IncorporationCompanyType = IncorporationCompanyType;
 exports.IncorporationCountry = IncorporationCountry;
+exports.IncorporationEntityNameCheck = IncorporationEntityNameCheck;
 exports.Register = Register;
 exports.SelectService = SelectService;
-exports.default = index;
 //# sourceMappingURL=index.js.map
