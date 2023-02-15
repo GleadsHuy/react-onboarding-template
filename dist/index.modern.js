@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { FaAngleDoubleUp, FaChevronDown, FaCheck, FaTimes, FaAngleDoubleDown, FaInfoCircle, FaCircle, FaChevronRight, FaChevronLeft } from 'react-icons/fa';
+import React, { useState, useEffect, useRef, Fragment } from 'react';
+import { FaAngleDoubleUp, FaChevronDown, FaCheck, FaTimes, FaAngleDoubleDown, FaInfoCircle, FaCircle, FaChevronRight, FaChevronLeft, FaCaretRight } from 'react-icons/fa';
 import _ from 'lodash';
 import { Form, OverlayTrigger, Popover } from 'react-bootstrap';
 import axios from 'axios';
@@ -13,10 +13,10 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import trust_pilot$1 from './trust-pilot~VtJXwXCM.svg';
-import { BiLoaderAlt } from 'react-icons/bi';
+import { BiLoaderAlt, BiPlus } from 'react-icons/bi';
 import bankingImg from './banking~nKuKLkod.png';
 import incorpImg from './incorporation~BKidfgKY.png';
-import { FiFilter } from 'react-icons/fi';
+import { FiFilter, FiHelpCircle } from 'react-icons/fi';
 import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
 import DropdownButton from 'react-multiselect-checkboxes/lib/DropdownButton';
 import Blanket from 'react-multiselect-checkboxes/lib/Blanket';
@@ -30,7 +30,7 @@ import legalStructure from './legal-structure~bcmAHTxj.png';
 import internationalCompliance from './international-compliance~tYiEjqmz.png';
 import { IconContext } from 'react-icons';
 import { GrNext, GrPrevious } from 'react-icons/gr';
-import { IoMdCloseCircle } from 'react-icons/io';
+import { IoMdCloseCircle, IoMdTrash } from 'react-icons/io';
 import comparisonTable from './comparison-table~bpwyRZHM.png';
 import mergeProps from 'merge-props';
 import buildingImg from './building~IFwjSqIH.png';
@@ -38,13 +38,14 @@ import { MdAddCircle } from 'react-icons/md';
 import { HiMinusCircle } from 'react-icons/hi';
 import { BsQuestionCircle } from 'react-icons/bs';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
-import foreignerbasic from './foreigner-basic~uQZFFwrd.png';
-import foreignerultra from './foreigner-ultra~XjDmcCNY.png';
-import locallite from './local-lite~TJhbcTdX.png';
-import localstandard from './local-standard~AyzXROgI.png';
 import pacbasic from './pac-basic~AyzXROgI.png';
 import pacpremium from './pac-premium~XjDmcCNY.png';
 import pacstandard from './pac-standard~uQZFFwrd.png';
+import locallite from './local-lite~TJhbcTdX.png';
+import localstandard from './local-standard~AyzXROgI.png';
+import foreignerbasic from './foreigner-basic~uQZFFwrd.png';
+import foreignerultra from './foreigner-ultra~XjDmcCNY.png';
+import { RiSubtractFill } from 'react-icons/ri';
 
 var styles = {"FatfScreen":"_styles-module__FatfScreen__2ROgK","descriptionText":"_styles-module__descriptionText__2Vd8e","title":"_styles-module__title__35EYE","RegisterInput":"_styles-module__RegisterInput__gW7RG","item":"_styles-module__item__3hx7A","space_top":"_styles-module__space_top__yST6I","ErrorMessage":"_styles-module__ErrorMessage__qZ3vy","Link":"_styles-module__Link__1wNX0","Slider":"_styles-module__Slider__1Th7t","PhoneSelect":"_styles-module__PhoneSelect__1B3qM","CustomSelect":"_styles-module__CustomSelect__3bJjM","PhoneInput":"_styles-module__PhoneInput__2_4Q0","phonenumber_container":"_styles-module__phonenumber_container__HLp-P","RegisterScreen":"_styles-module__RegisterScreen__3hn-F","discountChristmas":"_styles-module__discountChristmas__i1zWx","CheckBox":"_styles-module__CheckBox__3klwe","button_wrapper":"_styles-module__button_wrapper__RJ7yj","Button":"_styles-module__Button__26moK","recaptcha":"_styles-module__recaptcha__14pK3","RegisterButton":"_styles-module__RegisterButton__1WoJs","RegisterLink":"_styles-module__RegisterLink__2p_CN","restricted_countries_wrapper":"_styles-module__restricted_countries_wrapper__5339W","restricted_countries_container":"_styles-module__restricted_countries_container__30wCB","restricted_countries_cols":"_styles-module__restricted_countries_cols__17jba","restricted_countries_cols_md":"_styles-module__restricted_countries_cols_md__wx9cR","listCollapse":"_styles-module__listCollapse__P54fa","active":"_styles-module__active__1yv7q","buttonCollapse":"_styles-module__buttonCollapse__BL6zk","isCollapse":"_styles-module__isCollapse__38GJw","iconCollapse":"_styles-module__iconCollapse__3YmIy","RegisterText":"_styles-module__RegisterText__3dZ-C","RegisterForm":"_styles-module__RegisterForm__2sn5j","formControl":"_styles-module__formControl__MkpSE","inputWrapper":"_styles-module__inputWrapper__u_8Hb","SelectWrapper":"_styles-module__SelectWrapper__2wTl0","CountrySelectWrapper":"_styles-module__CountrySelectWrapper__cRn99","nationalitySelect":"_styles-module__nationalitySelect__3tlRp","nationalityLabel":"_styles-module__nationalityLabel__1-615","phonenumber_wrapper":"_styles-module__phonenumber_wrapper__3q5qp","trustpilot_wrapper":"_styles-module__trustpilot_wrapper__1PI3w","FormFooter":"_styles-module__FormFooter__29TuF","Body":"_styles-module__Body__3J0ny","noteText":"_styles-module__noteText__9TPd0"};
 
@@ -7918,6 +7919,7 @@ function IncorporationEntityNameCheck({
   useOnClickOutside(wrapperRef, () => {
     setSidebar(false);
   });
+  console.log(window.location);
   return (
     /*#__PURE__*/
     React.createElement("div", {
@@ -8251,9 +8253,968 @@ function IncorporationEntityNameCheck({
   );
 }
 
-var styles$a = {"btn_top_wrapper":"_styles-module__btn_top_wrapper__34DmI","btn_top":"_styles-module__btn_top__3qqS1","button":"_styles-module__button__3860g","title":"_styles-module__title__2BlXc","description_wrapper":"_styles-module__description_wrapper__3Nlot","description":"_styles-module__description__3VahP","comparison_wrapper":"_styles-module__comparison_wrapper__3GLBr","comparison_top":"_styles-module__comparison_top__nxU8b","loader_wrapper":"_styles-module__loader_wrapper__3VbNy","package_container":"_styles-module__package_container__2x8Ni","card_wrapper":"_styles-module__card_wrapper__3w1_k","item_height":"_styles-module__item_height__6F5fK","content_wrapper_vn":"_styles-module__content_wrapper_vn__2QOXs","card":"_styles-module__card__3N8iG","card_inside":"_styles-module__card_inside__2aMYN","img_wrapper":"_styles-module__img_wrapper__hhqdG","cardName_wrapper":"_styles-module__cardName_wrapper__3OX3r","cardName":"_styles-module__cardName__22pk0","cardNameVN":"_styles-module__cardNameVN__7JTA6","cardPrice":"_styles-module__cardPrice__lMNoF","cardPriceVN":"_styles-module__cardPriceVN__sunAZ","cardDes":"_styles-module__cardDes__123Dc","basic":"_styles-module__basic__1pZey","local-lite":"_styles-module__local-lite__1fRKW","startup-for-locals":"_styles-module__startup-for-locals__2B7pn","standard":"_styles-module__standard__3mC0T","local-standard":"_styles-module__local-standard__3Fr5q","premium":"_styles-module__premium__10UG7","foreigner-basic":"_styles-module__foreigner-basic__1CpII","standard-with-employment-pass":"_styles-module__standard-with-employment-pass__23Y2O","foreigner-ultra":"_styles-module__foreigner-ultra__1mWaS","formSwich":"_styles-module__formSwich__1Glki","info":"_styles-module__info__1NfHz","note":"_styles-module__note__3O97i","note_vn":"_styles-module__note_vn__2QqH5","dialog":"_styles-module__dialog___aI90","headerModal":"_styles-module__headerModal__1TU3P","bodyModal":"_styles-module__bodyModal__1hv_K","Header":"_styles-module__Header__1hw-O","comparison_bottom_wrapper":"_styles-module__comparison_bottom_wrapper__1rqx-","comparison_bottom":"_styles-module__comparison_bottom__3PrcN","comparison_btn":"_styles-module__comparison_btn__3qyHB","comparison_img":"_styles-module__comparison_img__3RYJD","btn_bottom_wrapper":"_styles-module__btn_bottom_wrapper__3kj8Y","btn_back_bottom":"_styles-module__btn_back_bottom__1fOjL","Body":"_styles-module__Body__2PprN","card_wrapper_sg":"_styles-module__card_wrapper_sg__19DVk"};
+var styles$a = {"btn_top_wrapper":"_styles-module__btn_top_wrapper__34DmI","btn_top":"_styles-module__btn_top__3qqS1","button":"_styles-module__button__3860g","title":"_styles-module__title__2BlXc","description_wrapper":"_styles-module__description_wrapper__3Nlot","description":"_styles-module__description__3VahP","comparison_wrapper":"_styles-module__comparison_wrapper__3GLBr","comparison_top":"_styles-module__comparison_top__nxU8b","loader_wrapper":"_styles-module__loader_wrapper__3VbNy","package":"_styles-module__package__110ld","package_container":"_styles-module__package_container__2x8Ni","card_wrapper":"_styles-module__card_wrapper__3w1_k","item_height":"_styles-module__item_height__6F5fK","content_wrapper_vn":"_styles-module__content_wrapper_vn__2QOXs","card":"_styles-module__card__3N8iG","card_inside":"_styles-module__card_inside__2aMYN","img_wrapper":"_styles-module__img_wrapper__hhqdG","cardName_wrapper":"_styles-module__cardName_wrapper__3OX3r","cardName":"_styles-module__cardName__22pk0","cardNameVN":"_styles-module__cardNameVN__7JTA6","cardPrice":"_styles-module__cardPrice__lMNoF","cardPriceVN":"_styles-module__cardPriceVN__sunAZ","cardDes":"_styles-module__cardDes__123Dc","basic":"_styles-module__basic__1pZey","local-lite":"_styles-module__local-lite__1fRKW","startup-for-locals":"_styles-module__startup-for-locals__2B7pn","standard":"_styles-module__standard__3mC0T","local-standard":"_styles-module__local-standard__3Fr5q","premium":"_styles-module__premium__10UG7","foreigner-basic":"_styles-module__foreigner-basic__1CpII","standard-with-employment-pass":"_styles-module__standard-with-employment-pass__23Y2O","foreigner-ultra":"_styles-module__foreigner-ultra__1mWaS","formSwich":"_styles-module__formSwich__1Glki","info":"_styles-module__info__1NfHz","note":"_styles-module__note__3O97i","note_vn":"_styles-module__note_vn__2QqH5","modal_wrapper":"_styles-module__modal_wrapper__260T9","fadeIn":"_styles-module__fadeIn__21U4U","close_button":"_styles-module__close_button__4X6g2","tab_container":"_styles-module__tab_container__3ZOMY","tab_wrapper":"_styles-module__tab_wrapper__3Mg2u","tab_item":"_styles-module__tab_item__36v3_","active_tab":"_styles-module__active_tab__g8EO3","dialog":"_styles-module__dialog___aI90","headerModal":"_styles-module__headerModal__1TU3P","bodyModal":"_styles-module__bodyModal__1hv_K","Header":"_styles-module__Header__1hw-O","comparison_bottom_wrapper":"_styles-module__comparison_bottom_wrapper__1rqx-","comparison_bottom":"_styles-module__comparison_bottom__3PrcN","comparison_btn":"_styles-module__comparison_btn__3qyHB","comparison_img":"_styles-module__comparison_img__3RYJD","btn_bottom_wrapper":"_styles-module__btn_bottom_wrapper__3kj8Y","btn_back_bottom":"_styles-module__btn_back_bottom__1fOjL","Body":"_styles-module__Body__2PprN","card_wrapper_sg":"_styles-module__card_wrapper_sg__19DVk"};
 
+function popupPackages(country_id, entity_type_id, tab) {
+  let content = '';
+  switch (parseInt(country_id)) {
+    case 98:
+      content = `
+				<thead>
+					<tr>
+						<th></th>
+						<th class="basic title">BASIC</th>
+						<th class="standard title">STANDARD</th>
+						<th class="premium title">PREMIUM</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th class="subtitle">COMPANY FORMATION</th>
+					</tr>
+					<tr>
+						<th>Unlimited Business Name Check</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Document Preparation &amp; Filling</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Company Formation</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>All Government fees in first years</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Local Company Secretary for 1st years</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Local Registered Address for first year included mails handle</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Significant Controller Register and Designated Representative</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Digital coporate documents</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Digital seal</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>One set of documents certified by CPA</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th class="subtitle">BANK ACCOUNT APPLICATION</th>
+					</tr>
+					<tr>
+						<th>Assistance in opening Bank account including Cert. of Incumbency if required</th>
+						<td class="basic">None </td>
+						<td class="standard">1 bank application</td>
+						<td class="premium">Up to 5 bank applications</td>
+					</tr>
+				</tbody>
+			`;
+      break;
+    case 191:
+      if (tab == 1) {
+        content = `
+				<thead>
+					<tr>
+						<th></th>
+						<th class="basic title">Local Lite</th>
+						<th class="standard title">Local Standard</th>
+						<th class="premium title">Foreigner Basic</th>
+						<th class="ultra title">Foreigner Ultra</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th class="subtitle">COMPANY FORMATION</th>
+					</tr>
+					<tr>
+						<th>Unlimited Name Availability Check</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Document Preparation &amp; Filling</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Company Incorporation Process</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Company Name Reservation</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Government Registration Fee</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+			
+					<tr>
+						<th>Lifetime Support/ Instant Response</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Digital Corporate Documents</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th><span class="subtitle">Company Secretary</span> (1 year)</th>
+					</tr>
+					<tr>
+						<th>Annual filing and AGM preparation</th>
+						<td>None</td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Annual filing government fee</th>
+						<td>None</td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Local Registered Address with mail handling</th>
+						<td>None</td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th class="subtitle">PREMIUM COMPANY SET</th>
+					</tr>
+					<tr>
+						<th>Company kit</th>
+						<td>None</td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Company stamp</th>
+						<td>None</td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Courier fee</th>
+						<td>None</td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th><span class="subtitle">Nominee Director</span> (No deposit required)</th>
+						<td>None</td>
+						<td>None</td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th class="subtitle">BANKING SUPPORT</th>
+					</tr>
+					<tr>
+						<th>Bank account opening assistance with<br/> Singapore banks in our supported banks list</th>
+						<td>None</td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th class="subtitle">WORK PASS</th>
+					</tr>
+					<tr>
+						<th>Application of Employment Pass</th>
+						<td>None </td>
+						<td>None</td>
+						<td>None</td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th class="subtitle">REQUIREMENT FOR NOMINEE SERVICE</th>
+					</tr>
+					<tr>
+						<th>
+							* 2 options:<br>
+							1. Nominee review US$22/month billed yearly<br>
+							2. Accounting package from US$84/month<br> billed yearly:
+							<ul class="list">
+								<li>Xero cloud accounting</li>
+								<li>Corppass registration </li>
+								<li>Monthly accounting review</li>
+								<li>Monthly preparation of FSs</li>
+								<li>Annual tax filing (preparation and filing of ECI and Form C/C-S)</li>
+								<li>Annual revenue under S$70k (plan upgradable)</li>
+							</ul>
+						</th>
+						<td>None </td>
+						<td>None</td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+				</tbody>
+			`;
+      } else {
+        content = `
+				<thead>
+					<tr>
+						<th></th>
+						<th class="basic title">Local Lite</th>
+						<th class="standard title">Local Standard</th>
+						<th class="premium title">Foreigner Basic</th>
+						<th class="ultra title">Foreigner Ultra</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th><span class="subtitle">COMPANY SECRETARY</span> <span class="brand_800">(1 year)</span></th>
+					</tr>
+					<tr>
+						<th>Annual filing and AGM preparation</th>
+						<td>None</td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Annual filing government fee</th>
+						<td>None</td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Local Registered Address with mail handling</th>
+						<td>None</td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th><span class="subtitle">NOMINEE DIRECTOR</span> <span class="brand_800">(No deposit required)</span></th>
+						<td>None</td>
+						<td>None</td>
+						<td><i class="itemCheck"></i></td>
+						<td>None</td>
+					</tr>
+					<tr>
+						<th class="subtitle">REQUIREMENT FOR NOMINEE SERVICE</th>
+					</tr>
+					<tr>
+						<th>
+							* 2 options:<br>
+							1. Nominee review US$22/month billed yearly<br>
+							2. Accounting package from US$84/month billed yearly:
+							<ul class="list">
+								<li>Xero cloud accounting</li>
+								<li>Corppass registration </li>
+								<li>Monthly accounting review</li>
+								<li>Monthly preparation of FSs</li>
+								<li>Annual tax filing (preparation and filing of ECI <br>and Form C/C-S)</li>
+								<li>Annual revenue under S$70k (plan upgradable)</li>
+							</ul>
+						</th>
+						<td>None </td>
+						<td>None</td>
+						<td><i class="itemCheck"></i></td>
+						<td>None</td>
+					</tr>
+				</tbody>
+			`;
+      }
+      break;
+    case 250:
+      content = `
+					<thead>
+						<tr>
+							<th></th>
+							<th class="basic title">
+								<p>BASIC</p>
+								<p class="des">Delaware company</p>
+							</th>
+							<th class="standard title large">
+								<p>STANDARD</p>
+								<p class="des">Delaware company w/ supporting documents to open bank account</p>
+							</th>
+							<th class="premium title">
+								<p>PREMIUM</p>
+								<p class="des">Delaware company w/ Corporate Kit</p>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th class="subtitle">COMPANY FORMATION</th>
+						</tr>
+						<tr>
+							<th>Name check and clearance</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Document Preparation &amp; Filing</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>State filing fee</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Certificate of Formation / Incorporation</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>1 year registered agent</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>1 year local registered address</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Digital corporate docs</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Digital company seal</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Operating Agreements/Bylaws
+								<p class="des">Required to open US bank account</p>
+							</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Lifetime support with Dedicated Relationship Manager</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>EIN application (Employer identification number)
+								<p class="des">Required to open US bank account and employ local labor, bank account, employ labour, file and pay tax</p>
+							</th>
+							<td>None</td>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Physical LLC/Corporate Kit with:
+								<ul>
+									<li>Gold Embossed Binder</li>
+									<li>Company Guidebook</li>
+									<li>Operating Agreement/By-laws</li>
+									<li>Meeting Minute Book</li>
+									<li>Organizational Resolutions</li>
+									<li>Membership/Stock Certificates</li>
+									<li>Membership/Stock Ledger</li>
+									<li>Corporate Seal</li>
+								</ul>
+							</th>
+							<td>None</td>
+							<td>None</td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>International courier fee</th>
+							<td>None</td>
+							<td>None</td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Certified COF/COI with Gold Seal or with Apostille</th>
+							<td>None</td>
+							<td>None</td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Notarized Statement of Authorized Person</th>
+							<td>None</td>
+							<td>None</td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Bank Resolution Form</th>
+							<td>None</td>
+							<td>None</td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>LLC/Corporation Essential Documents</th>
+							<td>None</td>
+							<td>None</td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th class="subtitle">EXPRESS FORMATION</th>
+						</tr>
+						<tr>
+							<th>Expedited filing within 24 hours</th>
+							<td>None</td>
+							<td>None</td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th class="subtitle">BUSINESS ACCOUNT</th>
+						</tr>
+						<tr>
+							<th>Wise/Payoneer/Mercury business banking</th>
+							<td class="basic">None</td>
+							<td class="standard"><i class="itemCheck"></i></td>
+							<td class="premium"><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th class="subtitle">MERCHANT ACCOUNT</th>
+						</tr>
+						<tr>
+							<th>Guideline on Applying Merchant Account</th>
+							<td class="basic">None</td>
+							<td class="standard"><i class="itemCheck"></i></td>
+							<td class="premium"><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th class="subtitle">PRIVILEGES FROM TAXHUB </th>
+						</tr>
+						<tr>
+						<th>
+							<ul>
+								<li>10% discount code</li>
+								<li>Free 30-min CPA consultation</li>
+							</ul>
+						</th>
+						<td class="basic"><i class="itemCheck"></i></td>
+						<td class="standard"><i class="itemCheck"></i></td>
+						<td class="premium"><i class="itemCheck"></i></td>
+						</tr>
+					</tbody>
+				`;
+      break;
+    case 244:
+      if (parseInt(entity_type_id) === 14) {
+        content = `
+					<thead>
+						<tr>
+							<th></th>
+							<th class="premium title">Branch
+								<p class="des">Establishment of a Branch</p>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>Name availability check</th>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Document Preparation &amp; Filing</th>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Business/Enterprise Registration Certificate (ERC)</th>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Investment Registration Certificate (IRC)</th>
+							<td>None</td>
+						</tr>
+						<tr>
+							<th>Local registered address for 1st year</th>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Public announcement of company registration</th>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Tax registration after incorporation</th>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Company seal</th>
+							<td>None</td>
+						</tr>
+					</tbody>
+				`;
+      } else if (parseInt(entity_type_id) === 15) {
+        content = `
+					<thead>
+						<tr>
+							<th></th>
+							<th class="ro title">RO
+								<p class="des">Establishment of a Representative Office</p>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>Name availability check</th>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Document Preparation &amp; Filing</th>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Business/Enterprise Registration Certificate (ERC)</th>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Investment Registration Certificate (IRC)</th>
+							<td>None</td>
+						</tr>
+						<tr>
+							<th>Local registered address for 1st year</th>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Public announcement of company registration</th>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Tax registration after incorporation</th>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Company seal</th>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+					</tbody>
+				`;
+      } else {
+        content = `
+					<thead>
+						<tr>
+							<th></th>
+							<th class="basic title">JVC
+								<p class="des">Establishment of a Joint Venture Company (FII)</p>
+							</th>
+							<th class="standard title">WFOE
+								<p class="des">Establishment of a Wholly-Owned Foreign Enterprise (LLC/JSC)</p>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>Name availability check</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Document Preparation &amp; Filing</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Business/Enterprise Registration Certificate (ERC)</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Investment Registration Certificate (IRC)</th>
+							<td>None</td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Local registered address for 1st year</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Public announcement of company registration</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Tax registration after incorporation</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Company seal</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+					</tbody>
+				`;
+      }
+      break;
+    case 237:
+      if (parseInt(entity_type_id) === 7) {
+        content = `
+					<thead>
+						<tr>
+							<th></th>
+							<th class="basic title">BASIC</th>
+							<th class="standard title">STANDARD</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th class="subtitle">COMPANY FORMATION</th>
+						</tr>
+						<tr>
+							<th>Name availability check</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Government filing fee</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>01 year registered address</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>01 year service address<p class="des">Applicable to 02 members only</p></th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>01 year business address</th>
+							<td>None</td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>
+								Digital company docs
+								<ul>
+									<li>Copies of COI, M&AA and Share certificates</li>
+									<li>Copy of company register</li>
+								</ul>
+							</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>
+								Printed company docs
+								<ul>
+									<li>Printed COI & share certificates</li>
+									<li>Printed & Bound M&AA</li>
+								</ul>
+							</th>
+							<td>None</td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>International courier fee</th>
+							<td>None</td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th class="subtitle">BUSINESS ACCOUNT</th>
+						</tr>
+						<tr>
+							<th>Multi-currency business account with Wise/Payoneer</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+					</tbody>
+				`;
+      } else {
+        content = `
+					<thead>
+						<tr>
+							<th></th>
+							<th class="basic title">BASIC</th>
+							<th class="standard title">STANDARD</th>
+							<th class="premium title">PREMIUM</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th class="subtitle">COMPANY FORMATION</th>
+						</tr>
+						<tr>
+							<th>Name availability check</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Government filing fee</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>01 year registered address</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>01 year service address <p class="des"><em>Applicable to 01 member only</em></p></th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>01 year business address</th>
+							<td>None</td>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>
+								Digital company docs
+								<ul>
+									<li>Copies of COI, M&AA and Share certificates</li>
+									<li>Copy of company register</li>
+								</ul>
+							</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>
+								Printed company docs
+								<ul>
+									<li>Printed COI & share certificates</li>
+									<li>Printed & Bound M&AA</li>
+								</ul>
+							</th>
+							<td>None</td>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>International courier fee</th>
+							<td>None</td>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>VAT registration</th>
+							<td>None</td>
+							<td>None</td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th>Free company cancellation within 12 months</th>
+							<td>None</td>
+							<td>None</td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+						<tr>
+							<th class="subtitle">BUSINESS ACCOUNT</th>
+						</tr>
+						<tr>
+							<th>Multi-currency business account with Wise/Payoneer</th>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+							<td><i class="itemCheck"></i></td>
+						</tr>
+					</tbody>
+				`;
+      }
+      break;
+    case 58:
+      content = `
+				<thead>
+					<tr>
+						<th></th>
+						<th class="basic title">BASIC</th>
+						<th class="standard title">STANDARD</th>
+						<th class="premium title">PREMIUM</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th class="subtitle">COMPANY FORMATION</th>
+					</tr>
+					<tr>
+						<th>Free 1st Name Availability Check</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Document Preparation &amp; Filling</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Company Formation</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Local Company Secretary for 1st year</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Local Registered Address for 1st year</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Digital corporate documents</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th class="subtitle">BANK ACCOUNT APPLICATION</th>
+					</tr>
+					<tr>
+						<th>Assistance in opening Bank account including Cert. of Incumbency if required</th>
+						<td class="basic">None </td>
+						<td class="standard">1 bank application</td>
+						<td class="premium">Up to 5 bank applications</td>
+					</tr>
+				</tbody>
+			`;
+      break;
+    default:
+      content = `
+				<thead>
+					<tr>
+						<th></th>
+						<th class="basic title">BASIC</th>
+						<th class="standard title">STANDARD</th>
+						<th class="premium title">PREMIUM</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th class="subtitle">COMPANY FORMATION</th>
+					</tr>
+					<tr>
+						<th>Unlimited Business Name Check</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Document Preparation &amp; Filling</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Company Formation</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Local Company Secretary for 1st year</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Local Registered Address for 1st year</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th>Digital corporate documents</th>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+						<td><i class="itemCheck"></i></td>
+					</tr>
+					<tr>
+						<th class="subtitle">BANK ACCOUNT APPLICATION</th>
+					</tr>
+					<tr>
+						<th>Assistance in opening Bank account including Cert. of Incumbency if required</th>
+						<td class="basic">None </td>
+						<td class="standard">1 bank application</td>
+						<td class="premium">Up to 5 bank applications</td>
+					</tr>
+				</tbody>
+			`;
+      break;
+  }
+  return content;
+}
 function IncorporationPackage(params) {
+  var _dataOnboarding$incor, _dataOnboarding$incor2, _dataOnboarding$incor3;
   useEffect(() => {
     if (window.history && window.history.pushState) {
       window.history.pushState('forward', null, './incorporation-package');
@@ -8322,6 +9283,7 @@ function IncorporationPackage(params) {
       }
     }
   }, [isVN]);
+  const [tab, setTab] = useState(1);
   const [isSwitch, setIsSwitch] = useState(false);
   const handleSwitch = isSwitch => {
     setIsSwitch(isSwitch);
@@ -8364,13 +9326,16 @@ function IncorporationPackage(params) {
       setLoading(false);
     }
   }, [dataOnboarding, dataPackagesTmp]);
+  const wrapperRef = useRef(null);
   const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [tab, setTab] = useState(1);
+  useOnClickOutside(wrapperRef, () => {
+    setShow(false);
+  });
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("div", {
     className: `${styles$a.btn_top_wrapper} ${styles$a.Header}`
   }, /*#__PURE__*/React.createElement("div", {
-    className: "row align-items-center",
     style: {
       display: 'flex',
       flexWrap: 'wrap',
@@ -8415,9 +9380,9 @@ function IncorporationPackage(params) {
     className: "animate_spin",
     size: 20
   })) : dataPackages ? /*#__PURE__*/React.createElement("div", {
+    className: styles$a.package,
     style: {
-      maxWidth: `${isSing ? '100%' : '992px'}`,
-      margin: '0 -15px'
+      maxWidth: `${isSing ? '100%' : '992px'}`
     }
   }, /*#__PURE__*/React.createElement("div", {
     className: styles$a.package_container
@@ -8449,6 +9414,7 @@ function IncorporationPackage(params) {
         case 'foreigner-basic':
           packageName = packageName;
           link = foreignerbasic;
+          break;
         case 'foreigner-ultra':
           packageName = packageName;
           link = foreignerultra;
@@ -8614,8 +9580,772 @@ function IncorporationPackage(params) {
       fontWeight: 500
     },
     onClick: handleBack
-  }, "Back")))));
+  }, "Back")))), /*#__PURE__*/React.createElement(Modal, {
+    show: show
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$a.modal_wrapper
+  }, /*#__PURE__*/React.createElement("div", {
+    ref: wrapperRef,
+    className: styles$a.dialog
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$a.closeModal,
+    style: {
+      position: 'absolute',
+      top: '0.25rem',
+      right: '0.5rem',
+      zIndex: 1
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    className: styles$a.close_button,
+    onClick: handleClose
+  }, /*#__PURE__*/React.createElement(IconContext.Provider, {
+    value: {
+      style: {
+        color: 'c4c4c4'
+      }
+    }
+  }, /*#__PURE__*/React.createElement(IoMdCloseCircle, {
+    size: `1.5rem`
+  })))), /*#__PURE__*/React.createElement("div", {
+    className: "relative"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$a.headerModal
+  }, /*#__PURE__*/React.createElement("h3", null, "COMPANY PACKAGE")), /*#__PURE__*/React.createElement("div", {
+    className: styles$a.bodyModal
+  }, isSing && /*#__PURE__*/React.createElement("div", {
+    className: styles$a.tab_container
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$a.tab_wrapper
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => setTab(1),
+    className: `${tab === 1 ? styles$a.active_tab : ''} ${styles$a.tab_item}`
+  }, "Incorporation"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setTab(2),
+    className: `${tab === 2 ? styles$a.active_tab : ''} ${styles$a.tab_item}`
+  }, "Renewal"))), /*#__PURE__*/React.createElement("table", {
+    id: "genPopupPackages"
+  }, parser(popupPackages(dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor = dataOnboarding.incorporation) === null || _dataOnboarding$incor === void 0 ? void 0 : (_dataOnboarding$incor2 = _dataOnboarding$incor.country) === null || _dataOnboarding$incor2 === void 0 ? void 0 : _dataOnboarding$incor2.id, dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor3 = dataOnboarding.incorporation) === null || _dataOnboarding$incor3 === void 0 ? void 0 : _dataOnboarding$incor3.entity_type_id, tab)))))))));
 }
 
-export { IncorporationCompanyType, IncorporationCountry, IncorporationEntityNameCheck, IncorporationPackage, Register, SelectService };
+var styles$b = {"container":"_styles-module__container__2vXIk","btn_back_top":"_styles-module__btn_back_top__2tWkM","tableServices":"_styles-module__tableServices__1cOKS","servicesRow":"_styles-module__servicesRow__3WVMP","tableCellGroup1":"_styles-module__tableCellGroup1__2O3va","servicesGroup":"_styles-module__servicesGroup__2i0XR","select":"_styles-module__select__3M50d","quantity":"_styles-module__quantity__2RFXr","lineDivider":"_styles-module__lineDivider__2iZZ2","singButton":"_styles-module__singButton__3g6k6","Header":"_styles-module__Header__HhmDt","CustomGroup":"_styles-module__CustomGroup__26U4s","CustomOption":"_styles-module__CustomOption__2iYUp"};
+
+const Component$1 = ({
+  style,
+  children,
+  ...props
+}) => {
+  return /*#__PURE__*/React.createElement("p", Object.assign({}, props, {
+    style: {
+      color: '#677294',
+      fontSize: '1.25rem',
+      lineHeight: '1.75rem',
+      ...style
+    }
+  }), children);
+};
+Component$1.propTypes = {};
+Component$1.defaultProps = {};
+
+const customStyles$1 = {
+  menu: (provider, state) => ({
+    ...provider,
+    width: 'fit-content'
+  }),
+  control: () => ({
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: `16px`,
+    cursor: 'pointer',
+    border: 'none'
+  }),
+  singleValue: base => ({
+    ...base,
+    color: '#677294',
+    border: 'none',
+    display: 'block',
+    overflow: 'initial',
+    position: 'initial',
+    transform: 'initial'
+  })
+};
+const customStyles1 = {
+  menu: (provider, state) => ({
+    ...provider,
+    borderColor: 0
+  }),
+  menuList: base => ({
+    ...base,
+    whiteSpace: 'normal',
+    wordWrap: 'break-word'
+  }),
+  control: () => ({
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: `16px`,
+    cursor: 'pointer',
+    border: 'none'
+  }),
+  singleValue: base => ({
+    ...base,
+    color: '#677294',
+    border: 'none',
+    display: 'block',
+    overflow: 'initial',
+    position: 'initial',
+    transform: 'initial'
+  })
+};
+const DropdownIndicator = props => /*#__PURE__*/React.createElement(components.IndicatorsContainer, Object.assign({}, props, {
+  style: {
+    padding: 0
+  }
+}), /*#__PURE__*/React.createElement(FaChevronDown, {
+  style: {
+    color: '#cfcfcf',
+    fontSize: '12px'
+  }
+}));
+const questions = [{
+  id: 1,
+  text: 'The accounting fee for basic package with yearly turnover of less than S$70,000 is US$84 per month or US$1,008 yearly.',
+  answers: [{
+    id: 1,
+    text: 'Yes, please add basic package of accounting and filling tax',
+    value: 1
+  }, {
+    id: 2,
+    text: "I'd like to add Company Review service",
+    value: 2
+  }]
+}, {
+  id: 2,
+  text: 'The accounting fee for basic package with yearly turnover of less than S$70,000 is US$39/month (billed yearly) for yearly package, and US$84/month (billed yearly) for monthly package.',
+  answers: [{
+    id: 1,
+    text: 'Yes, please add basic package of accounting and filing tax (yearly)',
+    value: 1
+  }, {
+    id: 2,
+    text: 'Yes, please add basic package of accounting and filing tax (monthly)',
+    value: 2
+  }, {
+    id: 3,
+    text: 'No, I can do it ourselves',
+    value: 3
+  }]
+}];
+const Group = props => {
+  return /*#__PURE__*/React.createElement("div", {
+    className: styles$b.CustomGroup
+  }, /*#__PURE__*/React.createElement(components.Group, props));
+};
+const CustomOption = props => {
+  return /*#__PURE__*/React.createElement(components.Option, Object.assign({}, props, {
+    className: styles$b.CustomOption
+  }));
+};
+const CustomField = ({
+  idx,
+  categories,
+  additionalServices,
+  fieldValue,
+  onFieldChange,
+  handleRemove
+}) => {
+  const [services, setServices] = useState([]);
+  useEffect(() => {
+    if (fieldValue && fieldValue.category && !fieldValue.readOnly) {
+      const newServices = _.uniqBy(additionalServices.map(item => ({
+        ...item,
+        value: item.id,
+        label: item.name
+      })), 'value').filter(item => item.service_type_id == fieldValue.category.id);
+      setServices(newServices);
+      if (newServices.length > 0 && !fieldValue.isLocalLoad) {
+        onFieldChange('service', idx, newServices[0]);
+      }
+    }
+  }, [fieldValue.category]);
+  return /*#__PURE__*/React.createElement("div", {
+    className: `${styles$b.servicesGroup}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$b.tableCellGroup1 + ' d-none d-lg-block col-md-1 pl-0'
+  }, idx + 1), /*#__PURE__*/React.createElement("div", {
+    className: styles$b.tableCellGroup1 + ' col-12 col-sm-6 col-lg-4 pl-0 mb-2 mb-lg-0 d-flex justify-content-center'
+  }, /*#__PURE__*/React.createElement(Select, {
+    menuPlacement: "auto",
+    menuPosition: "fixed",
+    menuShouldBlockScroll: true,
+    className: styles$b.select,
+    options: categories.filter(item => item.options ? item.options.some(i => additionalServices.some(el => el.service_type_id === i.id)) : additionalServices.some(el => el.service_type_id === item.id)),
+    isSearchable: false,
+    styles: customStyles$1,
+    value: fieldValue['category'] || '',
+    onChange: value => onFieldChange('category', idx, value),
+    isDisabled: fieldValue['readOnly'],
+    components: {
+      IndicatorSeparator: () => null,
+      IndicatorsContainer: props => fieldValue['readOnly'] ? null : /*#__PURE__*/React.createElement(DropdownIndicator, props),
+      Group,
+      Option: CustomOption
+    }
+  })), /*#__PURE__*/React.createElement("div", {
+    className: styles$b.tableCellGroup1 + ' col-12 col-sm-6 col-lg-4 pl-0 mb-2 mb-lg-0 d-flex justify-content-center'
+  }, /*#__PURE__*/React.createElement(Select, {
+    menuPlacement: "auto",
+    menuPosition: "fixed",
+    menuShouldBlockScroll: true,
+    className: styles$b.select,
+    isSearchable: false,
+    options: services,
+    styles: customStyles1,
+    value: fieldValue['service'] || '',
+    onChange: value => onFieldChange('service', idx, value),
+    isDisabled: fieldValue['readOnly'],
+    components: {
+      IndicatorSeparator: () => null,
+      IndicatorsContainer: props => fieldValue['readOnly'] ? null : /*#__PURE__*/React.createElement(DropdownIndicator, props)
+    }
+  })), /*#__PURE__*/React.createElement("div", {
+    className: styles$b.tableCellGroup1 + ' col-6 col-lg-2 pl-0 d-flex justify-content-center'
+  }, fieldValue['readOnly'] ? /*#__PURE__*/React.createElement("div", {
+    className: `${styles$b.quantity} d-flex`
+  }, fieldValue['quantity'] > 9 ? fieldValue['quantity'] : '0' + fieldValue['quantity']) : /*#__PURE__*/React.createElement("div", {
+    className: `${styles$b.quantity} d-flex`
+  }, fieldValue && fieldValue['quantity'] <= 1 ? /*#__PURE__*/React.createElement("button", {
+    onClick: () => handleRemove(fieldValue),
+    className: "bg-transparent"
+  }, /*#__PURE__*/React.createElement(IoMdTrash, {
+    size: 25,
+    color: "#adadad"
+  })) : /*#__PURE__*/React.createElement("button", {
+    onClick: () => onFieldChange('quantity', idx, fieldValue['quantity'] - 1)
+  }, /*#__PURE__*/React.createElement(RiSubtractFill, {
+    size: 22,
+    color: "#fff"
+  })), fieldValue['quantity'] > 9 ? fieldValue['quantity'] : '0' + fieldValue['quantity'], /*#__PURE__*/React.createElement("button", {
+    onClick: () => onFieldChange('quantity', idx, fieldValue['quantity'] + 1)
+  }, /*#__PURE__*/React.createElement(BiPlus, {
+    size: 22,
+    color: "#fff"
+  })))), /*#__PURE__*/React.createElement("div", {
+    className: styles$b.tableCellGroup1 + ' col-6 col-lg-1 d-flex pl-0 d-flex justify-content-center'
+  }, /*#__PURE__*/React.createElement("sub", null, "$US"), /*#__PURE__*/React.createElement("div", {
+    className: "price"
+  }, fieldValue['price'])));
+};
+const clearSelectedPackages = () => {
+  if (localStorage.getItem('data_onboarding')) {
+    var _dataOnboarding$incor;
+    const dataOnboarding = JSON.parse(localStorage.getItem('data_onboarding'));
+    if (dataOnboarding !== null && dataOnboarding !== void 0 && (_dataOnboarding$incor = dataOnboarding.incorporation) !== null && _dataOnboarding$incor !== void 0 && _dataOnboarding$incor.selected_packages) {
+      dataOnboarding.incorporation.selected_packages = [];
+      localStorage.setItem('data_onboarding', JSON.stringify(dataOnboarding));
+    }
+  }
+  if (window.localStorage.getItem('customer')) {
+    let customer = JSON.parse(window.localStorage.getItem('customer'));
+    delete customer.company_country_id;
+    delete customer.company_name;
+    delete customer.entity_type_id;
+    delete customer.package_id;
+    window.localStorage.setItem('customer', JSON.stringify(customer));
+  }
+};
+function IncorporationAdditionalService(params) {
+  const [fields, setFields] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [signature, setSignature] = useState('');
+  const [packageId, setPackageId] = useState('');
+  const [companyInfo, setCompanyInfo] = useState({});
+  const [additionalServices, setAdditionalServices] = useState([]);
+  const [servicesAccounting, setServicesAccounting] = useState([]);
+  const [country, setCountry] = useState();
+  const [question, setQuestion] = useState();
+  const [sidebar, setSidebar] = useState(false);
+  const [loading, setLoading] = useState('');
+  const [emptyField, setEmtyField] = useState(false);
+  const [note, setNote] = useState(true);
+  const promotionCode = useRef(null);
+  useEffect(() => {
+    if (localStorage.getItem('data_onboarding')) {
+      var _dataOnboarding$incor2, _dataOnboarding$incor3, _dataOnboarding$incor4, _dataOnboarding$incor5, _dataOnboarding$incor6, _dataOnboarding$incor7, _dataOnboarding$incor8, _dataOnboarding$incor9, _dataOnboarding$incor10, _dataOnboarding$incor11, _dataOnboarding$incor12, _dataOnboarding$incor13, _dataOnboarding$incor14, _dataOnboarding$incor15, _dataOnboarding$incor16, _dataOnboarding$incor17, _dataOnboarding$incor18, _dataOnboarding$incor19, _dataOnboarding$incor20, _dataOnboarding$incor21, _dataOnboarding$incor22, _dataOnboarding$incor23, _dataOnboarding$incor24, _dataOnboarding$incor25, _dataOnboarding$incor26, _dataOnboarding$incor27, _dataOnboarding$incor28, _dataOnboarding$incor29, _dataOnboarding$incor30;
+      const dataOnboarding = JSON.parse(localStorage.getItem('data_onboarding'));
+      const newAdditionalServices = (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor2 = dataOnboarding.incorporation) === null || _dataOnboarding$incor2 === void 0 ? void 0 : (_dataOnboarding$incor3 = _dataOnboarding$incor2.package) === null || _dataOnboarding$incor3 === void 0 ? void 0 : _dataOnboarding$incor3.AdditionalServices) || [];
+      const newServicesAccounting = (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor4 = dataOnboarding.incorporation) === null || _dataOnboarding$incor4 === void 0 ? void 0 : (_dataOnboarding$incor5 = _dataOnboarding$incor4.package) === null || _dataOnboarding$incor5 === void 0 ? void 0 : _dataOnboarding$incor5.ServicesAccounting) || [];
+      const newCompanyInfo = {
+        name: ((_dataOnboarding$incor6 = dataOnboarding.incorporation.company_name[0]) === null || _dataOnboarding$incor6 === void 0 ? void 0 : _dataOnboarding$incor6.name) || '',
+        company_suffix_id: (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor7 = dataOnboarding.incorporation) === null || _dataOnboarding$incor7 === void 0 ? void 0 : (_dataOnboarding$incor8 = _dataOnboarding$incor7.company_name[0]) === null || _dataOnboarding$incor8 === void 0 ? void 0 : (_dataOnboarding$incor9 = _dataOnboarding$incor8.suffix) === null || _dataOnboarding$incor9 === void 0 ? void 0 : _dataOnboarding$incor9.value) || '',
+        entity_type_id: (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor10 = dataOnboarding.incorporation) === null || _dataOnboarding$incor10 === void 0 ? void 0 : _dataOnboarding$incor10.entity_type_id) || '',
+        country_id: (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor11 = dataOnboarding.incorporation) === null || _dataOnboarding$incor11 === void 0 ? void 0 : (_dataOnboarding$incor12 = _dataOnboarding$incor11.country) === null || _dataOnboarding$incor12 === void 0 ? void 0 : _dataOnboarding$incor12.id) || '',
+        preventive_name: (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor13 = dataOnboarding.incorporation) === null || _dataOnboarding$incor13 === void 0 ? void 0 : (_dataOnboarding$incor14 = _dataOnboarding$incor13.company_name) === null || _dataOnboarding$incor14 === void 0 ? void 0 : _dataOnboarding$incor14.filter((item, index) => index !== 0).map(item => ({
+          name: item.name,
+          company_suffix_id: item.suffix.value
+        }))) || []
+      };
+      const children = _.sortBy(_.uniqBy(newAdditionalServices.concat(newServicesAccounting).map(item => ({
+        ...item.ServiceType,
+        value: item.ServiceType.id,
+        label: item.ServiceType.name
+      })), 'value'), ['order']).filter(e => e.id !== 42);
+      const parent = _.unionBy(children.map(item => {
+        if ((item === null || item === void 0 ? void 0 : item.parent_id) !== null) {
+          return {
+            ...item.ServiceType
+          };
+        }
+      }).filter(item => item !== undefined), 'name');
+      const group = _.groupBy(children, 'ServiceType.name');
+      const newCategories = _.sortBy([...parent.map(item => ({
+        ...item,
+        label: item.name,
+        options: group[item.name].map(i => ({
+          ...i,
+          value: i.id,
+          label: i.name
+        }))
+      })), ...group[undefined].map(i => ({
+        ...i,
+        value: i.id,
+        label: i.name
+      }))], ['order']);
+      setPackageId((dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor15 = dataOnboarding.incorporation) === null || _dataOnboarding$incor15 === void 0 ? void 0 : (_dataOnboarding$incor16 = _dataOnboarding$incor15.package) === null || _dataOnboarding$incor16 === void 0 ? void 0 : _dataOnboarding$incor16.id) || '');
+      setCountry((dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor17 = dataOnboarding.incorporation) === null || _dataOnboarding$incor17 === void 0 ? void 0 : _dataOnboarding$incor17.country) || null);
+      setCompanyInfo(newCompanyInfo);
+      setCategories(newCategories);
+      setAdditionalServices(newAdditionalServices);
+      setServicesAccounting(newServicesAccounting);
+      const selectedPackages = (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor18 = dataOnboarding.incorporation) === null || _dataOnboarding$incor18 === void 0 ? void 0 : _dataOnboarding$incor18.selected_packages) || [];
+      if (Array.isArray(selectedPackages) && selectedPackages.length > 0) {
+        setFields(selectedPackages.map(item => ({
+          ...item,
+          isLocalLoad: true
+        })));
+      }
+      if (Array.isArray(selectedPackages) && selectedPackages.length === 0 && (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor19 = dataOnboarding.incorporation) === null || _dataOnboarding$incor19 === void 0 ? void 0 : (_dataOnboarding$incor20 = _dataOnboarding$incor19.country) === null || _dataOnboarding$incor20 === void 0 ? void 0 : _dataOnboarding$incor20.id) === 191 && ((dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor21 = dataOnboarding.incorporation) === null || _dataOnboarding$incor21 === void 0 ? void 0 : (_dataOnboarding$incor22 = _dataOnboarding$incor21.package) === null || _dataOnboarding$incor22 === void 0 ? void 0 : _dataOnboarding$incor22.id) === 85 || (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor23 = dataOnboarding.incorporation) === null || _dataOnboarding$incor23 === void 0 ? void 0 : (_dataOnboarding$incor24 = _dataOnboarding$incor23.package) === null || _dataOnboarding$incor24 === void 0 ? void 0 : _dataOnboarding$incor24.id) === 86)) {
+        setQuestion(questions[1]);
+      } else if (Array.isArray(selectedPackages) && selectedPackages.length === 0 && (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor25 = dataOnboarding.incorporation) === null || _dataOnboarding$incor25 === void 0 ? void 0 : (_dataOnboarding$incor26 = _dataOnboarding$incor25.country) === null || _dataOnboarding$incor26 === void 0 ? void 0 : _dataOnboarding$incor26.id) === 191 && ((dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor27 = dataOnboarding.incorporation) === null || _dataOnboarding$incor27 === void 0 ? void 0 : (_dataOnboarding$incor28 = _dataOnboarding$incor27.package) === null || _dataOnboarding$incor28 === void 0 ? void 0 : _dataOnboarding$incor28.id) === 87 || (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor29 = dataOnboarding.incorporation) === null || _dataOnboarding$incor29 === void 0 ? void 0 : (_dataOnboarding$incor30 = _dataOnboarding$incor29.package) === null || _dataOnboarding$incor30 === void 0 ? void 0 : _dataOnboarding$incor30.id) === 88)) {
+        setQuestion(questions[0]);
+      } else {
+        setQuestion('none');
+      }
+    }
+    if (localStorage.getItem('customer')) {
+      var _customer$signature;
+      const customer = JSON.parse(localStorage.getItem('customer'));
+      setSignature((customer === null || customer === void 0 ? void 0 : (_customer$signature = customer.signature) === null || _customer$signature === void 0 ? void 0 : _customer$signature.signature) || '');
+      promotionCode.current = customer.promotion_code || null;
+    } else {
+      location.href = '/register';
+    }
+    return () => {};
+  }, []);
+  useEffect(() => {
+    if (fields.length > 0 && fields.find(el => el.service.id === 1950)) {
+      setNote(false);
+    }
+    if (fields.length > 0 && fields.find(el => el.service.id === 1950) || companyInfo && companyInfo.country_id === 23 && companyInfo.entity_type_id !== 2) {
+      setNote(false);
+    }
+    if (companyInfo && companyInfo.country_id === 23 && companyInfo.entity_type_id === 2) {
+      let fixedAdditionalService;
+      fixedAdditionalService = additionalServices.find(item => item.id == 1851);
+      if (fixedAdditionalService) {
+        if (fields.length === 0) {
+          setFields([...fields, {
+            id: fields.length + 1,
+            category: {
+              ...fixedAdditionalService.ServiceType,
+              label: fixedAdditionalService.ServiceType.name,
+              value: fixedAdditionalService.ServiceType.id
+            },
+            service: {
+              ...fixedAdditionalService,
+              label: fixedAdditionalService.name,
+              value: fixedAdditionalService.id
+            },
+            readOnly: true,
+            price: fixedAdditionalService.Fee.value,
+            quantity: 1
+          }]);
+        }
+        setAdditionalServices(additionalServices.filter(item => item.id !== 1851));
+      }
+    }
+  }, [companyInfo, additionalServices, fields, categories]);
+  const onFieldChange = (fieldName, index, value) => {
+    const fieldTemps = [...fields];
+    fieldTemps[index][fieldName] = value;
+    fieldTemps[index]['isLocalLoad'] = false;
+    if (fieldName === 'service') {
+      fieldTemps[index]['quantity'] = 1;
+    }
+    if (fieldName === 'service' || fieldName === 'quantity') {
+      fieldTemps[index]['price'] = fieldTemps[index]['service'].Fee.value * fieldTemps[index]['quantity'];
+    }
+    setFields(fieldTemps);
+  };
+  const handleRemove = field => {
+    setFields(fields.filter(item => item.id !== field.id));
+    if (emptyField && fields.length == 1) {
+      setNote(false);
+    }
+  };
+  const removeAll = () => {
+    if (country && country.id === 191 && (packageId === 85 || packageId === 86 || packageId === 87 || packageId === 88) && !emptyField || companyInfo && companyInfo.country_id === 23 && companyInfo.entity_type_id === 2) {
+      setFields(fields.filter((item, index) => index === 0));
+    } else {
+      setFields([]);
+      if (!fields.find(el => el.service.id === 1950)) {
+        setNote(false);
+      }
+    }
+  };
+  const handleAPIAdditional = async orderItems => {
+    try {
+      const response = await axios.post(`https://core.test-lp.bbcincorp.com/api/onboarding/order/incorp`, {
+        package_id: packageId,
+        OrderItems: orderItems,
+        signature: signature,
+        company_info: companyInfo
+      });
+      if (response.data.data) {
+        if (localStorage.getItem('data_onboarding')) {
+          const dataOnboarding = JSON.parse(localStorage.getItem('data_onboarding'));
+          if (!dataOnboarding.incorporation) {
+            dataOnboarding.incorporation = {};
+          }
+          dataOnboarding.incorporation.selected_packages = fields.filter(item => orderItems.some(temp => temp.service_id === item.service.id));
+          localStorage.setItem('data_onboarding', JSON.stringify(dataOnboarding));
+        }
+        const promotion_code = promotionCode.current ? '&promotion_code=' + promotionCode.current : '';
+        location.href = '/onboarding/order-information?order_code=' + response.data.data + promotion_code;
+      }
+    } catch (error) {
+      setLoading('');
+    }
+  };
+  const handleSubmit = type => {
+    if (type === 'skip') {
+      setLoading('skip');
+      if (country && country.id === 191 && (packageId === 85 || packageId === 86 || packageId === 87 || packageId === 88) && !emptyField || companyInfo && companyInfo.country_id === 23 && companyInfo.entity_type_id === 2) {
+        handleAPIAdditional([{
+          service_id: fields[0].service.id,
+          quantity: fields[0].quantity
+        }]);
+      } else {
+        handleAPIAdditional([]);
+      }
+    } else {
+      setLoading('next');
+      const orderItemTemps = _.uniqBy(fields.map(item => ({
+        service_id: item.service.id,
+        quantity: item.quantity
+      })), 'service_id');
+      const orderItems = [];
+      orderItemTemps.forEach(item => {
+        let quantity = 0;
+        fields.forEach(field => {
+          if (field.service.id === item.service_id) {
+            quantity += field.quantity;
+          }
+        });
+        orderItems.push({
+          ...item,
+          quantity: quantity
+        });
+      });
+      handleAPIAdditional(orderItems);
+    }
+  };
+  const handleClickAdd = () => {
+    if (Array.isArray(categories) && categories.length > 0) {
+      setFields([...fields, {
+        id: fields.length + 1,
+        category: 'options' in categories[0] ? categories[0].options[0] : categories[0],
+        quantity: 1
+      }]);
+      if (!fields.find(el => el.service.id === 1950)) {
+        setNote(true);
+      }
+    }
+  };
+  const getSum = () => {
+    let sum = 0;
+    fields.forEach(item => {
+      if (item.price) {
+        sum += item.price;
+      }
+    });
+    return sum;
+  };
+  const handleQuestion = answer => {
+    switch (answer.value) {
+      case 1:
+        let newServicesAccounting1 = servicesAccounting[0];
+        if (question.id === 1) {
+          newServicesAccounting1 = servicesAccounting.find(item => item.id === 1941);
+        } else {
+          newServicesAccounting1 = servicesAccounting.find(item => item.id === 1934);
+        }
+        if (newServicesAccounting1) {
+          if (fields.length === 0) {
+            setFields([...fields, {
+              id: fields.length + 1,
+              category: {
+                ...newServicesAccounting1.ServiceType,
+                label: newServicesAccounting1.ServiceType.name,
+                value: newServicesAccounting1.ServiceType.id
+              },
+              service: {
+                ...newServicesAccounting1,
+                label: newServicesAccounting1.name,
+                value: newServicesAccounting1.id
+              },
+              readOnly: true,
+              price: newServicesAccounting1.Fee.value,
+              quantity: 1
+            }]);
+          }
+          setQuestion('none');
+        }
+        break;
+      case 2:
+        let newServicesAccounting2 = servicesAccounting[0];
+        if (question.id === 1) {
+          newServicesAccounting2 = servicesAccounting.find(item => item.id === 1950);
+        } else {
+          newServicesAccounting2 = servicesAccounting.find(item => item.id === 1941);
+        }
+        if (newServicesAccounting2) {
+          if (fields.length === 0) {
+            setFields([...fields, {
+              id: fields.length + 1,
+              category: {
+                ...newServicesAccounting2.ServiceType,
+                label: newServicesAccounting2.ServiceType.name,
+                value: newServicesAccounting2.ServiceType.id
+              },
+              service: {
+                ...newServicesAccounting2,
+                label: newServicesAccounting2.name,
+                value: newServicesAccounting2.id
+              },
+              readOnly: true,
+              price: newServicesAccounting2.Fee.value,
+              quantity: 1
+            }]);
+          }
+          setQuestion('none');
+        }
+        break;
+      case 3:
+        setQuestion('none');
+        setEmtyField(true);
+        if (fields.length === 0) {
+          setFields([]);
+          setNote(false);
+        }
+        break;
+      default:
+        const newQuestions = questions.filter(item => item.id !== question.id);
+        if (newQuestions[0]) {
+          setQuestion(newQuestions[0]);
+        }
+        break;
+    }
+  };
+  return question ? /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: styles$b.container
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$b.Header + ' row mx-0 w-100 justify-content-between d-none d-lg-flex'
+  }, /*#__PURE__*/React.createElement("a", {
+    disabled: loading && loading !== '',
+    href: "/incorporation-package",
+    className: 'font-weight-bold mb-0',
+    style: {
+      fontSize: 20
+    },
+    onClick: clearSelectedPackages
+  }, "Back"), question && question !== 'none' && packageId != 85 && packageId != 86 ? /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: `d-flex text-dark align-items-center`,
+    style: {
+      fontSize: 20
+    }
+  }, "Frequently Asked Questions?", ' ', /*#__PURE__*/React.createElement("button", {
+    className: "btn p-0 text-primary font-weight-bold ml-1 shadow-none",
+    style: {
+      fontSize: 20
+    },
+    onClick: () => setSidebar(true)
+  }, "CLICK HERE"))) : /*#__PURE__*/React.createElement(Fragment, null)), question === 'none' ? /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: "d-flex flex-column justify-content-between flex-fill"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$b.content
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "row align-items-center justify-content-between mb-2 mb-lg-4"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$b.titleDes + ' col-12 col-lg-8 mb-2'
+  }, /*#__PURE__*/React.createElement(Title, {
+    text: "Additional Services",
+    className: "mt-0 mt-lg-40"
+  }), /*#__PURE__*/React.createElement(Component, null, "Additional services will help you to solve the problem relating to documentation. You can also skip this if you do not find the services suited to you")), /*#__PURE__*/React.createElement("div", {
+    className: styles$b.total + ' text-left col-12 col-lg-4 d-flex d-lg-block'
+  }, /*#__PURE__*/React.createElement("h3", {
+    className: "text-lg-right"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-dark"
+  }, "Total:"), /*#__PURE__*/React.createElement("span", {
+    className: "d-lg-none ml-1"
+  }, "$", getSum(), ".00")), /*#__PURE__*/React.createElement("h1", {
+    className: "text-lg-right d-none d-lg-block"
+  }, "US$", getSum(), ".00"))), /*#__PURE__*/React.createElement("div", {
+    className: styles$b.tableServices
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$b.servicesRow + ' font-weight-bold d-none d-lg-flex'
+  }, /*#__PURE__*/React.createElement("div", {
+    className: ' col-md-1 p-0',
+    scope: "col"
+  }, "No."), /*#__PURE__*/React.createElement("div", {
+    className: ' col-md-4 p-0',
+    scope: "col"
+  }, "Category"), /*#__PURE__*/React.createElement("div", {
+    className: ' col-md-4 p-0',
+    scope: "col"
+  }, "Service"), /*#__PURE__*/React.createElement("div", {
+    className: ' col-md-2 p-0',
+    scope: "col"
+  }, "Quantity"), /*#__PURE__*/React.createElement("div", {
+    className: ' col-md-1 p-0',
+    scope: "col"
+  }, "Price")), fields.length === 0 && /*#__PURE__*/React.createElement("h3", {
+    className: "mt-4 mb-4 mb-lg-0 text-center"
+  }, "Please add and choose services"), fields.map((field, index) => /*#__PURE__*/React.createElement("div", {
+    key: index,
+    className: "px-4 px-lg-0 mt-lg-2"
+  }, index !== 0 && /*#__PURE__*/React.createElement("div", {
+    className: "d-lg-none"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$b.lineDivider
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "row flex-nowrap mx-0 px-0 px-sm-3 py-2 py-sm-4 p-lg-0"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "d-lg-none col-1 py-3"
+  }, index + 1), /*#__PURE__*/React.createElement("div", {
+    className: "col-11 col-lg-12 pl-lg-0"
+  }, /*#__PURE__*/React.createElement(CustomField, {
+    idx: index,
+    fieldValue: field,
+    additionalServices: additionalServices,
+    categories: categories,
+    onFieldChange: onFieldChange,
+    handleRemove: handleRemove
+  })))))), /*#__PURE__*/React.createElement("div", {
+    className: 'd-flex justify-content-center text-center my-3 my-sm-4 my-lg-5'
+  }, /*#__PURE__*/React.createElement("button", {
+    className: 'mx-2 mb-2',
+    onClick: handleClickAdd,
+    style: {
+      minWidth: 150
+    },
+    disabled: loading && loading !== ''
+  }, "Add"), /*#__PURE__*/React.createElement("button", {
+    className: 'bg-transparent text-dark mx-2 mb-2',
+    onClick: removeAll,
+    style: {
+      minWidth: 150
+    },
+    disabled: loading && loading !== ''
+  }, "Remove all"))), /*#__PURE__*/React.createElement("div", null, country.id == 191 && note && /*#__PURE__*/React.createElement("p", {
+    style: {
+      marginBottom: `60px`,
+      fontSize: `20px`,
+      lineHeight: `28px`,
+      fontWeight: `400`
+    }
+  }, /*#__PURE__*/React.createElement("strong", null, "Note:"), " Accounting fee is depended on client company\u2019s yearly revenue. You may take a look at", ' ', /*#__PURE__*/React.createElement("a", {
+    style: {
+      display: `inline-block`
+    },
+    target: "_blank",
+    rel: "noreferrer nofollow",
+    href: "https://bbcincorp.com/sg/accounting-and-auditing"
+  }, "our price range"), ".", /*#__PURE__*/React.createElement("br", null), " If you want to customize this package, please contact our customer service team for assistance."), companyInfo && companyInfo.country_id === 23 && companyInfo.entity_type_id === 2 && note && /*#__PURE__*/React.createElement("p", {
+    style: {
+      marginBottom: `60px`,
+      fontSize: `20px`,
+      lineHeight: `28px`,
+      fontWeight: `400`
+    }
+  }, /*#__PURE__*/React.createElement("strong", null, "Note:"), " Tax Identification Number (TIN) is mandatory for all Belize companies, regardless of whether they are included or non-included entities, to submit the filing of returns and tax payments. If you need further information and assistance, please do not hesitate to contact our customer service team."), /*#__PURE__*/React.createElement("div", {
+    className: "d-flex align-items-center"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mr-2 d-inline d-lg-none"
+  }, /*#__PURE__*/React.createElement("a", {
+    disabled: loading && loading !== '',
+    href: "/incorporation-package",
+    onClick: clearSelectedPackages
+  }, /*#__PURE__*/React.createElement(Component$1, {
+    className: "mb-0 p-2 cursor-pointer"
+  }, "Back"))), /*#__PURE__*/React.createElement("button", {
+    onClick: () => handleSubmit('next'),
+    className: "mr-1 mr-md-3 mx-lg-0",
+    disabled: loading && loading !== ''
+  }, loading === 'next' ? /*#__PURE__*/React.createElement("span", {
+    className: "d-flex align-items-center"
+  }, "Next", /*#__PURE__*/React.createElement(Spinner, {
+    as: "span",
+    animation: "border",
+    size: "sm",
+    role: "status",
+    "aria-hidden": "true",
+    className: "ml-2"
+  })) : /*#__PURE__*/React.createElement("span", null, "Next")), /*#__PURE__*/React.createElement("button", {
+    className: "bg-transparent text-dark shadow-none",
+    onClick: () => handleSubmit('skip'),
+    disabled: loading && loading !== ''
+  }, loading === 'skip' ? /*#__PURE__*/React.createElement("span", {
+    className: "d-flex align-items-center"
+  }, "Skip", /*#__PURE__*/React.createElement(Spinner, {
+    as: "span",
+    animation: "border",
+    size: "sm",
+    role: "status",
+    "aria-hidden": "true",
+    className: "ml-2"
+  })) : /*#__PURE__*/React.createElement("span", null, "Skip")))))) : /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: "d-flex flex-column justify-content-between flex-fill"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$b.content
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "d-flex justify-content-between"
+  }, /*#__PURE__*/React.createElement(Title, {
+    text: "Accounting and Tax Filing service",
+    className: "mt-0 mt-lg-40"
+  }), /*#__PURE__*/React.createElement("button", {
+    className: "btn shadow-none p-0 d-lg-none",
+    onClick: () => setSidebar(true)
+  }, /*#__PURE__*/React.createElement(FiHelpCircle, {
+    color: "#007eff",
+    size: 30
+  }))), /*#__PURE__*/React.createElement(Component, null, question.text), /*#__PURE__*/React.createElement("div", {
+    className: "mt-3 px-md-2"
+  }, question.answers.map((item, index) => /*#__PURE__*/React.createElement("button", {
+    onClick: () => handleQuestion(item),
+    className: `btn d-flex p-0 mt-1 text-left shadow-none ${styles$b.singButton}`,
+    key: index
+  }, /*#__PURE__*/React.createElement(FaCaretRight, {
+    size: 30,
+    color: "#333"
+  }), item.text))))))), /*#__PURE__*/React.createElement(Sidebar, {
+    description: `<div><h4>What is the fee if I use your accounting service?</h4><ul><li>Our accounting service starts from US$84/month for less than S$70,000 of revenue per year. You can check <a href='https://bbcincorp.com/sg/accounting-and-auditing' target='_blank' rel='nofollow noreferrer' class='fw-bold'>HERE</a> for accounting fee details.</li></ul><h4>If there is no transaction in my yearly accounting period, could I get my accounting fee back?</h4><ul><li>When you use nominee director service in Singapore, you are most likely required to deposit an initial amount of no less than S$2,000. However, we don’t require this, you must instead send your monthly accounting report for our local director’s review to discharge their liabilities from possible illicit business activities or practices.</li></ul></div>`,
+    title: "FAQs",
+    sidebar: sidebar,
+    onClickClose: () => setSidebar(false)
+  })) : /*#__PURE__*/React.createElement(Fragment, null);
+}
+
+export { IncorporationAdditionalService, IncorporationCompanyType, IncorporationCountry, IncorporationEntityNameCheck, IncorporationPackage, Register, SelectService };
 //# sourceMappingURL=index.modern.js.map

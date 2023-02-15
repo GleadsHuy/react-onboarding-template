@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styles from './styles.module.css'
 import Title from '../common/Title'
+import { useOnClickOutside } from '../common/functions'
 import {
   Spinner,
   Form,
@@ -20,13 +21,13 @@ import { sanitizeTitle } from '../common/functions'
 import { BiLoaderAlt } from 'react-icons/bi'
 
 import comparisonImg from 'assets/comparison-table.png'
-import foreignerbasic from 'assets/foreigner-basic.png'
-import foreignerultra from 'assets/foreigner-ultra.png'
-import locallite from 'assets/local-lite.png'
-import localstandard from 'assets/local-standard.png'
 import pacbasic from 'assets/pac-basic.png'
 import pacpremium from 'assets/pac-premium.png'
 import pacstandard from 'assets/pac-standard.png'
+import locallite from 'assets/local-lite.png'
+import localstandard from 'assets/local-standard.png'
+import foreignerbasic from 'assets/foreigner-basic.png'
+import foreignerultra from 'assets/foreigner-ultra.png'
 
 function popupPackages(country_id, entity_type_id, tab) {
   let content = ''
@@ -273,7 +274,7 @@ function popupPackages(country_id, entity_type_id, tab) {
 								<li>Corppass registration </li>
 								<li>Monthly accounting review</li>
 								<li>Monthly preparation of FSs</li>
-								<li>Annual tax filing (preparation and filing of ECI <br>and Form C/C-S)</li>
+								<li>Annual tax filing (preparation and filing of ECI and Form C/C-S)</li>
 								<li>Annual revenue under S$70k (plan upgradable)</li>
 							</ul>
 						</th>
@@ -1087,7 +1088,7 @@ export default function IncorporationPackage(params) {
   /**
    * Handle
    */
-
+  const [tab, setTab] = useState(1)
   const [isSwitch, setIsSwitch] = useState(false)
   const handleSwitch = (isSwitch) => {
     setIsSwitch(isSwitch)
@@ -1151,17 +1152,20 @@ export default function IncorporationPackage(params) {
       setLoading(false)
     }
   }, [dataOnboarding, dataPackagesTmp])
+  const wrapperRef = useRef(null)
 
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
-  const [tab, setTab] = useState(1)
+
+  useOnClickOutside(wrapperRef, () => {
+    setShow(false)
+  })
   return (
     <div>
       <section>
         <div className={`${styles.btn_top_wrapper} ${styles.Header}`}>
           <div
-            className='row align-items-center'
             style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}
           >
             <div style={{ flex: '0 0 auto' }}>
@@ -1206,9 +1210,9 @@ export default function IncorporationPackage(params) {
             </div>
           ) : dataPackages ? (
             <div
+              className={styles.package}
               style={{
-                maxWidth: `${isSing ? '100%' : '992px'}`,
-                margin: '0 -15px'
+                maxWidth: `${isSing ? '100%' : '992px'}`
               }}
             >
               <div className={styles.package_container}>
@@ -1251,6 +1255,7 @@ export default function IncorporationPackage(params) {
                       case 'foreigner-basic':
                         packageName = packageName
                         link = foreignerbasic
+                        break
                       case 'foreigner-ultra':
                         packageName = packageName
                         link = foreignerultra
@@ -1485,60 +1490,65 @@ export default function IncorporationPackage(params) {
         </div>
       </section>
       {/** Modal */}
-      {/* <Modal
-        show={show}
-        onHide={handleClose}
-        dialogClassName={`${styles.dialog}`}
-        centered
-      >
-        <div className=''>
-          <div className='relative'>
-            <Modal.Header className={styles.headerModal}>
-              <h3>COMPANY PACKAGE</h3>
-              <button className='btn p-0' onClick={handleClose}>
+      <Modal show={show}>
+        <div className={styles.modal_wrapper}>
+          <div ref={wrapperRef} className={styles.dialog}>
+            <div
+              className={styles.closeModal}
+              style={{
+                position: 'absolute',
+                top: '0.25rem',
+                right: '0.5rem',
+                zIndex: 1
+              }}
+            >
+              <button className={styles.close_button} onClick={handleClose}>
                 <IconContext.Provider value={{ style: { color: 'c4c4c4' } }}>
-                  <IoMdCloseCircle size={`2rem`} />
+                  <IoMdCloseCircle size={`1.5rem`} />
                 </IconContext.Provider>
               </button>
-            </Modal.Header>
-            <div className={styles.bodyModal}>
-              {isSing && (
-                <div className='tabs-container'>
-                  <div
-                    className={`rounded-pill mx-auto d-flex onboarding_Packages`}
-                  >
-                    <div
-                      onClick={() => setTab(1)}
-                      className={`rounded-pill text-center d-flex justify-content-center align-items-center d-inline-block onboarding_Package ${
-                        tab === 1 ? ' ' + 'onboarding_PackageActive' : ''
-                      }`}
-                    >
-                      Incorporation
-                    </div>
-                    <div
-                      onClick={() => setTab(2)}
-                      className={`rounded-pill text-center d-flex justify-content-center align-items-center text-center d-inline-block onboarding_Package ${
-                        tab === 2 ? ' ' + 'onboarding_PackageActive' : ''
-                      }`}
-                    >
-                      Renewal
+            </div>
+            <div className='relative'>
+              <div className={styles.headerModal}>
+                <h3>COMPANY PACKAGE</h3>
+              </div>
+              <div className={styles.bodyModal}>
+                {isSing && (
+                  <div className={styles.tab_container}>
+                    <div className={styles.tab_wrapper}>
+                      <button
+                        onClick={() => setTab(1)}
+                        className={`${tab === 1 ? styles.active_tab : ''} ${
+                          styles.tab_item
+                        }`}
+                      >
+                        Incorporation
+                      </button>
+                      <button
+                        onClick={() => setTab(2)}
+                        className={`${tab === 2 ? styles.active_tab : ''} ${
+                          styles.tab_item
+                        }`}
+                      >
+                        Renewal
+                      </button>
                     </div>
                   </div>
-                </div>
-              )}
-              <table id='genPopupPackages'>
-                {parse(
-                  popupPackages(
-                    dataOnboarding?.incorporation?.country?.id,
-                    dataOnboarding?.incorporation?.entity_type_id,
-                    tab
-                  )
                 )}
-              </table>
+                <table id='genPopupPackages'>
+                  {parse(
+                    popupPackages(
+                      dataOnboarding?.incorporation?.country?.id,
+                      dataOnboarding?.incorporation?.entity_type_id,
+                      tab
+                    )
+                  )}
+                </table>
+              </div>
             </div>
           </div>
         </div>
-      </Modal> */}
+      </Modal>
     </div>
   )
 }

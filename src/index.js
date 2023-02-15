@@ -5,6 +5,7 @@ import IncorporationCountry from './components/incorporation-country'
 import IncorporationCompanyType from './components/IncorporationCompanyType'
 import IncorporationEntityNameCheck from './components/IncorporationEntityNameCheck'
 import IncorporationPackage from './components/IncorporationPackage'
+import IncorporationAdditionalService from './components/IncorporationAdditionalService'
 import './styles.module.css'
 
 export {
@@ -13,7 +14,8 @@ export {
   IncorporationCountry,
   IncorporationCompanyType,
   IncorporationEntityNameCheck,
-  IncorporationPackage
+  IncorporationPackage,
+  IncorporationAdditionalService
 }
 
 // export default {

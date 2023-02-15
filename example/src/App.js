@@ -1,5 +1,5 @@
-import React from 'react'
-import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
+import React, { Fragment } from 'react'
+import { BrowserRouter, Link, Route, redirect } from 'react-router-dom'
 
 import {
   Register,
@@ -7,13 +7,14 @@ import {
   IncorporationCountry,
   IncorporationCompanyType,
   IncorporationEntityNameCheck,
-  IncorporationPackage
+  IncorporationPackage,
+  IncorporationAdditionalService
 } from 'react-onboarding-template'
 import 'react-onboarding-template/dist/index.css'
 
 const App = () => {
   return (
-    <div style={{ height: '100%' }}>
+    <Fragment>
       <BrowserRouter>
         <Route path='/register' component={Register} exact></Route>
         <Route path='/select-service' component={SelectService} exact></Route>
@@ -37,8 +38,13 @@ const App = () => {
           component={IncorporationPackage}
           exact
         ></Route>
+        <Route
+          path='/incorporation-additional-service'
+          component={IncorporationAdditionalService}
+          exact
+        ></Route>
       </BrowserRouter>
-    </div>
+    </Fragment>
   )
 }
 

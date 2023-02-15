@@ -60,6 +60,10 @@
   margin-top: 32px;
 }
 
+.package {
+  margin: 0 -15px;
+}
+
 .package_container {
   display: flex;
   flex-wrap: wrap;
@@ -200,8 +204,73 @@
   margin-top: 32px;
 }
 
+.modal_wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(-2%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.close_button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.tab_container {
+  width: 55%;
+  float: right;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.tab_wrapper {
+  display: flex;
+  box-shadow: 0 0 8px 0 rgba(119, 119, 119, 0.15) !important;
+  border-radius: 50rem;
+  padding: 4px;
+}
+
+.tab_item {
+  padding: 8px 16px;
+  font-weight: 500;
+  border-radius: 50rem;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #adadad;
+}
+
+.active_tab {
+  background-color: #2c2c51;
+  color: #fff;
+}
+
 .dialog {
+  border-radius: 10px;
+  position: relative;
   max-width: 900px;
+  width: 100%;
+  background-color: #fff;
 }
 .dialog .headerModal {
   padding: 24px 24px 24px 17px;
@@ -327,6 +396,10 @@
 .dialog .bodyModal :global(.onboarding_PackageActive):hover {
   color: #fff;
 }
+
+.dialog .bodyModal ul {
+  padding: 0;
+}
 .Header {
   height: 50px;
 }
@@ -345,6 +418,8 @@
   width: auto;
   cursor: pointer;
   padding: 8px;
+  border: 1px solid transparent;
+  box-shadow: 0 2px 8px #c9c9c9;
 }
 
 .comparison_img {
@@ -398,6 +473,12 @@
 }
 
 @media (max-width: 991px) {
+  .modal_wrapper {
+    padding: 0 8px;
+  }
+  .comparison_bottom_wrapper {
+    display: block;
+  }
   .btn_top_wrapper {
     display: none;
   }
@@ -417,10 +498,17 @@
     margin-top: 16px;
   }
   .btn_bottom_wrapper {
-    display: block;
+    display: inline-block;
   }
   .btn_back_bottom {
     display: block;
+  }
+  .tab_container {
+    width: 100%;
+    float: unset;
+  }
+  .package {
+    margin: 0;
   }
 }
 

@@ -42,13 +42,14 @@ var md = require('react-icons/md');
 var hi = require('react-icons/hi');
 var bs = require('react-icons/bs');
 var ai = require('react-icons/ai');
-var foreignerbasic = _interopDefault(require('./foreigner-basic~uQZFFwrd.png'));
-var foreignerultra = _interopDefault(require('./foreigner-ultra~XjDmcCNY.png'));
-var locallite = _interopDefault(require('./local-lite~TJhbcTdX.png'));
-var localstandard = _interopDefault(require('./local-standard~AyzXROgI.png'));
 var pacbasic = _interopDefault(require('./pac-basic~AyzXROgI.png'));
 var pacpremium = _interopDefault(require('./pac-premium~XjDmcCNY.png'));
 var pacstandard = _interopDefault(require('./pac-standard~uQZFFwrd.png'));
+var locallite = _interopDefault(require('./local-lite~TJhbcTdX.png'));
+var localstandard = _interopDefault(require('./local-standard~AyzXROgI.png'));
+var foreignerbasic = _interopDefault(require('./foreigner-basic~uQZFFwrd.png'));
+var foreignerultra = _interopDefault(require('./foreigner-ultra~XjDmcCNY.png'));
+var ri = require('react-icons/ri');
 
 var styles = {"FatfScreen":"_styles-module__FatfScreen__2ROgK","descriptionText":"_styles-module__descriptionText__2Vd8e","title":"_styles-module__title__35EYE","RegisterInput":"_styles-module__RegisterInput__gW7RG","item":"_styles-module__item__3hx7A","space_top":"_styles-module__space_top__yST6I","ErrorMessage":"_styles-module__ErrorMessage__qZ3vy","Link":"_styles-module__Link__1wNX0","Slider":"_styles-module__Slider__1Th7t","PhoneSelect":"_styles-module__PhoneSelect__1B3qM","CustomSelect":"_styles-module__CustomSelect__3bJjM","PhoneInput":"_styles-module__PhoneInput__2_4Q0","phonenumber_container":"_styles-module__phonenumber_container__HLp-P","RegisterScreen":"_styles-module__RegisterScreen__3hn-F","discountChristmas":"_styles-module__discountChristmas__i1zWx","CheckBox":"_styles-module__CheckBox__3klwe","button_wrapper":"_styles-module__button_wrapper__RJ7yj","Button":"_styles-module__Button__26moK","recaptcha":"_styles-module__recaptcha__14pK3","RegisterButton":"_styles-module__RegisterButton__1WoJs","RegisterLink":"_styles-module__RegisterLink__2p_CN","restricted_countries_wrapper":"_styles-module__restricted_countries_wrapper__5339W","restricted_countries_container":"_styles-module__restricted_countries_container__30wCB","restricted_countries_cols":"_styles-module__restricted_countries_cols__17jba","restricted_countries_cols_md":"_styles-module__restricted_countries_cols_md__wx9cR","listCollapse":"_styles-module__listCollapse__P54fa","active":"_styles-module__active__1yv7q","buttonCollapse":"_styles-module__buttonCollapse__BL6zk","isCollapse":"_styles-module__isCollapse__38GJw","iconCollapse":"_styles-module__iconCollapse__3YmIy","RegisterText":"_styles-module__RegisterText__3dZ-C","RegisterForm":"_styles-module__RegisterForm__2sn5j","formControl":"_styles-module__formControl__MkpSE","inputWrapper":"_styles-module__inputWrapper__u_8Hb","SelectWrapper":"_styles-module__SelectWrapper__2wTl0","CountrySelectWrapper":"_styles-module__CountrySelectWrapper__cRn99","nationalitySelect":"_styles-module__nationalitySelect__3tlRp","nationalityLabel":"_styles-module__nationalityLabel__1-615","phonenumber_wrapper":"_styles-module__phonenumber_wrapper__3q5qp","trustpilot_wrapper":"_styles-module__trustpilot_wrapper__1PI3w","FormFooter":"_styles-module__FormFooter__29TuF","Body":"_styles-module__Body__3J0ny","noteText":"_styles-module__noteText__9TPd0"};
 
@@ -8198,6 +8199,7 @@ function IncorporationEntityNameCheck(_ref) {
   useOnClickOutside(wrapperRef, function () {
     setSidebar(false);
   });
+  console.log(window.location);
   return (
     /*#__PURE__*/
     React__default.createElement("div", {
@@ -8536,9 +8538,51 @@ function IncorporationEntityNameCheck(_ref) {
   );
 }
 
-var styles$a = {"btn_top_wrapper":"_styles-module__btn_top_wrapper__34DmI","btn_top":"_styles-module__btn_top__3qqS1","button":"_styles-module__button__3860g","title":"_styles-module__title__2BlXc","description_wrapper":"_styles-module__description_wrapper__3Nlot","description":"_styles-module__description__3VahP","comparison_wrapper":"_styles-module__comparison_wrapper__3GLBr","comparison_top":"_styles-module__comparison_top__nxU8b","loader_wrapper":"_styles-module__loader_wrapper__3VbNy","package_container":"_styles-module__package_container__2x8Ni","card_wrapper":"_styles-module__card_wrapper__3w1_k","item_height":"_styles-module__item_height__6F5fK","content_wrapper_vn":"_styles-module__content_wrapper_vn__2QOXs","card":"_styles-module__card__3N8iG","card_inside":"_styles-module__card_inside__2aMYN","img_wrapper":"_styles-module__img_wrapper__hhqdG","cardName_wrapper":"_styles-module__cardName_wrapper__3OX3r","cardName":"_styles-module__cardName__22pk0","cardNameVN":"_styles-module__cardNameVN__7JTA6","cardPrice":"_styles-module__cardPrice__lMNoF","cardPriceVN":"_styles-module__cardPriceVN__sunAZ","cardDes":"_styles-module__cardDes__123Dc","basic":"_styles-module__basic__1pZey","local-lite":"_styles-module__local-lite__1fRKW","startup-for-locals":"_styles-module__startup-for-locals__2B7pn","standard":"_styles-module__standard__3mC0T","local-standard":"_styles-module__local-standard__3Fr5q","premium":"_styles-module__premium__10UG7","foreigner-basic":"_styles-module__foreigner-basic__1CpII","standard-with-employment-pass":"_styles-module__standard-with-employment-pass__23Y2O","foreigner-ultra":"_styles-module__foreigner-ultra__1mWaS","formSwich":"_styles-module__formSwich__1Glki","info":"_styles-module__info__1NfHz","note":"_styles-module__note__3O97i","note_vn":"_styles-module__note_vn__2QqH5","dialog":"_styles-module__dialog___aI90","headerModal":"_styles-module__headerModal__1TU3P","bodyModal":"_styles-module__bodyModal__1hv_K","Header":"_styles-module__Header__1hw-O","comparison_bottom_wrapper":"_styles-module__comparison_bottom_wrapper__1rqx-","comparison_bottom":"_styles-module__comparison_bottom__3PrcN","comparison_btn":"_styles-module__comparison_btn__3qyHB","comparison_img":"_styles-module__comparison_img__3RYJD","btn_bottom_wrapper":"_styles-module__btn_bottom_wrapper__3kj8Y","btn_back_bottom":"_styles-module__btn_back_bottom__1fOjL","Body":"_styles-module__Body__2PprN","card_wrapper_sg":"_styles-module__card_wrapper_sg__19DVk"};
+var styles$a = {"btn_top_wrapper":"_styles-module__btn_top_wrapper__34DmI","btn_top":"_styles-module__btn_top__3qqS1","button":"_styles-module__button__3860g","title":"_styles-module__title__2BlXc","description_wrapper":"_styles-module__description_wrapper__3Nlot","description":"_styles-module__description__3VahP","comparison_wrapper":"_styles-module__comparison_wrapper__3GLBr","comparison_top":"_styles-module__comparison_top__nxU8b","loader_wrapper":"_styles-module__loader_wrapper__3VbNy","package":"_styles-module__package__110ld","package_container":"_styles-module__package_container__2x8Ni","card_wrapper":"_styles-module__card_wrapper__3w1_k","item_height":"_styles-module__item_height__6F5fK","content_wrapper_vn":"_styles-module__content_wrapper_vn__2QOXs","card":"_styles-module__card__3N8iG","card_inside":"_styles-module__card_inside__2aMYN","img_wrapper":"_styles-module__img_wrapper__hhqdG","cardName_wrapper":"_styles-module__cardName_wrapper__3OX3r","cardName":"_styles-module__cardName__22pk0","cardNameVN":"_styles-module__cardNameVN__7JTA6","cardPrice":"_styles-module__cardPrice__lMNoF","cardPriceVN":"_styles-module__cardPriceVN__sunAZ","cardDes":"_styles-module__cardDes__123Dc","basic":"_styles-module__basic__1pZey","local-lite":"_styles-module__local-lite__1fRKW","startup-for-locals":"_styles-module__startup-for-locals__2B7pn","standard":"_styles-module__standard__3mC0T","local-standard":"_styles-module__local-standard__3Fr5q","premium":"_styles-module__premium__10UG7","foreigner-basic":"_styles-module__foreigner-basic__1CpII","standard-with-employment-pass":"_styles-module__standard-with-employment-pass__23Y2O","foreigner-ultra":"_styles-module__foreigner-ultra__1mWaS","formSwich":"_styles-module__formSwich__1Glki","info":"_styles-module__info__1NfHz","note":"_styles-module__note__3O97i","note_vn":"_styles-module__note_vn__2QqH5","modal_wrapper":"_styles-module__modal_wrapper__260T9","fadeIn":"_styles-module__fadeIn__21U4U","close_button":"_styles-module__close_button__4X6g2","tab_container":"_styles-module__tab_container__3ZOMY","tab_wrapper":"_styles-module__tab_wrapper__3Mg2u","tab_item":"_styles-module__tab_item__36v3_","active_tab":"_styles-module__active_tab__g8EO3","dialog":"_styles-module__dialog___aI90","headerModal":"_styles-module__headerModal__1TU3P","bodyModal":"_styles-module__bodyModal__1hv_K","Header":"_styles-module__Header__1hw-O","comparison_bottom_wrapper":"_styles-module__comparison_bottom_wrapper__1rqx-","comparison_bottom":"_styles-module__comparison_bottom__3PrcN","comparison_btn":"_styles-module__comparison_btn__3qyHB","comparison_img":"_styles-module__comparison_img__3RYJD","btn_bottom_wrapper":"_styles-module__btn_bottom_wrapper__3kj8Y","btn_back_bottom":"_styles-module__btn_back_bottom__1fOjL","Body":"_styles-module__Body__2PprN","card_wrapper_sg":"_styles-module__card_wrapper_sg__19DVk"};
 
+function popupPackages(country_id, entity_type_id, tab) {
+  var content = '';
+  switch (parseInt(country_id)) {
+    case 98:
+      content = "\n\t\t\t\t<thead>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t<th class=\"basic title\">BASIC</th>\n\t\t\t\t\t\t<th class=\"standard title\">STANDARD</th>\n\t\t\t\t\t\t<th class=\"premium title\">PREMIUM</th>\n\t\t\t\t\t</tr>\n\t\t\t\t</thead>\n\t\t\t\t<tbody>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th class=\"subtitle\">COMPANY FORMATION</th>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Unlimited Business Name Check</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Document Preparation &amp; Filling</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Company Formation</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>All Government fees in first years</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Local Company Secretary for 1st years</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Local Registered Address for first year included mails handle</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Significant Controller Register and Designated Representative</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Digital coporate documents</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Digital seal</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>One set of documents certified by CPA</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th class=\"subtitle\">BANK ACCOUNT APPLICATION</th>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Assistance in opening Bank account including Cert. of Incumbency if required</th>\n\t\t\t\t\t\t<td class=\"basic\">None </td>\n\t\t\t\t\t\t<td class=\"standard\">1 bank application</td>\n\t\t\t\t\t\t<td class=\"premium\">Up to 5 bank applications</td>\n\t\t\t\t\t</tr>\n\t\t\t\t</tbody>\n\t\t\t";
+      break;
+    case 191:
+      if (tab == 1) {
+        content = "\n\t\t\t\t<thead>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t<th class=\"basic title\">Local Lite</th>\n\t\t\t\t\t\t<th class=\"standard title\">Local Standard</th>\n\t\t\t\t\t\t<th class=\"premium title\">Foreigner Basic</th>\n\t\t\t\t\t\t<th class=\"ultra title\">Foreigner Ultra</th>\n\t\t\t\t\t</tr>\n\t\t\t\t</thead>\n\t\t\t\t<tbody>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th class=\"subtitle\">COMPANY FORMATION</th>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Unlimited Name Availability Check</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Document Preparation &amp; Filling</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Company Incorporation Process</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Company Name Reservation</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Government Registration Fee</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Lifetime Support/ Instant Response</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Digital Corporate Documents</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th><span class=\"subtitle\">Company Secretary</span> (1 year)</th>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Annual filing and AGM preparation</th>\n\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Annual filing government fee</th>\n\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Local Registered Address with mail handling</th>\n\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th class=\"subtitle\">PREMIUM COMPANY SET</th>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Company kit</th>\n\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Company stamp</th>\n\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Courier fee</th>\n\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th><span class=\"subtitle\">Nominee Director</span> (No deposit required)</th>\n\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th class=\"subtitle\">BANKING SUPPORT</th>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Bank account opening assistance with<br/> Singapore banks in our supported banks list</th>\n\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th class=\"subtitle\">WORK PASS</th>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Application of Employment Pass</th>\n\t\t\t\t\t\t<td>None </td>\n\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th class=\"subtitle\">REQUIREMENT FOR NOMINEE SERVICE</th>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>\n\t\t\t\t\t\t\t* 2 options:<br>\n\t\t\t\t\t\t\t1. Nominee review US$22/month billed yearly<br>\n\t\t\t\t\t\t\t2. Accounting package from US$84/month<br> billed yearly:\n\t\t\t\t\t\t\t<ul class=\"list\">\n\t\t\t\t\t\t\t\t<li>Xero cloud accounting</li>\n\t\t\t\t\t\t\t\t<li>Corppass registration </li>\n\t\t\t\t\t\t\t\t<li>Monthly accounting review</li>\n\t\t\t\t\t\t\t\t<li>Monthly preparation of FSs</li>\n\t\t\t\t\t\t\t\t<li>Annual tax filing (preparation and filing of ECI and Form C/C-S)</li>\n\t\t\t\t\t\t\t\t<li>Annual revenue under S$70k (plan upgradable)</li>\n\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t</th>\n\t\t\t\t\t\t<td>None </td>\n\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t</tbody>\n\t\t\t";
+      } else {
+        content = "\n\t\t\t\t<thead>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t<th class=\"basic title\">Local Lite</th>\n\t\t\t\t\t\t<th class=\"standard title\">Local Standard</th>\n\t\t\t\t\t\t<th class=\"premium title\">Foreigner Basic</th>\n\t\t\t\t\t\t<th class=\"ultra title\">Foreigner Ultra</th>\n\t\t\t\t\t</tr>\n\t\t\t\t</thead>\n\t\t\t\t<tbody>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th><span class=\"subtitle\">COMPANY SECRETARY</span> <span class=\"brand_800\">(1 year)</span></th>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Annual filing and AGM preparation</th>\n\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Annual filing government fee</th>\n\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Local Registered Address with mail handling</th>\n\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th><span class=\"subtitle\">NOMINEE DIRECTOR</span> <span class=\"brand_800\">(No deposit required)</span></th>\n\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th class=\"subtitle\">REQUIREMENT FOR NOMINEE SERVICE</th>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>\n\t\t\t\t\t\t\t* 2 options:<br>\n\t\t\t\t\t\t\t1. Nominee review US$22/month billed yearly<br>\n\t\t\t\t\t\t\t2. Accounting package from US$84/month billed yearly:\n\t\t\t\t\t\t\t<ul class=\"list\">\n\t\t\t\t\t\t\t\t<li>Xero cloud accounting</li>\n\t\t\t\t\t\t\t\t<li>Corppass registration </li>\n\t\t\t\t\t\t\t\t<li>Monthly accounting review</li>\n\t\t\t\t\t\t\t\t<li>Monthly preparation of FSs</li>\n\t\t\t\t\t\t\t\t<li>Annual tax filing (preparation and filing of ECI <br>and Form C/C-S)</li>\n\t\t\t\t\t\t\t\t<li>Annual revenue under S$70k (plan upgradable)</li>\n\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t</th>\n\t\t\t\t\t\t<td>None </td>\n\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t</tr>\n\t\t\t\t</tbody>\n\t\t\t";
+      }
+      break;
+    case 250:
+      content = "\n\t\t\t\t\t<thead>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t\t<th class=\"basic title\">\n\t\t\t\t\t\t\t\t<p>BASIC</p>\n\t\t\t\t\t\t\t\t<p class=\"des\">Delaware company</p>\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th class=\"standard title large\">\n\t\t\t\t\t\t\t\t<p>STANDARD</p>\n\t\t\t\t\t\t\t\t<p class=\"des\">Delaware company w/ supporting documents to open bank account</p>\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th class=\"premium title\">\n\t\t\t\t\t\t\t\t<p>PREMIUM</p>\n\t\t\t\t\t\t\t\t<p class=\"des\">Delaware company w/ Corporate Kit</p>\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</thead>\n\t\t\t\t\t<tbody>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th class=\"subtitle\">COMPANY FORMATION</th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Name check and clearance</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Document Preparation &amp; Filing</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>State filing fee</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Certificate of Formation / Incorporation</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>1 year registered agent</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>1 year local registered address</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Digital corporate docs</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Digital company seal</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Operating Agreements/Bylaws\n\t\t\t\t\t\t\t\t<p class=\"des\">Required to open US bank account</p>\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Lifetime support with Dedicated Relationship Manager</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>EIN application (Employer identification number)\n\t\t\t\t\t\t\t\t<p class=\"des\">Required to open US bank account and employ local labor, bank account, employ labour, file and pay tax</p>\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Physical LLC/Corporate Kit with:\n\t\t\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t\t\t<li>Gold Embossed Binder</li>\n\t\t\t\t\t\t\t\t\t<li>Company Guidebook</li>\n\t\t\t\t\t\t\t\t\t<li>Operating Agreement/By-laws</li>\n\t\t\t\t\t\t\t\t\t<li>Meeting Minute Book</li>\n\t\t\t\t\t\t\t\t\t<li>Organizational Resolutions</li>\n\t\t\t\t\t\t\t\t\t<li>Membership/Stock Certificates</li>\n\t\t\t\t\t\t\t\t\t<li>Membership/Stock Ledger</li>\n\t\t\t\t\t\t\t\t\t<li>Corporate Seal</li>\n\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>International courier fee</th>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Certified COF/COI with Gold Seal or with Apostille</th>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Notarized Statement of Authorized Person</th>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Bank Resolution Form</th>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>LLC/Corporation Essential Documents</th>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th class=\"subtitle\">EXPRESS FORMATION</th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Expedited filing within 24 hours</th>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th class=\"subtitle\">BUSINESS ACCOUNT</th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Wise/Payoneer/Mercury business banking</th>\n\t\t\t\t\t\t\t<td class=\"basic\">None</td>\n\t\t\t\t\t\t\t<td class=\"standard\"><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td class=\"premium\"><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th class=\"subtitle\">MERCHANT ACCOUNT</th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Guideline on Applying Merchant Account</th>\n\t\t\t\t\t\t\t<td class=\"basic\">None</td>\n\t\t\t\t\t\t\t<td class=\"standard\"><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td class=\"premium\"><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th class=\"subtitle\">PRIVILEGES FROM TAXHUB </th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>\n\t\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t\t<li>10% discount code</li>\n\t\t\t\t\t\t\t\t<li>Free 30-min CPA consultation</li>\n\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t</th>\n\t\t\t\t\t\t<td class=\"basic\"><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td class=\"standard\"><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td class=\"premium\"><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</tbody>\n\t\t\t\t";
+      break;
+    case 244:
+      if (parseInt(entity_type_id) === 14) {
+        content = "\n\t\t\t\t\t<thead>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t\t<th class=\"premium title\">Branch\n\t\t\t\t\t\t\t\t<p class=\"des\">Establishment of a Branch</p>\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</thead>\n\t\t\t\t\t<tbody>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Name availability check</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Document Preparation &amp; Filing</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Business/Enterprise Registration Certificate (ERC)</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Investment Registration Certificate (IRC)</th>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Local registered address for 1st year</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Public announcement of company registration</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Tax registration after incorporation</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Company seal</th>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</tbody>\n\t\t\t\t";
+      } else if (parseInt(entity_type_id) === 15) {
+        content = "\n\t\t\t\t\t<thead>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t\t<th class=\"ro title\">RO\n\t\t\t\t\t\t\t\t<p class=\"des\">Establishment of a Representative Office</p>\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</thead>\n\t\t\t\t\t<tbody>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Name availability check</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Document Preparation &amp; Filing</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Business/Enterprise Registration Certificate (ERC)</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Investment Registration Certificate (IRC)</th>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Local registered address for 1st year</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Public announcement of company registration</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Tax registration after incorporation</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Company seal</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</tbody>\n\t\t\t\t";
+      } else {
+        content = "\n\t\t\t\t\t<thead>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t\t<th class=\"basic title\">JVC\n\t\t\t\t\t\t\t\t<p class=\"des\">Establishment of a Joint Venture Company (FII)</p>\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th class=\"standard title\">WFOE\n\t\t\t\t\t\t\t\t<p class=\"des\">Establishment of a Wholly-Owned Foreign Enterprise (LLC/JSC)</p>\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</thead>\n\t\t\t\t\t<tbody>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Name availability check</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Document Preparation &amp; Filing</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Business/Enterprise Registration Certificate (ERC)</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Investment Registration Certificate (IRC)</th>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Local registered address for 1st year</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Public announcement of company registration</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Tax registration after incorporation</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Company seal</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</tbody>\n\t\t\t\t";
+      }
+      break;
+    case 237:
+      if (parseInt(entity_type_id) === 7) {
+        content = "\n\t\t\t\t\t<thead>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t\t<th class=\"basic title\">BASIC</th>\n\t\t\t\t\t\t\t<th class=\"standard title\">STANDARD</th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</thead>\n\t\t\t\t\t<tbody>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th class=\"subtitle\">COMPANY FORMATION</th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Name availability check</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Government filing fee</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>01 year registered address</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>01 year service address<p class=\"des\">Applicable to 02 members only</p></th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>01 year business address</th>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>\n\t\t\t\t\t\t\t\tDigital company docs\n\t\t\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t\t\t<li>Copies of COI, M&AA and Share certificates</li>\n\t\t\t\t\t\t\t\t\t<li>Copy of company register</li>\n\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>\n\t\t\t\t\t\t\t\tPrinted company docs\n\t\t\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t\t\t<li>Printed COI & share certificates</li>\n\t\t\t\t\t\t\t\t\t<li>Printed & Bound M&AA</li>\n\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>International courier fee</th>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th class=\"subtitle\">BUSINESS ACCOUNT</th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Multi-currency business account with Wise/Payoneer</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</tbody>\n\t\t\t\t";
+      } else {
+        content = "\n\t\t\t\t\t<thead>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t\t<th class=\"basic title\">BASIC</th>\n\t\t\t\t\t\t\t<th class=\"standard title\">STANDARD</th>\n\t\t\t\t\t\t\t<th class=\"premium title\">PREMIUM</th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</thead>\n\t\t\t\t\t<tbody>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th class=\"subtitle\">COMPANY FORMATION</th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Name availability check</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Government filing fee</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>01 year registered address</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>01 year service address <p class=\"des\"><em>Applicable to 01 member only</em></p></th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>01 year business address</th>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>\n\t\t\t\t\t\t\t\tDigital company docs\n\t\t\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t\t\t<li>Copies of COI, M&AA and Share certificates</li>\n\t\t\t\t\t\t\t\t\t<li>Copy of company register</li>\n\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>\n\t\t\t\t\t\t\t\tPrinted company docs\n\t\t\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t\t\t<li>Printed COI & share certificates</li>\n\t\t\t\t\t\t\t\t\t<li>Printed & Bound M&AA</li>\n\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>International courier fee</th>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>VAT registration</th>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Free company cancellation within 12 months</th>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td>None</td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th class=\"subtitle\">BUSINESS ACCOUNT</th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>Multi-currency business account with Wise/Payoneer</th>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</tbody>\n\t\t\t\t";
+      }
+      break;
+    case 58:
+      content = "\n\t\t\t\t<thead>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t<th class=\"basic title\">BASIC</th>\n\t\t\t\t\t\t<th class=\"standard title\">STANDARD</th>\n\t\t\t\t\t\t<th class=\"premium title\">PREMIUM</th>\n\t\t\t\t\t</tr>\n\t\t\t\t</thead>\n\t\t\t\t<tbody>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th class=\"subtitle\">COMPANY FORMATION</th>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Free 1st Name Availability Check</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Document Preparation &amp; Filling</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Company Formation</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Local Company Secretary for 1st year</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Local Registered Address for 1st year</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Digital corporate documents</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th class=\"subtitle\">BANK ACCOUNT APPLICATION</th>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Assistance in opening Bank account including Cert. of Incumbency if required</th>\n\t\t\t\t\t\t<td class=\"basic\">None </td>\n\t\t\t\t\t\t<td class=\"standard\">1 bank application</td>\n\t\t\t\t\t\t<td class=\"premium\">Up to 5 bank applications</td>\n\t\t\t\t\t</tr>\n\t\t\t\t</tbody>\n\t\t\t";
+      break;
+    default:
+      content = "\n\t\t\t\t<thead>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t<th class=\"basic title\">BASIC</th>\n\t\t\t\t\t\t<th class=\"standard title\">STANDARD</th>\n\t\t\t\t\t\t<th class=\"premium title\">PREMIUM</th>\n\t\t\t\t\t</tr>\n\t\t\t\t</thead>\n\t\t\t\t<tbody>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th class=\"subtitle\">COMPANY FORMATION</th>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Unlimited Business Name Check</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Document Preparation &amp; Filling</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Company Formation</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Local Company Secretary for 1st year</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Local Registered Address for 1st year</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Digital corporate documents</th>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t\t<td><i class=\"itemCheck\"></i></td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th class=\"subtitle\">BANK ACCOUNT APPLICATION</th>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Assistance in opening Bank account including Cert. of Incumbency if required</th>\n\t\t\t\t\t\t<td class=\"basic\">None </td>\n\t\t\t\t\t\t<td class=\"standard\">1 bank application</td>\n\t\t\t\t\t\t<td class=\"premium\">Up to 5 bank applications</td>\n\t\t\t\t\t</tr>\n\t\t\t\t</tbody>\n\t\t\t";
+      break;
+  }
+  return content;
+}
 function IncorporationPackage(params) {
+  var _dataOnboarding$incor, _dataOnboarding$incor2, _dataOnboarding$incor3;
   React.useEffect(function () {
     if (window.history && window.history.pushState) {
       window.history.pushState('forward', null, './incorporation-package');
@@ -8625,9 +8669,12 @@ function IncorporationPackage(params) {
       }
     }
   }, [isVN]);
-  var _useState9 = React.useState(false),
-    isSwitch = _useState9[0],
-    setIsSwitch = _useState9[1];
+  var _useState9 = React.useState(1),
+    tab = _useState9[0],
+    setTab = _useState9[1];
+  var _useState10 = React.useState(false),
+    isSwitch = _useState10[0],
+    setIsSwitch = _useState10[1];
   var handleSwitch = function handleSwitch(isSwitch) {
     setIsSwitch(isSwitch);
   };
@@ -8669,16 +8716,22 @@ function IncorporationPackage(params) {
       setLoading(false);
     }
   }, [dataOnboarding, dataPackagesTmp]);
-  var _useState10 = React.useState(false),
-    setShow = _useState10[1];
+  var wrapperRef = React.useRef(null);
+  var _useState11 = React.useState(false),
+    show = _useState11[0],
+    setShow = _useState11[1];
+  var handleClose = function handleClose() {
+    return setShow(false);
+  };
   var handleShow = function handleShow() {
     return setShow(true);
   };
-  var _useState11 = React.useState(1);
+  useOnClickOutside(wrapperRef, function () {
+    setShow(false);
+  });
   return /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("section", null, /*#__PURE__*/React__default.createElement("div", {
     className: styles$a.btn_top_wrapper + " " + styles$a.Header
   }, /*#__PURE__*/React__default.createElement("div", {
-    className: "row align-items-center",
     style: {
       display: 'flex',
       flexWrap: 'wrap',
@@ -8723,9 +8776,9 @@ function IncorporationPackage(params) {
     className: "animate_spin",
     size: 20
   })) : dataPackages ? /*#__PURE__*/React__default.createElement("div", {
+    className: styles$a["package"],
     style: {
-      maxWidth: "" + (isSing ? '100%' : '992px'),
-      margin: '0 -15px'
+      maxWidth: "" + (isSing ? '100%' : '992px')
     }
   }, /*#__PURE__*/React__default.createElement("div", {
     className: styles$a.package_container
@@ -8759,6 +8812,7 @@ function IncorporationPackage(params) {
         case 'foreigner-basic':
           packageName = packageName;
           link = foreignerbasic;
+          break;
         case 'foreigner-ultra':
           packageName = packageName;
           link = foreignerultra;
@@ -8930,9 +8984,921 @@ function IncorporationPackage(params) {
       fontWeight: 500
     },
     onClick: handleBack
-  }, "Back")))));
+  }, "Back")))), /*#__PURE__*/React__default.createElement(Modal, {
+    show: show
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$a.modal_wrapper
+  }, /*#__PURE__*/React__default.createElement("div", {
+    ref: wrapperRef,
+    className: styles$a.dialog
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$a.closeModal,
+    style: {
+      position: 'absolute',
+      top: '0.25rem',
+      right: '0.5rem',
+      zIndex: 1
+    }
+  }, /*#__PURE__*/React__default.createElement("button", {
+    className: styles$a.close_button,
+    onClick: handleClose
+  }, /*#__PURE__*/React__default.createElement(reactIcons.IconContext.Provider, {
+    value: {
+      style: {
+        color: 'c4c4c4'
+      }
+    }
+  }, /*#__PURE__*/React__default.createElement(io.IoMdCloseCircle, {
+    size: "1.5rem"
+  })))), /*#__PURE__*/React__default.createElement("div", {
+    className: "relative"
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$a.headerModal
+  }, /*#__PURE__*/React__default.createElement("h3", null, "COMPANY PACKAGE")), /*#__PURE__*/React__default.createElement("div", {
+    className: styles$a.bodyModal
+  }, isSing && /*#__PURE__*/React__default.createElement("div", {
+    className: styles$a.tab_container
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$a.tab_wrapper
+  }, /*#__PURE__*/React__default.createElement("button", {
+    onClick: function onClick() {
+      return setTab(1);
+    },
+    className: (tab === 1 ? styles$a.active_tab : '') + " " + styles$a.tab_item
+  }, "Incorporation"), /*#__PURE__*/React__default.createElement("button", {
+    onClick: function onClick() {
+      return setTab(2);
+    },
+    className: (tab === 2 ? styles$a.active_tab : '') + " " + styles$a.tab_item
+  }, "Renewal"))), /*#__PURE__*/React__default.createElement("table", {
+    id: "genPopupPackages"
+  }, parser(popupPackages(dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor = dataOnboarding.incorporation) === null || _dataOnboarding$incor === void 0 ? void 0 : (_dataOnboarding$incor2 = _dataOnboarding$incor.country) === null || _dataOnboarding$incor2 === void 0 ? void 0 : _dataOnboarding$incor2.id, dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor3 = dataOnboarding.incorporation) === null || _dataOnboarding$incor3 === void 0 ? void 0 : _dataOnboarding$incor3.entity_type_id, tab)))))))));
 }
 
+// A type of promise-like that resolves synchronously and supports only one observer
+
+const _iteratorSymbol = /*#__PURE__*/ typeof Symbol !== "undefined" ? (Symbol.iterator || (Symbol.iterator = Symbol("Symbol.iterator"))) : "@@iterator";
+
+const _asyncIteratorSymbol = /*#__PURE__*/ typeof Symbol !== "undefined" ? (Symbol.asyncIterator || (Symbol.asyncIterator = Symbol("Symbol.asyncIterator"))) : "@@asyncIterator";
+
+// Asynchronously call a function and send errors to recovery continuation
+function _catch(body, recover) {
+	try {
+		var result = body();
+	} catch(e) {
+		return recover(e);
+	}
+	if (result && result.then) {
+		return result.then(void 0, recover);
+	}
+	return result;
+}
+
+var styles$b = {"container":"_styles-module__container__2vXIk","btn_back_top":"_styles-module__btn_back_top__2tWkM","tableServices":"_styles-module__tableServices__1cOKS","servicesRow":"_styles-module__servicesRow__3WVMP","tableCellGroup1":"_styles-module__tableCellGroup1__2O3va","servicesGroup":"_styles-module__servicesGroup__2i0XR","select":"_styles-module__select__3M50d","quantity":"_styles-module__quantity__2RFXr","lineDivider":"_styles-module__lineDivider__2iZZ2","singButton":"_styles-module__singButton__3g6k6","Header":"_styles-module__Header__HhmDt","CustomGroup":"_styles-module__CustomGroup__26U4s","CustomOption":"_styles-module__CustomOption__2iYUp"};
+
+var _excluded$2 = ["style", "children"];
+var Component$1 = function Component(_ref) {
+  var style = _ref.style,
+    children = _ref.children,
+    props = _objectWithoutPropertiesLoose(_ref, _excluded$2);
+  return /*#__PURE__*/React__default.createElement("p", _extends({}, props, {
+    style: _extends({
+      color: '#677294',
+      fontSize: '1.25rem',
+      lineHeight: '1.75rem'
+    }, style)
+  }), children);
+};
+Component$1.propTypes = {};
+Component$1.defaultProps = {};
+
+var customStyles$1 = {
+  menu: function menu(provider, state) {
+    return _extends({}, provider, {
+      width: 'fit-content'
+    });
+  },
+  control: function control() {
+    return {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      fontSize: "16px",
+      cursor: 'pointer',
+      border: 'none'
+    };
+  },
+  singleValue: function singleValue(base) {
+    return _extends({}, base, {
+      color: '#677294',
+      border: 'none',
+      display: 'block',
+      overflow: 'initial',
+      position: 'initial',
+      transform: 'initial'
+    });
+  }
+};
+var customStyles1 = {
+  menu: function menu(provider, state) {
+    return _extends({}, provider, {
+      borderColor: 0
+    });
+  },
+  menuList: function menuList(base) {
+    return _extends({}, base, {
+      whiteSpace: 'normal',
+      wordWrap: 'break-word'
+    });
+  },
+  control: function control() {
+    return {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      fontSize: "16px",
+      cursor: 'pointer',
+      border: 'none'
+    };
+  },
+  singleValue: function singleValue(base) {
+    return _extends({}, base, {
+      color: '#677294',
+      border: 'none',
+      display: 'block',
+      overflow: 'initial',
+      position: 'initial',
+      transform: 'initial'
+    });
+  }
+};
+var DropdownIndicator = function DropdownIndicator(props) {
+  return /*#__PURE__*/React__default.createElement(Select.components.IndicatorsContainer, _extends({}, props, {
+    style: {
+      padding: 0
+    }
+  }), /*#__PURE__*/React__default.createElement(fa.FaChevronDown, {
+    style: {
+      color: '#cfcfcf',
+      fontSize: '12px'
+    }
+  }));
+};
+var questions = [{
+  id: 1,
+  text: 'The accounting fee for basic package with yearly turnover of less than S$70,000 is US$84 per month or US$1,008 yearly.',
+  answers: [{
+    id: 1,
+    text: 'Yes, please add basic package of accounting and filling tax',
+    value: 1
+  }, {
+    id: 2,
+    text: "I'd like to add Company Review service",
+    value: 2
+  }]
+}, {
+  id: 2,
+  text: 'The accounting fee for basic package with yearly turnover of less than S$70,000 is US$39/month (billed yearly) for yearly package, and US$84/month (billed yearly) for monthly package.',
+  answers: [{
+    id: 1,
+    text: 'Yes, please add basic package of accounting and filing tax (yearly)',
+    value: 1
+  }, {
+    id: 2,
+    text: 'Yes, please add basic package of accounting and filing tax (monthly)',
+    value: 2
+  }, {
+    id: 3,
+    text: 'No, I can do it ourselves',
+    value: 3
+  }]
+}];
+var Group = function Group(props) {
+  return /*#__PURE__*/React__default.createElement("div", {
+    className: styles$b.CustomGroup
+  }, /*#__PURE__*/React__default.createElement(Select.components.Group, props));
+};
+var CustomOption = function CustomOption(props) {
+  return /*#__PURE__*/React__default.createElement(Select.components.Option, _extends({}, props, {
+    className: styles$b.CustomOption
+  }));
+};
+var CustomField = function CustomField(_ref) {
+  var idx = _ref.idx,
+    categories = _ref.categories,
+    additionalServices = _ref.additionalServices,
+    fieldValue = _ref.fieldValue,
+    onFieldChange = _ref.onFieldChange,
+    handleRemove = _ref.handleRemove;
+  var _useState = React.useState([]),
+    services = _useState[0],
+    setServices = _useState[1];
+  React.useEffect(function () {
+    if (fieldValue && fieldValue.category && !fieldValue.readOnly) {
+      var newServices = _.uniqBy(additionalServices.map(function (item) {
+        return _extends({}, item, {
+          value: item.id,
+          label: item.name
+        });
+      }), 'value').filter(function (item) {
+        return item.service_type_id == fieldValue.category.id;
+      });
+      setServices(newServices);
+      if (newServices.length > 0 && !fieldValue.isLocalLoad) {
+        onFieldChange('service', idx, newServices[0]);
+      }
+    }
+  }, [fieldValue.category]);
+  return /*#__PURE__*/React__default.createElement("div", {
+    className: "" + styles$b.servicesGroup
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$b.tableCellGroup1 + ' d-none d-lg-block col-md-1 pl-0'
+  }, idx + 1), /*#__PURE__*/React__default.createElement("div", {
+    className: styles$b.tableCellGroup1 + ' col-12 col-sm-6 col-lg-4 pl-0 mb-2 mb-lg-0 d-flex justify-content-center'
+  }, /*#__PURE__*/React__default.createElement(Select__default, {
+    menuPlacement: "auto",
+    menuPosition: "fixed",
+    menuShouldBlockScroll: true,
+    className: styles$b.select,
+    options: categories.filter(function (item) {
+      return item.options ? item.options.some(function (i) {
+        return additionalServices.some(function (el) {
+          return el.service_type_id === i.id;
+        });
+      }) : additionalServices.some(function (el) {
+        return el.service_type_id === item.id;
+      });
+    }),
+    isSearchable: false,
+    styles: customStyles$1,
+    value: fieldValue['category'] || '',
+    onChange: function onChange(value) {
+      return onFieldChange('category', idx, value);
+    },
+    isDisabled: fieldValue['readOnly'],
+    components: {
+      IndicatorSeparator: function IndicatorSeparator() {
+        return null;
+      },
+      IndicatorsContainer: function IndicatorsContainer(props) {
+        return fieldValue['readOnly'] ? null : /*#__PURE__*/React__default.createElement(DropdownIndicator, props);
+      },
+      Group: Group,
+      Option: CustomOption
+    }
+  })), /*#__PURE__*/React__default.createElement("div", {
+    className: styles$b.tableCellGroup1 + ' col-12 col-sm-6 col-lg-4 pl-0 mb-2 mb-lg-0 d-flex justify-content-center'
+  }, /*#__PURE__*/React__default.createElement(Select__default, {
+    menuPlacement: "auto",
+    menuPosition: "fixed",
+    menuShouldBlockScroll: true,
+    className: styles$b.select,
+    isSearchable: false,
+    options: services,
+    styles: customStyles1,
+    value: fieldValue['service'] || '',
+    onChange: function onChange(value) {
+      return onFieldChange('service', idx, value);
+    },
+    isDisabled: fieldValue['readOnly'],
+    components: {
+      IndicatorSeparator: function IndicatorSeparator() {
+        return null;
+      },
+      IndicatorsContainer: function IndicatorsContainer(props) {
+        return fieldValue['readOnly'] ? null : /*#__PURE__*/React__default.createElement(DropdownIndicator, props);
+      }
+    }
+  })), /*#__PURE__*/React__default.createElement("div", {
+    className: styles$b.tableCellGroup1 + ' col-6 col-lg-2 pl-0 d-flex justify-content-center'
+  }, fieldValue['readOnly'] ? /*#__PURE__*/React__default.createElement("div", {
+    className: styles$b.quantity + " d-flex"
+  }, fieldValue['quantity'] > 9 ? fieldValue['quantity'] : '0' + fieldValue['quantity']) : /*#__PURE__*/React__default.createElement("div", {
+    className: styles$b.quantity + " d-flex"
+  }, fieldValue && fieldValue['quantity'] <= 1 ? /*#__PURE__*/React__default.createElement("button", {
+    onClick: function onClick() {
+      return handleRemove(fieldValue);
+    },
+    className: "bg-transparent"
+  }, /*#__PURE__*/React__default.createElement(io.IoMdTrash, {
+    size: 25,
+    color: "#adadad"
+  })) : /*#__PURE__*/React__default.createElement("button", {
+    onClick: function onClick() {
+      return onFieldChange('quantity', idx, fieldValue['quantity'] - 1);
+    }
+  }, /*#__PURE__*/React__default.createElement(ri.RiSubtractFill, {
+    size: 22,
+    color: "#fff"
+  })), fieldValue['quantity'] > 9 ? fieldValue['quantity'] : '0' + fieldValue['quantity'], /*#__PURE__*/React__default.createElement("button", {
+    onClick: function onClick() {
+      return onFieldChange('quantity', idx, fieldValue['quantity'] + 1);
+    }
+  }, /*#__PURE__*/React__default.createElement(bi.BiPlus, {
+    size: 22,
+    color: "#fff"
+  })))), /*#__PURE__*/React__default.createElement("div", {
+    className: styles$b.tableCellGroup1 + ' col-6 col-lg-1 d-flex pl-0 d-flex justify-content-center'
+  }, /*#__PURE__*/React__default.createElement("sub", null, "$US"), /*#__PURE__*/React__default.createElement("div", {
+    className: "price"
+  }, fieldValue['price'])));
+};
+var clearSelectedPackages = function clearSelectedPackages() {
+  if (localStorage.getItem('data_onboarding')) {
+    var _dataOnboarding$incor;
+    var dataOnboarding = JSON.parse(localStorage.getItem('data_onboarding'));
+    if (dataOnboarding !== null && dataOnboarding !== void 0 && (_dataOnboarding$incor = dataOnboarding.incorporation) !== null && _dataOnboarding$incor !== void 0 && _dataOnboarding$incor.selected_packages) {
+      dataOnboarding.incorporation.selected_packages = [];
+      localStorage.setItem('data_onboarding', JSON.stringify(dataOnboarding));
+    }
+  }
+  if (window.localStorage.getItem('customer')) {
+    var customer = JSON.parse(window.localStorage.getItem('customer'));
+    delete customer.company_country_id;
+    delete customer.company_name;
+    delete customer.entity_type_id;
+    delete customer.package_id;
+    window.localStorage.setItem('customer', JSON.stringify(customer));
+  }
+};
+function IncorporationAdditionalService(params) {
+  var _useState2 = React.useState([]),
+    fields = _useState2[0],
+    setFields = _useState2[1];
+  var _useState3 = React.useState([]),
+    categories = _useState3[0],
+    setCategories = _useState3[1];
+  var _useState4 = React.useState(''),
+    signature = _useState4[0],
+    setSignature = _useState4[1];
+  var _useState5 = React.useState(''),
+    packageId = _useState5[0],
+    setPackageId = _useState5[1];
+  var _useState6 = React.useState({}),
+    companyInfo = _useState6[0],
+    setCompanyInfo = _useState6[1];
+  var _useState7 = React.useState([]),
+    additionalServices = _useState7[0],
+    setAdditionalServices = _useState7[1];
+  var _useState8 = React.useState([]),
+    servicesAccounting = _useState8[0],
+    setServicesAccounting = _useState8[1];
+  var _useState9 = React.useState(),
+    country = _useState9[0],
+    setCountry = _useState9[1];
+  var _useState10 = React.useState(),
+    question = _useState10[0],
+    setQuestion = _useState10[1];
+  var _useState11 = React.useState(false),
+    sidebar = _useState11[0],
+    setSidebar = _useState11[1];
+  var _useState12 = React.useState(''),
+    loading = _useState12[0],
+    setLoading = _useState12[1];
+  var _useState13 = React.useState(false),
+    emptyField = _useState13[0],
+    setEmtyField = _useState13[1];
+  var _useState14 = React.useState(true),
+    note = _useState14[0],
+    setNote = _useState14[1];
+  var promotionCode = React.useRef(null);
+  React.useEffect(function () {
+    if (localStorage.getItem('data_onboarding')) {
+      var _dataOnboarding$incor2, _dataOnboarding$incor3, _dataOnboarding$incor4, _dataOnboarding$incor5, _dataOnboarding$incor6, _dataOnboarding$incor7, _dataOnboarding$incor8, _dataOnboarding$incor9, _dataOnboarding$incor10, _dataOnboarding$incor11, _dataOnboarding$incor12, _dataOnboarding$incor13, _dataOnboarding$incor14, _dataOnboarding$incor15, _dataOnboarding$incor16, _dataOnboarding$incor17, _dataOnboarding$incor18, _dataOnboarding$incor19, _dataOnboarding$incor20, _dataOnboarding$incor21, _dataOnboarding$incor22, _dataOnboarding$incor23, _dataOnboarding$incor24, _dataOnboarding$incor25, _dataOnboarding$incor26, _dataOnboarding$incor27, _dataOnboarding$incor28, _dataOnboarding$incor29, _dataOnboarding$incor30;
+      var dataOnboarding = JSON.parse(localStorage.getItem('data_onboarding'));
+      var newAdditionalServices = (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor2 = dataOnboarding.incorporation) === null || _dataOnboarding$incor2 === void 0 ? void 0 : (_dataOnboarding$incor3 = _dataOnboarding$incor2["package"]) === null || _dataOnboarding$incor3 === void 0 ? void 0 : _dataOnboarding$incor3.AdditionalServices) || [];
+      var newServicesAccounting = (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor4 = dataOnboarding.incorporation) === null || _dataOnboarding$incor4 === void 0 ? void 0 : (_dataOnboarding$incor5 = _dataOnboarding$incor4["package"]) === null || _dataOnboarding$incor5 === void 0 ? void 0 : _dataOnboarding$incor5.ServicesAccounting) || [];
+      var newCompanyInfo = {
+        name: ((_dataOnboarding$incor6 = dataOnboarding.incorporation.company_name[0]) === null || _dataOnboarding$incor6 === void 0 ? void 0 : _dataOnboarding$incor6.name) || '',
+        company_suffix_id: (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor7 = dataOnboarding.incorporation) === null || _dataOnboarding$incor7 === void 0 ? void 0 : (_dataOnboarding$incor8 = _dataOnboarding$incor7.company_name[0]) === null || _dataOnboarding$incor8 === void 0 ? void 0 : (_dataOnboarding$incor9 = _dataOnboarding$incor8.suffix) === null || _dataOnboarding$incor9 === void 0 ? void 0 : _dataOnboarding$incor9.value) || '',
+        entity_type_id: (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor10 = dataOnboarding.incorporation) === null || _dataOnboarding$incor10 === void 0 ? void 0 : _dataOnboarding$incor10.entity_type_id) || '',
+        country_id: (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor11 = dataOnboarding.incorporation) === null || _dataOnboarding$incor11 === void 0 ? void 0 : (_dataOnboarding$incor12 = _dataOnboarding$incor11.country) === null || _dataOnboarding$incor12 === void 0 ? void 0 : _dataOnboarding$incor12.id) || '',
+        preventive_name: (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor13 = dataOnboarding.incorporation) === null || _dataOnboarding$incor13 === void 0 ? void 0 : (_dataOnboarding$incor14 = _dataOnboarding$incor13.company_name) === null || _dataOnboarding$incor14 === void 0 ? void 0 : _dataOnboarding$incor14.filter(function (item, index) {
+          return index !== 0;
+        }).map(function (item) {
+          return {
+            name: item.name,
+            company_suffix_id: item.suffix.value
+          };
+        })) || []
+      };
+      var children = _.sortBy(_.uniqBy(newAdditionalServices.concat(newServicesAccounting).map(function (item) {
+        return _extends({}, item.ServiceType, {
+          value: item.ServiceType.id,
+          label: item.ServiceType.name
+        });
+      }), 'value'), ['order']).filter(function (e) {
+        return e.id !== 42;
+      });
+      var parent = _.unionBy(children.map(function (item) {
+        if ((item === null || item === void 0 ? void 0 : item.parent_id) !== null) {
+          return _extends({}, item.ServiceType);
+        }
+      }).filter(function (item) {
+        return item !== undefined;
+      }), 'name');
+      var group = _.groupBy(children, 'ServiceType.name');
+      var newCategories = _.sortBy([].concat(parent.map(function (item) {
+        return _extends({}, item, {
+          label: item.name,
+          options: group[item.name].map(function (i) {
+            return _extends({}, i, {
+              value: i.id,
+              label: i.name
+            });
+          })
+        });
+      }), group[undefined].map(function (i) {
+        return _extends({}, i, {
+          value: i.id,
+          label: i.name
+        });
+      })), ['order']);
+      setPackageId((dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor15 = dataOnboarding.incorporation) === null || _dataOnboarding$incor15 === void 0 ? void 0 : (_dataOnboarding$incor16 = _dataOnboarding$incor15["package"]) === null || _dataOnboarding$incor16 === void 0 ? void 0 : _dataOnboarding$incor16.id) || '');
+      setCountry((dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor17 = dataOnboarding.incorporation) === null || _dataOnboarding$incor17 === void 0 ? void 0 : _dataOnboarding$incor17.country) || null);
+      setCompanyInfo(newCompanyInfo);
+      setCategories(newCategories);
+      setAdditionalServices(newAdditionalServices);
+      setServicesAccounting(newServicesAccounting);
+      var selectedPackages = (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor18 = dataOnboarding.incorporation) === null || _dataOnboarding$incor18 === void 0 ? void 0 : _dataOnboarding$incor18.selected_packages) || [];
+      if (Array.isArray(selectedPackages) && selectedPackages.length > 0) {
+        setFields(selectedPackages.map(function (item) {
+          return _extends({}, item, {
+            isLocalLoad: true
+          });
+        }));
+      }
+      if (Array.isArray(selectedPackages) && selectedPackages.length === 0 && (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor19 = dataOnboarding.incorporation) === null || _dataOnboarding$incor19 === void 0 ? void 0 : (_dataOnboarding$incor20 = _dataOnboarding$incor19.country) === null || _dataOnboarding$incor20 === void 0 ? void 0 : _dataOnboarding$incor20.id) === 191 && ((dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor21 = dataOnboarding.incorporation) === null || _dataOnboarding$incor21 === void 0 ? void 0 : (_dataOnboarding$incor22 = _dataOnboarding$incor21["package"]) === null || _dataOnboarding$incor22 === void 0 ? void 0 : _dataOnboarding$incor22.id) === 85 || (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor23 = dataOnboarding.incorporation) === null || _dataOnboarding$incor23 === void 0 ? void 0 : (_dataOnboarding$incor24 = _dataOnboarding$incor23["package"]) === null || _dataOnboarding$incor24 === void 0 ? void 0 : _dataOnboarding$incor24.id) === 86)) {
+        setQuestion(questions[1]);
+      } else if (Array.isArray(selectedPackages) && selectedPackages.length === 0 && (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor25 = dataOnboarding.incorporation) === null || _dataOnboarding$incor25 === void 0 ? void 0 : (_dataOnboarding$incor26 = _dataOnboarding$incor25.country) === null || _dataOnboarding$incor26 === void 0 ? void 0 : _dataOnboarding$incor26.id) === 191 && ((dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor27 = dataOnboarding.incorporation) === null || _dataOnboarding$incor27 === void 0 ? void 0 : (_dataOnboarding$incor28 = _dataOnboarding$incor27["package"]) === null || _dataOnboarding$incor28 === void 0 ? void 0 : _dataOnboarding$incor28.id) === 87 || (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor29 = dataOnboarding.incorporation) === null || _dataOnboarding$incor29 === void 0 ? void 0 : (_dataOnboarding$incor30 = _dataOnboarding$incor29["package"]) === null || _dataOnboarding$incor30 === void 0 ? void 0 : _dataOnboarding$incor30.id) === 88)) {
+        setQuestion(questions[0]);
+      } else {
+        setQuestion('none');
+      }
+    }
+    if (localStorage.getItem('customer')) {
+      var _customer$signature;
+      var customer = JSON.parse(localStorage.getItem('customer'));
+      setSignature((customer === null || customer === void 0 ? void 0 : (_customer$signature = customer.signature) === null || _customer$signature === void 0 ? void 0 : _customer$signature.signature) || '');
+      promotionCode.current = customer.promotion_code || null;
+    } else {
+      location.href = '/register';
+    }
+    return function () {};
+  }, []);
+  React.useEffect(function () {
+    if (fields.length > 0 && fields.find(function (el) {
+      return el.service.id === 1950;
+    })) {
+      setNote(false);
+    }
+    if (fields.length > 0 && fields.find(function (el) {
+      return el.service.id === 1950;
+    }) || companyInfo && companyInfo.country_id === 23 && companyInfo.entity_type_id !== 2) {
+      setNote(false);
+    }
+    if (companyInfo && companyInfo.country_id === 23 && companyInfo.entity_type_id === 2) {
+      var fixedAdditionalService;
+      fixedAdditionalService = additionalServices.find(function (item) {
+        return item.id == 1851;
+      });
+      if (fixedAdditionalService) {
+        if (fields.length === 0) {
+          setFields([].concat(fields, [{
+            id: fields.length + 1,
+            category: _extends({}, fixedAdditionalService.ServiceType, {
+              label: fixedAdditionalService.ServiceType.name,
+              value: fixedAdditionalService.ServiceType.id
+            }),
+            service: _extends({}, fixedAdditionalService, {
+              label: fixedAdditionalService.name,
+              value: fixedAdditionalService.id
+            }),
+            readOnly: true,
+            price: fixedAdditionalService.Fee.value,
+            quantity: 1
+          }]));
+        }
+        setAdditionalServices(additionalServices.filter(function (item) {
+          return item.id !== 1851;
+        }));
+      }
+    }
+  }, [companyInfo, additionalServices, fields, categories]);
+  var onFieldChange = function onFieldChange(fieldName, index, value) {
+    var fieldTemps = [].concat(fields);
+    fieldTemps[index][fieldName] = value;
+    fieldTemps[index]['isLocalLoad'] = false;
+    if (fieldName === 'service') {
+      fieldTemps[index]['quantity'] = 1;
+    }
+    if (fieldName === 'service' || fieldName === 'quantity') {
+      fieldTemps[index]['price'] = fieldTemps[index]['service'].Fee.value * fieldTemps[index]['quantity'];
+    }
+    setFields(fieldTemps);
+  };
+  var handleRemove = function handleRemove(field) {
+    setFields(fields.filter(function (item) {
+      return item.id !== field.id;
+    }));
+    if (emptyField && fields.length == 1) {
+      setNote(false);
+    }
+  };
+  var removeAll = function removeAll() {
+    if (country && country.id === 191 && (packageId === 85 || packageId === 86 || packageId === 87 || packageId === 88) && !emptyField || companyInfo && companyInfo.country_id === 23 && companyInfo.entity_type_id === 2) {
+      setFields(fields.filter(function (item, index) {
+        return index === 0;
+      }));
+    } else {
+      setFields([]);
+      if (!fields.find(function (el) {
+        return el.service.id === 1950;
+      })) {
+        setNote(false);
+      }
+    }
+  };
+  var handleAPIAdditional = function handleAPIAdditional(orderItems) {
+    try {
+      var _temp = _catch(function () {
+        return Promise.resolve(axios.post("https://core.test-lp.bbcincorp.com/api/onboarding/order/incorp", {
+          package_id: packageId,
+          OrderItems: orderItems,
+          signature: signature,
+          company_info: companyInfo
+        })).then(function (response) {
+          if (response.data.data) {
+            if (localStorage.getItem('data_onboarding')) {
+              var dataOnboarding = JSON.parse(localStorage.getItem('data_onboarding'));
+              if (!dataOnboarding.incorporation) {
+                dataOnboarding.incorporation = {};
+              }
+              dataOnboarding.incorporation.selected_packages = fields.filter(function (item) {
+                return orderItems.some(function (temp) {
+                  return temp.service_id === item.service.id;
+                });
+              });
+              localStorage.setItem('data_onboarding', JSON.stringify(dataOnboarding));
+            }
+            var promotion_code = promotionCode.current ? '&promotion_code=' + promotionCode.current : '';
+            location.href = '/onboarding/order-information?order_code=' + response.data.data + promotion_code;
+          }
+        });
+      }, function () {
+        setLoading('');
+      });
+      return Promise.resolve(_temp && _temp.then ? _temp.then(function () {}) : void 0);
+    } catch (e) {
+      return Promise.reject(e);
+    }
+  };
+  var handleSubmit = function handleSubmit(type) {
+    if (type === 'skip') {
+      setLoading('skip');
+      if (country && country.id === 191 && (packageId === 85 || packageId === 86 || packageId === 87 || packageId === 88) && !emptyField || companyInfo && companyInfo.country_id === 23 && companyInfo.entity_type_id === 2) {
+        handleAPIAdditional([{
+          service_id: fields[0].service.id,
+          quantity: fields[0].quantity
+        }]);
+      } else {
+        handleAPIAdditional([]);
+      }
+    } else {
+      setLoading('next');
+      var orderItemTemps = _.uniqBy(fields.map(function (item) {
+        return {
+          service_id: item.service.id,
+          quantity: item.quantity
+        };
+      }), 'service_id');
+      var orderItems = [];
+      orderItemTemps.forEach(function (item) {
+        var quantity = 0;
+        fields.forEach(function (field) {
+          if (field.service.id === item.service_id) {
+            quantity += field.quantity;
+          }
+        });
+        orderItems.push(_extends({}, item, {
+          quantity: quantity
+        }));
+      });
+      handleAPIAdditional(orderItems);
+    }
+  };
+  var handleClickAdd = function handleClickAdd() {
+    if (Array.isArray(categories) && categories.length > 0) {
+      setFields([].concat(fields, [{
+        id: fields.length + 1,
+        category: 'options' in categories[0] ? categories[0].options[0] : categories[0],
+        quantity: 1
+      }]));
+      if (!fields.find(function (el) {
+        return el.service.id === 1950;
+      })) {
+        setNote(true);
+      }
+    }
+  };
+  var getSum = function getSum() {
+    var sum = 0;
+    fields.forEach(function (item) {
+      if (item.price) {
+        sum += item.price;
+      }
+    });
+    return sum;
+  };
+  var handleQuestion = function handleQuestion(answer) {
+    switch (answer.value) {
+      case 1:
+        var newServicesAccounting1 = servicesAccounting[0];
+        if (question.id === 1) {
+          newServicesAccounting1 = servicesAccounting.find(function (item) {
+            return item.id === 1941;
+          });
+        } else {
+          newServicesAccounting1 = servicesAccounting.find(function (item) {
+            return item.id === 1934;
+          });
+        }
+        if (newServicesAccounting1) {
+          if (fields.length === 0) {
+            setFields([].concat(fields, [{
+              id: fields.length + 1,
+              category: _extends({}, newServicesAccounting1.ServiceType, {
+                label: newServicesAccounting1.ServiceType.name,
+                value: newServicesAccounting1.ServiceType.id
+              }),
+              service: _extends({}, newServicesAccounting1, {
+                label: newServicesAccounting1.name,
+                value: newServicesAccounting1.id
+              }),
+              readOnly: true,
+              price: newServicesAccounting1.Fee.value,
+              quantity: 1
+            }]));
+          }
+          setQuestion('none');
+        }
+        break;
+      case 2:
+        var newServicesAccounting2 = servicesAccounting[0];
+        if (question.id === 1) {
+          newServicesAccounting2 = servicesAccounting.find(function (item) {
+            return item.id === 1950;
+          });
+        } else {
+          newServicesAccounting2 = servicesAccounting.find(function (item) {
+            return item.id === 1941;
+          });
+        }
+        if (newServicesAccounting2) {
+          if (fields.length === 0) {
+            setFields([].concat(fields, [{
+              id: fields.length + 1,
+              category: _extends({}, newServicesAccounting2.ServiceType, {
+                label: newServicesAccounting2.ServiceType.name,
+                value: newServicesAccounting2.ServiceType.id
+              }),
+              service: _extends({}, newServicesAccounting2, {
+                label: newServicesAccounting2.name,
+                value: newServicesAccounting2.id
+              }),
+              readOnly: true,
+              price: newServicesAccounting2.Fee.value,
+              quantity: 1
+            }]));
+          }
+          setQuestion('none');
+        }
+        break;
+      case 3:
+        setQuestion('none');
+        setEmtyField(true);
+        if (fields.length === 0) {
+          setFields([]);
+          setNote(false);
+        }
+        break;
+      default:
+        var newQuestions = questions.filter(function (item) {
+          return item.id !== question.id;
+        });
+        if (newQuestions[0]) {
+          setQuestion(newQuestions[0]);
+        }
+        break;
+    }
+  };
+  return question ? /*#__PURE__*/React__default.createElement(React.Fragment, null, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$b.container
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$b.Header + ' row mx-0 w-100 justify-content-between d-none d-lg-flex'
+  }, /*#__PURE__*/React__default.createElement("a", {
+    disabled: loading && loading !== '',
+    href: "/incorporation-package",
+    className: 'font-weight-bold mb-0',
+    style: {
+      fontSize: 20
+    },
+    onClick: clearSelectedPackages
+  }, "Back"), question && question !== 'none' && packageId != 85 && packageId != 86 ? /*#__PURE__*/React__default.createElement(React.Fragment, null, /*#__PURE__*/React__default.createElement("div", {
+    className: "d-flex text-dark align-items-center",
+    style: {
+      fontSize: 20
+    }
+  }, "Frequently Asked Questions?", ' ', /*#__PURE__*/React__default.createElement("button", {
+    className: "btn p-0 text-primary font-weight-bold ml-1 shadow-none",
+    style: {
+      fontSize: 20
+    },
+    onClick: function onClick() {
+      return setSidebar(true);
+    }
+  }, "CLICK HERE"))) : /*#__PURE__*/React__default.createElement(React.Fragment, null)), question === 'none' ? /*#__PURE__*/React__default.createElement(React.Fragment, null, /*#__PURE__*/React__default.createElement("div", {
+    className: "d-flex flex-column justify-content-between flex-fill"
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$b.content
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: "row align-items-center justify-content-between mb-2 mb-lg-4"
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$b.titleDes + ' col-12 col-lg-8 mb-2'
+  }, /*#__PURE__*/React__default.createElement(Title, {
+    text: "Additional Services",
+    className: "mt-0 mt-lg-40"
+  }), /*#__PURE__*/React__default.createElement(Component, null, "Additional services will help you to solve the problem relating to documentation. You can also skip this if you do not find the services suited to you")), /*#__PURE__*/React__default.createElement("div", {
+    className: styles$b.total + ' text-left col-12 col-lg-4 d-flex d-lg-block'
+  }, /*#__PURE__*/React__default.createElement("h3", {
+    className: "text-lg-right"
+  }, /*#__PURE__*/React__default.createElement("span", {
+    className: "text-dark"
+  }, "Total:"), /*#__PURE__*/React__default.createElement("span", {
+    className: "d-lg-none ml-1"
+  }, "$", getSum(), ".00")), /*#__PURE__*/React__default.createElement("h1", {
+    className: "text-lg-right d-none d-lg-block"
+  }, "US$", getSum(), ".00"))), /*#__PURE__*/React__default.createElement("div", {
+    className: styles$b.tableServices
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$b.servicesRow + ' font-weight-bold d-none d-lg-flex'
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: ' col-md-1 p-0',
+    scope: "col"
+  }, "No."), /*#__PURE__*/React__default.createElement("div", {
+    className: ' col-md-4 p-0',
+    scope: "col"
+  }, "Category"), /*#__PURE__*/React__default.createElement("div", {
+    className: ' col-md-4 p-0',
+    scope: "col"
+  }, "Service"), /*#__PURE__*/React__default.createElement("div", {
+    className: ' col-md-2 p-0',
+    scope: "col"
+  }, "Quantity"), /*#__PURE__*/React__default.createElement("div", {
+    className: ' col-md-1 p-0',
+    scope: "col"
+  }, "Price")), fields.length === 0 && /*#__PURE__*/React__default.createElement("h3", {
+    className: "mt-4 mb-4 mb-lg-0 text-center"
+  }, "Please add and choose services"), fields.map(function (field, index) {
+    return /*#__PURE__*/React__default.createElement("div", {
+      key: index,
+      className: "px-4 px-lg-0 mt-lg-2"
+    }, index !== 0 && /*#__PURE__*/React__default.createElement("div", {
+      className: "d-lg-none"
+    }, /*#__PURE__*/React__default.createElement("div", {
+      className: styles$b.lineDivider
+    })), /*#__PURE__*/React__default.createElement("div", {
+      className: "row flex-nowrap mx-0 px-0 px-sm-3 py-2 py-sm-4 p-lg-0"
+    }, /*#__PURE__*/React__default.createElement("div", {
+      className: "d-lg-none col-1 py-3"
+    }, index + 1), /*#__PURE__*/React__default.createElement("div", {
+      className: "col-11 col-lg-12 pl-lg-0"
+    }, /*#__PURE__*/React__default.createElement(CustomField, {
+      idx: index,
+      fieldValue: field,
+      additionalServices: additionalServices,
+      categories: categories,
+      onFieldChange: onFieldChange,
+      handleRemove: handleRemove
+    }))));
+  })), /*#__PURE__*/React__default.createElement("div", {
+    className: 'd-flex justify-content-center text-center my-3 my-sm-4 my-lg-5'
+  }, /*#__PURE__*/React__default.createElement("button", {
+    className: 'mx-2 mb-2',
+    onClick: handleClickAdd,
+    style: {
+      minWidth: 150
+    },
+    disabled: loading && loading !== ''
+  }, "Add"), /*#__PURE__*/React__default.createElement("button", {
+    className: 'bg-transparent text-dark mx-2 mb-2',
+    onClick: removeAll,
+    style: {
+      minWidth: 150
+    },
+    disabled: loading && loading !== ''
+  }, "Remove all"))), /*#__PURE__*/React__default.createElement("div", null, country.id == 191 && note && /*#__PURE__*/React__default.createElement("p", {
+    style: {
+      marginBottom: "60px",
+      fontSize: "20px",
+      lineHeight: "28px",
+      fontWeight: "400"
+    }
+  }, /*#__PURE__*/React__default.createElement("strong", null, "Note:"), " Accounting fee is depended on client company\u2019s yearly revenue. You may take a look at", ' ', /*#__PURE__*/React__default.createElement("a", {
+    style: {
+      display: "inline-block"
+    },
+    target: "_blank",
+    rel: "noreferrer nofollow",
+    href: "https://bbcincorp.com/sg/accounting-and-auditing"
+  }, "our price range"), ".", /*#__PURE__*/React__default.createElement("br", null), " If you want to customize this package, please contact our customer service team for assistance."), companyInfo && companyInfo.country_id === 23 && companyInfo.entity_type_id === 2 && note && /*#__PURE__*/React__default.createElement("p", {
+    style: {
+      marginBottom: "60px",
+      fontSize: "20px",
+      lineHeight: "28px",
+      fontWeight: "400"
+    }
+  }, /*#__PURE__*/React__default.createElement("strong", null, "Note:"), " Tax Identification Number (TIN) is mandatory for all Belize companies, regardless of whether they are included or non-included entities, to submit the filing of returns and tax payments. If you need further information and assistance, please do not hesitate to contact our customer service team."), /*#__PURE__*/React__default.createElement("div", {
+    className: "d-flex align-items-center"
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: "mr-2 d-inline d-lg-none"
+  }, /*#__PURE__*/React__default.createElement("a", {
+    disabled: loading && loading !== '',
+    href: "/incorporation-package",
+    onClick: clearSelectedPackages
+  }, /*#__PURE__*/React__default.createElement(Component$1, {
+    className: "mb-0 p-2 cursor-pointer"
+  }, "Back"))), /*#__PURE__*/React__default.createElement("button", {
+    onClick: function onClick() {
+      return handleSubmit('next');
+    },
+    className: "mr-1 mr-md-3 mx-lg-0",
+    disabled: loading && loading !== ''
+  }, loading === 'next' ? /*#__PURE__*/React__default.createElement("span", {
+    className: "d-flex align-items-center"
+  }, "Next", /*#__PURE__*/React__default.createElement(Spinner, {
+    as: "span",
+    animation: "border",
+    size: "sm",
+    role: "status",
+    "aria-hidden": "true",
+    className: "ml-2"
+  })) : /*#__PURE__*/React__default.createElement("span", null, "Next")), /*#__PURE__*/React__default.createElement("button", {
+    className: "bg-transparent text-dark shadow-none",
+    onClick: function onClick() {
+      return handleSubmit('skip');
+    },
+    disabled: loading && loading !== ''
+  }, loading === 'skip' ? /*#__PURE__*/React__default.createElement("span", {
+    className: "d-flex align-items-center"
+  }, "Skip", /*#__PURE__*/React__default.createElement(Spinner, {
+    as: "span",
+    animation: "border",
+    size: "sm",
+    role: "status",
+    "aria-hidden": "true",
+    className: "ml-2"
+  })) : /*#__PURE__*/React__default.createElement("span", null, "Skip")))))) : /*#__PURE__*/React__default.createElement(React.Fragment, null, /*#__PURE__*/React__default.createElement("div", {
+    className: "d-flex flex-column justify-content-between flex-fill"
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$b.content
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: "d-flex justify-content-between"
+  }, /*#__PURE__*/React__default.createElement(Title, {
+    text: "Accounting and Tax Filing service",
+    className: "mt-0 mt-lg-40"
+  }), /*#__PURE__*/React__default.createElement("button", {
+    className: "btn shadow-none p-0 d-lg-none",
+    onClick: function onClick() {
+      return setSidebar(true);
+    }
+  }, /*#__PURE__*/React__default.createElement(fi.FiHelpCircle, {
+    color: "#007eff",
+    size: 30
+  }))), /*#__PURE__*/React__default.createElement(Component, null, question.text), /*#__PURE__*/React__default.createElement("div", {
+    className: "mt-3 px-md-2"
+  }, question.answers.map(function (item, index) {
+    return /*#__PURE__*/React__default.createElement("button", {
+      onClick: function onClick() {
+        return handleQuestion(item);
+      },
+      className: "btn d-flex p-0 mt-1 text-left shadow-none " + styles$b.singButton,
+      key: index
+    }, /*#__PURE__*/React__default.createElement(fa.FaCaretRight, {
+      size: 30,
+      color: "#333"
+    }), item.text);
+  })))))), /*#__PURE__*/React__default.createElement(Sidebar, {
+    description: "<div><h4>What is the fee if I use your accounting service?</h4><ul><li>Our accounting service starts from US$84/month for less than S$70,000 of revenue per year. You can check <a href='https://bbcincorp.com/sg/accounting-and-auditing' target='_blank' rel='nofollow noreferrer' class='fw-bold'>HERE</a> for accounting fee details.</li></ul><h4>If there is no transaction in my yearly accounting period, could I get my accounting fee back?</h4><ul><li>When you use nominee director service in Singapore, you are most likely required to deposit an initial amount of no less than S$2,000. However, we don\u2019t require this, you must instead send your monthly accounting report for our local director\u2019s review to discharge their liabilities from possible illicit business activities or practices.</li></ul></div>",
+    title: "FAQs",
+    sidebar: sidebar,
+    onClickClose: function onClickClose() {
+      return setSidebar(false);
+    }
+  })) : /*#__PURE__*/React__default.createElement(React.Fragment, null);
+}
+
+exports.IncorporationAdditionalService = IncorporationAdditionalService;
 exports.IncorporationCompanyType = IncorporationCompanyType;
 exports.IncorporationCountry = IncorporationCountry;
 exports.IncorporationEntityNameCheck = IncorporationEntityNameCheck;
