@@ -13,6 +13,7 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import _ from 'lodash'
 import trust_pilot from 'assets/trust-pilot.svg'
+import { BiLoaderAlt } from 'react-icons/bi'
 
 const FormSwal = withReactContent(Swal)
 
@@ -431,7 +432,7 @@ const RegisterScreen = ({ trustpilot, isTypeChristmas }) => {
               sitekey='6LeJZ68UAAAAAJZ8jxdgylEXeWL8P9Ckv7CLtE6t'
               badge='bottomright'
               size='invisible'
-              className='d-flex justify-content-center justify-content-xl-start'
+              className={styles.recaptcha}
             />
             <div className={styles.FormFooter}>
               <button
@@ -440,15 +441,9 @@ const RegisterScreen = ({ trustpilot, isTypeChristmas }) => {
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
-                  <span className='d-flex align-items-center'>
-                    <span className='mr-2'>Loading</span>
-                    <Spinner
-                      as='span'
-                      animation='border'
-                      role='status'
-                      aria-hidden='true'
-                      size='sm'
-                    />
+                  <span style={{ display: 'flex', alignItems: 'center' }}>
+                    <span style={{ marginRight: '8px' }}>Loading</span>
+                    <BiLoaderAlt className='animate_spin' size={16} />
                   </span>
                 ) : (
                   'Start my business'

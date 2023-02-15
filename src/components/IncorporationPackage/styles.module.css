@@ -1,0 +1,443 @@
+.btn_top_wrapper {
+  display: block;
+}
+
+.btn_top {
+  cursor: pointer;
+  color: #007eff !important;
+  padding: 0;
+}
+
+.button {
+  width: 118px;
+  color: #677294;
+  background-color: white;
+  font-weight: 500;
+  box-shadow: 0 2px 8px #c9c9c9;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.2;
+  margin-top: 2rem;
+}
+
+.button:hover {
+  color: white;
+  background-color: #677294;
+}
+
+.button:hover img {
+  filter: brightness(0) invert(1);
+}
+
+.title {
+  margin-top: 40px;
+}
+
+.description_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.description {
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%;
+}
+
+.comparison_wrapper {
+  flex: 0 0 auto;
+  display: flex;
+}
+
+.comparison_top {
+  padding: 16px 8px 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.loader_wrapper {
+  margin-top: 32px;
+}
+
+.package_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 32px;
+}
+
+.card_wrapper {
+  width: 33.3333333333%;
+  margin: 16px 0;
+  padding: 0 15px;
+}
+
+.item_height {
+  height: 100%;
+}
+
+.content_wrapper_vn {
+  position: relative;
+  padding: 24px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  height: 100%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgb(201 201 201 / 25%);
+  border-radius: 8px;
+  transition: all 0.15s ease;
+}
+.card:hover {
+  box-shadow: 0 0 22.5px 2.5px rgb(119 119 119 / 40%);
+}
+
+.card_inside {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.img_wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card .cardName_wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card .cardName {
+  font-size: 24px;
+  line-height: 32px;
+  text-transform: capitalize;
+  font-weight: 700;
+  padding: 16px 16px 4px 16px;
+}
+.card .cardName:first-letter {
+  text-transform: capitalize;
+}
+.card .cardNameVN {
+  font-size: 16px;
+  line-height: 24px;
+  color: #2c2c51;
+}
+.card .cardPrice {
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 700;
+  padding: 4px 16px;
+}
+
+.card .cardPriceVN {
+  font-size: 32px;
+  line-height: 40px;
+  color: #2c2c51;
+}
+.card .cardDes {
+  font-size: 16px;
+  line-height: 24px;
+  color: #2c2c51;
+  margin-bottom: 0;
+  padding: 4px 16px 16px 16px;
+}
+.card .basic,
+.card .local-lite,
+.card .startup-for-locals {
+  color: #2c2c51;
+}
+.card .standard,
+.card .local-standard {
+  color: #f1cd0d;
+}
+.card .premium,
+.card .foreigner-basic,
+.card .standard-with-employment-pass {
+  color: #007eff;
+}
+.card .foreigner-ultra {
+  color: #002d9f;
+}
+.formSwich label {
+  cursor: pointer;
+}
+.formSwich label::before {
+  top: 0 !important;
+  border-radius: 50px !important;
+  width: 38px !important;
+  height: 22px !important;
+  border: 0;
+  background-color: #ccc;
+}
+.formSwich label::after {
+  width: 16px !important;
+  height: 16px !important;
+  left: calc(-2.25rem + 3px) !important;
+  top: 3px !important;
+  background-color: white !important;
+}
+.formSwich input:checked ~ label::after {
+  transform: translateX(calc(0.75rem + 3px)) !important;
+}
+.info > :global(.arrow)::after {
+  border-bottom-color: #007eff;
+}
+.note {
+  font-size: 15px;
+  font-style: italic;
+}
+
+.note_vn {
+  margin-top: 32px;
+}
+
+.dialog {
+  max-width: 900px;
+}
+.dialog .headerModal {
+  padding: 24px 24px 24px 17px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.dialog .headerModal h3 {
+  font-size: 24px;
+  line-height: 32px;
+  color: #333;
+  font-weight: 500;
+  font-style: normal;
+  margin: 0;
+}
+.dialog .bodyModal {
+  padding: 15px;
+  margin-top: 0;
+  max-height: 641px;
+  overflow-y: auto;
+}
+.dialog .bodyModal table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.dialog .bodyModal table thead tr th {
+  text-align: center;
+  vertical-align: top;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+.dialog .bodyModal table tbody tr th {
+  color: #333;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: left;
+  padding: 5px 0;
+  max-width: 340px;
+}
+.dialog .bodyModal table tbody tr :global(.subtitle) {
+  font-weight: 500;
+  color: #002a66;
+  text-transform: uppercase;
+}
+.dialog .bodyModal table tbody tr :global(.brand_800) {
+  color: #002a66;
+  font-weight: 500;
+}
+.dialog .bodyModal table tbody tr :global(.list) li {
+  list-style: disc !important;
+  list-style-position: inside !important;
+}
+.dialog .bodyModal table tbody tr td {
+  text-align: center;
+  padding: 5px 16px 5px 5px;
+  font-size: 14px;
+  min-width: 120px;
+}
+.dialog .bodyModal table tbody tr td :global(i.itemCheck) {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-color: #21b250;
+  border-radius: 50%;
+}
+.dialog .bodyModal table tbody tr td :global(i.itemCheck):before {
+  content: '\2714';
+  color: #fff;
+  font-size: 10px;
+  position: absolute;
+  left: 4px;
+  top: 2px;
+}
+.dialog .bodyModal table :global(.basic) {
+  color: #2c2c51;
+}
+.dialog .bodyModal table :global(.standard) {
+  color: #f1cd0d;
+}
+.dialog .bodyModal table :global(.premium) {
+  color: #007eff;
+}
+.dialog .bodyModal table :global(.ultra) {
+  color: #002d9f;
+}
+.dialog .bodyModal :global(.tabs-container) {
+  width: 55%;
+  float: right;
+}
+
+.dialog .bodyModal :global(.onboarding_Packages) {
+  max-width: 285px;
+  margin-top: 9px;
+  margin-bottom: 24px;
+  border: 0;
+  box-shadow: 0px 2px 8px #c9c9c9;
+  border-radius: 25px;
+  background: #fff;
+}
+
+.dialog .bodyModal :global(.onboarding_Package) {
+  width: 50%;
+  color: #adadad;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  border: 0;
+}
+.dialog .bodyModal :global(.onboarding_Package):hover {
+  color: #677294;
+}
+.dialog .bodyModal :global(.onboarding_PackageActive) {
+  border-color: #060707;
+  background: #2c2c51;
+  color: #fff;
+  margin: 4px;
+}
+.dialog .bodyModal :global(.onboarding_PackageActive):hover {
+  color: #fff;
+}
+.Header {
+  height: 50px;
+}
+
+.comparison_bottom_wrapper {
+  display: none;
+}
+
+.comparison_bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.comparison_btn {
+  width: auto;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.comparison_img {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn_bottom_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn_back_bottom {
+  cursor: pointer;
+  padding: 0;
+  display: none;
+}
+
+@media (max-width: 575px) {
+  .Body {
+    max-height: calc(100vh - 236px);
+    overflow-y: auto;
+    margin: 0 -15px;
+    padding: 0 15px;
+  }
+  .card_wrapper {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .dialog .bodyModal :global(.onboarding_Packages) {
+    justify-content: center;
+    border: none;
+    margin: 0 0 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .package_container {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .card_wrapper {
+    width: 50%;
+  }
+}
+
+@media (max-width: 991px) {
+  .btn_top_wrapper {
+    display: none;
+  }
+  .title {
+    margin: 0;
+  }
+  .comparison_wrapper {
+    display: none;
+  }
+  .loader_wrapper {
+    margin-top: 24px;
+  }
+  .package_container {
+    margin-top: 24px;
+  }
+  .note_vn {
+    margin-top: 16px;
+  }
+  .btn_bottom_wrapper {
+    display: block;
+  }
+  .btn_back_bottom {
+    display: block;
+  }
+}
+
+/* @media (max-width: 1023px) {
+  .dialog .bodyModal :global(.tabs-container) {
+    width: 100%;
+  }
+} */
+
+@media (max-width: 1600px) {
+  .card .cardPrice {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 1300px) {
+  .card_wrapper_sg {
+    width: 25% !important;
+  }
+}

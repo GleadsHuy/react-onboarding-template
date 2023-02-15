@@ -1,0 +1,157 @@
+/*Modal*/
+
+.modal_backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  opacity: 0.5;
+  animation: opacity 0.25s ease;
+}
+
+@keyframes opacity {
+  0% {
+    transform: translateY(-2%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+}
+
+.modal_container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  right: 0;
+  top: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 448px;
+  height: 100%;
+  background: #414141;
+  z-index: 9999;
+  color: #fff;
+  max-width: fit-content;
+  transition: 0.3s linear;
+  overflow: hidden;
+  animation: sidebar 0.35s ease-in-out;
+}
+
+@keyframes sidebar {
+  0% {
+    transform: translateX(100%);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 500px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+
+.sidebar button {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 25px;
+  background: #fff;
+  border-radius: 50%;
+  color: #333;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  line-height: 22px;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar .content {
+  padding: 70px 30px;
+  height: 100%;
+}
+
+.sidebar .content h3 {
+  color: #fff;
+  font-size: 32px;
+  margin: 20px 0;
+}
+
+.sidebar .content .description {
+  max-height: calc(100vh - 215px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: #fff;
+}
+
+.sidebar .content .description p {
+  color: #fff;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 4px;
+}
+
+.sidebar .content .description ul {
+  padding-left: 1rem;
+  list-style-type: none;
+}
+
+.sidebar .content .description ul li {
+  font-size: 16px;
+  margin-bottom: 5px;
+  position: relative;
+  padding-left: 8px;
+  line-height: 24px;
+}
+
+.sidebar .content .description ul li:before {
+  position: absolute;
+  content: '';
+  left: 0;
+  top: 8px;
+  width: 4px;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.sidebar :global(.modal-content) {
+  background-color: transparent;
+  border: 0;
+  position: static;
+  padding: 70px 30px;
+  height: 100%;
+}
+
+.sidebarBody {
+  padding: 0;
+}
+
+.Modal:global(.fade) .sidebar {
+  transform: translateX(100%);
+}
+
+.Modal:global(.show) .sidebar {
+  transform: none;
+}

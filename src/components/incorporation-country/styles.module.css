@@ -107,6 +107,13 @@ table {
   padding-right: 12px;
 }
 
+.loader_wrapper {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .slider :global(.slick-dots) li {
   width: auto;
   height: auto;
@@ -359,7 +366,6 @@ table {
   margin: 1.75rem auto;
   background-color: #fff;
   padding: 24px;
-  transform: 0.3s ease-out;
   border-radius: 5px;
   animation: fadeIn 0.25s ease-in;
 }
@@ -483,6 +489,11 @@ table {
   .btn_back_bottom {
     display: none;
     padding: 0;
+  }
+}
+@media (max-width: 991px) {
+  .loader_wrapper {
+    margin-top: 24px;
   }
 }
 

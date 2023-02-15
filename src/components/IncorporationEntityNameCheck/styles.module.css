@@ -199,6 +199,13 @@
   transition: all 0.15s ease-in-out;
 }
 
+.loader_wrapper {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 575px) {
   .Body {
     max-height: calc(100vh - 234px);
@@ -221,6 +228,9 @@
 }
 
 @media (max-width: 991px) {
+  .loader_wrapper {
+    margin-top: 24px;
+  }
   .bottom_wrapper {
     display: flex;
   }

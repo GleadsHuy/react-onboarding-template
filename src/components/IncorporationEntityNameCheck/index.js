@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 /**
  * vendor
@@ -6,7 +6,8 @@ import React, { useState, useEffect } from 'react'
 import { IconContext } from 'react-icons'
 import { MdAddCircle } from 'react-icons/md'
 import { HiMinusCircle } from 'react-icons/hi'
-import { Form, Spinner } from 'react-bootstrap'
+import { BiLoaderAlt } from 'react-icons/bi'
+import { Form } from 'react-bootstrap'
 import {
   useForm,
   useFieldArray,
@@ -25,7 +26,8 @@ import Title from '../common/Title'
 import Description from '../common/Description'
 // import Button from 'components/onboarding/atoms/Button'
 import SelectSearch from '../common/Selects/SelectSearchInside'
-// import Sidebar from 'components/Templates/onboarding/banking-choice/SideBar'
+import { useOnClickOutside } from '../common/functions'
+import Sidebar from '../common/SideBar'
 /**
  * styles
  */
@@ -207,6 +209,7 @@ export default function IncorporationEntityNameCheck({ data }) {
   const [dataCountry, setDataCountry] = useState({})
   const [dataEntityType, setDataEntityType] = useState({})
   const [sidebar, setSidebar] = useState(false)
+
   useEffect(() => {
     const dataOnboardingLocalStorage =
       window.localStorage.getItem('data_onboarding')
@@ -490,6 +493,13 @@ export default function IncorporationEntityNameCheck({ data }) {
       )
     }
   }, [dataCountry, dataEntityType])
+
+  const wrapperRef = useRef(null)
+
+  useOnClickOutside(wrapperRef, () => {
+    setSidebar(false)
+  })
+
   return (
     // <Layout
     //   head={{
@@ -541,14 +551,15 @@ export default function IncorporationEntityNameCheck({ data }) {
             )}
           </div>
         </div>
-        {/* {dataSideBar && (
+        {dataSideBar && (
           <Sidebar
             description={dataSideBar.content}
             title={dataSideBar.title}
+            wrapperRef={wrapperRef}
             sidebar={sidebar}
             onClickClose={() => setSidebar(false)}
           />
-        )} */}
+        )}
         <Title text='Entity Name Check' className={styles.title_page} />
         <div
           className={
@@ -611,35 +622,34 @@ export default function IncorporationEntityNameCheck({ data }) {
                               padding: '0 8px'
                             }}
                           >
-                            <Form.Control
+                            <input
+                              type='text'
                               {...register(`companyName.${index}.name`, {
-                                onChange: (e) => {
-                                  setTimeout(() => {
-                                    handleRestricted(
-                                      e.target.value,
-                                      `companyName.${index}.name`
-                                    )
-                                  }, 100)
-                                  handleSuggestName(e.target.value, index)
-                                },
-                                onBlur: (e) => {
-                                  // setTimeout(() => {
-                                  //   setLoadingSuggest(true);
-                                  // }, 200);
-                                  handleRestricted(
-                                    e.target.value,
-                                    `companyName.${index}.name`
-                                  )
-                                  setTimeout(() => {
-                                    handleSuggestName('')
-                                    setLoadingSuggest(false)
-                                  }, 400)
-                                },
                                 required: {
                                   value: index === 0,
                                   message: 'Your company name is required'
                                 }
                               })}
+                              onChange={(e) => {
+                                handleRestricted(
+                                  e.target.value,
+                                  `companyName.${index}.name`
+                                )
+                                handleSuggestName(e.target.value, index)
+                              }}
+                              onBlur={(e) => {
+                                // setTimeout(() => {
+                                //   setLoadingSuggest(true);
+                                // }, 200);
+                                handleRestricted(
+                                  e.target.value,
+                                  `companyName.${index}.name`
+                                )
+                                setTimeout(() => {
+                                  handleSuggestName('')
+                                  setLoadingSuggest(false)
+                                }, 400)
+                              }}
                               className={`${styles.company_name_input} ${
                                 errors?.companyName &&
                                 errors?.companyName[`${index}`]?.name?.message
@@ -709,7 +719,8 @@ export default function IncorporationEntityNameCheck({ data }) {
                               flexGrow: '1',
                               flexBasis: '0',
                               maxWidth: '100%',
-                              padding: '0 8px'
+                              padding: '0 8px',
+                              marginTop: '4px'
                             }}
                           >
                             <Form.Control.Feedback
@@ -720,7 +731,13 @@ export default function IncorporationEntityNameCheck({ data }) {
                                   : styles.d_none
                               }`}
                             >
-                              <span style={{ textAlign: 'left' }}>
+                              <span
+                                style={{
+                                  textAlign: 'left',
+                                  color: '#ff0000',
+                                  fontSize: '14px'
+                                }}
+                              >
                                 {errors?.companyName &&
                                   errors?.companyName[`${index}`]?.name
                                     ?.message}
@@ -822,10 +839,9 @@ export default function IncorporationEntityNameCheck({ data }) {
                                   opacity: 0.7
                                 }}
                               >
-                                <Spinner
-                                  animation='border'
-                                  variant='primary'
-                                  size='sm'
+                                <BiLoaderAlt
+                                  className='animate_spin'
+                                  size={20}
                                 />
                               </div>
                             )}
@@ -898,7 +914,7 @@ export default function IncorporationEntityNameCheck({ data }) {
             <a
               className={styles.backMobile}
               style={{
-                padding: '0',
+                paddingRight: ' 15px',
                 cursor: 'pointer',
                 border: 'none',
                 background: 'transparent'
@@ -908,7 +924,7 @@ export default function IncorporationEntityNameCheck({ data }) {
               Back
             </a>
           </div>
-          <div style={{ flex: ' 0 0 auto' }}>
+          <div style={{ flex: ' 0 0 auto', padding: '0 15px' }}>
             <button
               type='submit'
               onClick={handleSubmit(onSubmit)}
@@ -918,10 +934,10 @@ export default function IncorporationEntityNameCheck({ data }) {
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 Next
                 {submitting && (
-                  <Spinner
-                    animation='border'
-                    size='sm'
+                  <BiLoaderAlt
                     style={{ marginLeft: '8px' }}
+                    className='animate_spin'
+                    size={20}
                   />
                 )}
               </div>

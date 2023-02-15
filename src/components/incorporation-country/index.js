@@ -13,7 +13,7 @@ import 'slick-carousel/slick/slick-theme.css'
 import { IconContext } from 'react-icons'
 import { GrNext, GrPrevious } from 'react-icons/gr'
 import { IoMdCloseCircle } from 'react-icons/io'
-import { Spinner } from 'react-bootstrap'
+import { BiLoaderAlt } from 'react-icons/bi'
 import comparisonTable from 'assets/comparison-table.png'
 import axios from 'axios'
 import _ from 'lodash'
@@ -24,6 +24,7 @@ import _ from 'lodash'
 // import Layout from 'components/onboarding/common/Layout'
 import Title from '../common/Title'
 import SelectSearch from '../common/Selects/SelectSearchInside'
+import Modal from '../common/Modal'
 
 /**
  * styles
@@ -47,7 +48,7 @@ const NextArrow = (props) => {
   const { className, style, onClick } = props
   return (
     <button
-      className={`${styles.sliderNext} btn rounded-circle position-absolute ${styles.slide_btn}`}
+      className={`${styles.sliderNext} ${styles.slide_btn}`}
       onClick={onClick}
     >
       <IconContext.Provider value={{ color: '#c4c4c4' }}>
@@ -61,7 +62,7 @@ const PrevArrow = (props) => {
   const { className, style, onClick } = props
   return (
     <button
-      className={`${styles.sliderPrev} btn rounded-circle position-absolute ${styles.slide_btn}`}
+      className={`${styles.sliderPrev} ${styles.slide_btn}`}
       onClick={onClick}
     >
       <IconContext.Provider value={{ color: '#c4c4c4' }}>
@@ -98,6 +99,7 @@ export default function IncorporationCountry({ data }) {
       setDataOnboarding(data)
     }
   }, [])
+
   const [dataCountries, setDataCountries] = useState([])
   const [dataSlider, setDataSlider] = useState([])
   const [optionSelected, setOptionSelected] = useState({
@@ -105,6 +107,7 @@ export default function IncorporationCountry({ data }) {
     label: 'All'
   })
   const [loading, setLoading] = useState(true)
+
   useEffect(() => {
     axios
       .get(
@@ -314,10 +317,8 @@ export default function IncorporationCountry({ data }) {
         </div>
         <div className={styles.Body}>
           {loading ? (
-            <div className='embed-responsive embed-responsive-21by9 mt-4 mt-lg-5'>
-              <div className='embed-responsive-item d-flex align-items-center justify-content-center'>
-                <Spinner animation='border' variant='primary' />
-              </div>
+            <div className={`${styles.loader_wrapper}`}>
+              <BiLoaderAlt className='animate_spin' size={20} />
             </div>
           ) : dataSlider.length > 0 ? (
             <Slider
@@ -335,7 +336,7 @@ export default function IncorporationCountry({ data }) {
                         <img
                           // src={`/flags/1x1/${item.country_code.toLowerCase()}.svg`}
                           src={`https://test.bbcincorp.com/flags/1x1/${item.country_code.toLowerCase()}.svg`}
-                          className={`${styles.cardImg} rounded-circle shadow-sm`}
+                          className={styles.cardImg}
                           alt={`${item.name}`}
                         />
                       </div>
@@ -355,7 +356,7 @@ export default function IncorporationCountry({ data }) {
                       </div>
                     </div>
                     <div className={`${styles.cardIconNext}`}>
-                      <span className='mb-1'>→</span>
+                      <span style={{ marginBottom: '4px' }}>→</span>
                     </div>
                   </div>
                 </div>
@@ -404,7 +405,75 @@ export default function IncorporationCountry({ data }) {
         </div>
       </section>
       {/** Modal */}
-      {show && (
+      <Modal show={show}>
+        <div ref={wrapperRef} className={styles.modal_wrapper}>
+          <div
+            className={styles.closeModal}
+            style={{
+              position: 'absolute',
+              top: '0.25rem',
+              right: '0.25rem',
+              zIndex: 1
+            }}
+          >
+            <button className='btn' onClick={handleClose}>
+              <IconContext.Provider value={{ style: { color: 'c4c4c4' } }}>
+                <IoMdCloseCircle size={`2rem`} />
+              </IconContext.Provider>
+            </button>
+          </div>
+          <div className={styles.tab_container}>
+            <div className={styles.tab_wrapper}>
+              <button
+                onClick={() => setTab(1)}
+                className={`${tab === 1 ? styles.active_tab : ''} ${
+                  styles.tab_item
+                }`}
+              >
+                Jurisdiction's Features
+              </button>
+              <button
+                onClick={() => setTab(2)}
+                className={`${tab === 2 ? styles.active_tab : ''} ${
+                  styles.tab_item
+                }`}
+              >
+                Jurisdiction Comparison
+              </button>
+            </div>
+          </div>
+          {tab === 1 ? (
+            <JurisdictionFeatures
+              data={dataComparison.DataFeatures}
+              countries={dataComparison.countries}
+              publicRegister={dataComparison.public_register}
+              euList={dataComparison.eu_list}
+              selectDefault={dataComparison.select_default}
+              auditList={dataComparison.audited_accounts}
+              exemptionList={dataComparison.offshore_exemptions}
+              commonUsedList={dataComparison.common_used}
+            />
+          ) : (
+            <div style={{ color: '#333' }}>
+              <p style={{ marginBottom: '16px' }}>
+                The following table compares different jurisdictions (maximum 3
+                at one time) in regard to crucial aspects that you need to know
+                when incorporating.
+              </p>
+              <p style={{ marginBottom: '16px' }}>
+                <b>How to use: </b>Please select the jurisdiction you want to
+                compare in the header <b>[Country Name]</b> in the table to see
+                the information
+              </p>
+              <JurisdictionComparison
+                data={dataComparison.DataComparison}
+                countries={dataComparison.countries}
+              />
+            </div>
+          )}
+        </div>
+      </Modal>
+      {/* {show && (
         <div>
           <div className={styles.modal_backdrop}></div>
           <div className={styles.modal_container}>
@@ -476,7 +545,7 @@ export default function IncorporationCountry({ data }) {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </div>
   )
 }

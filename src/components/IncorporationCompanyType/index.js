@@ -6,7 +6,7 @@ import { useOnClickOutside } from '../common/functions'
 /**
  * vendor
  */
-import { Spinner } from 'react-bootstrap'
+import { BiLoaderAlt } from 'react-icons/bi'
 
 /**
  * components
@@ -16,6 +16,7 @@ import Title from '../common/Title'
 import Description from '../common/Description'
 import buildingImg from 'assets/building.png'
 import comparisonTableImg from 'assets/comparison-table.png'
+import Modal from '../common/Modal'
 // import ModalNoti from "./ModalNoti";
 
 /**
@@ -598,7 +599,7 @@ export default function IncorporationCompanyType({ data }) {
                     }}
                     className='embed-responsive-item'
                   >
-                    <Spinner animation='border' variant='primary' />
+                    <BiLoaderAlt className='animate_spin' size={20} />
                   </div>
                 </div>
               ) : (
@@ -620,7 +621,7 @@ export default function IncorporationCompanyType({ data }) {
                           <div style={{ flex: '0 0 auto' }}>
                             <img
                               src={buildingImg}
-                              className={`${styles.cardImg} rounded-circle`}
+                              className={styles.cardImg}
                               alt={`${item.name}`}
                             />
                           </div>
@@ -697,35 +698,28 @@ export default function IncorporationCompanyType({ data }) {
         </div>
       </section>
       {/** Modal */}
-      {show && (
-        <div>
-          <div className={styles.modal_backdrop}></div>
-          <div className={styles.modal_container}>
-            <div className={styles.modal_wrapper}>
-              <div ref={wrapperRef} className={styles.dialog}>
-                <div
-                  className={styles.closeModal}
-                  style={{
-                    position: 'absolute',
-                    top: '0.25rem',
-                    right: '0.5rem',
-                    zIndex: 1
-                  }}
-                >
-                  <button className='btn' onClick={handleClose}>
-                    <IconContext.Provider
-                      value={{ style: { color: 'c4c4c4' } }}
-                    >
-                      <IoMdCloseCircle size={`1.5rem`} />
-                    </IconContext.Provider>
-                  </button>
-                </div>
-                {TablePopup(dataCountry.id)}
-              </div>
+      <Modal show={show}>
+        <div className={`${styles.modal_wrapper}`}>
+          <div ref={wrapperRef} className={` ${styles.dialog}`}>
+            <div
+              className={styles.closeModal}
+              style={{
+                position: 'absolute',
+                top: '0.25rem',
+                right: '0.5rem',
+                zIndex: 1
+              }}
+            >
+              <button className='btn' onClick={handleClose}>
+                <IconContext.Provider value={{ style: { color: 'c4c4c4' } }}>
+                  <IoMdCloseCircle size={`1.5rem`} />
+                </IconContext.Provider>
+              </button>
             </div>
+            {TablePopup(dataCountry.id)}
           </div>
         </div>
-      )}
+      </Modal>
     </div>
   )
 }

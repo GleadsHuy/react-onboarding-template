@@ -9,7 +9,11 @@ body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   color: #677294;
-  padding: 48px 64px;
+  /* padding: 48px 64px; */
+}
+
+button {
+  transition: all 0.15s ease-in-out;
 }
 
 p {
@@ -25,10 +29,24 @@ h2,
   font-weight: 500;
 }
 
-@media (max-width: 991px) {
-  body {
-    padding: 84px 24px;
+:global(.animate_spin) {
+  font-weight: 700;
+  animation-name: spinner;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
   }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 991px) {
   h2 {
     font-size: 24px;
     line-height: 32px;

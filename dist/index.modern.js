@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaAngleDoubleUp, FaChevronDown, FaCheck, FaTimes, FaAngleDoubleDown, FaInfoCircle, FaCircle, FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import _ from 'lodash';
-import { Spinner, Form } from 'react-bootstrap';
+import { Form, OverlayTrigger, Popover } from 'react-bootstrap';
 import axios from 'axios';
 import { useForm, useFormState, useFieldArray, Controller } from 'react-hook-form';
 import Select, { components } from 'react-select';
@@ -13,6 +13,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import trust_pilot$1 from './trust-pilot~VtJXwXCM.svg';
+import { BiLoaderAlt } from 'react-icons/bi';
 import bankingImg from './banking~nKuKLkod.png';
 import incorpImg from './incorporation~BKidfgKY.png';
 import { FiFilter } from 'react-icons/fi';
@@ -36,8 +37,16 @@ import buildingImg from './building~IFwjSqIH.png';
 import { MdAddCircle } from 'react-icons/md';
 import { HiMinusCircle } from 'react-icons/hi';
 import { BsQuestionCircle } from 'react-icons/bs';
+import { AiOutlineInfoCircle } from 'react-icons/ai';
+import foreignerbasic from './foreigner-basic~uQZFFwrd.png';
+import foreignerultra from './foreigner-ultra~XjDmcCNY.png';
+import locallite from './local-lite~TJhbcTdX.png';
+import localstandard from './local-standard~AyzXROgI.png';
+import pacbasic from './pac-basic~AyzXROgI.png';
+import pacpremium from './pac-premium~XjDmcCNY.png';
+import pacstandard from './pac-standard~uQZFFwrd.png';
 
-var styles = {"FatfScreen":"_styles-module__FatfScreen__2ROgK","descriptionText":"_styles-module__descriptionText__2Vd8e","title":"_styles-module__title__35EYE","RegisterInput":"_styles-module__RegisterInput__gW7RG","item":"_styles-module__item__3hx7A","space_top":"_styles-module__space_top__yST6I","ErrorMessage":"_styles-module__ErrorMessage__qZ3vy","Link":"_styles-module__Link__1wNX0","Slider":"_styles-module__Slider__1Th7t","PhoneSelect":"_styles-module__PhoneSelect__1B3qM","CustomSelect":"_styles-module__CustomSelect__3bJjM","PhoneInput":"_styles-module__PhoneInput__2_4Q0","phonenumber_container":"_styles-module__phonenumber_container__HLp-P","RegisterScreen":"_styles-module__RegisterScreen__3hn-F","discountChristmas":"_styles-module__discountChristmas__i1zWx","CheckBox":"_styles-module__CheckBox__3klwe","button_wrapper":"_styles-module__button_wrapper__RJ7yj","Button":"_styles-module__Button__26moK","RegisterButton":"_styles-module__RegisterButton__1WoJs","RegisterLink":"_styles-module__RegisterLink__2p_CN","restricted_countries_wrapper":"_styles-module__restricted_countries_wrapper__5339W","restricted_countries_container":"_styles-module__restricted_countries_container__30wCB","restricted_countries_cols":"_styles-module__restricted_countries_cols__17jba","restricted_countries_cols_md":"_styles-module__restricted_countries_cols_md__wx9cR","listCollapse":"_styles-module__listCollapse__P54fa","active":"_styles-module__active__1yv7q","buttonCollapse":"_styles-module__buttonCollapse__BL6zk","isCollapse":"_styles-module__isCollapse__38GJw","iconCollapse":"_styles-module__iconCollapse__3YmIy","RegisterText":"_styles-module__RegisterText__3dZ-C","RegisterForm":"_styles-module__RegisterForm__2sn5j","formControl":"_styles-module__formControl__MkpSE","inputWrapper":"_styles-module__inputWrapper__u_8Hb","SelectWrapper":"_styles-module__SelectWrapper__2wTl0","CountrySelectWrapper":"_styles-module__CountrySelectWrapper__cRn99","nationalitySelect":"_styles-module__nationalitySelect__3tlRp","nationalityLabel":"_styles-module__nationalityLabel__1-615","phonenumber_wrapper":"_styles-module__phonenumber_wrapper__3q5qp","trustpilot_wrapper":"_styles-module__trustpilot_wrapper__1PI3w","FormFooter":"_styles-module__FormFooter__29TuF","Body":"_styles-module__Body__3J0ny","noteText":"_styles-module__noteText__9TPd0"};
+var styles = {"FatfScreen":"_styles-module__FatfScreen__2ROgK","descriptionText":"_styles-module__descriptionText__2Vd8e","title":"_styles-module__title__35EYE","RegisterInput":"_styles-module__RegisterInput__gW7RG","item":"_styles-module__item__3hx7A","space_top":"_styles-module__space_top__yST6I","ErrorMessage":"_styles-module__ErrorMessage__qZ3vy","Link":"_styles-module__Link__1wNX0","Slider":"_styles-module__Slider__1Th7t","PhoneSelect":"_styles-module__PhoneSelect__1B3qM","CustomSelect":"_styles-module__CustomSelect__3bJjM","PhoneInput":"_styles-module__PhoneInput__2_4Q0","phonenumber_container":"_styles-module__phonenumber_container__HLp-P","RegisterScreen":"_styles-module__RegisterScreen__3hn-F","discountChristmas":"_styles-module__discountChristmas__i1zWx","CheckBox":"_styles-module__CheckBox__3klwe","button_wrapper":"_styles-module__button_wrapper__RJ7yj","Button":"_styles-module__Button__26moK","recaptcha":"_styles-module__recaptcha__14pK3","RegisterButton":"_styles-module__RegisterButton__1WoJs","RegisterLink":"_styles-module__RegisterLink__2p_CN","restricted_countries_wrapper":"_styles-module__restricted_countries_wrapper__5339W","restricted_countries_container":"_styles-module__restricted_countries_container__30wCB","restricted_countries_cols":"_styles-module__restricted_countries_cols__17jba","restricted_countries_cols_md":"_styles-module__restricted_countries_cols_md__wx9cR","listCollapse":"_styles-module__listCollapse__P54fa","active":"_styles-module__active__1yv7q","buttonCollapse":"_styles-module__buttonCollapse__BL6zk","isCollapse":"_styles-module__isCollapse__38GJw","iconCollapse":"_styles-module__iconCollapse__3YmIy","RegisterText":"_styles-module__RegisterText__3dZ-C","RegisterForm":"_styles-module__RegisterForm__2sn5j","formControl":"_styles-module__formControl__MkpSE","inputWrapper":"_styles-module__inputWrapper__u_8Hb","SelectWrapper":"_styles-module__SelectWrapper__2wTl0","CountrySelectWrapper":"_styles-module__CountrySelectWrapper__cRn99","nationalitySelect":"_styles-module__nationalitySelect__3tlRp","nationalityLabel":"_styles-module__nationalityLabel__1-615","phonenumber_wrapper":"_styles-module__phonenumber_wrapper__3q5qp","trustpilot_wrapper":"_styles-module__trustpilot_wrapper__1PI3w","FormFooter":"_styles-module__FormFooter__29TuF","Body":"_styles-module__Body__3J0ny","noteText":"_styles-module__noteText__9TPd0"};
 
 var restricted_countries = ['Cambodia', 'Jordan', 'Myanmar', 'Pakistan', 'Philippines', 'Syria', 'Turkey', 'Yemen', 'Iran', 'The Democratic People’s Republic of Korea', 'Iraq', 'Afghanistan', 'Turkmenistan', 'Albania', 'Gibraltar', 'Barbados', 'Haiti', 'Jamaica', 'US Virgin Islands', 'Trinidad and Tobago', 'Venezuela', 'Burkina Faso', 'Mali', 'Morocco', 'Senegal', 'South Sudan', 'Uganda', 'Somalia', 'Democratic Republic of the Congo', 'Sudan', 'Libya', 'Central African Republic', 'Nigeria', 'Burundi', 'Equatorial Guinea', 'Guinea-Bissau', 'Samoa', 'Fiji', 'Palau', 'American Samoa', 'Vanuatu', 'Guam', 'Niger', 'Crimea Region', 'Donetsk Region', 'Luhansk Region', 'Cuba', 'Tanzania', 'Mozambique'];
 const FatfScreen = ({
@@ -942,7 +951,7 @@ const RegisterScreen = ({
     sitekey: "6LeJZ68UAAAAAJZ8jxdgylEXeWL8P9Ckv7CLtE6t",
     badge: "bottomright",
     size: "invisible",
-    className: "d-flex justify-content-center justify-content-xl-start"
+    className: styles.recaptcha
   }), /*#__PURE__*/React.createElement("div", {
     className: styles.FormFooter
   }, /*#__PURE__*/React.createElement("button", {
@@ -950,15 +959,17 @@ const RegisterScreen = ({
     className: `${styles.RegisterButton} ${styles.Button}`,
     disabled: isSubmitting
   }, isSubmitting ? /*#__PURE__*/React.createElement("span", {
-    className: "d-flex align-items-center"
+    style: {
+      display: 'flex',
+      alignItems: 'center'
+    }
   }, /*#__PURE__*/React.createElement("span", {
-    className: "mr-2"
-  }, "Loading"), /*#__PURE__*/React.createElement(Spinner, {
-    as: "span",
-    animation: "border",
-    role: "status",
-    "aria-hidden": "true",
-    size: "sm"
+    style: {
+      marginRight: '8px'
+    }
+  }, "Loading"), /*#__PURE__*/React.createElement(BiLoaderAlt, {
+    className: "animate_spin",
+    size: 16
   })) : 'Start my business'), /*#__PURE__*/React.createElement("a", {
     style: {
       fontWeight: `600`
@@ -1190,7 +1201,7 @@ function SelectService(params) {
   }, "Back"));
 }
 
-var style = {"featuresTable":"_styles-module__featuresTable__RLphK","tableColumn":"_styles-module__tableColumn__10sZ0","tableColumnTitle":"_styles-module__tableColumnTitle__AUegg","tableColumnItem":"_styles-module__tableColumnItem__qvn8_","tableColumn_cur":"_styles-module__tableColumn_cur__yyHcR","tableColumnCountry":"_styles-module__tableColumnCountry__32w8z","selectFilter":"_styles-module__selectFilter__2Wejd","tableColumnTax":"_styles-module__tableColumnTax__20J5S","commonTag":"_styles-module__commonTag__uD5xU","tag":"_styles-module__tag__5r1Aj","btnClearAll":"_styles-module__btnClearAll__20yrn","btnCompare":"_styles-module__btnCompare__2GrPb","btnTalkto":"_styles-module__btnTalkto__jCdVc","dropdownBtn":"_styles-module__dropdownBtn__v22dK","dropdown_rangeSlider":"_styles-module__dropdown_rangeSlider__1BZTI","dropdown_menu":"_styles-module__dropdown_menu__YI60L","multiSelectCustom":"_styles-module__multiSelectCustom__3lMgY","commonUsed_Filter":"_styles-module__commonUsed_Filter__s0T05","common_Container":"_styles-module__common_Container__19GeQ","common_Button":"_styles-module__common_Button__3Tera","common_FilterContainer":"_styles-module__common_FilterContainer__2MQvj","common_ColumnSpacing":"_styles-module__common_ColumnSpacing__2Osel","common_Column":"_styles-module__common_Column__1Mg92","common_Tag":"_styles-module__common_Tag__3p2Gk","common_FilterMenu":"_styles-module__common_FilterMenu__5JuuW","features_Menu":"_styles-module__features_Menu__33Rw4","common_Clickable":"_styles-module__common_Clickable__1KL3B","common_UnClickable":"_styles-module__common_UnClickable__38yu2","common_LevelTop":"_styles-module__common_LevelTop__3o1V9","feature_ItemActive":"_styles-module__feature_ItemActive__GTqJ-","custom_menuDropdown":"_styles-module__custom_menuDropdown__2GFGL","titleDefault":"_styles-module__titleDefault__1sZVx","titleMobile":"_styles-module__titleMobile__w4CCu","chooseFeatures_FilterContainerMobile":"_styles-module__chooseFeatures_FilterContainerMobile__39Gjj"};
+var style = {"featuresTable":"_styles-module__featuresTable__RLphK","tableColumn":"_styles-module__tableColumn__10sZ0","tableColumnTitle":"_styles-module__tableColumnTitle__AUegg","tableColumnItem":"_styles-module__tableColumnItem__qvn8_","tableColumn_cur":"_styles-module__tableColumn_cur__yyHcR","tableColumnCountry":"_styles-module__tableColumnCountry__32w8z","selectFilter":"_styles-module__selectFilter__2Wejd","tableColumnTax":"_styles-module__tableColumnTax__20J5S","commonTag":"_styles-module__commonTag__uD5xU","tag":"_styles-module__tag__5r1Aj","btnClearAll":"_styles-module__btnClearAll__20yrn","btnCompare":"_styles-module__btnCompare__2GrPb","btnTalkto":"_styles-module__btnTalkto__jCdVc","dropdownBtn":"_styles-module__dropdownBtn__v22dK","dropdown_rangeSlider":"_styles-module__dropdown_rangeSlider__1BZTI","dropdown_menu":"_styles-module__dropdown_menu__YI60L","multiSelectCustom":"_styles-module__multiSelectCustom__3lMgY","commonUsed_Filter":"_styles-module__commonUsed_Filter__s0T05","common_Container":"_styles-module__common_Container__19GeQ","common_Button":"_styles-module__common_Button__3Tera","common_FilterContainer":"_styles-module__common_FilterContainer__2MQvj","common_ColumnSpacing":"_styles-module__common_ColumnSpacing__2Osel","common_Column":"_styles-module__common_Column__1Mg92","common_Tag":"_styles-module__common_Tag__3p2Gk","features_Menu":"_styles-module__features_Menu__33Rw4","common_FilterMenu":"_styles-module__common_FilterMenu__5JuuW","common_Clickable":"_styles-module__common_Clickable__1KL3B","common_UnClickable":"_styles-module__common_UnClickable__38yu2","common_LevelTop":"_styles-module__common_LevelTop__3o1V9","feature_ItemActive":"_styles-module__feature_ItemActive__GTqJ-","custom_menuDropdown":"_styles-module__custom_menuDropdown__2GFGL","titleDefault":"_styles-module__titleDefault__1sZVx","titleMobile":"_styles-module__titleMobile__w4CCu","chooseFeatures_FilterContainerMobile":"_styles-module__chooseFeatures_FilterContainerMobile__39Gjj"};
 
 const Menu = props => {
   const style = {
@@ -5374,7 +5385,20 @@ const Title = props => {
   }, mergeProps(props)), text);
 };
 
-var styles$4 = {"btn_back_container":"_styles-module__btn_back_container__k-p5u","btn_wrapper":"_styles-module__btn_wrapper__1UAjB","button":"_styles-module__button__TWj4B","btn_show":"_styles-module__btn_show__1ag_K","searchContainer":"_styles-module__searchContainer__1mjEu","btn_back_top":"_styles-module__btn_back_top__3zVi-","select_country":"_styles-module__select_country__vdbQ8","select_wrapper":"_styles-module__select_wrapper__2IKE1","select_title":"_styles-module__select_title__2Tj9L","comparison_table_btn":"_styles-module__comparison_table_btn__1zUBn","comparison_container_mb":"_styles-module__comparison_container_mb__3mgL7","comparison_wrapper_mb":"_styles-module__comparison_wrapper_mb__3MbTE","col_auto":"_styles-module__col_auto__15j2P","btn_show_mb":"_styles-module__btn_show_mb__2MGIM","comparisonTable_mb":"_styles-module__comparisonTable_mb__3Hskw","comparison_text_mb":"_styles-module__comparison_text_mb__3Gvzn","search":"_styles-module__search__1siYd","slider":"_styles-module__slider__3h_MZ","slider_container":"_styles-module__slider_container__3P27V","slide_btn":"_styles-module__slide_btn__3b_Q7","sliderNext":"_styles-module__sliderNext__3oxJl","sliderPrev":"_styles-module__sliderPrev__2TxT7","slider_item":"_styles-module__slider_item__2efBa","card":"_styles-module__card__o0GI0","card_wrapper":"_styles-module__card_wrapper__1OSoD","card_inside":"_styles-module__card_inside__3-3OD","img_wrapper":"_styles-module__img_wrapper__3kGrt","cardImg":"_styles-module__cardImg__4kBhB","cardTitle":"_styles-module__cardTitle__1FF3S","contentWrapper":"_styles-module__contentWrapper__1SQUQ","content":"_styles-module__content__35To1","cardIconNext":"_styles-module__cardIconNext__1-hWb","company_type":"_styles-module__company_type__GQ_B1","dialog":"_styles-module__dialog__3O3Dw","nav":"_styles-module__nav__C1Laj","navLink":"_styles-module__navLink__4KplV","back":"_styles-module__back__jlBD8","backMobile_wrapper":"_styles-module__backMobile_wrapper__2RUrM","btn_back_bottom":"_styles-module__btn_back_bottom__1XmGT","backMobile":"_styles-module__backMobile__-JcIK","Header":"_styles-module__Header__2PqMP","modal_container":"_styles-module__modal_container__1THqU","modal_wrapper":"_styles-module__modal_wrapper__CagOn","fadeIn":"_styles-module__fadeIn__3ISmH","closeModal":"_styles-module__closeModal__34XBz","modal_backdrop":"_styles-module__modal_backdrop__25fsQ","tab_container":"_styles-module__tab_container__TXdw8","tab_wrapper":"_styles-module__tab_wrapper__4AX0J","tab_item":"_styles-module__tab_item__rIwNt","active_tab":"_styles-module__active_tab__2y820","Body":"_styles-module__Body__1qDX-"};
+var styles$4 = {"modal_container":"_styles-module__modal_container__9pnaK","modal_backdrop":"_styles-module__modal_backdrop__Q-bcZ","opacity":"_styles-module__opacity__vhjd4","fadeIn":"_styles-module__fadeIn__Xno1r"};
+
+const Modal = ({
+  show,
+  children
+}) => {
+  return /*#__PURE__*/React.createElement("div", null, show && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: styles$4.modal_backdrop
+  }), /*#__PURE__*/React.createElement("div", {
+    className: styles$4.modal_container
+  }, children)));
+};
+
+var styles$5 = {"btn_back_container":"_styles-module__btn_back_container__k-p5u","btn_wrapper":"_styles-module__btn_wrapper__1UAjB","button":"_styles-module__button__TWj4B","btn_show":"_styles-module__btn_show__1ag_K","searchContainer":"_styles-module__searchContainer__1mjEu","btn_back_top":"_styles-module__btn_back_top__3zVi-","select_country":"_styles-module__select_country__vdbQ8","select_wrapper":"_styles-module__select_wrapper__2IKE1","select_title":"_styles-module__select_title__2Tj9L","comparison_table_btn":"_styles-module__comparison_table_btn__1zUBn","comparison_container_mb":"_styles-module__comparison_container_mb__3mgL7","comparison_wrapper_mb":"_styles-module__comparison_wrapper_mb__3MbTE","col_auto":"_styles-module__col_auto__15j2P","btn_show_mb":"_styles-module__btn_show_mb__2MGIM","comparisonTable_mb":"_styles-module__comparisonTable_mb__3Hskw","comparison_text_mb":"_styles-module__comparison_text_mb__3Gvzn","search":"_styles-module__search__1siYd","loader_wrapper":"_styles-module__loader_wrapper__X7V31","slider":"_styles-module__slider__3h_MZ","slider_container":"_styles-module__slider_container__3P27V","slide_btn":"_styles-module__slide_btn__3b_Q7","sliderNext":"_styles-module__sliderNext__3oxJl","sliderPrev":"_styles-module__sliderPrev__2TxT7","slider_item":"_styles-module__slider_item__2efBa","card":"_styles-module__card__o0GI0","card_wrapper":"_styles-module__card_wrapper__1OSoD","card_inside":"_styles-module__card_inside__3-3OD","img_wrapper":"_styles-module__img_wrapper__3kGrt","cardImg":"_styles-module__cardImg__4kBhB","cardTitle":"_styles-module__cardTitle__1FF3S","contentWrapper":"_styles-module__contentWrapper__1SQUQ","content":"_styles-module__content__35To1","cardIconNext":"_styles-module__cardIconNext__1-hWb","company_type":"_styles-module__company_type__GQ_B1","dialog":"_styles-module__dialog__3O3Dw","nav":"_styles-module__nav__C1Laj","navLink":"_styles-module__navLink__4KplV","back":"_styles-module__back__jlBD8","backMobile_wrapper":"_styles-module__backMobile_wrapper__2RUrM","btn_back_bottom":"_styles-module__btn_back_bottom__1XmGT","backMobile":"_styles-module__backMobile__-JcIK","Header":"_styles-module__Header__2PqMP","modal_container":"_styles-module__modal_container__1THqU","modal_wrapper":"_styles-module__modal_wrapper__CagOn","fadeIn":"_styles-module__fadeIn__3ISmH","closeModal":"_styles-module__closeModal__34XBz","modal_backdrop":"_styles-module__modal_backdrop__25fsQ","tab_container":"_styles-module__tab_container__TXdw8","tab_wrapper":"_styles-module__tab_wrapper__4AX0J","tab_item":"_styles-module__tab_item__rIwNt","active_tab":"_styles-module__active_tab__2y820","Body":"_styles-module__Body__1qDX-"};
 
 const NextArrow = props => {
   const {
@@ -5383,7 +5407,7 @@ const NextArrow = props => {
     onClick
   } = props;
   return /*#__PURE__*/React.createElement("button", {
-    className: `${styles$4.sliderNext} btn rounded-circle position-absolute ${styles$4.slide_btn}`,
+    className: `${styles$5.sliderNext} ${styles$5.slide_btn}`,
     onClick: onClick
   }, /*#__PURE__*/React.createElement(IconContext.Provider, {
     value: {
@@ -5398,7 +5422,7 @@ const PrevArrow = props => {
     onClick
   } = props;
   return /*#__PURE__*/React.createElement("button", {
-    className: `${styles$4.sliderPrev} btn rounded-circle position-absolute ${styles$4.slide_btn}`,
+    className: `${styles$5.sliderPrev} ${styles$5.slide_btn}`,
     onClick: onClick
   }, /*#__PURE__*/React.createElement(IconContext.Provider, {
     value: {
@@ -5538,23 +5562,23 @@ function IncorporationCountry({
   return (
     /*#__PURE__*/
     React.createElement("div", null, /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("div", {
-      className: `${styles$4.btn_back_top}  ${styles$4.Header}`
+      className: `${styles$5.btn_back_top}  ${styles$5.Header}`
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$4.btn_back_container
+      className: styles$5.btn_back_container
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$4.btn_wrapper
+      className: styles$5.btn_wrapper
     }, /*#__PURE__*/React.createElement("button", {
-      className: styles$4.back,
+      className: styles$5.back,
       onClick: handleBack
     }, "Back")))), /*#__PURE__*/React.createElement("div", {
-      className: styles$4.select_country
+      className: styles$5.select_country
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$4.select_wrapper
+      className: styles$5.select_wrapper
     }, /*#__PURE__*/React.createElement(Title, {
       text: "Country and Company Type",
-      className: styles$4.select_title
+      className: styles$5.select_title
     }), /*#__PURE__*/React.createElement("div", {
-      className: styles$4.searchContainer
+      className: styles$5.searchContainer
     }, /*#__PURE__*/React.createElement(SelectSearchInside, {
       instanceId: "incorporation-country-search",
       value: optionSelected,
@@ -5569,12 +5593,12 @@ function IncorporationCountry({
       })],
       selectBorder: true,
       placeholder: "Search country here",
-      toggleClass: `${styles$4.search}`,
+      toggleClass: `${styles$5.search}`,
       onChange: setSelectedOption
     }))), /*#__PURE__*/React.createElement("div", {
-      className: styles$4.comparison_table_btn
+      className: styles$5.comparison_table_btn
     }, /*#__PURE__*/React.createElement("button", {
-      className: `${styles$4.button} ${styles$4.btn_show}`,
+      className: `${styles$5.button} ${styles$5.btn_show}`,
       onClick: handleShow
     }, /*#__PURE__*/React.createElement("img", {
       src: comparisonTable,
@@ -5582,57 +5606,57 @@ function IncorporationCountry({
     }), /*#__PURE__*/React.createElement("div", {
       className: "mt-1"
     }, "Comparison table")))), /*#__PURE__*/React.createElement("div", {
-      className: styles$4.Body
+      className: styles$5.Body
     }, loading ? /*#__PURE__*/React.createElement("div", {
-      className: "embed-responsive embed-responsive-21by9 mt-4 mt-lg-5"
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "embed-responsive-item d-flex align-items-center justify-content-center"
-    }, /*#__PURE__*/React.createElement(Spinner, {
-      animation: "border",
-      variant: "primary"
-    }))) : dataSlider.length > 0 ? /*#__PURE__*/React.createElement(Slider, Object.assign({
-      className: `${styles$4.slider} ${styles$4.slider_container}`
+      className: `${styles$5.loader_wrapper}`
+    }, /*#__PURE__*/React.createElement(BiLoaderAlt, {
+      className: "animate_spin",
+      size: 20
+    })) : dataSlider.length > 0 ? /*#__PURE__*/React.createElement(Slider, Object.assign({
+      className: `${styles$5.slider} ${styles$5.slider_container}`
     }, sliderSettings), dataSlider.map((item, index) => /*#__PURE__*/React.createElement("div", {
-      className: `${styles$4.slider_item}`,
+      className: `${styles$5.slider_item}`,
       key: index
     }, /*#__PURE__*/React.createElement("div", {
-      className: `${styles$4.card} ${styles$4.card_wrapper}`,
+      className: `${styles$5.card} ${styles$5.card_wrapper}`,
       onClick: () => handleClick(item.id, item.name)
     }, /*#__PURE__*/React.createElement("div", {
-      className: `${styles$4.card_inside}`
+      className: `${styles$5.card_inside}`
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$4.img_wrapper
+      className: styles$5.img_wrapper
     }, /*#__PURE__*/React.createElement("img", {
       src: `https://test.bbcincorp.com/flags/1x1/${item.country_code.toLowerCase()}.svg`,
-      className: `${styles$4.cardImg} rounded-circle shadow-sm`,
+      className: styles$5.cardImg,
       alt: `${item.name}`
     })), /*#__PURE__*/React.createElement("div", {
-      className: styles$4.contentWrapper
+      className: styles$5.contentWrapper
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$4.content
+      className: styles$5.content
     }, /*#__PURE__*/React.createElement("div", {
-      className: `${styles$4.cardTitle}`
+      className: `${styles$5.cardTitle}`
     }, item.name), item.EntityTypes.length > 0 && /*#__PURE__*/React.createElement("ul", {
-      className: styles$4.company_type
+      className: styles$5.company_type
     }, item.EntityTypes.map((item, index) => /*#__PURE__*/React.createElement("li", {
       key: index
     }, item.name)))))), /*#__PURE__*/React.createElement("div", {
-      className: `${styles$4.cardIconNext}`
+      className: `${styles$5.cardIconNext}`
     }, /*#__PURE__*/React.createElement("span", {
-      className: "mb-1"
+      style: {
+        marginBottom: '4px'
+      }
     }, "\u2192")))))) : /*#__PURE__*/React.createElement("div", null)), /*#__PURE__*/React.createElement("div", {
-      className: styles$4.comparison_container_mb
+      className: styles$5.comparison_container_mb
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$4.comparison_wrapper_mb
+      className: styles$5.comparison_wrapper_mb
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$4.col_auto
+      className: styles$5.col_auto
     }, /*#__PURE__*/React.createElement("button", {
-      className: `${styles$4.button} ${styles$4.btn_show_mb}`,
+      className: `${styles$5.button} ${styles$5.btn_show_mb}`,
       onClick: handleShow
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$4.comparisonTable_mb
+      className: styles$5.comparisonTable_mb
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$4.col_auto
+      className: styles$5.col_auto
     }, /*#__PURE__*/React.createElement("img", {
       src: comparisonTable,
       alt: "bg-left-obd",
@@ -5640,23 +5664,21 @@ function IncorporationCountry({
         width: '20px'
       }
     })), /*#__PURE__*/React.createElement("div", {
-      className: styles$4.comparison_text_mb
+      className: styles$5.comparison_text_mb
     }, "Comparison table"))))))), /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("div", {
-      className: styles$4.backMobile_wrapper
+      className: styles$5.backMobile_wrapper
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$4.col_auto
+      className: styles$5.col_auto
     }, /*#__PURE__*/React.createElement("button", {
-      className: `${styles$4.backMobile} ${styles$4.btn_back_bottom}`,
+      className: `${styles$5.backMobile} ${styles$5.btn_back_bottom}`,
       onClick: handleBack
-    }, "Back")))), show && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-      className: styles$4.modal_backdrop
-    }), /*#__PURE__*/React.createElement("div", {
-      className: styles$4.modal_container
+    }, "Back")))), /*#__PURE__*/React.createElement(Modal, {
+      show: show
     }, /*#__PURE__*/React.createElement("div", {
       ref: wrapperRef,
-      className: styles$4.modal_wrapper
+      className: styles$5.modal_wrapper
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$4.closeModal,
+      className: styles$5.closeModal,
       style: {
         position: 'absolute',
         top: '0.25rem',
@@ -5675,15 +5697,15 @@ function IncorporationCountry({
     }, /*#__PURE__*/React.createElement(IoMdCloseCircle, {
       size: `2rem`
     })))), /*#__PURE__*/React.createElement("div", {
-      className: styles$4.tab_container
+      className: styles$5.tab_container
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$4.tab_wrapper
+      className: styles$5.tab_wrapper
     }, /*#__PURE__*/React.createElement("button", {
       onClick: () => setTab(1),
-      className: `${tab === 1 ? styles$4.active_tab : ''} ${styles$4.tab_item}`
+      className: `${tab === 1 ? styles$5.active_tab : ''} ${styles$5.tab_item}`
     }, "Jurisdiction's Features"), /*#__PURE__*/React.createElement("button", {
       onClick: () => setTab(2),
-      className: `${tab === 2 ? styles$4.active_tab : ''} ${styles$4.tab_item}`
+      className: `${tab === 2 ? styles$5.active_tab : ''} ${styles$5.tab_item}`
     }, "Jurisdiction Comparison"))), tab === 1 ? /*#__PURE__*/React.createElement(JurisdictionFeatures, {
       data: dataComparison.DataFeatures,
       countries: dataComparison.countries,
@@ -5708,17 +5730,17 @@ function IncorporationCountry({
     }, /*#__PURE__*/React.createElement("b", null, "How to use: "), "Please select the jurisdiction you want to compare in the header ", /*#__PURE__*/React.createElement("b", null, "[Country Name]"), " in the table to see the information"), /*#__PURE__*/React.createElement(JurisdictionComparison, {
       data: dataComparison.DataComparison,
       countries: dataComparison.countries
-    }))))))
+    })))))
   );
 }
 
-var styles$5 = {"description":"_styles-module__description__LHwfV"};
+var styles$6 = {"description":"_styles-module__description__LHwfV"};
 
 const Component = ({
   ...props
 }) => {
   return /*#__PURE__*/React.createElement("div", Object.assign({}, props, {
-    className: `${styles$5.description} mt-2 mt-lg-3 mb-0 ${props.className ? `${props.className}` : ''}`,
+    className: `${styles$6.description} mt-2 mt-lg-3 mb-0 ${props.className ? `${props.className}` : ''}`,
     style: {
       ...props.style
     }
@@ -5727,18 +5749,18 @@ const Component = ({
 Component.propTypes = {};
 Component.defaultProps = {};
 
-var styles$6 = {"block_on_md":"_styles-module__block_on_md__3JxMi","block_on_lg":"_styles-module__block_on_lg__e6rhF","none_on_md":"_styles-module__none_on_md__21bXq","flex_on_md":"_styles-module__flex_on_md__aMqYw","btn_back_top":"_styles-module__btn_back_top__1b_B-","btn_back_wrapper":"_styles-module__btn_back_wrapper__1ahW-","btn_primary":"_styles-module__btn_primary__1vbvH","title":"_styles-module__title__1XUe2","description_wrapper":"_styles-module__description_wrapper__N12AA","comparison_wrapper":"_styles-module__comparison_wrapper__3r5GS","button":"_styles-module__button__35es-","spinner_wrapper":"_styles-module__spinner_wrapper__2kRrU","card_wrapper":"_styles-module__card_wrapper__k0Id7","card_responsive":"_styles-module__card_responsive__RkWRK","card":"_styles-module__card__2oJlr","cardImg":"_styles-module__cardImg__2Cdaq","cardTitle":"_styles-module__cardTitle__2TkoH","comparison_bottom":"_styles-module__comparison_bottom__szn3i","dialog":"_styles-module__dialog__2srQO","content":"_styles-module__content__V2-t3","headerModal":"_styles-module__headerModal__2ZKPb","bodyModal":"_styles-module__bodyModal__2upb6","rowItem":"_styles-module__rowItem__2sAwf","item":"_styles-module__item__1pyid","tableBody":"_styles-module__tableBody__3Q342","grouptitle":"_styles-module__grouptitle__3xysj","check":"_styles-module__check__CXWwz","checkX":"_styles-module__checkX__36Y0r","dialogVietnam":"_styles-module__dialogVietnam__39lsG","modalVietnam":"_styles-module__modalVietnam__242RT","Header":"_styles-module__Header__3HYQ8","bottom":"_styles-module__bottom__1OWpN","btn_back_bottom_wrapper":"_styles-module__btn_back_bottom_wrapper__1Sbe6","btn_back_bottom":"_styles-module__btn_back_bottom__38m4y","modal_container":"_styles-module__modal_container__34ADm","modal_wrapper":"_styles-module__modal_wrapper__OoXyP","fadeIn":"_styles-module__fadeIn__1BVrX","modal_backdrop":"_styles-module__modal_backdrop__2mHQ2","closeModal":"_styles-module__closeModal___X3hR","Body":"_styles-module__Body__3p-Pa"};
+var styles$7 = {"block_on_md":"_styles-module__block_on_md__3JxMi","block_on_lg":"_styles-module__block_on_lg__e6rhF","none_on_md":"_styles-module__none_on_md__21bXq","flex_on_md":"_styles-module__flex_on_md__aMqYw","btn_back_top":"_styles-module__btn_back_top__1b_B-","btn_back_wrapper":"_styles-module__btn_back_wrapper__1ahW-","btn_primary":"_styles-module__btn_primary__1vbvH","title":"_styles-module__title__1XUe2","description_wrapper":"_styles-module__description_wrapper__N12AA","comparison_wrapper":"_styles-module__comparison_wrapper__3r5GS","button":"_styles-module__button__35es-","spinner_wrapper":"_styles-module__spinner_wrapper__2kRrU","card_wrapper":"_styles-module__card_wrapper__k0Id7","card_responsive":"_styles-module__card_responsive__RkWRK","card":"_styles-module__card__2oJlr","cardImg":"_styles-module__cardImg__2Cdaq","cardTitle":"_styles-module__cardTitle__2TkoH","comparison_bottom":"_styles-module__comparison_bottom__szn3i","dialog":"_styles-module__dialog__2srQO","content":"_styles-module__content__V2-t3","headerModal":"_styles-module__headerModal__2ZKPb","bodyModal":"_styles-module__bodyModal__2upb6","rowItem":"_styles-module__rowItem__2sAwf","item":"_styles-module__item__1pyid","tableBody":"_styles-module__tableBody__3Q342","grouptitle":"_styles-module__grouptitle__3xysj","check":"_styles-module__check__CXWwz","checkX":"_styles-module__checkX__36Y0r","dialogVietnam":"_styles-module__dialogVietnam__39lsG","modalVietnam":"_styles-module__modalVietnam__242RT","Header":"_styles-module__Header__3HYQ8","bottom":"_styles-module__bottom__1OWpN","btn_back_bottom_wrapper":"_styles-module__btn_back_bottom_wrapper__1Sbe6","btn_back_bottom":"_styles-module__btn_back_bottom__38m4y","modal_wrapper":"_styles-module__modal_wrapper__OoXyP","fadeIn":"_styles-module__fadeIn__1BVrX","closeModal":"_styles-module__closeModal___X3hR","Body":"_styles-module__Body__3p-Pa"};
 
 function TablePopup(country_id) {
   let content = '';
   switch (country_id) {
     case 250:
       content = /*#__PURE__*/React.createElement("div", {
-        className: styles$6.bodyModal
+        className: styles$7.bodyModal
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.rowItem
+        className: styles$7.rowItem
       }, /*#__PURE__*/React.createElement("span", {
-        className: styles$6.block_on_md
+        className: styles$7.block_on_md
       }), /*#__PURE__*/React.createElement("span", {
         style: {
           textAlign: 'center'
@@ -5748,229 +5770,229 @@ function TablePopup(country_id) {
           textAlign: 'center'
         }
       }, "Corporation")), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.tableBody
+        className: styles$7.tableBody
       }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.grouptitle
+        className: styles$7.grouptitle
       }, "Initial requirement"), /*#__PURE__*/React.createElement("div", {
         style: {
           paddingBottom: '8px'
         },
         className: "group"
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Director"), /*#__PURE__*/React.createElement("span", null, "None"), /*#__PURE__*/React.createElement("span", null, "At least one")), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Shareholders"), /*#__PURE__*/React.createElement("span", null, "At least one member"), /*#__PURE__*/React.createElement("span", null, "At least one shareholder")), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Tax treatment"), /*#__PURE__*/React.createElement("span", null, "Individual level"), /*#__PURE__*/React.createElement("span", null, "Company level")), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Legal status"), /*#__PURE__*/React.createElement("span", null, "Separate legal entity"), /*#__PURE__*/React.createElement("span", null, "Separate legal entity")), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Owner\u2019s limited liability"), /*#__PURE__*/React.createElement("span", null, "Bounded to interests owned"), /*#__PURE__*/React.createElement("span", null, "Bounded to shares owned")))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.grouptitle
+        className: styles$7.grouptitle
       }, "Corporate compliance"), /*#__PURE__*/React.createElement("div", {
         className: "group"
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Annual return"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_md
+        className: styles$7.block_on_md
       }, "No"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.checkX
+        className: styles$7.checkX
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_md
+        className: styles$7.block_on_md
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       }))), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Tax filing"), /*#__PURE__*/React.createElement("span", {
-        className: styles$6.flex_on_md
+        className: styles$7.flex_on_md
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_md
+        className: styles$7.block_on_md
       }, "Yes\xA0"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       }), /*#__PURE__*/React.createElement("br", {
-        className: styles$6.none_on_md
+        className: styles$7.none_on_md
       }), "(Only nominal)"), /*#__PURE__*/React.createElement("span", {
-        className: styles$6.flex_on_md
+        className: styles$7.flex_on_md
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_md
+        className: styles$7.block_on_md
       }, "Yes\xA0"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       }), /*#__PURE__*/React.createElement("br", {
-        className: styles$6.none_on_md
+        className: styles$7.none_on_md
       }), "(Only nominal)")), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Books and records maintenance"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_md
+        className: styles$7.block_on_md
       }, "No"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.checkX
+        className: styles$7.checkX
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_md
+        className: styles$7.block_on_md
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       })))))));
       break;
     case 237:
       content = /*#__PURE__*/React.createElement("div", {
-        className: styles$6.bodyModal
+        className: styles$7.bodyModal
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.rowItem
+        className: styles$7.rowItem
       }, /*#__PURE__*/React.createElement("span", {
-        className: styles$6.block_on_md
+        className: styles$7.block_on_md
       }), /*#__PURE__*/React.createElement("span", null, "Limited Liability Partnership"), /*#__PURE__*/React.createElement("span", null, "Limited Company")), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.tableBody
+        className: styles$7.tableBody
       }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.grouptitle
+        className: styles$7.grouptitle
       }, "Initial requirement"), /*#__PURE__*/React.createElement("div", {
         className: "group",
         style: {
           paddingBottom: '8px'
         }
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Legal status"), /*#__PURE__*/React.createElement("span", null, "Separate legal entity"), /*#__PURE__*/React.createElement("span", null, "Separate legal entity")), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Owner\u2019s liability"), /*#__PURE__*/React.createElement("span", null, "Limited to capital contribution"), /*#__PURE__*/React.createElement("span", null, "Limited to shares owned")), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Tax treatment"), /*#__PURE__*/React.createElement("span", null, "Individual level"), /*#__PURE__*/React.createElement("span", null, "Corporate level")), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Director"), /*#__PURE__*/React.createElement("span", null, "None"), /*#__PURE__*/React.createElement("span", null, "At least one")), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Other members"), /*#__PURE__*/React.createElement("span", null, "At least two designated members"), /*#__PURE__*/React.createElement("span", null, "At least one shareholder")))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.grouptitle
+        className: styles$7.grouptitle
       }, "Corporate compliance"), /*#__PURE__*/React.createElement("div", {
         className: "group"
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Annual return"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_md
+        className: styles$7.block_on_md
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_md
+        className: styles$7.block_on_md
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       }))), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Tax filing"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_md
+        className: styles$7.block_on_md
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_md
+        className: styles$7.block_on_md
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       }))), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Books and records maintenance"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_md
+        className: styles$7.block_on_md
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_md
+        className: styles$7.block_on_md
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       }))), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Annual general meeting"), /*#__PURE__*/React.createElement("span", null, "Not required"), /*#__PURE__*/React.createElement("span", null, "Required"))))));
       break;
     case 244:
       content = /*#__PURE__*/React.createElement("div", {
-        className: `${styles$6.modalVietnam}`
+        className: `${styles$7.modalVietnam}`
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.rowItem
+        className: styles$7.rowItem
       }, /*#__PURE__*/React.createElement("span", {
-        className: styles$6.block_on_lg
+        className: styles$7.block_on_lg
       }), /*#__PURE__*/React.createElement("span", null, "LLC"), /*#__PURE__*/React.createElement("span", null, "JSC"), /*#__PURE__*/React.createElement("span", null, "Branch"), /*#__PURE__*/React.createElement("span", null, "Rep. Office")), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.tableBody
+        className: styles$7.tableBody
       }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.grouptitle
+        className: styles$7.grouptitle
       }, "Initial requirement"), /*#__PURE__*/React.createElement("div", {
         className: "group",
         style: {
           paddingBottom: '8px'
         }
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Legal status"), /*#__PURE__*/React.createElement("span", null, "Separate legal entity"), /*#__PURE__*/React.createElement("span", null, "Separate legal entity"), /*#__PURE__*/React.createElement("span", null, "An extension of its parent company"), /*#__PURE__*/React.createElement("span", null, "An extension of its parent company")), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Owner\u2019s liability"), /*#__PURE__*/React.createElement("span", null, "Limited to capital contribution"), /*#__PURE__*/React.createElement("span", null, "Limited to shares owned"), /*#__PURE__*/React.createElement("span", null, "Extended to parent company"), /*#__PURE__*/React.createElement("span", null, "Extended to parent company")), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Tax treatment"), /*#__PURE__*/React.createElement("span", null, "Corporate level"), /*#__PURE__*/React.createElement("span", null, "Corporate level"), /*#__PURE__*/React.createElement("span", null, "Corporate level"), /*#__PURE__*/React.createElement("span", null, "Not permitted to trade or conduct business")), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Director"), /*#__PURE__*/React.createElement("span", null, "At least one"), /*#__PURE__*/React.createElement("span", null, "At least one"), /*#__PURE__*/React.createElement("span", null, "N/A"), /*#__PURE__*/React.createElement("span", null, "N/A")), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Other members"), /*#__PURE__*/React.createElement("span", null, "At least one member"), /*#__PURE__*/React.createElement("span", null, "At least three founding shareholders"), /*#__PURE__*/React.createElement("span", null, "One head of branch"), /*#__PURE__*/React.createElement("span", null, "One head of Rep. Office")))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.grouptitle
+        className: styles$7.grouptitle
       }, "Corporate compliance"), /*#__PURE__*/React.createElement("div", {
         className: "group"
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Annual return"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_lg
+        className: styles$7.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_lg
+        className: styles$7.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_lg
+        className: styles$7.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_lg
+        className: styles$7.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       }))), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Tax filing"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_lg
+        className: styles$7.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_lg
+        className: styles$7.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_lg
+        className: styles$7.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_lg
+        className: styles$7.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       }))), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Books and records maintenance"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_lg
+        className: styles$7.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_lg
+        className: styles$7.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_lg
+        className: styles$7.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_lg
+        className: styles$7.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       }))), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Annual general meeting"), /*#__PURE__*/React.createElement("span", null, "Required for multi-member LLC"), /*#__PURE__*/React.createElement("span", null, "Yes"), /*#__PURE__*/React.createElement("span", null, "Not required"), /*#__PURE__*/React.createElement("span", null, "Not required"))))));
       break;
     case 23:
     case 205:
     case 209:
       content = /*#__PURE__*/React.createElement("div", {
-        className: styles$6.bodyModal
+        className: styles$7.bodyModal
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.rowItem
+        className: styles$7.rowItem
       }, /*#__PURE__*/React.createElement("span", {
-        className: styles$6.block_on_md
+        className: styles$7.block_on_md
       }), /*#__PURE__*/React.createElement("span", {
         style: {
           textAlign: 'center'
@@ -5980,55 +6002,55 @@ function TablePopup(country_id) {
           textAlign: 'center'
         }
       }, "IBC/BC")), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.tableBody
+        className: styles$7.tableBody
       }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.grouptitle
+        className: styles$7.grouptitle
       }, "Initial requirement"), /*#__PURE__*/React.createElement("div", {
         className: "group"
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Director"), /*#__PURE__*/React.createElement("span", null, "None"), /*#__PURE__*/React.createElement("span", null, "At least one")), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Shareholders"), /*#__PURE__*/React.createElement("span", null, "At least one member"), /*#__PURE__*/React.createElement("span", null, "At least one shareholder")), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Tax treatment"), /*#__PURE__*/React.createElement("span", null, "Individual level"), /*#__PURE__*/React.createElement("span", null, "Company level")), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Legal status"), /*#__PURE__*/React.createElement("span", null, "Separate legal entity"), /*#__PURE__*/React.createElement("span", null, "Separate legal entity")), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Owner\u2019s limited liability"), /*#__PURE__*/React.createElement("span", null, "Bounded to interests owned"), /*#__PURE__*/React.createElement("span", null, "Bounded to shares owned")))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.grouptitle
+        className: styles$7.grouptitle
       }, "Corporate compliance"), /*#__PURE__*/React.createElement("div", {
         className: "group"
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Annual return"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_md
+        className: styles$7.block_on_md
       }, "No"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.checkX
+        className: styles$7.checkX
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_md
+        className: styles$7.block_on_md
       }, "No"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.checkX
+        className: styles$7.checkX
       }))), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Tax filing"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_md
+        className: styles$7.block_on_md
       }, "No"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.checkX
+        className: styles$7.checkX
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_md
+        className: styles$7.block_on_md
       }, "No"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.checkX
+        className: styles$7.checkX
       }))), /*#__PURE__*/React.createElement("div", {
-        className: styles$6.item
+        className: styles$7.item
       }, /*#__PURE__*/React.createElement("span", null, "Books and records maintenance"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_md
+        className: styles$7.block_on_md
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$6.block_on_md
+        className: styles$7.block_on_md
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$6.check
+        className: styles$7.check
       })))))));
       break;
   }
@@ -6106,15 +6128,15 @@ function IncorporationCompanyType({
   return (
     /*#__PURE__*/
     React.createElement("div", null, /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("div", {
-      className: `${styles$6.btn_back_top} ${styles$6.Header}`
+      className: `${styles$7.btn_back_top} ${styles$7.Header}`
     }, /*#__PURE__*/React.createElement("div", {
-      className: `${styles$6.btn_back_wrapper}`
+      className: `${styles$7.btn_back_wrapper}`
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         flex: '0 0 auto'
       }
     }, /*#__PURE__*/React.createElement("a", {
-      className: styles$6.btn_primary,
+      className: styles$7.btn_primary,
       style: {
         fontSize: '20px',
         lineHeight: '28px',
@@ -6123,11 +6145,11 @@ function IncorporationCompanyType({
       onClick: handleBack
     }, "Back")))), /*#__PURE__*/React.createElement(Title, {
       text: "Country and Company Type",
-      className: styles$6.title
+      className: styles$7.title
     }), /*#__PURE__*/React.createElement("div", {
-      className: styles$6.Body
+      className: styles$7.Body
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$6.description_wrapper
+      className: styles$7.description_wrapper
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         flex: '1'
@@ -6137,9 +6159,9 @@ function IncorporationCompanyType({
         fontWeight: 500
       }
     }, dataCountry === null || dataCountry === void 0 ? void 0 : dataCountry.name)), /*#__PURE__*/React.createElement(Component, null, "Company type: ")), /*#__PURE__*/React.createElement("div", {
-      className: styles$6.comparison_wrapper
+      className: styles$7.comparison_wrapper
     }, /*#__PURE__*/React.createElement("button", {
-      className: styles$6.button,
+      className: styles$7.button,
       style: {
         padding: '16px 8px 8px 8px',
         border: '1px solid transparent',
@@ -6160,7 +6182,7 @@ function IncorporationCompanyType({
         maxWidth: '992px'
       }
     }, loading ? /*#__PURE__*/React.createElement("div", {
-      className: `${styles$6.spinner_wrapper} embed-responsive embed-responsive-21by9`
+      className: `${styles$7.spinner_wrapper} embed-responsive embed-responsive-21by9`
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         display: 'flex',
@@ -6168,20 +6190,20 @@ function IncorporationCompanyType({
         justifyContent: 'center'
       },
       className: "embed-responsive-item"
-    }, /*#__PURE__*/React.createElement(Spinner, {
-      animation: "border",
-      variant: "primary"
+    }, /*#__PURE__*/React.createElement(BiLoaderAlt, {
+      className: "animate_spin",
+      size: 20
     }))) : /*#__PURE__*/React.createElement("div", {
-      className: styles$6.card_wrapper
+      className: styles$7.card_wrapper
     }, dataCountry === null || dataCountry === void 0 ? void 0 : dataCountry.EntityTypes.map((item, index) => /*#__PURE__*/React.createElement("div", {
-      className: styles$6.card_responsive,
+      className: styles$7.card_responsive,
       key: index
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         display: 'flex',
         width: '100%'
       },
-      className: styles$6.card,
+      className: styles$7.card,
       onClick: () => handleClick(item.id)
     }, /*#__PURE__*/React.createElement("div", {
       style: {
@@ -6195,7 +6217,7 @@ function IncorporationCompanyType({
       }
     }, /*#__PURE__*/React.createElement("img", {
       src: buildingImg,
-      className: `${styles$6.cardImg} rounded-circle`,
+      className: styles$7.cardImg,
       alt: `${item.name}`
     })), /*#__PURE__*/React.createElement("div", {
       style: {
@@ -6206,9 +6228,9 @@ function IncorporationCompanyType({
         paddingLeft: '24px'
       }
     }, /*#__PURE__*/React.createElement("div", {
-      className: `${styles$6.cardTitle}`
+      className: `${styles$7.cardTitle}`
     }, item.name)))))))))), /*#__PURE__*/React.createElement("div", {
-      className: `${styles$6.comparison_bottom}`
+      className: `${styles$7.comparison_bottom}`
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         display: 'flex',
@@ -6224,7 +6246,7 @@ function IncorporationCompanyType({
         width: '100%',
         padding: '8px'
       },
-      className: styles$6.button,
+      className: styles$7.button,
       onClick: handleShow
     }, /*#__PURE__*/React.createElement("div", {
       style: {
@@ -6248,11 +6270,11 @@ function IncorporationCompanyType({
         paddingLeft: '8px'
       }
     }, "Comparison table"))))))), /*#__PURE__*/React.createElement("section", {
-      className: styles$6.bottom
+      className: styles$7.bottom
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$6.btn_back_bottom_wrapper
+      className: styles$7.btn_back_bottom_wrapper
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$6.btn_back_bottom
+      className: styles$7.btn_back_bottom
     }, /*#__PURE__*/React.createElement("a", {
       style: {
         color: '#2c2c51',
@@ -6261,17 +6283,15 @@ function IncorporationCompanyType({
         cursor: 'pointer'
       },
       onClick: handleBack
-    }, "Back")))), show && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-      className: styles$6.modal_backdrop
-    }), /*#__PURE__*/React.createElement("div", {
-      className: styles$6.modal_container
+    }, "Back")))), /*#__PURE__*/React.createElement(Modal, {
+      show: show
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$6.modal_wrapper
+      className: `${styles$7.modal_wrapper}`
     }, /*#__PURE__*/React.createElement("div", {
       ref: wrapperRef,
-      className: styles$6.dialog
+      className: ` ${styles$7.dialog}`
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$6.closeModal,
+      className: styles$7.closeModal,
       style: {
         position: 'absolute',
         top: '0.25rem',
@@ -6289,11 +6309,40 @@ function IncorporationCompanyType({
       }
     }, /*#__PURE__*/React.createElement(IoMdCloseCircle, {
       size: `1.5rem`
-    })))), TablePopup(dataCountry.id))))))
+    })))), TablePopup(dataCountry.id)))))
   );
 }
 
-var styles$7 = {"d_block":"_styles-module__d_block__37VJP","d_none":"_styles-module__d_none__e2m6o","form_header":"_styles-module__form_header__14RQs","top_wrapper":"_styles-module__top_wrapper__1cf-F","btn":"_styles-module__btn__3-FhX","title":"_styles-module__title__2A7Fl","title_page":"_styles-module__title_page__2lh4k","guideText":"_styles-module__guideText__WzeAY","description_wrapper":"_styles-module__description_wrapper__1fK2-","checkname_wrapper":"_styles-module__checkname_wrapper__uX092","fields":"_styles-module__fields__2W625","field_name":"_styles-module__field_name__1HTlU","company_name_input":"_styles-module__company_name_input__3SaA_","row_reverse":"_styles-module__row_reverse__1DOqB","entity_name":"_styles-module__entity_name__2yaHq","note_wrapper":"_styles-module__note_wrapper__3-mbi","note":"_styles-module__note__2V0Dw","input":"_styles-module__input__1COQd","search":"_styles-module__search__2fPee","nameHints":"_styles-module__nameHints__BWjaJ","nameHintsBadge":"_styles-module__nameHintsBadge__I_OHu","iconQuestionCircle":"_styles-module__iconQuestionCircle__1Z0DY","spinner_wrapper":"_styles-module__spinner_wrapper__3fos9","bottom_wrapper":"_styles-module__bottom_wrapper__2I_7D","back":"_styles-module__back__2zmPd","backMobile":"_styles-module__backMobile__1eN5O","Header":"_styles-module__Header__2oHKa","nextButton":"_styles-module__nextButton__2Lmoq","Body":"_styles-module__Body__r4L_A"};
+var styles$8 = {"modal_backdrop":"_styles-module__modal_backdrop__1sTFg","opacity":"_styles-module__opacity__6d18N","modal_container":"_styles-module__modal_container__17t6w","sidebar":"_styles-module__sidebar__1crKg","content":"_styles-module__content__3zOoB","description":"_styles-module__description__BReFc","sidebarBody":"_styles-module__sidebarBody__195H7","Modal":"_styles-module__Modal__37ldJ"};
+
+const Sidebar = ({
+  sidebar,
+  onClickClose,
+  title,
+  description,
+  wrapperRef
+}) => {
+  return /*#__PURE__*/React.createElement("div", null, sidebar ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: styles$8.modal_backdrop
+  }), /*#__PURE__*/React.createElement("div", {
+    className: styles$8.modal_container
+  }, /*#__PURE__*/React.createElement("div", {
+    ref: wrapperRef,
+    className: styles$8.sidebar
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    style: {
+      textAlign: 'center'
+    },
+    onClick: onClickClose
+  }, "\xD7"), /*#__PURE__*/React.createElement("div", {
+    className: styles$8.content
+  }, /*#__PURE__*/React.createElement("h3", null, title), /*#__PURE__*/React.createElement("div", {
+    className: styles$8.description
+  }, parser(description)))))) : /*#__PURE__*/React.createElement("div", null));
+};
+
+var styles$9 = {"d_block":"_styles-module__d_block__37VJP","d_none":"_styles-module__d_none__e2m6o","form_header":"_styles-module__form_header__14RQs","top_wrapper":"_styles-module__top_wrapper__1cf-F","btn":"_styles-module__btn__3-FhX","title":"_styles-module__title__2A7Fl","title_page":"_styles-module__title_page__2lh4k","guideText":"_styles-module__guideText__WzeAY","description_wrapper":"_styles-module__description_wrapper__1fK2-","checkname_wrapper":"_styles-module__checkname_wrapper__uX092","fields":"_styles-module__fields__2W625","field_name":"_styles-module__field_name__1HTlU","company_name_input":"_styles-module__company_name_input__3SaA_","row_reverse":"_styles-module__row_reverse__1DOqB","entity_name":"_styles-module__entity_name__2yaHq","note_wrapper":"_styles-module__note_wrapper__3-mbi","note":"_styles-module__note__2V0Dw","input":"_styles-module__input__1COQd","search":"_styles-module__search__2fPee","nameHints":"_styles-module__nameHints__BWjaJ","nameHintsBadge":"_styles-module__nameHintsBadge__I_OHu","iconQuestionCircle":"_styles-module__iconQuestionCircle__1Z0DY","spinner_wrapper":"_styles-module__spinner_wrapper__3fos9","bottom_wrapper":"_styles-module__bottom_wrapper__2I_7D","back":"_styles-module__back__2zmPd","backMobile":"_styles-module__backMobile__1eN5O","Header":"_styles-module__Header__2oHKa","nextButton":"_styles-module__nextButton__2Lmoq","loader_wrapper":"_styles-module__loader_wrapper__1G6Cs","Body":"_styles-module__Body__r4L_A"};
 
 var name_restricted = [
 	{
@@ -7865,6 +7914,10 @@ function IncorporationEntityNameCheck({
       setDataSideBar((_nameHint$find = nameHint.find(el => el.id === (dataCountry === null || dataCountry === void 0 ? void 0 : dataCountry.id))) === null || _nameHint$find === void 0 ? void 0 : (_nameHint$find$Entity = _nameHint$find.EntityTypes) === null || _nameHint$find$Entity === void 0 ? void 0 : _nameHint$find$Entity.find(el1 => el1.id == (dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.id)));
     }
   }, [dataCountry, dataEntityType]);
+  const wrapperRef = useRef(null);
+  useOnClickOutside(wrapperRef, () => {
+    setSidebar(false);
+  });
   return (
     /*#__PURE__*/
     React.createElement("div", {
@@ -7877,25 +7930,25 @@ function IncorporationEntityNameCheck({
     }, /*#__PURE__*/React.createElement(Form, {
       noValidate: true
     }, /*#__PURE__*/React.createElement("div", {
-      className: `${styles$7.form_header} ${styles$7.Header}`
+      className: `${styles$9.form_header} ${styles$9.Header}`
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$7.top_wrapper
+      className: styles$9.top_wrapper
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         flex: '0 0 auto'
       }
     }, /*#__PURE__*/React.createElement("a", {
-      className: `${styles$7.back} ${styles$7.btn}`,
+      className: `${styles$9.back} ${styles$9.btn}`,
       onClick: handleBack
     }, "Back")), dataSideBar && /*#__PURE__*/React.createElement("div", {
       style: {
         flex: '0 0 auto'
       }
     }, /*#__PURE__*/React.createElement("p", {
-      className: styles$7.guideText
+      className: styles$9.guideText
     }, "Need a guide for naming?", ' ', /*#__PURE__*/React.createElement("button", {
       type: "button",
-      className: `${styles$7.btn} `,
+      className: `${styles$9.btn} `,
       style: {
         fontWeight: 500,
         fontSize: 'inherit',
@@ -7905,13 +7958,19 @@ function IncorporationEntityNameCheck({
         background: 'transparent'
       },
       onClick: () => setSidebar(true)
-    }, "Click here"))))), /*#__PURE__*/React.createElement(Title, {
+    }, "Click here"))))), dataSideBar && /*#__PURE__*/React.createElement(Sidebar, {
+      description: dataSideBar.content,
+      title: dataSideBar.title,
+      wrapperRef: wrapperRef,
+      sidebar: sidebar,
+      onClickClose: () => setSidebar(false)
+    }), /*#__PURE__*/React.createElement(Title, {
       text: "Entity Name Check",
-      className: styles$7.title_page
+      className: styles$9.title_page
     }), /*#__PURE__*/React.createElement("div", {
-      className: dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes && dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix ? '' : styles$7.Body
+      className: dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes && dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix ? '' : styles$9.Body
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$7.description_wrapper
+      className: styles$9.description_wrapper
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         flex: '1'
@@ -7926,11 +7985,11 @@ function IncorporationEntityNameCheck({
       }
     }, dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.name))), /*#__PURE__*/React.createElement("a", {
       onClick: () => setSidebar(true),
-      className: styles$7.iconQuestionCircle
+      className: styles$9.iconQuestionCircle
     }, dataSideBar && /*#__PURE__*/React.createElement(BsQuestionCircle, null))), /*#__PURE__*/React.createElement("div", {
-      className: styles$7.checkname_wrapper
+      className: styles$9.checkname_wrapper
     }, /*#__PURE__*/React.createElement("div", {
-      className: `${styles$7.title}`
+      className: `${styles$9.title}`
     }, "Proposed company name"), /*#__PURE__*/React.createElement("div", {
       style: {
         maxWidth: '992px'
@@ -7940,7 +7999,7 @@ function IncorporationEntityNameCheck({
       return /*#__PURE__*/React.createElement("div", {
         key: item.id
       }, /*#__PURE__*/React.createElement("div", {
-        className: `${styles$7.fields}`
+        className: `${styles$9.fields}`
       }, /*#__PURE__*/React.createElement("div", {
         style: {
           flexGrow: '1',
@@ -7949,7 +8008,7 @@ function IncorporationEntityNameCheck({
           padding: '0 8px'
         }
       }, /*#__PURE__*/React.createElement("div", {
-        className: `${styles$7.field_name} ${dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes && dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix ? styles$7.row_reverse : ''}`
+        className: `${styles$9.field_name} ${dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes && dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix ? styles$9.row_reverse : ''}`
       }, /*#__PURE__*/React.createElement("div", {
         style: {
           flexGrow: '1',
@@ -7957,11 +8016,16 @@ function IncorporationEntityNameCheck({
           maxWidth: '100%',
           padding: '0 8px'
         }
-      }, /*#__PURE__*/React.createElement(Form.Control, Object.assign({}, register(`companyName.${index}.name`, {
+      }, /*#__PURE__*/React.createElement("input", Object.assign({
+        type: "text"
+      }, register(`companyName.${index}.name`, {
+        required: {
+          value: index === 0,
+          message: 'Your company name is required'
+        }
+      }), {
         onChange: e => {
-          setTimeout(() => {
-            handleRestricted(e.target.value, `companyName.${index}.name`);
-          }, 100);
+          handleRestricted(e.target.value, `companyName.${index}.name`);
           handleSuggestName(e.target.value, index);
         },
         onBlur: e => {
@@ -7971,16 +8035,11 @@ function IncorporationEntityNameCheck({
             setLoadingSuggest(false);
           }, 400);
         },
-        required: {
-          value: index === 0,
-          message: 'Your company name is required'
-        }
-      }), {
-        className: `${styles$7.company_name_input} ${errors !== null && errors !== void 0 && errors.companyName && errors !== null && errors !== void 0 && (_errors$companyName = errors.companyName[`${index}`]) !== null && _errors$companyName !== void 0 && (_errors$companyName$n = _errors$companyName.name) !== null && _errors$companyName$n !== void 0 && _errors$companyName$n.message ? 'is-invalid' : ''} ${styles$7.input}`,
+        className: `${styles$9.company_name_input} ${errors !== null && errors !== void 0 && errors.companyName && errors !== null && errors !== void 0 && (_errors$companyName = errors.companyName[`${index}`]) !== null && _errors$companyName !== void 0 && (_errors$companyName$n = _errors$companyName.name) !== null && _errors$companyName$n !== void 0 && _errors$companyName$n.message ? 'is-invalid' : ''} ${styles$9.input}`,
         placeholder: dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes && dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix ? 'Parent company name' : 'Company name',
         disabled: submitting
       }))), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.entity_name
+        className: styles$9.entity_name
       }, /*#__PURE__*/React.createElement(Controller, {
         render: ({
           field
@@ -8005,27 +8064,30 @@ function IncorporationEntityNameCheck({
               }
             },
             placeholder: "Search suffix",
-            toggleClass: `${styles$7.search}`,
+            toggleClass: `${styles$9.search}`,
             isDisabled: submitting
           }, fieldTemp));
         },
         name: `companyName.${index}.suffix`,
         control: control
       }))), /*#__PURE__*/React.createElement("div", {
-        className: `${styles$7.field_name} ${dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes && dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix ? styles$7.row_reverse : ''}`
+        className: `${styles$9.field_name} ${dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes && dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix ? styles$9.row_reverse : ''}`
       }, /*#__PURE__*/React.createElement("div", {
         style: {
           flexGrow: '1',
           flexBasis: '0',
           maxWidth: '100%',
-          padding: '0 8px'
+          padding: '0 8px',
+          marginTop: '4px'
         }
       }, /*#__PURE__*/React.createElement(Form.Control.Feedback, {
         type: "invalid",
-        className: `${errors !== null && errors !== void 0 && errors.companyName ? styles$7.d_block : styles$7.d_none}`
+        className: `${errors !== null && errors !== void 0 && errors.companyName ? styles$9.d_block : styles$9.d_none}`
       }, /*#__PURE__*/React.createElement("span", {
         style: {
-          textAlign: 'left'
+          textAlign: 'left',
+          color: '#ff0000',
+          fontSize: '14px'
         }
       }, (errors === null || errors === void 0 ? void 0 : errors.companyName) && (errors === null || errors === void 0 ? void 0 : (_errors$companyName2 = errors.companyName[`${index}`]) === null || _errors$companyName2 === void 0 ? void 0 : (_errors$companyName2$ = _errors$companyName2.name) === null || _errors$companyName2$ === void 0 ? void 0 : _errors$companyName2$.message)))), /*#__PURE__*/React.createElement("div", {
         style: {
@@ -8057,7 +8119,7 @@ function IncorporationEntityNameCheck({
       }, /*#__PURE__*/React.createElement(HiMinusCircle, {
         size: `1.5rem`
       }))))), (dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.CompanySuffixes) && !(dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix) && suggestNamePosition == index && suggestName.length > 0 && /*#__PURE__*/React.createElement("div", {
-        className: styles$7.nameHints
+        className: styles$9.nameHints
       }, /*#__PURE__*/React.createElement("div", {
         style: {
           position: 'relative'
@@ -8087,20 +8149,19 @@ function IncorporationEntityNameCheck({
         key: index
       }, /*#__PURE__*/React.createElement("div", {
         type: "button",
-        className: styles$7.nameHintsBadge,
+        className: styles$9.nameHintsBadge,
         onClick: e => handleClickSuggestName(e.target.innerText, suggestNamePosition)
       }, item))))), loadingSuggest && /*#__PURE__*/React.createElement("div", {
-        className: styles$7.spinner_wrapper,
+        className: styles$9.spinner_wrapper,
         style: {
           top: 0,
           left: 0,
           zIndex: 2,
           opacity: 0.7
         }
-      }, /*#__PURE__*/React.createElement(Spinner, {
-        animation: "border",
-        variant: "primary",
-        size: "sm"
+      }, /*#__PURE__*/React.createElement(BiLoaderAlt, {
+        className: "animate_spin",
+        size: 20
       })))));
     }), (dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.CompanySuffixes) && !(dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix) && /*#__PURE__*/React.createElement("button", {
       type: "button",
@@ -8141,9 +8202,9 @@ function IncorporationEntityNameCheck({
         flexWrap: 'wrap'
       }
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$7.note_wrapper
+      className: styles$9.note_wrapper
     }, /*#__PURE__*/React.createElement("p", {
-      className: styles$7.note
+      className: styles$9.note
     }, "**The fact that a proposed name is available does NOT mean that name will be approved. The name approval solely depends on the government\u2019s decision.")))))), /*#__PURE__*/React.createElement("section", {
       style: {
         margintop: '32px'
@@ -8155,11 +8216,11 @@ function IncorporationEntityNameCheck({
         alignItems: 'center'
       }
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$7.bottom_wrapper
+      className: styles$9.bottom_wrapper
     }, /*#__PURE__*/React.createElement("a", {
-      className: styles$7.backMobile,
+      className: styles$9.backMobile,
       style: {
-        padding: '0',
+        paddingRight: ' 15px',
         cursor: 'pointer',
         border: 'none',
         background: 'transparent'
@@ -8167,27 +8228,394 @@ function IncorporationEntityNameCheck({
       onClick: handleBack
     }, "Back")), /*#__PURE__*/React.createElement("div", {
       style: {
-        flex: ' 0 0 auto'
+        flex: ' 0 0 auto',
+        padding: '0 15px'
       }
     }, /*#__PURE__*/React.createElement("button", {
       type: "submit",
       onClick: handleSubmit(onSubmit),
       disabled: submitting,
-      className: styles$7.nextButton
+      className: styles$9.nextButton
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         display: 'flex',
         alignItems: 'center'
       }
-    }, "Next", submitting && /*#__PURE__*/React.createElement(Spinner, {
-      animation: "border",
-      size: "sm",
+    }, "Next", submitting && /*#__PURE__*/React.createElement(BiLoaderAlt, {
       style: {
         marginLeft: '8px'
-      }
+      },
+      className: "animate_spin",
+      size: 20
     })))))))
   );
 }
 
-export { IncorporationCompanyType, IncorporationCountry, IncorporationEntityNameCheck, Register, SelectService };
+var styles$a = {"btn_top_wrapper":"_styles-module__btn_top_wrapper__34DmI","btn_top":"_styles-module__btn_top__3qqS1","button":"_styles-module__button__3860g","title":"_styles-module__title__2BlXc","description_wrapper":"_styles-module__description_wrapper__3Nlot","description":"_styles-module__description__3VahP","comparison_wrapper":"_styles-module__comparison_wrapper__3GLBr","comparison_top":"_styles-module__comparison_top__nxU8b","loader_wrapper":"_styles-module__loader_wrapper__3VbNy","package_container":"_styles-module__package_container__2x8Ni","card_wrapper":"_styles-module__card_wrapper__3w1_k","item_height":"_styles-module__item_height__6F5fK","content_wrapper_vn":"_styles-module__content_wrapper_vn__2QOXs","card":"_styles-module__card__3N8iG","card_inside":"_styles-module__card_inside__2aMYN","img_wrapper":"_styles-module__img_wrapper__hhqdG","cardName_wrapper":"_styles-module__cardName_wrapper__3OX3r","cardName":"_styles-module__cardName__22pk0","cardNameVN":"_styles-module__cardNameVN__7JTA6","cardPrice":"_styles-module__cardPrice__lMNoF","cardPriceVN":"_styles-module__cardPriceVN__sunAZ","cardDes":"_styles-module__cardDes__123Dc","basic":"_styles-module__basic__1pZey","local-lite":"_styles-module__local-lite__1fRKW","startup-for-locals":"_styles-module__startup-for-locals__2B7pn","standard":"_styles-module__standard__3mC0T","local-standard":"_styles-module__local-standard__3Fr5q","premium":"_styles-module__premium__10UG7","foreigner-basic":"_styles-module__foreigner-basic__1CpII","standard-with-employment-pass":"_styles-module__standard-with-employment-pass__23Y2O","foreigner-ultra":"_styles-module__foreigner-ultra__1mWaS","formSwich":"_styles-module__formSwich__1Glki","info":"_styles-module__info__1NfHz","note":"_styles-module__note__3O97i","note_vn":"_styles-module__note_vn__2QqH5","dialog":"_styles-module__dialog___aI90","headerModal":"_styles-module__headerModal__1TU3P","bodyModal":"_styles-module__bodyModal__1hv_K","Header":"_styles-module__Header__1hw-O","comparison_bottom_wrapper":"_styles-module__comparison_bottom_wrapper__1rqx-","comparison_bottom":"_styles-module__comparison_bottom__3PrcN","comparison_btn":"_styles-module__comparison_btn__3qyHB","comparison_img":"_styles-module__comparison_img__3RYJD","btn_bottom_wrapper":"_styles-module__btn_bottom_wrapper__3kj8Y","btn_back_bottom":"_styles-module__btn_back_bottom__1fOjL","Body":"_styles-module__Body__2PprN","card_wrapper_sg":"_styles-module__card_wrapper_sg__19DVk"};
+
+function IncorporationPackage(params) {
+  useEffect(() => {
+    if (window.history && window.history.pushState) {
+      window.history.pushState('forward', null, './incorporation-package');
+      window.onpopstate = function () {
+        handleBack();
+      };
+    }
+  }, []);
+  const [dataOnboarding, setDataOnboarding] = useState({});
+  const [dataPackages, setDataPackages] = useState([]);
+  const [dataPackagesTmp, setDataPackagesTmp] = useState([]);
+  const [isVN, setIsVN] = useState(false);
+  const [isSing, setIsSing] = useState(false);
+  const [isUk, setIsUk] = useState(false);
+  const [isDelaware, setIsDelaware] = useState(false);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const dataOnboardingLocalStorage = window.localStorage.getItem('data_onboarding');
+    if (dataOnboardingLocalStorage) {
+      var _data$incorporation, _data$incorporation$c;
+      const data = JSON.parse(dataOnboardingLocalStorage);
+      setDataOnboarding(data);
+      const currentIdCountry = data === null || data === void 0 ? void 0 : (_data$incorporation = data.incorporation) === null || _data$incorporation === void 0 ? void 0 : (_data$incorporation$c = _data$incorporation.country) === null || _data$incorporation$c === void 0 ? void 0 : _data$incorporation$c.id;
+      switch (currentIdCountry) {
+        case 244:
+          setIsVN(true);
+          break;
+        case 191:
+          setIsSing(true);
+          break;
+        case 237:
+          setIsUk(true);
+          break;
+        case 250:
+          setIsDelaware(true);
+          break;
+      }
+      if (currentIdCountry == 191) {
+        var _data$incorporation2;
+        axios.get(`https://core.test-lp.bbcincorp.com/api/onboarding/services`, {
+          params: {
+            country_id: currentIdCountry,
+            entity_type_id: data === null || data === void 0 ? void 0 : (_data$incorporation2 = data.incorporation) === null || _data$incorporation2 === void 0 ? void 0 : _data$incorporation2.entity_type_id,
+            website_id: 2,
+            package_group_id: 1
+          }
+        }).then(res => {
+          setDataPackagesTmp(res.data.data.Packages);
+          let data = res.data.data.Packages;
+          setDataPackages(data);
+        });
+      } else {
+        var _data$incorporation3;
+        axios.get(`https://core.test-lp.bbcincorp.com/api/onboarding/services`, {
+          params: {
+            country_id: currentIdCountry,
+            entity_type_id: data === null || data === void 0 ? void 0 : (_data$incorporation3 = data.incorporation) === null || _data$incorporation3 === void 0 ? void 0 : _data$incorporation3.entity_type_id,
+            website_id: 1,
+            package_group_id: 1
+          }
+        }).then(res => {
+          setDataPackagesTmp(res.data.data.Packages);
+          let data = isVN ? res.data.data.Packages.filter((item, index) => item && item.PackageType.id !== 4) : res.data.data.Packages;
+          setDataPackages(data);
+        });
+      }
+    }
+  }, [isVN]);
+  const [isSwitch, setIsSwitch] = useState(false);
+  const handleSwitch = isSwitch => {
+    setIsSwitch(isSwitch);
+  };
+  const handleClick = item => {
+    var _customer$signature;
+    window.localStorage.setItem('data_onboarding', JSON.stringify({
+      ...dataOnboarding,
+      incorporation: {
+        ...(dataOnboarding === null || dataOnboarding === void 0 ? void 0 : dataOnboarding.incorporation),
+        package: item
+      }
+    }));
+    let customer = JSON.parse(window.localStorage.getItem('customer'));
+    if (customer !== null && customer !== void 0 && (_customer$signature = customer.signature) !== null && _customer$signature !== void 0 && _customer$signature.signature) {
+      var _customer$signature2;
+      axios.put(`https://core.test-lp.bbcincorp.com/api/onboarding/order/client/${customer === null || customer === void 0 ? void 0 : (_customer$signature2 = customer.signature) === null || _customer$signature2 === void 0 ? void 0 : _customer$signature2.signature}`, {
+        package_id: item.id
+      });
+    }
+    location.href = '/incorporation-additional-service';
+  };
+  const handleBack = () => {
+    let customer = JSON.parse(window.localStorage.getItem('customer'));
+    delete customer.company_country_id;
+    delete customer.company_name;
+    delete customer.entity_type_id;
+    delete customer.package_id;
+    window.localStorage.setItem('customer', JSON.stringify(customer));
+    location.href = '/incorporation-entity-name-check';
+  };
+  useEffect(() => {
+    const customer = JSON.parse(window.localStorage.getItem('customer'));
+    if (customer !== null && customer !== void 0 && customer.company_country_id && customer !== null && customer !== void 0 && customer.entity_type_id && customer !== null && customer !== void 0 && customer.package_id) {
+      let data = dataPackagesTmp.length > 0 && dataPackagesTmp.find(item => item.id === parseInt(customer === null || customer === void 0 ? void 0 : customer.package_id));
+      if (data) {
+        handleClick(data);
+      }
+    } else {
+      setLoading(false);
+    }
+  }, [dataOnboarding, dataPackagesTmp]);
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
+  const [tab, setTab] = useState(1);
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("div", {
+    className: `${styles$a.btn_top_wrapper} ${styles$a.Header}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "row align-items-center",
+    style: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      alignItems: 'center'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: '0 0 auto'
+    }
+  }, /*#__PURE__*/React.createElement("a", {
+    className: styles$a.btn_top,
+    style: {
+      fontSize: '20px',
+      lineHeight: '28px',
+      fontWeight: 500
+    },
+    onClick: handleBack
+  }, "Back")))), /*#__PURE__*/React.createElement(Title, {
+    text: "Select packages",
+    className: styles$a.title
+  }), /*#__PURE__*/React.createElement("div", {
+    className: styles$a.Body
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$a.description_wrapper
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$a.description
+  }, /*#__PURE__*/React.createElement(Component, null, "Our packages help you fulfill all requirements to register a company in the chosen jurisdiction.", /*#__PURE__*/React.createElement("br", null), "All the fees are included in our packages.")), /*#__PURE__*/React.createElement("div", {
+    className: styles$a.comparison_wrapper
+  }, /*#__PURE__*/React.createElement("button", {
+    className: `${styles$a.button} ${styles$a.comparison_top}`,
+    onClick: handleShow
+  }, /*#__PURE__*/React.createElement("img", {
+    src: comparisonTable,
+    alt: "bg-left-obd"
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: '4px'
+    }
+  }, "Comparison table")))), loading ? /*#__PURE__*/React.createElement("div", {
+    className: styles$a.loader_wrapper
+  }, /*#__PURE__*/React.createElement(BiLoaderAlt, {
+    className: "animate_spin",
+    size: 20
+  })) : dataPackages ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      maxWidth: `${isSing ? '100%' : '992px'}`,
+      margin: '0 -15px'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$a.package_container
+  }, dataPackages.map((item, index) => {
+    var _item$PackageType, _currentItem$PackageT;
+    const packageTypeId = item === null || item === void 0 ? void 0 : (_item$PackageType = item.PackageType) === null || _item$PackageType === void 0 ? void 0 : _item$PackageType.id;
+    let id = isVN && packageTypeId === 5 && isSwitch ? 4 : packageTypeId;
+    let currentItem = dataPackagesTmp.find(item => item.PackageType.id === id);
+    let imgNamePackageVn = `${sanitizeTitle(currentItem.PackageType.name)}.svg`;
+    let pacName = isVN ? currentItem.name : currentItem === null || currentItem === void 0 ? void 0 : (_currentItem$PackageT = currentItem.PackageType) === null || _currentItem$PackageT === void 0 ? void 0 : _currentItem$PackageT.name.toLowerCase();
+    let packageName = pacName;
+    const price = currentItem === null || currentItem === void 0 ? void 0 : currentItem.Services.reduce((sum, item) => {
+      var _item$Fee;
+      return sum + (item === null || item === void 0 ? void 0 : (_item$Fee = item.Fee) === null || _item$Fee === void 0 ? void 0 : _item$Fee.value);
+    }, 0);
+    let link;
+    pacName = pacName.split(' ').join('-');
+    let des = '';
+    if (isSing) {
+      switch (pacName) {
+        case 'local-lite':
+          packageName = packageName;
+          link = locallite;
+          break;
+        case 'local-standard':
+          packageName = packageName;
+          link = localstandard;
+          break;
+        case 'foreigner-basic':
+          packageName = packageName;
+          link = foreignerbasic;
+        case 'foreigner-ultra':
+          packageName = packageName;
+          link = foreignerultra;
+          break;
+      }
+    } else {
+      switch (pacName) {
+        case 'basic':
+          packageName = packageName;
+          link = pacbasic;
+          des = 'Easy company formation';
+          break;
+        case 'standard':
+          link = pacstandard;
+          des = 'with 1 bank application';
+          break;
+        case 'premium':
+          packageName = packageName;
+          link = pacpremium;
+          des = 'Up to 5 bank applications';
+          break;
+      }
+    }
+    return /*#__PURE__*/React.createElement("div", {
+      className: `${styles$a.card_wrapper} ${isSing ? styles$a.card_wrapper_sg : ''} `,
+      key: index
+    }, /*#__PURE__*/React.createElement("div", {
+      className: styles$a.card
+    }, isVN ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      className: `${packageTypeId === 5 ? '' : styles$a.item_height}`,
+      style: {
+        cursor: 'pointer'
+      },
+      onClick: () => handleClick(currentItem)
+    }, /*#__PURE__*/React.createElement("div", {
+      className: styles$a.content_wrapper_vn
+    }, /*#__PURE__*/React.createElement("img", {
+      src: `/onboarding/custom-public/onboarding/images/items/${imgNamePackageVn}`,
+      className: `w-auto`,
+      alt: packageName
+    }), /*#__PURE__*/React.createElement("div", {
+      className: `${styles$a.cardPriceVN} font-weight-bold pt-2`
+    }, "US$", price), /*#__PURE__*/React.createElement("div", {
+      className: `${styles$a.cardNameVN} pt-2`
+    }, packageName))), packageTypeId === 5 && /*#__PURE__*/React.createElement("div", {
+      className: "p-3",
+      style: {
+        background: 'rgba(207,207,207,.4)'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: `row align-items-center justify-content-between mx-n1`
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "col-auto px-1"
+    }, /*#__PURE__*/React.createElement(OverlayTrigger, {
+      placement: "bottom-start",
+      overlay: /*#__PURE__*/React.createElement(Popover, {
+        id: "popover",
+        className: `${styles$a.info}`
+      }, /*#__PURE__*/React.createElement(Popover.Content, {
+        className: "bg-primary rounded",
+        style: {
+          maxWidth: '380px',
+          zIndex: 99
+        }
+      }, /*#__PURE__*/React.createElement("p", {
+        className: "text-white mb-0"
+      }, "The price will change depending on whether company member is an individual or a corporation.")))
+    }, /*#__PURE__*/React.createElement("button", {
+      className: "btn p-0"
+    }, /*#__PURE__*/React.createElement(IconContext.Provider, {
+      value: {
+        color: '#007eff'
+      }
+    }, /*#__PURE__*/React.createElement(AiOutlineInfoCircle, {
+      size: "20px"
+    }))))), /*#__PURE__*/React.createElement("div", {
+      className: "col-auto px-1"
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontWeight: 500,
+        color: '#333',
+        paddingTop: '2px'
+      }
+    }, "Individual")), /*#__PURE__*/React.createElement("div", {
+      className: "col-auto px-1"
+    }, /*#__PURE__*/React.createElement(Form.Check, {
+      type: "switch",
+      id: "custom-switch",
+      className: `${styles$a.formSwich}`,
+      onChange: e => handleSwitch(!isSwitch)
+    }))))) : /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      className: `${styles$a[pacName]} ${styles$a.card_inside}`,
+      style: {
+        cursor: 'pointer'
+      },
+      onClick: () => handleClick(currentItem)
+    }, /*#__PURE__*/React.createElement("div", {
+      className: styles$a.img_wrapper
+    }, /*#__PURE__*/React.createElement("img", {
+      src: link,
+      style: {
+        height: '100%'
+      },
+      alt: packageName
+    }), /*#__PURE__*/React.createElement("div", {
+      className: styles$a.cardName_wrapper
+    }, /*#__PURE__*/React.createElement("div", {
+      className: styles$a.cardName
+    }, packageName))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      className: styles$a.cardPrice
+    }, "US$", price), /*#__PURE__*/React.createElement("p", {
+      className: styles$a.cardDes
+    }, !isSing && !isUk && !isDelaware && des))))));
+  })), isVN && /*#__PURE__*/React.createElement("div", {
+    className: styles$a.note_vn
+  }, /*#__PURE__*/React.createElement("p", {
+    className: styles$a.note
+  }, "* All listed packages are dedicated to company registration in HCM city only. Company formation in other cities would cost additional fee."), /*#__PURE__*/React.createElement("p", {
+    className: styles$a.note,
+    style: {
+      margin: '0'
+    }
+  }, "** Fees for applying sub-licenses fall outside the scope of above packages."))) : /*#__PURE__*/React.createElement("div", null)), /*#__PURE__*/React.createElement("div", {
+    className: styles$a.comparison_bottom_wrapper
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$a.comparison_bottom
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: '0 0 auto'
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    className: `${styles$a.button} ${styles$a.comparison_btn}`,
+    onClick: handleShow
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$a.comparison_img
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: '0 0 auto'
+    }
+  }, /*#__PURE__*/React.createElement("img", {
+    src: comparisonTable,
+    alt: "bg-left-obd",
+    style: {
+      width: '20px'
+    }
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flexBasis: '0',
+      flexGrow: '1',
+      maxWidth: '100%',
+      paddingLeft: '8px'
+    }
+  }, "Comparison table"))))))), /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("div", {
+    className: styles$a.btn_bottom_wrapper
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: '0 0 auto'
+    }
+  }, /*#__PURE__*/React.createElement("a", {
+    className: styles$a.btn_back_bottom,
+    style: {
+      color: '#2c2c51',
+      fontWeight: 500
+    },
+    onClick: handleBack
+  }, "Back")))));
+}
+
+export { IncorporationCompanyType, IncorporationCountry, IncorporationEntityNameCheck, IncorporationPackage, Register, SelectService };
 //# sourceMappingURL=index.modern.js.map
