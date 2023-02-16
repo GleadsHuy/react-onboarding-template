@@ -7919,7 +7919,6 @@ function IncorporationEntityNameCheck({
   useOnClickOutside(wrapperRef, () => {
     setSidebar(false);
   });
-  console.log(window.location);
   return (
     /*#__PURE__*/
     React.createElement("div", {
@@ -9627,24 +9626,7 @@ function IncorporationPackage(params) {
   }, parser(popupPackages(dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor = dataOnboarding.incorporation) === null || _dataOnboarding$incor === void 0 ? void 0 : (_dataOnboarding$incor2 = _dataOnboarding$incor.country) === null || _dataOnboarding$incor2 === void 0 ? void 0 : _dataOnboarding$incor2.id, dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor3 = dataOnboarding.incorporation) === null || _dataOnboarding$incor3 === void 0 ? void 0 : _dataOnboarding$incor3.entity_type_id, tab)))))))));
 }
 
-var styles$b = {"container":"_styles-module__container__2vXIk","btn_back_top":"_styles-module__btn_back_top__2tWkM","tableServices":"_styles-module__tableServices__1cOKS","servicesRow":"_styles-module__servicesRow__3WVMP","tableCellGroup1":"_styles-module__tableCellGroup1__2O3va","servicesGroup":"_styles-module__servicesGroup__2i0XR","select":"_styles-module__select__3M50d","quantity":"_styles-module__quantity__2RFXr","lineDivider":"_styles-module__lineDivider__2iZZ2","singButton":"_styles-module__singButton__3g6k6","Header":"_styles-module__Header__HhmDt","CustomGroup":"_styles-module__CustomGroup__26U4s","CustomOption":"_styles-module__CustomOption__2iYUp"};
-
-const Component$1 = ({
-  style,
-  children,
-  ...props
-}) => {
-  return /*#__PURE__*/React.createElement("p", Object.assign({}, props, {
-    style: {
-      color: '#677294',
-      fontSize: '1.25rem',
-      lineHeight: '1.75rem',
-      ...style
-    }
-  }), children);
-};
-Component$1.propTypes = {};
-Component$1.defaultProps = {};
+var styles$b = {"container":"_styles-module__container__2vXIk","topWrapper":"_styles-module__topWrapper__28c0x","btnBackTop":"_styles-module__btnBackTop__m_6dT","faqWrapper":"_styles-module__faqWrapper__1JLCF","faqBtn":"_styles-module__faqBtn__2yZ8q","contentWrapper":"_styles-module__contentWrapper__2gHeF","titleWrapper":"_styles-module__titleWrapper__2thkl","description":"_styles-module__description__tNVXY","title":"_styles-module__title__2_Yi6","totalWrapper":"_styles-module__totalWrapper__WAW3C","price":"_styles-module__price__3T8vH","priceWrapper":"_styles-module__priceWrapper__2Q6Vf","serviceWrapper":"_styles-module__serviceWrapper__1Oy3i","colMd1":"_styles-module__colMd1__bzf3R","colMd2":"_styles-module__colMd2__2iDw8","colMd4":"_styles-module__colMd4__3yqXG","fieldNote":"_styles-module__fieldNote__u3owm","fieldWrapper":"_styles-module__fieldWrapper__1lzs8","customFieldWrapper":"_styles-module__customFieldWrapper__2sgp-","quantityField":"_styles-module__quantityField__31HpT","customField":"_styles-module__customField___fS2R","tableServices":"_styles-module__tableServices__1cOKS","servicesRow":"_styles-module__servicesRow__3WVMP","tableCellGroup1":"_styles-module__tableCellGroup1__2O3va","servicesGroup":"_styles-module__servicesGroup__2i0XR","tableGroup1":"_styles-module__tableGroup1__2w3A3","selectWrapper":"_styles-module__selectWrapper__1-euq","select":"_styles-module__select__3M50d","fieldBtn":"_styles-module__fieldBtn__1-4ke","quantity":"_styles-module__quantity__2RFXr","tableGroupLast":"_styles-module__tableGroupLast__3ANi8","lineDivider":"_styles-module__lineDivider__2iZZ2","singButton":"_styles-module__singButton__3g6k6","Header":"_styles-module__Header__HhmDt","CustomGroup":"_styles-module__CustomGroup__26U4s","CustomOption":"_styles-module__CustomOption__2iYUp","controlWrapper":"_styles-module__controlWrapper__2Um3k","addService":"_styles-module__addService__rM6ub","clearAll":"_styles-module__clearAll__yRnM0","bottomWrapper":"_styles-module__bottomWrapper__2a2zl","btnBackBottom":"_styles-module__btnBackBottom__2akVf","nextBtn":"_styles-module__nextBtn__vLeSM","skipBtn":"_styles-module__skipBtn__3O4rP","questionContainer":"_styles-module__questionContainer__1-t9Z","titleQuestionWrapper":"_styles-module__titleQuestionWrapper__355tw","answerWrapper":"_styles-module__answerWrapper__3IIn1","lineDividerWrapper":"_styles-module__lineDividerWrapper__9r4UN"};
 
 const customStyles$1 = {
   menu: (provider, state) => ({
@@ -9771,9 +9753,9 @@ const CustomField = ({
   return /*#__PURE__*/React.createElement("div", {
     className: `${styles$b.servicesGroup}`
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$b.tableCellGroup1 + ' d-none d-lg-block col-md-1 pl-0'
+    className: `${styles$b.tableCellGroup1} ${styles$b.tableGroup1}`
   }, idx + 1), /*#__PURE__*/React.createElement("div", {
-    className: styles$b.tableCellGroup1 + ' col-12 col-sm-6 col-lg-4 pl-0 mb-2 mb-lg-0 d-flex justify-content-center'
+    className: `${styles$b.tableCellGroup1} ${styles$b.selectWrapper}`
   }, /*#__PURE__*/React.createElement(Select, {
     menuPlacement: "auto",
     menuPosition: "fixed",
@@ -9792,7 +9774,7 @@ const CustomField = ({
       Option: CustomOption
     }
   })), /*#__PURE__*/React.createElement("div", {
-    className: styles$b.tableCellGroup1 + ' col-12 col-sm-6 col-lg-4 pl-0 mb-2 mb-lg-0 d-flex justify-content-center'
+    className: `${styles$b.tableCellGroup1} ${styles$b.selectWrapper}`
   }, /*#__PURE__*/React.createElement(Select, {
     menuPlacement: "auto",
     menuPosition: "fixed",
@@ -9809,14 +9791,16 @@ const CustomField = ({
       IndicatorsContainer: props => fieldValue['readOnly'] ? null : /*#__PURE__*/React.createElement(DropdownIndicator, props)
     }
   })), /*#__PURE__*/React.createElement("div", {
-    className: styles$b.tableCellGroup1 + ' col-6 col-lg-2 pl-0 d-flex justify-content-center'
+    className: `${styles$b.tableCellGroup1} ${styles$b.fieldBtn}`
   }, fieldValue['readOnly'] ? /*#__PURE__*/React.createElement("div", {
-    className: `${styles$b.quantity} d-flex`
+    className: `${styles$b.quantity}`
   }, fieldValue['quantity'] > 9 ? fieldValue['quantity'] : '0' + fieldValue['quantity']) : /*#__PURE__*/React.createElement("div", {
-    className: `${styles$b.quantity} d-flex`
+    className: `${styles$b.quantity}`
   }, fieldValue && fieldValue['quantity'] <= 1 ? /*#__PURE__*/React.createElement("button", {
     onClick: () => handleRemove(fieldValue),
-    className: "bg-transparent"
+    style: {
+      background: 'transparent'
+    }
   }, /*#__PURE__*/React.createElement(IoMdTrash, {
     size: 25,
     color: "#adadad"
@@ -9831,7 +9815,7 @@ const CustomField = ({
     size: 22,
     color: "#fff"
   })))), /*#__PURE__*/React.createElement("div", {
-    className: styles$b.tableCellGroup1 + ' col-6 col-lg-1 d-flex pl-0 d-flex justify-content-center'
+    className: `${styles$b.tableCellGroup1} ${styles$b.tableGroupLast}`
   }, /*#__PURE__*/React.createElement("sub", null, "$US"), /*#__PURE__*/React.createElement("div", {
     className: "price"
   }, fieldValue['price'])));
@@ -10021,7 +10005,7 @@ function IncorporationAdditionalService(params) {
           localStorage.setItem('data_onboarding', JSON.stringify(dataOnboarding));
         }
         const promotion_code = promotionCode.current ? '&promotion_code=' + promotionCode.current : '';
-        location.href = '/onboarding/order-information?order_code=' + response.data.data + promotion_code;
+        location.href = '/order-information?order_code=' + response.data.data + promotion_code;
       }
     } catch (error) {
       setLoading('');
@@ -10160,81 +10144,78 @@ function IncorporationAdditionalService(params) {
   return question ? /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: styles$b.container
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$b.Header + ' row mx-0 w-100 justify-content-between d-none d-lg-flex'
+    className: `${styles$b.Header} ${styles$b.topWrapper}`
   }, /*#__PURE__*/React.createElement("a", {
     disabled: loading && loading !== '',
     href: "/incorporation-package",
-    className: 'font-weight-bold mb-0',
-    style: {
-      fontSize: 20
-    },
+    className: styles$b.btnBackTop,
     onClick: clearSelectedPackages
   }, "Back"), question && question !== 'none' && packageId != 85 && packageId != 86 ? /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("div", {
-    className: `d-flex text-dark align-items-center`,
+    className: styles$b.faqWrapper,
     style: {
       fontSize: 20
     }
   }, "Frequently Asked Questions?", ' ', /*#__PURE__*/React.createElement("button", {
-    className: "btn p-0 text-primary font-weight-bold ml-1 shadow-none",
+    className: styles$b.faqBtn,
     style: {
       fontSize: 20
     },
     onClick: () => setSidebar(true)
   }, "CLICK HERE"))) : /*#__PURE__*/React.createElement(Fragment, null)), question === 'none' ? /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("div", {
-    className: "d-flex flex-column justify-content-between flex-fill"
+    className: styles$b.contentWrapper
   }, /*#__PURE__*/React.createElement("div", {
     className: styles$b.content
   }, /*#__PURE__*/React.createElement("div", {
-    className: "row align-items-center justify-content-between mb-2 mb-lg-4"
+    className: styles$b.titleWrapper
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$b.titleDes + ' col-12 col-lg-8 mb-2'
+    className: `${styles$b.titleDes} ${styles$b.description}`
   }, /*#__PURE__*/React.createElement(Title, {
     text: "Additional Services",
-    className: "mt-0 mt-lg-40"
+    className: styles$b.title
   }), /*#__PURE__*/React.createElement(Component, null, "Additional services will help you to solve the problem relating to documentation. You can also skip this if you do not find the services suited to you")), /*#__PURE__*/React.createElement("div", {
-    className: styles$b.total + ' text-left col-12 col-lg-4 d-flex d-lg-block'
-  }, /*#__PURE__*/React.createElement("h3", {
-    className: "text-lg-right"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "text-dark"
+    className: `${styles$b.total} ${styles$b.totalWrapper}`
+  }, /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: '#333333'
+    }
   }, "Total:"), /*#__PURE__*/React.createElement("span", {
-    className: "d-lg-none ml-1"
+    className: styles$b.price
   }, "$", getSum(), ".00")), /*#__PURE__*/React.createElement("h1", {
-    className: "text-lg-right d-none d-lg-block"
+    className: styles$b.priceWrapper
   }, "US$", getSum(), ".00"))), /*#__PURE__*/React.createElement("div", {
     className: styles$b.tableServices
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$b.servicesRow + ' font-weight-bold d-none d-lg-flex'
+    className: `${styles$b.servicesRow} ${styles$b.serviceWrapper}`
   }, /*#__PURE__*/React.createElement("div", {
-    className: ' col-md-1 p-0',
+    className: styles$b.colMd1,
     scope: "col"
   }, "No."), /*#__PURE__*/React.createElement("div", {
-    className: ' col-md-4 p-0',
+    className: styles$b.colMd4,
     scope: "col"
   }, "Category"), /*#__PURE__*/React.createElement("div", {
-    className: ' col-md-4 p-0',
+    className: styles$b.colMd4,
     scope: "col"
   }, "Service"), /*#__PURE__*/React.createElement("div", {
-    className: ' col-md-2 p-0',
+    className: styles$b.colMd2,
     scope: "col"
   }, "Quantity"), /*#__PURE__*/React.createElement("div", {
-    className: ' col-md-1 p-0',
+    className: styles$b.colMd1,
     scope: "col"
   }, "Price")), fields.length === 0 && /*#__PURE__*/React.createElement("h3", {
-    className: "mt-4 mb-4 mb-lg-0 text-center"
+    className: styles$b.fieldNote
   }, "Please add and choose services"), fields.map((field, index) => /*#__PURE__*/React.createElement("div", {
     key: index,
-    className: "px-4 px-lg-0 mt-lg-2"
+    className: styles$b.fieldWrapper
   }, index !== 0 && /*#__PURE__*/React.createElement("div", {
-    className: "d-lg-none"
+    className: styles$b.lineDividerWrapper
   }, /*#__PURE__*/React.createElement("div", {
     className: styles$b.lineDivider
   })), /*#__PURE__*/React.createElement("div", {
-    className: "row flex-nowrap mx-0 px-0 px-sm-3 py-2 py-sm-4 p-lg-0"
+    className: styles$b.customFieldWrapper
   }, /*#__PURE__*/React.createElement("div", {
-    className: "d-lg-none col-1 py-3"
+    className: styles$b.quantityField
   }, index + 1), /*#__PURE__*/React.createElement("div", {
-    className: "col-11 col-lg-12 pl-lg-0"
+    className: styles$b.customField
   }, /*#__PURE__*/React.createElement(CustomField, {
     idx: index,
     fieldValue: field,
@@ -10243,16 +10224,16 @@ function IncorporationAdditionalService(params) {
     onFieldChange: onFieldChange,
     handleRemove: handleRemove
   })))))), /*#__PURE__*/React.createElement("div", {
-    className: 'd-flex justify-content-center text-center my-3 my-sm-4 my-lg-5'
+    className: styles$b.controlWrapper
   }, /*#__PURE__*/React.createElement("button", {
-    className: 'mx-2 mb-2',
+    className: styles$b.addService,
     onClick: handleClickAdd,
     style: {
       minWidth: 150
     },
     disabled: loading && loading !== ''
   }, "Add"), /*#__PURE__*/React.createElement("button", {
-    className: 'bg-transparent text-dark mx-2 mb-2',
+    className: styles$b.clearAll,
     onClick: removeAll,
     style: {
       minWidth: 150
@@ -10267,7 +10248,9 @@ function IncorporationAdditionalService(params) {
     }
   }, /*#__PURE__*/React.createElement("strong", null, "Note:"), " Accounting fee is depended on client company\u2019s yearly revenue. You may take a look at", ' ', /*#__PURE__*/React.createElement("a", {
     style: {
-      display: `inline-block`
+      display: `inline-block`,
+      textDecoration: 'none',
+      color: '#007eff'
     },
     target: "_blank",
     rel: "noreferrer nofollow",
@@ -10280,67 +10263,58 @@ function IncorporationAdditionalService(params) {
       fontWeight: `400`
     }
   }, /*#__PURE__*/React.createElement("strong", null, "Note:"), " Tax Identification Number (TIN) is mandatory for all Belize companies, regardless of whether they are included or non-included entities, to submit the filing of returns and tax payments. If you need further information and assistance, please do not hesitate to contact our customer service team."), /*#__PURE__*/React.createElement("div", {
-    className: "d-flex align-items-center"
+    className: styles$b.bottomWrapper
   }, /*#__PURE__*/React.createElement("div", {
-    className: "mr-2 d-inline d-lg-none"
+    className: styles$b.btnBackBottom
   }, /*#__PURE__*/React.createElement("a", {
     disabled: loading && loading !== '',
     href: "/incorporation-package",
     onClick: clearSelectedPackages
-  }, /*#__PURE__*/React.createElement(Component$1, {
-    className: "mb-0 p-2 cursor-pointer"
-  }, "Back"))), /*#__PURE__*/React.createElement("button", {
+  }, "Back")), /*#__PURE__*/React.createElement("button", {
     onClick: () => handleSubmit('next'),
-    className: "mr-1 mr-md-3 mx-lg-0",
+    className: styles$b.nextBtn,
     disabled: loading && loading !== ''
-  }, loading === 'next' ? /*#__PURE__*/React.createElement("span", {
-    className: "d-flex align-items-center"
-  }, "Next", /*#__PURE__*/React.createElement(Spinner, {
-    as: "span",
-    animation: "border",
-    size: "sm",
-    role: "status",
-    "aria-hidden": "true",
-    className: "ml-2"
+  }, loading === 'next' ? /*#__PURE__*/React.createElement("span", null, "Next", /*#__PURE__*/React.createElement(BiLoaderAlt, {
+    className: "animate_spin",
+    size: 20,
+    style: {
+      marginLeft: '8px'
+    }
   })) : /*#__PURE__*/React.createElement("span", null, "Next")), /*#__PURE__*/React.createElement("button", {
-    className: "bg-transparent text-dark shadow-none",
+    className: styles$b.skipBtn,
     onClick: () => handleSubmit('skip'),
     disabled: loading && loading !== ''
-  }, loading === 'skip' ? /*#__PURE__*/React.createElement("span", {
-    className: "d-flex align-items-center"
-  }, "Skip", /*#__PURE__*/React.createElement(Spinner, {
-    as: "span",
-    animation: "border",
-    size: "sm",
-    role: "status",
-    "aria-hidden": "true",
-    className: "ml-2"
+  }, loading === 'skip' ? /*#__PURE__*/React.createElement("span", null, "Skip", /*#__PURE__*/React.createElement(BiLoaderAlt, {
+    className: "animate_spin",
+    size: 20,
+    style: {
+      marginLeft: '8px'
+    }
   })) : /*#__PURE__*/React.createElement("span", null, "Skip")))))) : /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("div", {
-    className: "d-flex flex-column justify-content-between flex-fill"
+    className: styles$b.questionContainer
   }, /*#__PURE__*/React.createElement("div", {
     className: styles$b.content
   }, /*#__PURE__*/React.createElement("div", {
-    className: "d-flex justify-content-between"
+    className: styles$b.titleQuestionWrapper
   }, /*#__PURE__*/React.createElement(Title, {
     text: "Accounting and Tax Filing service",
-    className: "mt-0 mt-lg-40"
+    className: styles$b.title
   }), /*#__PURE__*/React.createElement("button", {
-    className: "btn shadow-none p-0 d-lg-none",
     onClick: () => setSidebar(true)
   }, /*#__PURE__*/React.createElement(FiHelpCircle, {
     color: "#007eff",
     size: 30
   }))), /*#__PURE__*/React.createElement(Component, null, question.text), /*#__PURE__*/React.createElement("div", {
-    className: "mt-3 px-md-2"
+    className: styles$b.answerWrapper
   }, question.answers.map((item, index) => /*#__PURE__*/React.createElement("button", {
     onClick: () => handleQuestion(item),
-    className: `btn d-flex p-0 mt-1 text-left shadow-none ${styles$b.singButton}`,
+    className: ` ${styles$b.singButton}`,
     key: index
   }, /*#__PURE__*/React.createElement(FaCaretRight, {
     size: 30,
     color: "#333"
   }), item.text))))))), /*#__PURE__*/React.createElement(Sidebar, {
-    description: `<div><h4>What is the fee if I use your accounting service?</h4><ul><li>Our accounting service starts from US$84/month for less than S$70,000 of revenue per year. You can check <a href='https://bbcincorp.com/sg/accounting-and-auditing' target='_blank' rel='nofollow noreferrer' class='fw-bold'>HERE</a> for accounting fee details.</li></ul><h4>If there is no transaction in my yearly accounting period, could I get my accounting fee back?</h4><ul><li>When you use nominee director service in Singapore, you are most likely required to deposit an initial amount of no less than S$2,000. However, we don’t require this, you must instead send your monthly accounting report for our local director’s review to discharge their liabilities from possible illicit business activities or practices.</li></ul></div>`,
+    description: `<div><h4>What is the fee if I use your accounting service?</h4><ul><li>Our accounting service starts from US$84/month for less than S$70,000 of revenue per year. You can check <a href='https://bbcincorp.com/sg/accounting-and-auditing' target='_blank' rel='nofollow noreferrer'>HERE</a> for accounting fee details.</li></ul><h4>If there is no transaction in my yearly accounting period, could I get my accounting fee back?</h4><ul><li>When you use nominee director service in Singapore, you are most likely required to deposit an initial amount of no less than S$2,000. However, we don’t require this, you must instead send your monthly accounting report for our local director’s review to discharge their liabilities from possible illicit business activities or practices.</li></ul></div>`,
     title: "FAQs",
     sidebar: sidebar,
     onClickClose: () => setSidebar(false)

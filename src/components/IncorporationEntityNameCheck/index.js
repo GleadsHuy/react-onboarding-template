@@ -499,7 +499,7 @@ export default function IncorporationEntityNameCheck({ data }) {
   useOnClickOutside(wrapperRef, () => {
     setSidebar(false)
   })
-  console.log(window.location)
+
   return (
     // <Layout
     //   head={{

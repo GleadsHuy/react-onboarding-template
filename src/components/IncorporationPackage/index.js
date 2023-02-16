@@ -1161,6 +1161,7 @@ export default function IncorporationPackage(params) {
   useOnClickOutside(wrapperRef, () => {
     setShow(false)
   })
+
   return (
     <div>
       <section>

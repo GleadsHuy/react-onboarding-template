@@ -5,6 +5,7 @@ import { FaChevronDown, FaCaretRight } from 'react-icons/fa'
 import { BiPlus } from 'react-icons/bi'
 import { RiSubtractFill } from 'react-icons/ri'
 import { IoMdTrash } from 'react-icons/io'
+import { BiLoaderAlt } from 'react-icons/bi'
 import { FiHelpCircle } from 'react-icons/fi'
 import Sidebar from '../common/SideBar'
 import axios from 'axios'
@@ -151,17 +152,10 @@ const CustomField = ({
 
   return (
     <div className={`${styles.servicesGroup}`}>
-      <div
-        className={styles.tableCellGroup1 + ' d-none d-lg-block col-md-1 pl-0'}
-      >
+      <div className={`${styles.tableCellGroup1} ${styles.tableGroup1}`}>
         {idx + 1}
       </div>
-      <div
-        className={
-          styles.tableCellGroup1 +
-          ' col-12 col-sm-6 col-lg-4 pl-0 mb-2 mb-lg-0 d-flex justify-content-center'
-        }
-      >
+      <div className={`${styles.tableCellGroup1} ${styles.selectWrapper}`}>
         <Select
           menuPlacement='auto'
           menuPosition='fixed'
@@ -188,12 +182,7 @@ const CustomField = ({
           }}
         />
       </div>
-      <div
-        className={
-          styles.tableCellGroup1 +
-          ' col-12 col-sm-6 col-lg-4 pl-0 mb-2 mb-lg-0 d-flex justify-content-center'
-        }
-      >
+      <div className={`${styles.tableCellGroup1} ${styles.selectWrapper}`}>
         <Select
           menuPlacement='auto'
           menuPosition='fixed'
@@ -212,24 +201,19 @@ const CustomField = ({
           }}
         />
       </div>
-      <div
-        className={
-          styles.tableCellGroup1 +
-          ' col-6 col-lg-2 pl-0 d-flex justify-content-center'
-        }
-      >
+      <div className={`${styles.tableCellGroup1} ${styles.fieldBtn}`}>
         {fieldValue['readOnly'] ? (
-          <div className={`${styles.quantity} d-flex`}>
+          <div className={`${styles.quantity}`}>
             {fieldValue['quantity'] > 9
               ? fieldValue['quantity']
               : '0' + fieldValue['quantity']}
           </div>
         ) : (
-          <div className={`${styles.quantity} d-flex`}>
+          <div className={`${styles.quantity}`}>
             {fieldValue && fieldValue['quantity'] <= 1 ? (
               <button
                 onClick={() => handleRemove(fieldValue)}
-                className='bg-transparent'
+                style={{ background: 'transparent' }}
               >
                 <IoMdTrash size={25} color='#adadad' />
               </button>
@@ -256,12 +240,7 @@ const CustomField = ({
           </div>
         )}
       </div>
-      <div
-        className={
-          styles.tableCellGroup1 +
-          ' col-6 col-lg-1 d-flex pl-0 d-flex justify-content-center'
-        }
-      >
+      <div className={`${styles.tableCellGroup1} ${styles.tableGroupLast}`}>
         <sub>$US</sub>
         <div className='price'>{fieldValue['price']}</div>
       </div>
@@ -569,9 +548,7 @@ export default function IncorporationAdditionalService(params) {
           ? '&promotion_code=' + promotionCode.current
           : ''
         location.href =
-          '/onboarding/order-information?order_code=' +
-          response.data.data +
-          promotion_code
+          '/order-information?order_code=' + response.data.data + promotion_code
       }
     } catch (error) {
       setLoading('')
@@ -743,17 +720,11 @@ export default function IncorporationAdditionalService(params) {
   return question ? (
     <>
       <div className={styles.container}>
-        <div
-          className={
-            styles.Header +
-            ' row mx-0 w-100 justify-content-between d-none d-lg-flex'
-          }
-        >
+        <div className={`${styles.Header} ${styles.topWrapper}`}>
           <a
             disabled={loading && loading !== ''}
             href='/incorporation-package'
-            className={'font-weight-bold mb-0'}
-            style={{ fontSize: 20 }}
+            className={styles.btnBackTop}
             onClick={clearSelectedPackages}
           >
             Back
@@ -763,13 +734,10 @@ export default function IncorporationAdditionalService(params) {
           packageId != 85 &&
           packageId != 86 ? (
             <>
-              <div
-                className={`d-flex text-dark align-items-center`}
-                style={{ fontSize: 20 }}
-              >
+              <div className={styles.faqWrapper} style={{ fontSize: 20 }}>
                 Frequently Asked Questions?{' '}
                 <button
-                  className='btn p-0 text-primary font-weight-bold ml-1 shadow-none'
+                  className={styles.faqBtn}
                   style={{ fontSize: 20 }}
                   onClick={() => setSidebar(true)}
                 >
@@ -783,13 +751,13 @@ export default function IncorporationAdditionalService(params) {
         </div>
         {question === 'none' ? (
           <>
-            <div className='d-flex flex-column justify-content-between flex-fill'>
+            <div className={styles.contentWrapper}>
               <div className={styles.content}>
-                <div className='row align-items-center justify-content-between mb-2 mb-lg-4'>
-                  <div className={styles.titleDes + ' col-12 col-lg-8 mb-2'}>
+                <div className={styles.titleWrapper}>
+                  <div className={`${styles.titleDes} ${styles.description}`}>
                     <Title
                       text='Additional Services'
-                      className='mt-0 mt-lg-40'
+                      className={styles.title}
                     />
                     <Description>
                       Additional services will help you to solve the problem
@@ -797,76 +765,54 @@ export default function IncorporationAdditionalService(params) {
                       do not find the services suited to you
                     </Description>
                   </div>
-                  <div
-                    className={
-                      styles.total +
-                      ' text-left col-12 col-lg-4 d-flex d-lg-block'
-                    }
-                  >
-                    <h3 className='text-lg-right'>
-                      <span className='text-dark'>Total:</span>
-                      <span className='d-lg-none ml-1'>${getSum()}.00</span>
+                  <div className={`${styles.total} ${styles.totalWrapper}`}>
+                    <h3>
+                      <span style={{ color: '#333333' }}>Total:</span>
+                      <span className={styles.price}>${getSum()}.00</span>
                     </h3>
-                    <h1 className='text-lg-right d-none d-lg-block'>
-                      US${getSum()}.00
-                    </h1>
+                    <h1 className={styles.priceWrapper}>US${getSum()}.00</h1>
                   </div>
                 </div>
                 <div className={styles.tableServices}>
                   <div
-                    className={
-                      styles.servicesRow + ' font-weight-bold d-none d-lg-flex'
-                    }
+                    className={`${styles.servicesRow} ${styles.serviceWrapper}`}
                   >
-                    <div className={' col-md-1 p-0'} scope='col'>
+                    <div className={styles.colMd1} scope='col'>
                       No.
                     </div>
-                    <div className={' col-md-4 p-0'} scope='col'>
+                    <div className={styles.colMd4} scope='col'>
                       Category
                     </div>
-                    <div className={' col-md-4 p-0'} scope='col'>
+                    <div className={styles.colMd4} scope='col'>
                       Service
                     </div>
-                    <div className={' col-md-2 p-0'} scope='col'>
+                    <div className={styles.colMd2} scope='col'>
                       Quantity
                     </div>
-                    <div className={' col-md-1 p-0'} scope='col'>
+                    <div className={styles.colMd1} scope='col'>
                       Price
                     </div>
                   </div>
                   {fields.length === 0 && (
-                    <h3 className='mt-4 mb-4 mb-lg-0 text-center'>
+                    <h3 className={styles.fieldNote}>
                       Please add and choose services
                     </h3>
                   )}
                   {fields.map((field, index) => (
-                    <div key={index} className='px-4 px-lg-0 mt-lg-2'>
+                    <div key={index} className={styles.fieldWrapper}>
                       {index !== 0 && (
-                        <div className='d-lg-none'>
+                        <div className={styles.lineDividerWrapper}>
                           <div className={styles.lineDivider}></div>
                         </div>
                       )}
-                      <div className='row flex-nowrap mx-0 px-0 px-sm-3 py-2 py-sm-4 p-lg-0'>
-                        <div className='d-lg-none col-1 py-3'>{index + 1}</div>
-                        <div className='col-11 col-lg-12 pl-lg-0'>
+                      <div className={styles.customFieldWrapper}>
+                        <div className={styles.quantityField}>{index + 1}</div>
+                        <div className={styles.customField}>
                           <CustomField
                             idx={index}
                             fieldValue={field}
                             additionalServices={additionalServices}
                             categories={categories}
-                            // categories={
-                            //   companyInfo &&
-                            //   companyInfo.country_id === 23 &&
-                            //   companyInfo.entity_type_id === 2
-                            //     ? categories.filter(
-                            //         (item) =>
-                            //           item.id !=
-                            //           additionalServices.find(
-                            //             (item) => item.id == 1851
-                            //           ).ServiceType.parent_id
-                            //       )
-                            //     : categories
-                            // }
                             onFieldChange={onFieldChange}
                             handleRemove={handleRemove}
                           />
@@ -875,13 +821,9 @@ export default function IncorporationAdditionalService(params) {
                     </div>
                   ))}
                 </div>
-                <div
-                  className={
-                    'd-flex justify-content-center text-center my-3 my-sm-4 my-lg-5'
-                  }
-                >
+                <div className={styles.controlWrapper}>
                   <button
-                    className={'mx-2 mb-2'}
+                    className={styles.addService}
                     onClick={handleClickAdd}
                     style={{ minWidth: 150 }}
                     disabled={loading && loading !== ''}
@@ -889,7 +831,7 @@ export default function IncorporationAdditionalService(params) {
                     Add
                   </button>
                   <button
-                    className={'bg-transparent text-dark mx-2 mb-2'}
+                    className={styles.clearAll}
                     onClick={removeAll}
                     style={{ minWidth: 150 }}
                     disabled={loading && loading !== ''}
@@ -911,7 +853,11 @@ export default function IncorporationAdditionalService(params) {
                     <strong>Note:</strong> Accounting fee is depended on client
                     company’s yearly revenue. You may take a look at{' '}
                     <a
-                      style={{ display: `inline-block` }}
+                      style={{
+                        display: `inline-block`,
+                        textDecoration: 'none',
+                        color: '#007eff'
+                      }}
                       target='_blank'
                       rel='noreferrer nofollow'
                       href='https://bbcincorp.com/sg/accounting-and-auditing'
@@ -942,31 +888,28 @@ export default function IncorporationAdditionalService(params) {
                       contact our customer service team.
                     </p>
                   )}
-                <div className='d-flex align-items-center'>
-                  <div className='mr-2 d-inline d-lg-none'>
+                <div className={styles.bottomWrapper}>
+                  <div className={styles.btnBackBottom}>
                     <a
                       disabled={loading && loading !== ''}
                       href='/incorporation-package'
                       onClick={clearSelectedPackages}
                     >
-                      <Label className='mb-0 p-2 cursor-pointer'>Back</Label>
+                      Back
                     </a>
                   </div>
                   <button
                     onClick={() => handleSubmit('next')}
-                    className='mr-1 mr-md-3 mx-lg-0'
+                    className={styles.nextBtn}
                     disabled={loading && loading !== ''}
                   >
                     {loading === 'next' ? (
-                      <span className='d-flex align-items-center'>
+                      <span>
                         Next
-                        <Spinner
-                          as='span'
-                          animation='border'
-                          size='sm'
-                          role='status'
-                          aria-hidden='true'
-                          className='ml-2'
+                        <BiLoaderAlt
+                          className='animate_spin'
+                          size={20}
+                          style={{ marginLeft: '8px' }}
                         />
                       </span>
                     ) : (
@@ -974,20 +917,17 @@ export default function IncorporationAdditionalService(params) {
                     )}
                   </button>
                   <button
-                    className='bg-transparent text-dark shadow-none'
+                    className={styles.skipBtn}
                     onClick={() => handleSubmit('skip')}
                     disabled={loading && loading !== ''}
                   >
                     {loading === 'skip' ? (
-                      <span className='d-flex align-items-center'>
+                      <span>
                         Skip
-                        <Spinner
-                          as='span'
-                          animation='border'
-                          size='sm'
-                          role='status'
-                          aria-hidden='true'
-                          className='ml-2'
+                        <BiLoaderAlt
+                          className='animate_spin'
+                          size={20}
+                          style={{ marginLeft: '8px' }}
                         />
                       </span>
                     ) : (
@@ -1000,26 +940,23 @@ export default function IncorporationAdditionalService(params) {
           </>
         ) : (
           <>
-            <div className='d-flex flex-column justify-content-between flex-fill'>
+            <div className={styles.questionContainer}>
               <div className={styles.content}>
-                <div className='d-flex justify-content-between'>
+                <div className={styles.titleQuestionWrapper}>
                   <Title
                     text='Accounting and Tax Filing service'
-                    className='mt-0 mt-lg-40'
+                    className={styles.title}
                   />
-                  <button
-                    className='btn shadow-none p-0 d-lg-none'
-                    onClick={() => setSidebar(true)}
-                  >
+                  <button onClick={() => setSidebar(true)}>
                     <FiHelpCircle color='#007eff' size={30} />
                   </button>
                 </div>
                 <Description>{question.text}</Description>
-                <div className='mt-3 px-md-2'>
+                <div className={styles.answerWrapper}>
                   {question.answers.map((item, index) => (
                     <button
                       onClick={() => handleQuestion(item)}
-                      className={`btn d-flex p-0 mt-1 text-left shadow-none ${styles.singButton}`}
+                      className={` ${styles.singButton}`}
                       key={index}
                     >
                       <FaCaretRight size={30} color='#333' />
@@ -1033,7 +970,7 @@ export default function IncorporationAdditionalService(params) {
         )}
       </div>
       <Sidebar
-        description={`<div><h4>What is the fee if I use your accounting service?</h4><ul><li>Our accounting service starts from US$84/month for less than S$70,000 of revenue per year. You can check <a href='https://bbcincorp.com/sg/accounting-and-auditing' target='_blank' rel='nofollow noreferrer' class='fw-bold'>HERE</a> for accounting fee details.</li></ul><h4>If there is no transaction in my yearly accounting period, could I get my accounting fee back?</h4><ul><li>When you use nominee director service in Singapore, you are most likely required to deposit an initial amount of no less than S$2,000. However, we don’t require this, you must instead send your monthly accounting report for our local director’s review to discharge their liabilities from possible illicit business activities or practices.</li></ul></div>`}
+        description={`<div><h4>What is the fee if I use your accounting service?</h4><ul><li>Our accounting service starts from US$84/month for less than S$70,000 of revenue per year. You can check <a href='https://bbcincorp.com/sg/accounting-and-auditing' target='_blank' rel='nofollow noreferrer'>HERE</a> for accounting fee details.</li></ul><h4>If there is no transaction in my yearly accounting period, could I get my accounting fee back?</h4><ul><li>When you use nominee director service in Singapore, you are most likely required to deposit an initial amount of no less than S$2,000. However, we don’t require this, you must instead send your monthly accounting report for our local director’s review to discharge their liabilities from possible illicit business activities or practices.</li></ul></div>`}
         title='FAQs'
         sidebar={sidebar}
         onClickClose={() => setSidebar(false)}
