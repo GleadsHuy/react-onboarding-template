@@ -1,7 +1,7 @@
 .FatfScreen .descriptionText {
   font-size: 24px;
   line-height: 32px;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 .FatfScreen .descriptionText p:not(:last-child) {
@@ -112,7 +112,7 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0;
+  left: 2px;
   right: auto;
   width: 25%;
 }
@@ -131,9 +131,8 @@
 }
 
 .phonenumber_container button {
-  width: 90%;
-  margin-left: 8px;
   cursor: pointer;
+  padding: 8px 8px 8px 16px;
 }
 
 .RegisterScreen {
@@ -403,6 +402,13 @@
   height: 100%;
 }
 
+.trustpilot {
+  width: 100%;
+  display: flex;
+  margin-top: 1.5rem;
+  display: block;
+}
+
 .trustpilot_wrapper {
   display: block;
   width: 60%;
@@ -434,6 +440,12 @@
 }
 
 @media (max-width: 991px) {
+  .trustpilot {
+    display: none !important;
+  }
+  .phonenumber_container button {
+    padding: 4px 8px;
+  }
   .button_wrapper {
     display: flex;
     justify-content: center;
@@ -462,6 +474,7 @@
   }
   .RegisterLink {
     margin-top: 1rem;
+    color: #fff;
   }
   .trustpilot_wrapper {
     width: 100%;
@@ -488,6 +501,7 @@
   }
   .RegisterScreen .RegisterText {
     margin-top: 1rem;
+    color: #fff;
   }
   .FatfScreen .descriptionText p:not(:last-child) {
     margin-bottom: 0.5rem;
@@ -505,6 +519,9 @@
   .restricted_countries_wrapper {
     padding: 0 1rem;
   }
+  .FatfScreen .descriptionText {
+    margin-top: 0.5rem;
+  }
   .FatfScreen .descriptionText p {
     margin-bottom: 0.5rem;
   }
@@ -518,8 +535,7 @@
   }
 
   .title {
-    color: #2c2c51;
-    margin-top: 1.25rem;
+    color: #fff;
   }
 
   .Body {
@@ -529,10 +545,14 @@
     margin: 0 -15px;
   }
 
-  /* .Menu {
+  .Menu {
     position: fixed !important;
     max-width: max-content;
-  } */
+  }
+
+  .marginTopMenu {
+    margin-top: 4px !important;
+  }
 
   .FatfScreen .Button,
   .RegisterScreen .Button {

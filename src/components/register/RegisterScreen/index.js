@@ -393,7 +393,7 @@ const RegisterScreen = ({ trustpilot, isTypeChristmas }) => {
                       }
                       options={phoneCodeList}
                       toggleClass={styles.PhoneSelect}
-                      menuClass={`mt-2 ${styles.Menu}`}
+                      menuClass={`${styles.marginTopMenu} ${styles.Menu}`}
                       onChange={handleChangePhoneCountry}
                     />
                   </div>
@@ -461,7 +461,10 @@ const RegisterScreen = ({ trustpilot, isTypeChristmas }) => {
           </form>
         </div>
       </section>
-      <section style={{ width: `100%`, display: `flex`, marginTop: `1.5rem` }}>
+      <section
+        style={{ width: `100%`, display: `flex`, marginTop: `1.5rem` }}
+        className={styles.trustpilot}
+      >
         <div className={styles.trustpilot_wrapper}>
           <Trustpilot data={trustpilot} />
         </div>

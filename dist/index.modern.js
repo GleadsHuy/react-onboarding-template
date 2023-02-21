@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, Fragment } from 'react';
-import { FaAngleDoubleUp, FaChevronDown, FaCheck, FaTimes, FaAngleDoubleDown, FaInfoCircle, FaCircle, FaChevronRight, FaChevronLeft, FaCaretRight } from 'react-icons/fa';
-import _ from 'lodash';
+import { FaAngleDoubleUp, FaChevronDown, FaCookieBite, FaCheck, FaTimes, FaAngleDoubleDown, FaInfoCircle, FaCircle, FaChevronRight, FaChevronLeft, FaCaretRight, FaUserAlt } from 'react-icons/fa';
+import _$1 from 'lodash';
 import { Form, OverlayTrigger, Popover } from 'react-bootstrap';
 import axios from 'axios';
 import { useForm, useFormState, useFieldArray, Controller } from 'react-hook-form';
@@ -14,6 +14,18 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import trust_pilot$1 from './trust-pilot~VtJXwXCM.svg';
 import { BiLoaderAlt, BiPlus } from 'react-icons/bi';
+import { IconContext } from 'react-icons';
+import { BsCheckLg, BsQuestionCircle } from 'react-icons/bs';
+import { VscChromeClose, VscMenu } from 'react-icons/vsc';
+import mergeProps from 'merge-props';
+import logoImg from './logo~JBjuysve.svg';
+import logotextImg from './logo-text~kPYYnKwZ.svg';
+import obdIncorpImg from './obd-incorporation~YnruNpVP.svg';
+import onboardingIncorpImg from './onboarding-incorp~bhdlMaCS.png';
+import leftObdImg from './bg-left-obd~UgZSiaCI.png';
+import menuNavImg from './menu-nav~AOjLftbh.png';
+import tabletBuildImg from './bg-tablet-build~kDAEKiYW.svg';
+import obdIncorp2Img from './obd-incorporation-2~cvSdbBtL.png';
 import bankingImg from './banking~nKuKLkod.png';
 import incorpImg from './incorporation~BKidfgKY.png';
 import { FiFilter, FiHelpCircle } from 'react-icons/fi';
@@ -28,15 +40,12 @@ import businessStructure from './business-structure~YXCLGhtj.png';
 import initialRequirement from './initial-requirement~xRxcNttm.png';
 import legalStructure from './legal-structure~bcmAHTxj.png';
 import internationalCompliance from './international-compliance~tYiEjqmz.png';
-import { IconContext } from 'react-icons';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import { IoMdCloseCircle, IoMdTrash } from 'react-icons/io';
 import comparisonTable from './comparison-table~bpwyRZHM.png';
-import mergeProps from 'merge-props';
 import buildingImg from './building~IFwjSqIH.png';
 import { MdAddCircle } from 'react-icons/md';
 import { HiMinusCircle } from 'react-icons/hi';
-import { BsQuestionCircle } from 'react-icons/bs';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import pacbasic from './pac-basic~AyzXROgI.png';
 import pacpremium from './pac-premium~XjDmcCNY.png';
@@ -46,8 +55,18 @@ import localstandard from './local-standard~AyzXROgI.png';
 import foreignerbasic from './foreigner-basic~uQZFFwrd.png';
 import foreignerultra from './foreigner-ultra~XjDmcCNY.png';
 import { RiSubtractFill } from 'react-icons/ri';
+import { Elements, useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import logoIcon from './logo-icon~jqiRFzpk.svg';
+import cardStripe from './card-stripe~biWjJMSw.png';
+import bankTransfer from './bank-transfer~UcfHomOS.png';
+import refundGuarantee from './refund-guarantee~qleounsv.svg';
+import twitterImg from './twitter~JwbvjMSt.svg';
+import linkedinImg from './linkedin~bhuYKrBL.svg';
+import facebookImg from './facebook~CpjjVQBM.svg';
+import youtubeImg from './youtube~GUnNFvMg.svg';
 
-var styles = {"FatfScreen":"_styles-module__FatfScreen__2ROgK","descriptionText":"_styles-module__descriptionText__2Vd8e","title":"_styles-module__title__35EYE","RegisterInput":"_styles-module__RegisterInput__gW7RG","item":"_styles-module__item__3hx7A","space_top":"_styles-module__space_top__yST6I","ErrorMessage":"_styles-module__ErrorMessage__qZ3vy","Link":"_styles-module__Link__1wNX0","Slider":"_styles-module__Slider__1Th7t","PhoneSelect":"_styles-module__PhoneSelect__1B3qM","CustomSelect":"_styles-module__CustomSelect__3bJjM","PhoneInput":"_styles-module__PhoneInput__2_4Q0","phonenumber_container":"_styles-module__phonenumber_container__HLp-P","RegisterScreen":"_styles-module__RegisterScreen__3hn-F","discountChristmas":"_styles-module__discountChristmas__i1zWx","CheckBox":"_styles-module__CheckBox__3klwe","button_wrapper":"_styles-module__button_wrapper__RJ7yj","Button":"_styles-module__Button__26moK","recaptcha":"_styles-module__recaptcha__14pK3","RegisterButton":"_styles-module__RegisterButton__1WoJs","RegisterLink":"_styles-module__RegisterLink__2p_CN","restricted_countries_wrapper":"_styles-module__restricted_countries_wrapper__5339W","restricted_countries_container":"_styles-module__restricted_countries_container__30wCB","restricted_countries_cols":"_styles-module__restricted_countries_cols__17jba","restricted_countries_cols_md":"_styles-module__restricted_countries_cols_md__wx9cR","listCollapse":"_styles-module__listCollapse__P54fa","active":"_styles-module__active__1yv7q","buttonCollapse":"_styles-module__buttonCollapse__BL6zk","isCollapse":"_styles-module__isCollapse__38GJw","iconCollapse":"_styles-module__iconCollapse__3YmIy","RegisterText":"_styles-module__RegisterText__3dZ-C","RegisterForm":"_styles-module__RegisterForm__2sn5j","formControl":"_styles-module__formControl__MkpSE","inputWrapper":"_styles-module__inputWrapper__u_8Hb","SelectWrapper":"_styles-module__SelectWrapper__2wTl0","CountrySelectWrapper":"_styles-module__CountrySelectWrapper__cRn99","nationalitySelect":"_styles-module__nationalitySelect__3tlRp","nationalityLabel":"_styles-module__nationalityLabel__1-615","phonenumber_wrapper":"_styles-module__phonenumber_wrapper__3q5qp","trustpilot_wrapper":"_styles-module__trustpilot_wrapper__1PI3w","FormFooter":"_styles-module__FormFooter__29TuF","Body":"_styles-module__Body__3J0ny","noteText":"_styles-module__noteText__9TPd0"};
+var styles = {"FatfScreen":"_styles-module__FatfScreen__2ROgK","descriptionText":"_styles-module__descriptionText__2Vd8e","title":"_styles-module__title__35EYE","RegisterInput":"_styles-module__RegisterInput__gW7RG","item":"_styles-module__item__3hx7A","space_top":"_styles-module__space_top__yST6I","ErrorMessage":"_styles-module__ErrorMessage__qZ3vy","Link":"_styles-module__Link__1wNX0","Slider":"_styles-module__Slider__1Th7t","PhoneSelect":"_styles-module__PhoneSelect__1B3qM","CustomSelect":"_styles-module__CustomSelect__3bJjM","PhoneInput":"_styles-module__PhoneInput__2_4Q0","phonenumber_container":"_styles-module__phonenumber_container__HLp-P","RegisterScreen":"_styles-module__RegisterScreen__3hn-F","discountChristmas":"_styles-module__discountChristmas__i1zWx","CheckBox":"_styles-module__CheckBox__3klwe","button_wrapper":"_styles-module__button_wrapper__RJ7yj","Button":"_styles-module__Button__26moK","recaptcha":"_styles-module__recaptcha__14pK3","RegisterButton":"_styles-module__RegisterButton__1WoJs","RegisterLink":"_styles-module__RegisterLink__2p_CN","restricted_countries_wrapper":"_styles-module__restricted_countries_wrapper__5339W","restricted_countries_container":"_styles-module__restricted_countries_container__30wCB","restricted_countries_cols":"_styles-module__restricted_countries_cols__17jba","restricted_countries_cols_md":"_styles-module__restricted_countries_cols_md__wx9cR","listCollapse":"_styles-module__listCollapse__P54fa","active":"_styles-module__active__1yv7q","buttonCollapse":"_styles-module__buttonCollapse__BL6zk","isCollapse":"_styles-module__isCollapse__38GJw","iconCollapse":"_styles-module__iconCollapse__3YmIy","RegisterText":"_styles-module__RegisterText__3dZ-C","RegisterForm":"_styles-module__RegisterForm__2sn5j","formControl":"_styles-module__formControl__MkpSE","inputWrapper":"_styles-module__inputWrapper__u_8Hb","SelectWrapper":"_styles-module__SelectWrapper__2wTl0","CountrySelectWrapper":"_styles-module__CountrySelectWrapper__cRn99","nationalitySelect":"_styles-module__nationalitySelect__3tlRp","nationalityLabel":"_styles-module__nationalityLabel__1-615","phonenumber_wrapper":"_styles-module__phonenumber_wrapper__3q5qp","trustpilot":"_styles-module__trustpilot__2V00g","trustpilot_wrapper":"_styles-module__trustpilot_wrapper__1PI3w","FormFooter":"_styles-module__FormFooter__29TuF","Body":"_styles-module__Body__3J0ny","Menu":"_styles-module__Menu__3AI86","marginTopMenu":"_styles-module__marginTopMenu__2vzmR","noteText":"_styles-module__noteText__9TPd0"};
 
 var restricted_countries = ['Cambodia', 'Jordan', 'Myanmar', 'Pakistan', 'Philippines', 'Syria', 'Turkey', 'Yemen', 'Iran', 'The Democratic People’s Republic of Korea', 'Iraq', 'Afghanistan', 'Turkmenistan', 'Albania', 'Gibraltar', 'Barbados', 'Haiti', 'Jamaica', 'US Virgin Islands', 'Trinidad and Tobago', 'Venezuela', 'Burkina Faso', 'Mali', 'Morocco', 'Senegal', 'South Sudan', 'Uganda', 'Somalia', 'Democratic Republic of the Congo', 'Sudan', 'Libya', 'Central African Republic', 'Nigeria', 'Burundi', 'Equatorial Guinea', 'Guinea-Bissau', 'Samoa', 'Fiji', 'Palau', 'American Samoa', 'Vanuatu', 'Guam', 'Niger', 'Crimea Region', 'Donetsk Region', 'Luhansk Region', 'Cuba', 'Tanzania', 'Mozambique'];
 const FatfScreen = ({
@@ -94,7 +113,7 @@ const FatfScreen = ({
       style: {
         flex: `1`
       }
-    }, _.sortBy(restricted_countries).filter((item, index) => index < (idx + 1) * count && index >= idx * count).map((item, index) => {
+    }, _$1.sortBy(restricted_countries).filter((item, index) => index < (idx + 1) * count && index >= idx * count).map((item, index) => {
       return /*#__PURE__*/React.createElement("div", {
         key: index,
         className: `${styles.item} mb-1`
@@ -109,7 +128,7 @@ const FatfScreen = ({
       style: {
         flex: `1`
       }
-    }, _.sortBy(restricted_countries).filter((item, index) => index < (idx + 1) * count && index >= idx * count).map((item, index) => {
+    }, _$1.sortBy(restricted_countries).filter((item, index) => index < (idx + 1) * count && index >= idx * count).map((item, index) => {
       return /*#__PURE__*/React.createElement("div", {
         key: index,
         className: `${styles.item} mb-1`
@@ -814,7 +833,7 @@ const RegisterScreen = ({
     }
   }, []);
   useEffect(() => {
-    if (window.location && !_.isEmpty(window.location.search)) {
+    if (window.location && !_$1.isEmpty(window.location.search)) {
       window.localStorage.removeItem('data_onboarding');
     }
   }, []);
@@ -919,7 +938,7 @@ const RegisterScreen = ({
     value: phoneCodeList && phoneCodeList.find(item => item.value == phoneCountry),
     options: phoneCodeList,
     toggleClass: styles.PhoneSelect,
-    menuClass: `mt-2 ${styles.Menu}`,
+    menuClass: `${styles.marginTopMenu} ${styles.Menu}`,
     onChange: handleChangePhoneCountry
   })), /*#__PURE__*/React.createElement("input", Object.assign({
     type: "text",
@@ -982,7 +1001,8 @@ const RegisterScreen = ({
       width: `100%`,
       display: `flex`,
       marginTop: `1.5rem`
-    }
+    },
+    className: styles.trustpilot
   }, /*#__PURE__*/React.createElement("div", {
     className: styles.trustpilot_wrapper
   }, /*#__PURE__*/React.createElement(Trustpilot, {
@@ -1036,6 +1056,578 @@ var data = {
 	trust_pilot: trust_pilot
 };
 
+const Title = props => {
+  const {
+    text,
+    as,
+    hasid
+  } = props;
+  const As = as ? as : 'h2';
+  return /*#__PURE__*/React.createElement(As, Object.assign({
+    id: text && hasid ? sanitizeTitle(text) : ''
+  }, mergeProps(props)), text);
+};
+
+var styles$2 = {"onboarding":"_styles-module__onboarding__1k6q4","onboardingContainer":"_styles-module__onboardingContainer__35vz7","cookiesBtn":"_styles-module__cookiesBtn__1A25e","sidebar":"_styles-module__sidebar__Rv_X4","mainContainer":"_styles-module__mainContainer__34t-k","bgWhite":"_styles-module__bgWhite__1Krgo","linkToHomepage":"_styles-module__linkToHomepage__1fVlf","promotionCodeWrapper":"_styles-module__promotionCodeWrapper__2DTlf","percent":"_styles-module__percent__1cXWL","backgroundWrapper":"_styles-module__backgroundWrapper__2KV9O","backgroundImg":"_styles-module__backgroundImg__29FqM","stepImg":"_styles-module__stepImg__2YXMG","leftObdImg":"_styles-module__leftObdImg__D7ouT","sidebarContainer":"_styles-module__sidebarContainer__3CfK8","sidebarTitle":"_styles-module__sidebarTitle__2REJj","sidebarDescription":"_styles-module__sidebarDescription__361rJ","progress":"_styles-module__progress__1khJ-","dot":"_styles-module__dot__2MvYl","dotStyles":"_styles-module__dotStyles__39bcc","child":"_styles-module__child__dehy_","dotPrimary":"_styles-module__dotPrimary__2rZg_","dotSuccess":"_styles-module__dotSuccess__2INcD","textPrimary":"_styles-module__textPrimary__38T6_","textSuccess":"_styles-module__textSuccess__23fgB","logo":"_styles-module__logo__P7CHJ","logoText":"_styles-module__logoText__24CBM","main":"_styles-module__main__3hS3P","mainBg":"_styles-module__mainBg__2Z58x","firstScreenMb1":"_styles-module__firstScreenMb1__3wL-o","firstScreenMb":"_styles-module__firstScreenMb__3Zqtc","navBar":"_styles-module__navBar__39_Fl","navBarContainer":"_styles-module__navBarContainer__1SpQo","expandMenuBtn":"_styles-module__expandMenuBtn__1_bJF","navBarWrapper":"_styles-module__navBarWrapper__1ksTO","navBarImageWrapper":"_styles-module__navBarImageWrapper__23EKm","navBarPannel":"_styles-module__navBarPannel__OYFR7","navBarPannelOpen":"_styles-module__navBarPannelOpen__U-hQy","navBarPannelContainer":"_styles-module__navBarPannelContainer__3q0Zo","navBarPannelWrapper":"_styles-module__navBarPannelWrapper__1pWRN","linkWrapper":"_styles-module__linkWrapper__3m7xV","menuNavImg":"_styles-module__menuNavImg__2i6cr","navBarPannelTitleWrapper":"_styles-module__navBarPannelTitleWrapper__1rzcC","navBarPannelTitle":"_styles-module__navBarPannelTitle__1LiIV","navBarPannelTextContact":"_styles-module__navBarPannelTextContact__2Dvcb","navBarPannelTextSmall":"_styles-module__navBarPannelTextSmall__29pWB","colItem":"_styles-module__colItem__6fF-J","cookies":"_styles-module__cookies__3nukM"};
+
+function Cookies() {
+  const [show, setShow] = useState(false);
+  const handleCookiesClick = () => {
+    localStorage.setItem('statusPopup', 1);
+    localStorage.setItem('expirationCookies', new Date().getTime());
+    setShow(false);
+  };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const statusPopup = localStorage.getItem('statusPopup');
+      const expirationCookies = localStorage.getItem('expirationCookies');
+      if (!statusPopup || Number.parseInt(statusPopup) !== 1 || !expirationCookies || new Date().getTime() - expirationCookies > 7 * 86400000) {
+        setShow(true);
+      }
+    }, 10000);
+    return () => clearTimeout(timer);
+  }, []);
+  return show ? /*#__PURE__*/React.createElement("div", {
+    className: styles$2.cookies
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, "By using our website you consent to all cookies in accordance with our", ' ', /*#__PURE__*/React.createElement("a", {
+    href: "/hk/privacy-policy",
+    target: "_blank",
+    rel: "nofollow"
+  }, "Privacy Policy")), /*#__PURE__*/React.createElement("button", {
+    onClick: handleCookiesClick,
+    className: styles$2.cookiesBtn
+  }, /*#__PURE__*/React.createElement(FaCookieBite, {
+    size: 16,
+    style: {
+      marginRight: '8px',
+      display: 'inline-block'
+    }
+  }), "Accept"))) : /*#__PURE__*/React.createElement(Fragment, null);
+}
+
+var listMenu = {
+	incorporation: [
+		{
+			name: "Country and Company Type",
+			slug: [
+				"incorporation-country",
+				"incorporation-company-type"
+			]
+		},
+		{
+			name: "Entity name check",
+			slug: [
+				"incorporation-entity-name-check"
+			]
+		},
+		{
+			name: "Service packages",
+			sub_step: [
+				{
+					name: "Select packages",
+					slug: [
+						"incorporation-package"
+					]
+				},
+				{
+					name: "Additional services",
+					slug: [
+						"incorporation-additional-service"
+					]
+				}
+			]
+		}
+	],
+	banking: [
+		{
+			name: "Service packages",
+			slug: [
+				"banking-package"
+			]
+		},
+		{
+			name: "Take your choices",
+			slug: [
+				"banking-choice"
+			]
+		},
+		{
+			name: "Banking assessment",
+			sub_step: [
+				{
+					name: "Questionnaire",
+					slug: [
+						"banking-questionnaire"
+					]
+				},
+				{
+					name: "Result",
+					slug: [
+						"banking-result"
+					]
+				}
+			]
+		}
+	],
+	payment: [
+		{
+			name: "Confirm & pay",
+			slug: [
+				"order-information"
+			]
+		},
+		{
+			name: "Notification",
+			slug: [
+				"payment-success",
+				"payment-pending",
+				"payment-failure"
+			]
+		}
+	]
+};
+var dataJson = {
+	listMenu: listMenu
+};
+
+const OnboardingContext = React.createContext({});
+function Layout({
+  head,
+  fatf,
+  pattern,
+  children
+}) {
+  const [show, setShow] = useState(false);
+  const handleShow = () => {
+    setShow(!show);
+  };
+  const getUrlVars = () => {
+    let vars = {};
+    let parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+      vars[key] = value;
+    });
+    return vars;
+  };
+  const queryPromotionCode = getUrlVars()['promotion_code'];
+  const queryDate = getUrlVars()['date'];
+  const queryType = getUrlVars()['type'];
+  const queryOrderCode = getUrlVars()['order_code'];
+  const slug = window.location.pathname.split('/').join('');
+  const getQueryCode = () => {
+    let queryCode = '';
+    let promotionCode = queryPromotionCode;
+    let date = queryDate;
+    let type = queryType;
+    if (promotionCode) {
+      if (date && type) {
+        queryCode = 'promotion_code=' + promotionCode + '&date=' + date + '&type=' + type;
+      } else {
+        queryCode = 'promotion_code=' + promotionCode;
+      }
+    }
+    return queryCode;
+  };
+  const getQueryCodeChristmas = () => {
+    const queryChristmas = localStorage.getItem('type-christmas');
+    if (queryChristmas) {
+      return queryChristmas;
+    } else {
+      return '';
+    }
+  };
+  const [dataOnboarding, setDataOnboarding] = useState({});
+  const [dataOrder, setDataOrder] = useState({});
+  const [type, setType] = useState();
+  const isFirstScreen = slug == 'register' ? !fatf ? true : false : false;
+  const [isStep, setIsStep] = useState(slug !== 'register' && slug !== 'select-service');
+  const [isPay, setIsPay] = useState(false);
+  const [isIncorpToBank, setIsIncorpToBank] = useState(false);
+  useEffect(() => {
+    const data = JSON.parse(window.localStorage.getItem('data_onboarding'));
+    setDataOnboarding(data);
+    const layout = JSON.parse(window.localStorage.getItem('layout'));
+    setType(layout !== null && layout !== void 0 && layout.type ? layout === null || layout === void 0 ? void 0 : layout.type : null);
+    setIsIncorpToBank(layout === null || layout === void 0 ? void 0 : layout.incorp_to_bank);
+    if (window.location && queryOrderCode) {
+      let orderCode = queryOrderCode;
+      let urlApi = '';
+      let queryCode = getQueryCode();
+      let queryCodeChristmas = getQueryCodeChristmas();
+      if (queryCode.length > 0) {
+        urlApi = `https://core.test-lp.bbcincorp.com/api/onboarding/order/${orderCode}?${queryCode}`;
+      } else if (queryCodeChristmas.length > 0) {
+        urlApi = `https://core.test-lp.bbcincorp.com/api/onboarding/order/${orderCode + queryCodeChristmas}`;
+      } else {
+        urlApi = `https://core.test-lp.bbcincorp.com/api/onboarding/order/${orderCode}`;
+      }
+      axios.get(urlApi).then(res => {
+        let data = res.data.data;
+        setDataOrder(data);
+        let pay = slug == 'order-information' && (data.order_status_id || data.payment_gateway_id);
+        setIsPay(pay);
+        setIsStep(!pay);
+        if (['order-information', 'payment-success', 'payment-pending', 'payment-failure'].includes(slug)) {
+          var _data$OrderItems$, _data$OrderItems$2;
+          setType((data === null || data === void 0 ? void 0 : (_data$OrderItems$ = data.OrderItems[0]) === null || _data$OrderItems$ === void 0 ? void 0 : _data$OrderItems$.service_id) === 1670 && (data === null || data === void 0 ? void 0 : (_data$OrderItems$2 = data.OrderItems[0]) === null || _data$OrderItems$2 === void 0 ? void 0 : _data$OrderItems$2.Package) === null ? 'banking' : isIncorpToBank ? 'banking' : 'incorporation');
+        }
+      });
+    }
+  }, [isIncorpToBank]);
+  useEffect(() => {
+    const detech = () => {
+      const mediaQuery = window.matchMedia('(min-width: 992px)');
+      let body = document.querySelector('body');
+      body.style.overflowY = mediaQuery.matches ? 'auto' : show ? 'hidden' : 'auto';
+    };
+    detech();
+    window.addEventListener('resize', () => {
+      detech();
+    });
+  }, [show]);
+  var listMenu = [];
+  if (type) {
+    var _dataOrder$Company, _dataOrder$Company$Co;
+    let countryId = dataOrder === null || dataOrder === void 0 ? void 0 : (_dataOrder$Company = dataOrder.Company) === null || _dataOrder$Company === void 0 ? void 0 : (_dataOrder$Company$Co = _dataOrder$Company.Country) === null || _dataOrder$Company$Co === void 0 ? void 0 : _dataOrder$Company$Co.id;
+    let listMenuType = isIncorpToBank ? dataJson.listMenu[type].filter((item, index) => item && (countryId === 191 || countryId === 237 || countryId === 250) ? index !== 0 && index !== 2 : index !== 0) : dataJson.listMenu[type];
+    let listMenuPayment = isIncorpToBank ? dataJson.listMenu.payment.filter((item, index) => item && index !== 0) : dataJson.listMenu.payment;
+    listMenu = [...listMenuType, ...listMenuPayment];
+  }
+  useEffect(() => {
+    if (!dataOnboarding) {
+      if (!['order-information', 'payment-success', 'payment-pending', 'payment-failure'].includes(slug)) {
+        let pathName = '/register';
+        if (['incorporation-country', 'incorporation-company-type', 'incorporation-entity-name-check', 'incorporation-package', 'incorporation-additional-service', 'banking-package'].includes(slug)) {
+          location.href = pathName;
+        }
+      }
+    }
+  }, [dataOnboarding]);
+  const Progress = ({
+    ...props
+  }) => {
+    let activeParent = false;
+    let successStep = true;
+    return isStep ? /*#__PURE__*/React.createElement("div", Object.assign({}, props, {
+      className: `${styles$2.progress} ${props.className}`
+    }), /*#__PURE__*/React.createElement("ul", null, listMenu.map((item, index) => {
+      if (item.slug && item.slug.includes(slug) || item.sub_step && _.find(item.sub_step, function (i) {
+        return i.slug.includes(slug);
+      })) {
+        activeParent = true;
+        successStep = false;
+      } else {
+        activeParent = false;
+      }
+      return /*#__PURE__*/React.createElement("li", {
+        key: index,
+        style: {
+          marginBottom: '16px'
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: 'flex'
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        className: `${styles$2.dot} ${activeParent ? styles$2.dotPrimary : successStep ? styles$2.dotSuccess : ''} ${styles$2.dotStyles}`
+      }, successStep && /*#__PURE__*/React.createElement(IconContext.Provider, {
+        value: {
+          color: 'white'
+        },
+        style: {
+          position: 'absolute'
+        }
+      }, /*#__PURE__*/React.createElement(BsCheckLg, {
+        size: `10px`
+      }))), /*#__PURE__*/React.createElement("span", {
+        style: {
+          marginLeft: '16px'
+        },
+        className: ` ${activeParent ? styles$2.textPrimary : successStep ? styles$2.textSuccess : ''}`
+      }, item.name)), item.sub_step && _.find(item.sub_step, function (i) {
+        return i.slug.includes(slug);
+      }) && /*#__PURE__*/React.createElement("ul", {
+        style: {
+          paddingLeft: '32px',
+          marginBottom: '0'
+        }
+      }, item.sub_step.map((item, index) => /*#__PURE__*/React.createElement("li", {
+        key: index,
+        className: `${styles$2.child}`
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: 'flex'
+        }
+      }, /*#__PURE__*/React.createElement("span", {
+        className: `${item.slug && item.slug.includes(slug) ? styles$2.textPrimary : ''}`
+      }, item.name))))));
+    }))) : /*#__PURE__*/React.createElement(Fragment, null);
+  };
+  return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement(OnboardingContext.Provider, {
+    value: {
+      dataOrder: dataOrder
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${styles$2.onboarding} ${styles$2.onboardingContainer}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${styles$2.sidebar}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${styles$2.sidebarContainer}`
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      zIndex: 50,
+      position: 'relative'
+    }
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "https://bbcincorp.com/hk",
+    className: `${styles$2.linkToHomepage}`,
+    target: "_blank"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: logoImg,
+    alt: "logo",
+    className: `${styles$2.logo}`,
+    style: {
+      filter: `${!isStep ? 'brightness(0) invert(1)' : ''}`
+    }
+  }), /*#__PURE__*/React.createElement("img", {
+    src: logotextImg,
+    alt: "logo text",
+    className: `${styles$2.logoText}`,
+    style: {
+      filter: `${!isStep ? 'brightness(0) invert(1)' : ''}`
+    }
+  })), !isStep && /*#__PURE__*/React.createElement("div", {
+    style: {
+      maxWidth: '28rem'
+    }
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Title, {
+    text: `${isPay ? 'Thank you for choosing our service' : 'A fast and better way to kickstart your business ventures globally'}`,
+    as: "h1",
+    className: `${styles$2.sidebarTitle}`
+  }), /*#__PURE__*/React.createElement("p", {
+    className: `${styles$2.sidebarDescription}`
+  }, isPay ? 'If you couldn’t pay the package or item, please contact us for help. Our team are always ready to support.' : 'Simple, frictionless and easy-to-use platform to help you start your company in minutes.')), location && queryPromotionCode ? /*#__PURE__*/React.createElement("div", {
+    className: styles$2.promotionCodeWrapper
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$2.percent
+  }, "5%"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: '#007eff'
+    }
+  }, "Discount Is Here."), /*#__PURE__*/React.createElement("div", null, "Start Your Company With Us!")) : /*#__PURE__*/React.createElement(Fragment, null)), /*#__PURE__*/React.createElement(Progress, null)), /*#__PURE__*/React.createElement("div", {
+    className: styles$2.backgroundWrapper,
+    style: {
+      bottom: 0,
+      left: 0,
+      zIndex: 10,
+      mixBlendMode: isFirstScreen || isPay ? 'initial' : 'luminosity'
+    }
+  }, /*#__PURE__*/React.createElement("img", {
+    src: pattern !== null && pattern !== void 0 && pattern.desktop ? pattern === null || pattern === void 0 ? void 0 : pattern.desktop : isFirstScreen || isPay ? obdIncorpImg : onboardingIncorpImg,
+    className: styles$2.backgroundImg,
+    alt: "pattern"
+  })), !isStep && /*#__PURE__*/React.createElement("div", {
+    className: styles$2.stepImg
+  }, /*#__PURE__*/React.createElement("img", {
+    src: leftObdImg,
+    alt: "bg-left-obd",
+    className: styles$2.leftObdImg
+  })))), /*#__PURE__*/React.createElement("div", {
+    className: styles$2.main
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$2.mainBg
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${styles$2.mainContainer}`,
+    style: {
+      zIndex: 50
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${styles$2.navBar} ${show ? styles$2.bgWhite : isFirstScreen ? '' : styles$2.bgWhite}`,
+    style: {
+      boxShadow: show ? 'initial' : isFirstScreen ? 'initial' : '0 0 8px rgb(65 65 65 / 25%)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${styles$2.navBarContainer}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$2.navBarWrapper
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: '0 0 auto'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex'
+    }
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "https://bbcincorp.com/hk",
+    className: styles$2.linkToHomepage,
+    target: "_blank"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: logoImg,
+    alt: "logo",
+    className: `${styles$2.logo}`,
+    style: {
+      filter: `${show ? '' : isFirstScreen ? 'brightness(0) invert(1)' : ''}`
+    }
+  }), /*#__PURE__*/React.createElement("img", {
+    src: logotextImg,
+    alt: "logo text",
+    className: `${styles$2.logoText}`,
+    style: {
+      filter: `${show ? '' : isFirstScreen ? 'brightness(0) invert(1)' : ''}`
+    }
+  })))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: '0 0 auto'
+    }
+  }, show ? /*#__PURE__*/React.createElement("button", {
+    className: styles$2.expandMenuBtn,
+    onClick: handleShow
+  }, /*#__PURE__*/React.createElement(VscChromeClose, {
+    size: `1.75rem`
+  })) : /*#__PURE__*/React.createElement("button", {
+    className: styles$2.expandMenuBtn,
+    onClick: handleShow
+  }, /*#__PURE__*/React.createElement(IconContext.Provider, {
+    value: {
+      color: isFirstScreen ? 'white' : ''
+    }
+  }, /*#__PURE__*/React.createElement(VscMenu, {
+    size: `1.75rem`
+  }))))))), /*#__PURE__*/React.createElement("div", {
+    className: `${styles$2.navBarPannel} ${show ? styles$2.navBarPannelOpen : ''}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${styles$2.navBarPannelContainer}`
+  }, !isStep ? /*#__PURE__*/React.createElement("div", {
+    className: styles$2.navBarImageWrapper
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: '0 0 auto'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$2.menuNavImg
+  }, /*#__PURE__*/React.createElement("img", {
+    src: menuNavImg,
+    alt: "menu nav"
+  })))) : /*#__PURE__*/React.createElement("div", {
+    className: styles$2.navBarWrapper
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$2.navBarPannelTitleWrapper
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${styles$2.navBarPannelTitle}`
+  }, "Progress"), /*#__PURE__*/React.createElement(Progress, {
+    style: {
+      marginTop: '16px'
+    }
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: styles$2.navBarPannelWrapper
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$2.navBarPannelTitleWrapper
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${styles$2.navBarPannelTitle}`
+  }, "Contact us"), /*#__PURE__*/React.createElement("div", {
+    className: `${styles$2.navBarPannelTextContact}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$2.linkWrapper
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$2.colItem,
+    style: {
+      flex: '0 0 auto'
+    }
+  }, "Skype:"), /*#__PURE__*/React.createElement("div", {
+    className: styles$2.colItem,
+    style: {
+      flex: '0 0 auto',
+      textAlign: 'right'
+    }
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "skype:live:bbcincorp?chat",
+    rel: "nofollow"
+  }, "live:bbcincorp"))), /*#__PURE__*/React.createElement("div", {
+    className: styles$2.linkWrapper,
+    style: {
+      marginTop: '4px'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$2.colItem,
+    style: {
+      flex: '0 0 auto'
+    }
+  }, "Email:"), /*#__PURE__*/React.createElement("div", {
+    className: styles$2.colItem,
+    style: {
+      flex: '0 0 auto',
+      textAlign: 'right'
+    }
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "mailto:service@bbcincorp.com",
+    rel: "nofollow",
+    target: "_blank"
+  }, "service@bbcincorp.com"))), /*#__PURE__*/React.createElement("div", {
+    className: styles$2.linkWrapper,
+    style: {
+      marginTop: '4px'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$2.colItem,
+    style: {
+      flex: '0 0 auto'
+    }
+  }, "Phone number:"), /*#__PURE__*/React.createElement("div", {
+    className: styles$2.colItem,
+    style: {
+      flex: '0 0 auto',
+      textAlign: 'right'
+    }
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("a", {
+    href: "tel:+85281928666",
+    rel: "nofollow"
+  }, "(+852) 8192 8666")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("a", {
+    href: "tel:+6531381666",
+    rel: "nofollow"
+  }, "(+65) 3138 1666"))))))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: '32px'
+    }
+  }, /*#__PURE__*/React.createElement("p", {
+    className: `${styles$2.navBarPannelTextSmall}`,
+    style: {
+      marginBottom: '8px'
+    }
+  }, "Ver 1.0"), /*#__PURE__*/React.createElement("p", {
+    className: `${styles$2.navBarPannelTextSmall}`,
+    style: {
+      marginBottom: '0'
+    }
+  }, "Copyright of BBCIncorp")))), children), /*#__PURE__*/React.createElement("div", {
+    className: styles$2.firstScreenMb1,
+    style: {
+      bottom: 0,
+      left: 0,
+      zIndex: 10,
+      transform: isFirstScreen || isPay ? 'translateY(25%)' : 'initial',
+      opacity: pattern !== null && pattern !== void 0 && pattern.mobile ? 1 : 0.4
+    }
+  }, /*#__PURE__*/React.createElement("img", {
+    src: pattern !== null && pattern !== void 0 && pattern.mobile ? pattern === null || pattern === void 0 ? void 0 : pattern.mobile : isFirstScreen || isPay ? obdIncorpImg : onboardingIncorpImg,
+    style: {
+      width: '100%',
+      height: 'auto'
+    },
+    alt: "pattern"
+  })), isFirstScreen && /*#__PURE__*/React.createElement("div", {
+    className: styles$2.firstScreenMb
+  }, /*#__PURE__*/React.createElement("img", {
+    src: leftObdImg,
+    alt: "bg-left-obd",
+    style: {
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      objectPosition: 'right top'
+    }
+  })))))), /*#__PURE__*/React.createElement(Cookies, null));
+}
+
 function Register({
   isTypeChristmas
 }) {
@@ -1059,17 +1651,23 @@ function Register({
       localStorage.removeItem('setExpirationDateObd');
     }
   }, []);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement(Layout, {
+    fatf: fatfScreen,
+    pattern: FatfScreen ? {
+      desktop: obdIncorp2Img,
+      mobile: tabletBuildImg
+    } : {}
+  }, /*#__PURE__*/React.createElement("div", {
     className: styles.Register
   }, fatfScreen ? /*#__PURE__*/React.createElement(FatfScreen, {
     onReceiveData: receiveData
   }) : /*#__PURE__*/React.createElement(RegisterScreen, {
     trustpilot: data.trust_pilot,
     isTypeChristmas: isTypeChristmas
-  }));
+  })));
 }
 
-var styles$2 = {"select_title":"_styles-module__select_title__2K9oK","descriptionText":"_styles-module__descriptionText__39yY1","btn_back_top":"_styles-module__btn_back_top__1Wixw","btn_back_bottom":"_styles-module__btn_back_bottom__15HAn","selecttype_container":"_styles-module__selecttype_container__1Rr4C","select_type":"_styles-module__select_type__22Dgm","Package":"_styles-module__Package__1diqG","Package_title":"_styles-module__Package_title__2CKOy","SelectServiceScreen":"_styles-module__SelectServiceScreen__2YoN5","Link":"_styles-module__Link__2qWh0","promotion":"_styles-module__promotion__3HJX6","arrow_circle":"_styles-module__arrow_circle__3e_eN","Header":"_styles-module__Header__BIlvy","Body":"_styles-module__Body__iHyQI"};
+var styles$3 = {"select_title":"_styles-module__select_title__2K9oK","descriptionText":"_styles-module__descriptionText__39yY1","btn_back_top":"_styles-module__btn_back_top__1Wixw","btn_back_bottom":"_styles-module__btn_back_bottom__15HAn","selecttype_container":"_styles-module__selecttype_container__1Rr4C","select_type":"_styles-module__select_type__22Dgm","Package":"_styles-module__Package__1diqG","Package_title":"_styles-module__Package_title__2CKOy","SelectServiceScreen":"_styles-module__SelectServiceScreen__2YoN5","Link":"_styles-module__Link__2qWh0","promotion":"_styles-module__promotion__3HJX6","arrow_circle":"_styles-module__arrow_circle__3e_eN","Header":"_styles-module__Header__BIlvy","Body":"_styles-module__Body__iHyQI"};
 
 function SelectService(params) {
   const [promotion, setPromotion] = useState(false);
@@ -1135,25 +1733,30 @@ function SelectService(params) {
       }
     }
   }, [querySignature, queryPromotionCode]);
-  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("section", {
-    className: styles$2.SelectServiceScreen
+  return /*#__PURE__*/React.createElement(Layout, {
+    pattern: {
+      desktop: obdIncorp2Img,
+      mobile: tabletBuildImg
+    }
+  }, /*#__PURE__*/React.createElement("section", {
+    className: styles$3.SelectServiceScreen
   }, /*#__PURE__*/React.createElement("a", {
     href: "/register",
-    className: `${styles$2.Link} ${styles$2.Header} ${styles$2.btn_back_top}`
+    className: `${styles$3.Link} ${styles$3.Header} ${styles$3.btn_back_top}`
   }, "Back"), /*#__PURE__*/React.createElement("h2", {
-    className: styles$2.select_title
+    className: styles$3.select_title
   }, "Select service you want to proceed"), /*#__PURE__*/React.createElement("div", {
-    className: styles$2.Body
+    className: styles$3.Body
   }, /*#__PURE__*/React.createElement("p", {
-    className: styles$2.descriptionText
+    className: styles$3.descriptionText
   }, "Incorporation packages already entail banking option. Should you need banking support only, kindly select Banking."), /*#__PURE__*/React.createElement("div", {
-    className: styles$2.selecttype_container,
+    className: styles$3.selecttype_container,
     style: {
       marginLeft: '-23px',
       marginRight: '-23px'
     }
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$2.select_type
+    className: styles$3.select_type
   }, /*#__PURE__*/React.createElement("a", {
     style: {
       border: `none`,
@@ -1161,7 +1764,7 @@ function SelectService(params) {
     },
     href: "/incorporation-country"
   }, /*#__PURE__*/React.createElement("button", {
-    className: styles$2.Package,
+    className: styles$3.Package,
     style: {
       cursor: `pointer`,
       boxShadow: '0 2px 8px rgb(201 201 201 / 25%)',
@@ -1169,14 +1772,14 @@ function SelectService(params) {
     },
     onClick: () => handleClick('incorporation')
   }, promotion && /*#__PURE__*/React.createElement("div", {
-    className: styles$2.promotion
+    className: styles$3.promotion
   }, "-5%"), /*#__PURE__*/React.createElement("img", {
     src: incorpImg,
     alt: "incorporation"
   }), /*#__PURE__*/React.createElement("h3", null, "INCORPORATION"), /*#__PURE__*/React.createElement("p", {
-    className: styles$2.arrow_circle
+    className: styles$3.arrow_circle
   }, '\u2192')))), /*#__PURE__*/React.createElement("div", {
-    className: styles$2.select_type
+    className: styles$3.select_type
   }, /*#__PURE__*/React.createElement("a", {
     style: {
       position: `relative`,
@@ -1184,7 +1787,7 @@ function SelectService(params) {
     },
     href: "/banking-package"
   }, /*#__PURE__*/React.createElement("button", {
-    className: styles$2.Package,
+    className: styles$3.Package,
     style: {
       cursor: `pointer`,
       boxShadow: '0 2px 8px rgb(201 201 201 / 25%)',
@@ -1195,10 +1798,10 @@ function SelectService(params) {
     src: bankingImg,
     alt: "banking"
   }), /*#__PURE__*/React.createElement("h3", null, "BANKING"), /*#__PURE__*/React.createElement("p", {
-    className: styles$2.arrow_circle
+    className: styles$3.arrow_circle
   }, '\u2192'))))))), /*#__PURE__*/React.createElement("a", {
     href: "/register",
-    className: `${styles$2.Link} ${styles$2.btn_back_bottom}`
+    className: `${styles$3.Link} ${styles$3.btn_back_bottom}`
   }, "Back"));
 }
 
@@ -2005,7 +2608,7 @@ function JurisdictionFeatures(props) {
   }) : parser(item.audited_accounts))))));
 }
 
-var styles$3 = {"offshoreComCompare_CompareTableContainer":"_styles-module__offshoreComCompare_CompareTableContainer__2zgJp","offshoreComCompare_CompareTable":"_styles-module__offshoreComCompare_CompareTable__2Q2vm","offshoreComCompare_ResponsiveColum1":"_styles-module__offshoreComCompare_ResponsiveColum1__3mTta","offshoreComCompare_ResponsiveColum2":"_styles-module__offshoreComCompare_ResponsiveColum2__1xhEP","offshoreComCompare_ResponsiveColum3":"_styles-module__offshoreComCompare_ResponsiveColum3__39gCE","offshoreComCompare_HeaderFeature":"_styles-module__offshoreComCompare_HeaderFeature__6y6i5","offshoreComCompare_FeatureHidden":"_styles-module__offshoreComCompare_FeatureHidden__1tyZu","offshoreComCompare_FeatureCell":"_styles-module__offshoreComCompare_FeatureCell__1VdiQ","offshoreComCompare_HeaderColumn":"_styles-module__offshoreComCompare_HeaderColumn__YXRLe","offshoreComCompare_TitleCell":"_styles-module__offshoreComCompare_TitleCell__hz01D","offshoreComCompare_SubTitleCell":"_styles-module__offshoreComCompare_SubTitleCell__3OjIl","offshoreComCompare_StructureCell":"_styles-module__offshoreComCompare_StructureCell__2_4SW","offshoreComCompare_EuValue":"_styles-module__offshoreComCompare_EuValue__2OwBC","offshoreComCompare_MenuFilter":"_styles-module__offshoreComCompare_MenuFilter__1M2wp","offshoreComCompare_ActiveOption":"_styles-module__offshoreComCompare_ActiveOption__38Cw5","offshoreComCompare_CountryElement":"_styles-module__offshoreComCompare_CountryElement__d3MjA","offshoreComCompare_CountryFlag":"_styles-module__offshoreComCompare_CountryFlag__3Rm08","offshoreComCompare_ArrowButton":"_styles-module__offshoreComCompare_ArrowButton__3yz9u","offshoreComCompare_PrevButton":"_styles-module__offshoreComCompare_PrevButton__NzmcE","offshoreComCompare_NextButton":"_styles-module__offshoreComCompare_NextButton__3_G7C"};
+var styles$4 = {"offshoreComCompare_CompareTableContainer":"_styles-module__offshoreComCompare_CompareTableContainer__2zgJp","offshoreComCompare_CompareTable":"_styles-module__offshoreComCompare_CompareTable__2Q2vm","offshoreComCompare_ResponsiveColum1":"_styles-module__offshoreComCompare_ResponsiveColum1__3mTta","offshoreComCompare_ResponsiveColum2":"_styles-module__offshoreComCompare_ResponsiveColum2__1xhEP","offshoreComCompare_ResponsiveColum3":"_styles-module__offshoreComCompare_ResponsiveColum3__39gCE","offshoreComCompare_HeaderFeature":"_styles-module__offshoreComCompare_HeaderFeature__6y6i5","offshoreComCompare_FeatureHidden":"_styles-module__offshoreComCompare_FeatureHidden__1tyZu","offshoreComCompare_FeatureCell":"_styles-module__offshoreComCompare_FeatureCell__1VdiQ","offshoreComCompare_HeaderColumn":"_styles-module__offshoreComCompare_HeaderColumn__YXRLe","offshoreComCompare_TitleCell":"_styles-module__offshoreComCompare_TitleCell__hz01D","offshoreComCompare_SubTitleCell":"_styles-module__offshoreComCompare_SubTitleCell__3OjIl","offshoreComCompare_StructureCell":"_styles-module__offshoreComCompare_StructureCell__2_4SW","offshoreComCompare_EuValue":"_styles-module__offshoreComCompare_EuValue__2OwBC","offshoreComCompare_MenuFilter":"_styles-module__offshoreComCompare_MenuFilter__1M2wp","offshoreComCompare_ActiveOption":"_styles-module__offshoreComCompare_ActiveOption__38Cw5","offshoreComCompare_CountryElement":"_styles-module__offshoreComCompare_CountryElement__d3MjA","offshoreComCompare_CountryFlag":"_styles-module__offshoreComCompare_CountryFlag__3Rm08","offshoreComCompare_ArrowButton":"_styles-module__offshoreComCompare_ArrowButton__3yz9u","offshoreComCompare_PrevButton":"_styles-module__offshoreComCompare_PrevButton__NzmcE","offshoreComCompare_NextButton":"_styles-module__offshoreComCompare_NextButton__3_G7C"};
 
 const Menu$3 = props => {
   const style = {
@@ -2034,7 +2637,7 @@ function CountriesDropdown({
   onChange
 }) {
   return /*#__PURE__*/React.createElement("div", {
-    className: `${styles$3.offshoreComCompare_MenuFilter}`
+    className: `${styles$4.offshoreComCompare_MenuFilter}`
   }, target, isOpen ? /*#__PURE__*/React.createElement(Menu$3, null, /*#__PURE__*/React.createElement("ul", {
     style: {
       listStyleType: 'none',
@@ -2049,7 +2652,7 @@ function CountriesDropdown({
     style: {
       position: 'relative'
     },
-    className: `${value.id === item.id ? ' ' + styles$3.offshoreComCompare_ActiveOption : ''}`
+    className: `${value.id === item.id ? ' ' + styles$4.offshoreComCompare_ActiveOption : ''}`
   }, item.label)))) : null, isOpen ? /*#__PURE__*/React.createElement(Blanket, {
     onClick: onClose
   }) : null);
@@ -2068,13 +2671,13 @@ const CountryElement = ({
       justifyContent: 'center',
       alignItems: 'center'
     },
-    className: ` ${styles$3.offshoreComCompare_CountryElement}`
+    className: ` ${styles$4.offshoreComCompare_CountryElement}`
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       marginRight: '8px',
       overflow: 'hidden'
     },
-    className: `mr-2 overflow-hidden embed-responsive embed-responsive-16by9 ${styles$3.offshoreComCompare_CountryFlag}`
+    className: `mr-2 overflow-hidden embed-responsive embed-responsive-16by9 ${styles$4.offshoreComCompare_CountryFlag}`
   }, /*#__PURE__*/React.createElement("img", {
     loading: "eager",
     width: 20,
@@ -2103,7 +2706,7 @@ const EuElement = ({
   switch (eu_id) {
     case 1:
       return /*#__PURE__*/React.createElement("div", {
-        className: styles$3.offshoreComCompare_EuValue
+        className: styles$4.offshoreComCompare_EuValue
       }, /*#__PURE__*/React.createElement("span", {
         style: {
           backgroundColor: '#333'
@@ -2111,7 +2714,7 @@ const EuElement = ({
       }), /*#__PURE__*/React.createElement("span", null, "Blacklist"));
     case 2:
       return /*#__PURE__*/React.createElement("div", {
-        className: styles$3.offshoreComCompare_EuValue
+        className: styles$4.offshoreComCompare_EuValue
       }, /*#__PURE__*/React.createElement("span", {
         style: {
           backgroundColor: '#333'
@@ -2119,7 +2722,7 @@ const EuElement = ({
       }), /*#__PURE__*/React.createElement("span", null, "Greylist"));
     case 3:
       return /*#__PURE__*/React.createElement("div", {
-        className: styles$3.offshoreComCompare_EuValue
+        className: styles$4.offshoreComCompare_EuValue
       }, /*#__PURE__*/React.createElement("span", {
         style: {
           backgroundColor: '#10C400'
@@ -2187,11 +2790,11 @@ const CellItem = ({
 const getVisibleColClass = visibleCol => {
   switch (visibleCol) {
     case 1:
-      return ' ' + styles$3.offshoreComCompare_ResponsiveColum2 + ' ' + styles$3.offshoreComCompare_ResponsiveColum3;
+      return ' ' + styles$4.offshoreComCompare_ResponsiveColum2 + ' ' + styles$4.offshoreComCompare_ResponsiveColum3;
     case 2:
-      return ' ' + styles$3.offshoreComCompare_ResponsiveColum1 + ' ' + styles$3.offshoreComCompare_ResponsiveColum3;
+      return ' ' + styles$4.offshoreComCompare_ResponsiveColum1 + ' ' + styles$4.offshoreComCompare_ResponsiveColum3;
     case 3:
-      return ' ' + styles$3.offshoreComCompare_ResponsiveColum1 + ' ' + styles$3.offshoreComCompare_ResponsiveColum2;
+      return ' ' + styles$4.offshoreComCompare_ResponsiveColum1 + ' ' + styles$4.offshoreComCompare_ResponsiveColum2;
     default:
       return '';
   }
@@ -2242,18 +2845,18 @@ function JurisdictionComparison({
     }
   };
   return /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_CompareTableContainer
+    className: styles$4.offshoreComCompare_CompareTableContainer
   }, /*#__PURE__*/React.createElement("table", {
-    className: styles$3.offshoreComCompare_CompareTable + getVisibleColClass(mobileColVisible)
+    className: styles$4.offshoreComCompare_CompareTable + getVisibleColClass(mobileColVisible)
   }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_HeaderFeature
+    className: styles$4.offshoreComCompare_HeaderFeature
   }, "Features")), /*#__PURE__*/React.createElement("th", null, /*#__PURE__*/React.createElement("div", {
     style: {
       position: 'relative'
     },
-    className: `${styles$3.offshoreComCompare_HeaderColumn}`
+    className: `${styles$4.offshoreComCompare_HeaderColumn}`
   }, /*#__PURE__*/React.createElement(ReactMultiSelectCheckboxes, {
     hideSearch: true,
     options: [],
@@ -2271,7 +2874,7 @@ function JurisdictionComparison({
     style: {
       border: 'none'
     },
-    className: `btn ${styles$3.offshoreComCompare_ArrowButton} ${styles$3.offshoreComCompare_NextButton}`,
+    className: `btn ${styles$4.offshoreComCompare_ArrowButton} ${styles$4.offshoreComCompare_NextButton}`,
     onClick: handleNext
   }, /*#__PURE__*/React.createElement(FaChevronRight, {
     size: 20,
@@ -2280,13 +2883,13 @@ function JurisdictionComparison({
     style: {
       position: 'relative'
     },
-    className: `${styles$3.offshoreComCompare_HeaderColumn}`
+    className: `${styles$4.offshoreComCompare_HeaderColumn}`
   }, /*#__PURE__*/React.createElement("button", {
     style: {
       border: 'none',
       background: 'transparent'
     },
-    className: `btn ${styles$3.offshoreComCompare_ArrowButton} ${styles$3.offshoreComCompare_PrevButton}`,
+    className: `btn ${styles$4.offshoreComCompare_ArrowButton} ${styles$4.offshoreComCompare_PrevButton}`,
     onClick: handlePrev
   }, /*#__PURE__*/React.createElement(FaChevronLeft, {
     size: 20,
@@ -2308,13 +2911,13 @@ function JurisdictionComparison({
     style: {
       border: 'none'
     },
-    className: `btn ${styles$3.offshoreComCompare_ArrowButton} ${styles$3.offshoreComCompare_NextButton}`,
+    className: `btn ${styles$4.offshoreComCompare_ArrowButton} ${styles$4.offshoreComCompare_NextButton}`,
     onClick: handleNext
   }, /*#__PURE__*/React.createElement(FaChevronRight, {
     size: 20,
     color: "#fff"
   })))), /*#__PURE__*/React.createElement("th", null, /*#__PURE__*/React.createElement("div", {
-    className: `${styles$3.offshoreComCompare_HeaderColumn}`,
+    className: `${styles$4.offshoreComCompare_HeaderColumn}`,
     style: {
       borderTopRightRadius: 15,
       position: 'relative'
@@ -2324,7 +2927,7 @@ function JurisdictionComparison({
       border: 'none',
       background: 'transparent'
     },
-    className: `btn ${styles$3.offshoreComCompare_ArrowButton} ${styles$3.offshoreComCompare_PrevButton}`,
+    className: `btn ${styles$4.offshoreComCompare_ArrowButton} ${styles$4.offshoreComCompare_PrevButton}`,
     onClick: handlePrev
   }, /*#__PURE__*/React.createElement(FaChevronLeft, {
     size: 20,
@@ -2343,9 +2946,9 @@ function JurisdictionComparison({
       }))
     }
   }))))), /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_TitleCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_TitleCell
   }, /*#__PURE__*/React.createElement("img", {
     src: internationalCompliance,
     style: {
@@ -2360,9 +2963,9 @@ function JurisdictionComparison({
       marginLeft: '4px'
     }
   }, "INTERNATIONAL COMPLIANCE"))), /*#__PURE__*/React.createElement("td", null), /*#__PURE__*/React.createElement("td", null), /*#__PURE__*/React.createElement("td", null)), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "EU list")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(EuElement, {
     eu_id: dataColumn1.international_compliance.eu_id
   })), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(EuElement, {
@@ -2370,9 +2973,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(EuElement, {
     eu_id: dataColumn3.international_compliance.eu_id
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "OECD")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(OECD, {
     array: dataColumn1.international_compliance.oecd
   })), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(OECD, {
@@ -2380,9 +2983,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(OECD, {
     array: dataColumn3.international_compliance.oecd
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_TitleCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_TitleCell
   }, /*#__PURE__*/React.createElement("img", {
     src: legalStructure,
     style: {
@@ -2397,9 +3000,9 @@ function JurisdictionComparison({
       marginLeft: '4px'
     }
   }, "LEGAL STRUCTURE"))), /*#__PURE__*/React.createElement("td", null), /*#__PURE__*/React.createElement("td", null), /*#__PURE__*/React.createElement("td", null)), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "Legal basis")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.legal_structure.legal_basic
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2407,9 +3010,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.legal_structure.legal_basic
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "Foreign exchange control")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.legal_structure.foreign_exchange_control
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2417,9 +3020,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.legal_structure.foreign_exchange_control
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "Foreign ownership allowed")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.legal_structure.foreign_ownership_control
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2427,9 +3030,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.legal_structure.foreign_ownership_control
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_TitleCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_TitleCell
   }, /*#__PURE__*/React.createElement("img", {
     src: businessStructure,
     style: {
@@ -2444,9 +3047,9 @@ function JurisdictionComparison({
       marginLeft: '4px'
     }
   }, "BUSINESS STRUCTURE"))), /*#__PURE__*/React.createElement("td", null), /*#__PURE__*/React.createElement("td", null), /*#__PURE__*/React.createElement("td", null)), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_SubTitleCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_SubTitleCell
   }, "Company type")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.business_structure.company_type
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2454,13 +3057,13 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.business_structure.company_type
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_SubTitleCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_SubTitleCell
   }, "Director")), /*#__PURE__*/React.createElement("td", null), /*#__PURE__*/React.createElement("td", null), /*#__PURE__*/React.createElement("td", null)), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_StructureCell
   }, "Minimum number")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.business_structure.director.minimum_number
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2468,9 +3071,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.business_structure.director.minimum_number
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_StructureCell
   }, "Local resident required")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.business_structure.director.local_resident_required
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2478,9 +3081,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.business_structure.director.local_resident_required
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_StructureCell
   }, "Public register of director")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.business_structure.director.public_register
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2488,9 +3091,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.business_structure.director.public_register
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_StructureCell
   }, "Nominee director")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.business_structure.director.nominee
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2498,9 +3101,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.business_structure.director.nominee
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_StructureCell
   }, "Corporate director")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.business_structure.director.corporate
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2508,13 +3111,13 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.business_structure.director.corporate
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_SubTitleCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_SubTitleCell
   }, "Shareholder")), /*#__PURE__*/React.createElement("td", null), /*#__PURE__*/React.createElement("td", null), /*#__PURE__*/React.createElement("td", null)), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_StructureCell
   }, "Minimum number")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.business_structure.shareholder.minimum_number
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2522,9 +3125,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.business_structure.shareholder.minimum_number
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_StructureCell
   }, "Local resident required")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.business_structure.shareholder.local_resident_required
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2532,9 +3135,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.business_structure.shareholder.local_resident_required
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_StructureCell
   }, "Public register of shareholder")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.business_structure.shareholder.public_register
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2542,9 +3145,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.business_structure.shareholder.public_register
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_StructureCell
   }, "Nominee shareholder")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.business_structure.shareholder.nominee
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2552,9 +3155,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.business_structure.shareholder.nominee
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_StructureCell
   }, "Corporate shareholder")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.business_structure.shareholder.corporate
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2562,13 +3165,13 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.business_structure.shareholder.corporate
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_SubTitleCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_SubTitleCell
   }, "Beneficial owner")), /*#__PURE__*/React.createElement("td", null), /*#__PURE__*/React.createElement("td", null), /*#__PURE__*/React.createElement("td", null)), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_StructureCell
   }, "Public register of beneficial owner")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.business_structure.beneficial_owner.public_register
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2576,9 +3179,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.business_structure.beneficial_owner.public_register
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_StructureCell
   }, "Central register of beneficial owner")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.business_structure.beneficial_owner.central_register
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2586,13 +3189,13 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.business_structure.beneficial_owner.central_register
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_SubTitleCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_SubTitleCell
   }, "Share capital")), /*#__PURE__*/React.createElement("td", null), /*#__PURE__*/React.createElement("td", null), /*#__PURE__*/React.createElement("td", null)), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_StructureCell
   }, "Standard registered capital")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.business_structure.share_capital.standard_register
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2600,9 +3203,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.business_structure.share_capital.standard_register
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_StructureCell
   }, "Min paid-up capital")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.business_structure.share_capital.min_paid_up
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2610,9 +3213,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.business_structure.share_capital.min_paid_up
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_StructureCell
   }, "Capital currency")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.business_structure.share_capital.capital_currency
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2620,9 +3223,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.business_structure.share_capital.capital_currency
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_StructureCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_StructureCell
   }, "Bearer shares")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.business_structure.share_capital.bearer_shares
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2630,9 +3233,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.business_structure.share_capital.bearer_shares
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_TitleCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_TitleCell
   }, /*#__PURE__*/React.createElement("img", {
     src: initialRequirement,
     style: {
@@ -2647,9 +3250,9 @@ function JurisdictionComparison({
       marginLeft: '4px'
     }
   }, "INITIAL REQUIREMENT"))), /*#__PURE__*/React.createElement("td", null), /*#__PURE__*/React.createElement("td", null), /*#__PURE__*/React.createElement("td", null)), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "Local registered address")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.initial_requirement.local_registered_address
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2657,9 +3260,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.initial_requirement.local_registered_address
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "Company secretary")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.initial_requirement.company_secretary
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2667,9 +3270,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.initial_requirement.company_secretary
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "Local registered agent")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.initial_requirement.local_registered_agent
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2677,9 +3280,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.initial_requirement.local_registered_agent
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_TitleCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_TitleCell
   }, /*#__PURE__*/React.createElement("img", {
     src: annualCompliance,
     style: {
@@ -2694,9 +3297,9 @@ function JurisdictionComparison({
       marginLeft: '4px'
     }
   }, "ANNUAL COMPLIANCE"))), /*#__PURE__*/React.createElement("td", null), /*#__PURE__*/React.createElement("td", null), /*#__PURE__*/React.createElement("td", null)), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "Annual return")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.annual_compliance.annual_return
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2704,9 +3307,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.annual_compliance.annual_return
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "Annual tax return")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.annual_compliance.annual_tax_return
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2714,9 +3317,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.annual_compliance.annual_tax_return
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "Records keeping")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.annual_compliance.records_keeping
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2724,9 +3327,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.annual_compliance.records_keeping
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "Audited accounts")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.annual_compliance.audited_accounts
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2734,9 +3337,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.annual_compliance.audited_accounts
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "Annual general meeting")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.annual_compliance.annual_general_meeting
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2744,9 +3347,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.annual_compliance.annual_general_meeting
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "Location of annual general meeting")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.annual_compliance.location_of_meeting
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2754,9 +3357,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.annual_compliance.location_of_meeting
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "Economic substance")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.annual_compliance.economic_substance
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
@@ -2764,9 +3367,9 @@ function JurisdictionComparison({
   }))), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn3.annual_compliance.economic_substance
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell + ' ' + styles$3.offshoreComCompare_TitleCell
+    className: styles$4.offshoreComCompare_FeatureCell + ' ' + styles$4.offshoreComCompare_TitleCell
   }, /*#__PURE__*/React.createElement("img", {
     src: localTax,
     style: {
@@ -2781,9 +3384,9 @@ function JurisdictionComparison({
       marginLeft: '4px'
     }
   }, "LOCAL TAX PROFILE"))), /*#__PURE__*/React.createElement("td", null), /*#__PURE__*/React.createElement("td", null), /*#__PURE__*/React.createElement("td", null)), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "Offshore tax exemption")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.local_tax_profile.offshore_tax_exemption,
     showMore: dataColumn1.local_tax_profile.offshore_tax_exemption_show_more
@@ -2794,9 +3397,9 @@ function JurisdictionComparison({
     data: dataColumn3.local_tax_profile.offshore_tax_exemption,
     showMore: dataColumn3.local_tax_profile.offshore_tax_exemption_show_more
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "Corporate income tax")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.local_tax_profile.corporate_income_tax,
     showMore: dataColumn1.local_tax_profile.corporate_income_tax_show_more
@@ -2807,9 +3410,9 @@ function JurisdictionComparison({
     data: dataColumn3.local_tax_profile.corporate_income_tax,
     showMore: dataColumn3.local_tax_profile.corporate_income_tax_show_more
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "Sales tax (VAT/Business tax/GST)")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.local_tax_profile.sales_tax,
     showMore: dataColumn1.local_tax_profile.sales_tax_show_more
@@ -2820,9 +3423,9 @@ function JurisdictionComparison({
     data: dataColumn3.local_tax_profile.sales_tax,
     showMore: dataColumn3.local_tax_profile.sales_tax_show_more
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "Capital gain tax")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.local_tax_profile.capital_gain_tax,
     showMore: dataColumn1.local_tax_profile.capital_gain_tax_show_more
@@ -2833,9 +3436,9 @@ function JurisdictionComparison({
     data: dataColumn3.local_tax_profile.capital_gain_tax,
     showMore: dataColumn3.local_tax_profile.capital_gain_tax_show_more
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "Dividend tax")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.local_tax_profile.dividend_tax,
     showMore: dataColumn1.local_tax_profile.dividend_tax_show_more
@@ -2846,9 +3449,9 @@ function JurisdictionComparison({
     data: dataColumn3.local_tax_profile.dividend_tax,
     showMore: dataColumn3.local_tax_profile.dividend_tax_show_more
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "Property tax")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.local_tax_profile.property_tax,
     showMore: dataColumn1.local_tax_profile.property_tax_show_more
@@ -2859,9 +3462,9 @@ function JurisdictionComparison({
     data: dataColumn3.local_tax_profile.property_tax,
     showMore: dataColumn3.local_tax_profile.property_tax_show_more
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "Withholding tax")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.local_tax_profile.withholding_tax,
     showMore: dataColumn1.local_tax_profile.withholding_tax_show_more
@@ -2872,9 +3475,9 @@ function JurisdictionComparison({
     data: dataColumn3.local_tax_profile.withholding_tax,
     showMore: dataColumn3.local_tax_profile.withholding_tax_show_more
   })))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureHidden
+    className: styles$4.offshoreComCompare_FeatureHidden
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$3.offshoreComCompare_FeatureCell
+    className: styles$4.offshoreComCompare_FeatureCell
   }, "Transfer tax")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CellItem, {
     data: dataColumn1.local_tax_profile.transfer_tax,
     showMore: dataColumn1.local_tax_profile.transfer_tax_show_more
@@ -5374,32 +5977,20 @@ var dataComparison = {
 	DataComparison: DataComparison
 };
 
-const Title = props => {
-  const {
-    text,
-    as,
-    hasid
-  } = props;
-  const As = as ? as : 'h2';
-  return /*#__PURE__*/React.createElement(As, Object.assign({
-    id: text && hasid ? sanitizeTitle(text) : ''
-  }, mergeProps(props)), text);
-};
-
-var styles$4 = {"modal_container":"_styles-module__modal_container__9pnaK","modal_backdrop":"_styles-module__modal_backdrop__Q-bcZ","opacity":"_styles-module__opacity__vhjd4","fadeIn":"_styles-module__fadeIn__Xno1r"};
+var styles$5 = {"modal_container":"_styles-module__modal_container__9pnaK","modal_backdrop":"_styles-module__modal_backdrop__Q-bcZ","opacity":"_styles-module__opacity__vhjd4","fadeIn":"_styles-module__fadeIn__Xno1r"};
 
 const Modal = ({
   show,
   children
 }) => {
   return /*#__PURE__*/React.createElement("div", null, show && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$4.modal_backdrop
+    className: styles$5.modal_backdrop
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$4.modal_container
+    className: styles$5.modal_container
   }, children)));
 };
 
-var styles$5 = {"btn_back_container":"_styles-module__btn_back_container__k-p5u","btn_wrapper":"_styles-module__btn_wrapper__1UAjB","button":"_styles-module__button__TWj4B","btn_show":"_styles-module__btn_show__1ag_K","searchContainer":"_styles-module__searchContainer__1mjEu","btn_back_top":"_styles-module__btn_back_top__3zVi-","select_country":"_styles-module__select_country__vdbQ8","select_wrapper":"_styles-module__select_wrapper__2IKE1","select_title":"_styles-module__select_title__2Tj9L","comparison_table_btn":"_styles-module__comparison_table_btn__1zUBn","comparison_container_mb":"_styles-module__comparison_container_mb__3mgL7","comparison_wrapper_mb":"_styles-module__comparison_wrapper_mb__3MbTE","col_auto":"_styles-module__col_auto__15j2P","btn_show_mb":"_styles-module__btn_show_mb__2MGIM","comparisonTable_mb":"_styles-module__comparisonTable_mb__3Hskw","comparison_text_mb":"_styles-module__comparison_text_mb__3Gvzn","search":"_styles-module__search__1siYd","loader_wrapper":"_styles-module__loader_wrapper__X7V31","slider":"_styles-module__slider__3h_MZ","slider_container":"_styles-module__slider_container__3P27V","slide_btn":"_styles-module__slide_btn__3b_Q7","sliderNext":"_styles-module__sliderNext__3oxJl","sliderPrev":"_styles-module__sliderPrev__2TxT7","slider_item":"_styles-module__slider_item__2efBa","card":"_styles-module__card__o0GI0","card_wrapper":"_styles-module__card_wrapper__1OSoD","card_inside":"_styles-module__card_inside__3-3OD","img_wrapper":"_styles-module__img_wrapper__3kGrt","cardImg":"_styles-module__cardImg__4kBhB","cardTitle":"_styles-module__cardTitle__1FF3S","contentWrapper":"_styles-module__contentWrapper__1SQUQ","content":"_styles-module__content__35To1","cardIconNext":"_styles-module__cardIconNext__1-hWb","company_type":"_styles-module__company_type__GQ_B1","dialog":"_styles-module__dialog__3O3Dw","nav":"_styles-module__nav__C1Laj","navLink":"_styles-module__navLink__4KplV","back":"_styles-module__back__jlBD8","backMobile_wrapper":"_styles-module__backMobile_wrapper__2RUrM","btn_back_bottom":"_styles-module__btn_back_bottom__1XmGT","backMobile":"_styles-module__backMobile__-JcIK","Header":"_styles-module__Header__2PqMP","modal_container":"_styles-module__modal_container__1THqU","modal_wrapper":"_styles-module__modal_wrapper__CagOn","fadeIn":"_styles-module__fadeIn__3ISmH","closeModal":"_styles-module__closeModal__34XBz","modal_backdrop":"_styles-module__modal_backdrop__25fsQ","tab_container":"_styles-module__tab_container__TXdw8","tab_wrapper":"_styles-module__tab_wrapper__4AX0J","tab_item":"_styles-module__tab_item__rIwNt","active_tab":"_styles-module__active_tab__2y820","Body":"_styles-module__Body__1qDX-"};
+var styles$6 = {"btn_back_container":"_styles-module__btn_back_container__k-p5u","btn_wrapper":"_styles-module__btn_wrapper__1UAjB","button":"_styles-module__button__TWj4B","btn_show":"_styles-module__btn_show__1ag_K","searchContainer":"_styles-module__searchContainer__1mjEu","btn_back_top":"_styles-module__btn_back_top__3zVi-","select_country":"_styles-module__select_country__vdbQ8","select_wrapper":"_styles-module__select_wrapper__2IKE1","select_title":"_styles-module__select_title__2Tj9L","comparison_table_btn":"_styles-module__comparison_table_btn__1zUBn","comparison_container_mb":"_styles-module__comparison_container_mb__3mgL7","comparison_wrapper_mb":"_styles-module__comparison_wrapper_mb__3MbTE","col_auto":"_styles-module__col_auto__15j2P","btn_show_mb":"_styles-module__btn_show_mb__2MGIM","comparisonTable_mb":"_styles-module__comparisonTable_mb__3Hskw","comparison_text_mb":"_styles-module__comparison_text_mb__3Gvzn","search":"_styles-module__search__1siYd","loader_wrapper":"_styles-module__loader_wrapper__X7V31","slider":"_styles-module__slider__3h_MZ","slider_container":"_styles-module__slider_container__3P27V","slide_btn":"_styles-module__slide_btn__3b_Q7","sliderNext":"_styles-module__sliderNext__3oxJl","sliderPrev":"_styles-module__sliderPrev__2TxT7","slider_item":"_styles-module__slider_item__2efBa","card":"_styles-module__card__o0GI0","card_wrapper":"_styles-module__card_wrapper__1OSoD","card_inside":"_styles-module__card_inside__3-3OD","img_wrapper":"_styles-module__img_wrapper__3kGrt","cardImg":"_styles-module__cardImg__4kBhB","cardTitle":"_styles-module__cardTitle__1FF3S","contentWrapper":"_styles-module__contentWrapper__1SQUQ","content":"_styles-module__content__35To1","cardIconNext":"_styles-module__cardIconNext__1-hWb","company_type":"_styles-module__company_type__GQ_B1","dialog":"_styles-module__dialog__3O3Dw","nav":"_styles-module__nav__C1Laj","navLink":"_styles-module__navLink__4KplV","back":"_styles-module__back__jlBD8","backMobile_wrapper":"_styles-module__backMobile_wrapper__2RUrM","btn_back_bottom":"_styles-module__btn_back_bottom__1XmGT","backMobile":"_styles-module__backMobile__-JcIK","Header":"_styles-module__Header__2PqMP","modal_container":"_styles-module__modal_container__1THqU","modal_wrapper":"_styles-module__modal_wrapper__CagOn","fadeIn":"_styles-module__fadeIn__3ISmH","closeModal":"_styles-module__closeModal__34XBz","modal_backdrop":"_styles-module__modal_backdrop__25fsQ","tab_container":"_styles-module__tab_container__TXdw8","tab_wrapper":"_styles-module__tab_wrapper__4AX0J","tab_item":"_styles-module__tab_item__rIwNt","active_tab":"_styles-module__active_tab__2y820","Body":"_styles-module__Body__1qDX-"};
 
 const NextArrow = props => {
   const {
@@ -5408,7 +5999,7 @@ const NextArrow = props => {
     onClick
   } = props;
   return /*#__PURE__*/React.createElement("button", {
-    className: `${styles$5.sliderNext} ${styles$5.slide_btn}`,
+    className: `${styles$6.sliderNext} ${styles$6.slide_btn}`,
     onClick: onClick
   }, /*#__PURE__*/React.createElement(IconContext.Provider, {
     value: {
@@ -5423,7 +6014,7 @@ const PrevArrow = props => {
     onClick
   } = props;
   return /*#__PURE__*/React.createElement("button", {
-    className: `${styles$5.sliderPrev} ${styles$5.slide_btn}`,
+    className: `${styles$6.sliderPrev} ${styles$6.slide_btn}`,
     onClick: onClick
   }, /*#__PURE__*/React.createElement(IconContext.Provider, {
     value: {
@@ -5459,7 +6050,7 @@ function IncorporationCountry({
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios.get(`https://core.test-lp.bbcincorp.com/api/onboarding/country/entity_suffix`).then(res => {
-      let data = _.sortBy(res.data.data, item => item.name).filter(item => item.id !== 111);
+      let data = _$1.sortBy(res.data.data, item => item.name).filter(item => item.id !== 111);
       setDataCountries(data);
       setDataSlider(data);
     });
@@ -5478,7 +6069,7 @@ function IncorporationCountry({
   };
   const handleClick = (id, name) => {
     var _data$EntityTypes$, _customer$signature;
-    let data = _.filter(dataCountries, item => item.id == id)[0];
+    let data = _$1.filter(dataCountries, item => item.id == id)[0];
     let isCompanyType = (data === null || data === void 0 ? void 0 : data.EntityTypes) && (data === null || data === void 0 ? void 0 : data.EntityTypes.length) > 1;
     let entity_type_id = isCompanyType ? null : data === null || data === void 0 ? void 0 : (_data$EntityTypes$ = data.EntityTypes[0]) === null || _data$EntityTypes$ === void 0 ? void 0 : _data$EntityTypes$.id;
     let pathname = isCompanyType ? '/incorporation-company-type' : '/incorporation-entity-name-check';
@@ -5521,7 +6112,7 @@ function IncorporationCountry({
   const setSelectedOption = e => {
     setOptionSelected(e);
     if (e.value && e.value !== 'all') {
-      setDataSlider(_.filter(dataCountries, item => item.id == e.value));
+      setDataSlider(_$1.filter(dataCountries, item => item.id == e.value));
     } else {
       setDataSlider(dataCountries);
     }
@@ -5562,24 +6153,24 @@ function IncorporationCountry({
   });
   return (
     /*#__PURE__*/
-    React.createElement("div", null, /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("div", {
-      className: `${styles$5.btn_back_top}  ${styles$5.Header}`
+    React.createElement(Layout, null, /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("div", {
+      className: `${styles$6.btn_back_top}  ${styles$6.Header}`
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$5.btn_back_container
+      className: styles$6.btn_back_container
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$5.btn_wrapper
+      className: styles$6.btn_wrapper
     }, /*#__PURE__*/React.createElement("button", {
-      className: styles$5.back,
+      className: styles$6.back,
       onClick: handleBack
     }, "Back")))), /*#__PURE__*/React.createElement("div", {
-      className: styles$5.select_country
+      className: styles$6.select_country
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$5.select_wrapper
+      className: styles$6.select_wrapper
     }, /*#__PURE__*/React.createElement(Title, {
       text: "Country and Company Type",
-      className: styles$5.select_title
+      className: styles$6.select_title
     }), /*#__PURE__*/React.createElement("div", {
-      className: styles$5.searchContainer
+      className: styles$6.searchContainer
     }, /*#__PURE__*/React.createElement(SelectSearchInside, {
       instanceId: "incorporation-country-search",
       value: optionSelected,
@@ -5594,12 +6185,12 @@ function IncorporationCountry({
       })],
       selectBorder: true,
       placeholder: "Search country here",
-      toggleClass: `${styles$5.search}`,
+      toggleClass: `${styles$6.search}`,
       onChange: setSelectedOption
     }))), /*#__PURE__*/React.createElement("div", {
-      className: styles$5.comparison_table_btn
+      className: styles$6.comparison_table_btn
     }, /*#__PURE__*/React.createElement("button", {
-      className: `${styles$5.button} ${styles$5.btn_show}`,
+      className: `${styles$6.button} ${styles$6.btn_show}`,
       onClick: handleShow
     }, /*#__PURE__*/React.createElement("img", {
       src: comparisonTable,
@@ -5607,57 +6198,57 @@ function IncorporationCountry({
     }), /*#__PURE__*/React.createElement("div", {
       className: "mt-1"
     }, "Comparison table")))), /*#__PURE__*/React.createElement("div", {
-      className: styles$5.Body
+      className: styles$6.Body
     }, loading ? /*#__PURE__*/React.createElement("div", {
-      className: `${styles$5.loader_wrapper}`
+      className: `${styles$6.loader_wrapper}`
     }, /*#__PURE__*/React.createElement(BiLoaderAlt, {
       className: "animate_spin",
       size: 20
     })) : dataSlider.length > 0 ? /*#__PURE__*/React.createElement(Slider, Object.assign({
-      className: `${styles$5.slider} ${styles$5.slider_container}`
+      className: `${styles$6.slider} ${styles$6.slider_container}`
     }, sliderSettings), dataSlider.map((item, index) => /*#__PURE__*/React.createElement("div", {
-      className: `${styles$5.slider_item}`,
+      className: `${styles$6.slider_item}`,
       key: index
     }, /*#__PURE__*/React.createElement("div", {
-      className: `${styles$5.card} ${styles$5.card_wrapper}`,
+      className: `${styles$6.card} ${styles$6.card_wrapper}`,
       onClick: () => handleClick(item.id, item.name)
     }, /*#__PURE__*/React.createElement("div", {
-      className: `${styles$5.card_inside}`
+      className: `${styles$6.card_inside}`
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$5.img_wrapper
+      className: styles$6.img_wrapper
     }, /*#__PURE__*/React.createElement("img", {
       src: `https://test.bbcincorp.com/flags/1x1/${item.country_code.toLowerCase()}.svg`,
-      className: styles$5.cardImg,
+      className: styles$6.cardImg,
       alt: `${item.name}`
     })), /*#__PURE__*/React.createElement("div", {
-      className: styles$5.contentWrapper
+      className: styles$6.contentWrapper
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$5.content
+      className: styles$6.content
     }, /*#__PURE__*/React.createElement("div", {
-      className: `${styles$5.cardTitle}`
+      className: `${styles$6.cardTitle}`
     }, item.name), item.EntityTypes.length > 0 && /*#__PURE__*/React.createElement("ul", {
-      className: styles$5.company_type
+      className: styles$6.company_type
     }, item.EntityTypes.map((item, index) => /*#__PURE__*/React.createElement("li", {
       key: index
     }, item.name)))))), /*#__PURE__*/React.createElement("div", {
-      className: `${styles$5.cardIconNext}`
+      className: `${styles$6.cardIconNext}`
     }, /*#__PURE__*/React.createElement("span", {
       style: {
         marginBottom: '4px'
       }
     }, "\u2192")))))) : /*#__PURE__*/React.createElement("div", null)), /*#__PURE__*/React.createElement("div", {
-      className: styles$5.comparison_container_mb
+      className: styles$6.comparison_container_mb
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$5.comparison_wrapper_mb
+      className: styles$6.comparison_wrapper_mb
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$5.col_auto
+      className: styles$6.col_auto
     }, /*#__PURE__*/React.createElement("button", {
-      className: `${styles$5.button} ${styles$5.btn_show_mb}`,
+      className: `${styles$6.button} ${styles$6.btn_show_mb}`,
       onClick: handleShow
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$5.comparisonTable_mb
+      className: styles$6.comparisonTable_mb
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$5.col_auto
+      className: styles$6.col_auto
     }, /*#__PURE__*/React.createElement("img", {
       src: comparisonTable,
       alt: "bg-left-obd",
@@ -5665,21 +6256,21 @@ function IncorporationCountry({
         width: '20px'
       }
     })), /*#__PURE__*/React.createElement("div", {
-      className: styles$5.comparison_text_mb
+      className: styles$6.comparison_text_mb
     }, "Comparison table"))))))), /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("div", {
-      className: styles$5.backMobile_wrapper
+      className: styles$6.backMobile_wrapper
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$5.col_auto
+      className: styles$6.col_auto
     }, /*#__PURE__*/React.createElement("button", {
-      className: `${styles$5.backMobile} ${styles$5.btn_back_bottom}`,
+      className: `${styles$6.backMobile} ${styles$6.btn_back_bottom}`,
       onClick: handleBack
     }, "Back")))), /*#__PURE__*/React.createElement(Modal, {
       show: show
     }, /*#__PURE__*/React.createElement("div", {
       ref: wrapperRef,
-      className: styles$5.modal_wrapper
+      className: styles$6.modal_wrapper
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$5.closeModal,
+      className: styles$6.closeModal,
       style: {
         position: 'absolute',
         top: '0.25rem',
@@ -5698,15 +6289,15 @@ function IncorporationCountry({
     }, /*#__PURE__*/React.createElement(IoMdCloseCircle, {
       size: `2rem`
     })))), /*#__PURE__*/React.createElement("div", {
-      className: styles$5.tab_container
+      className: styles$6.tab_container
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$5.tab_wrapper
+      className: styles$6.tab_wrapper
     }, /*#__PURE__*/React.createElement("button", {
       onClick: () => setTab(1),
-      className: `${tab === 1 ? styles$5.active_tab : ''} ${styles$5.tab_item}`
+      className: `${tab === 1 ? styles$6.active_tab : ''} ${styles$6.tab_item}`
     }, "Jurisdiction's Features"), /*#__PURE__*/React.createElement("button", {
       onClick: () => setTab(2),
-      className: `${tab === 2 ? styles$5.active_tab : ''} ${styles$5.tab_item}`
+      className: `${tab === 2 ? styles$6.active_tab : ''} ${styles$6.tab_item}`
     }, "Jurisdiction Comparison"))), tab === 1 ? /*#__PURE__*/React.createElement(JurisdictionFeatures, {
       data: dataComparison.DataFeatures,
       countries: dataComparison.countries,
@@ -5735,13 +6326,13 @@ function IncorporationCountry({
   );
 }
 
-var styles$6 = {"description":"_styles-module__description__LHwfV"};
+var styles$7 = {"description":"_styles-module__description__LHwfV"};
 
 const Component = ({
   ...props
 }) => {
   return /*#__PURE__*/React.createElement("div", Object.assign({}, props, {
-    className: `${styles$6.description} mt-2 mt-lg-3 mb-0 ${props.className ? `${props.className}` : ''}`,
+    className: `${styles$7.description} mt-2 mt-lg-3 mb-0 ${props.className ? `${props.className}` : ''}`,
     style: {
       ...props.style
     }
@@ -5750,18 +6341,18 @@ const Component = ({
 Component.propTypes = {};
 Component.defaultProps = {};
 
-var styles$7 = {"block_on_md":"_styles-module__block_on_md__3JxMi","block_on_lg":"_styles-module__block_on_lg__e6rhF","none_on_md":"_styles-module__none_on_md__21bXq","flex_on_md":"_styles-module__flex_on_md__aMqYw","btn_back_top":"_styles-module__btn_back_top__1b_B-","btn_back_wrapper":"_styles-module__btn_back_wrapper__1ahW-","btn_primary":"_styles-module__btn_primary__1vbvH","title":"_styles-module__title__1XUe2","description_wrapper":"_styles-module__description_wrapper__N12AA","comparison_wrapper":"_styles-module__comparison_wrapper__3r5GS","button":"_styles-module__button__35es-","spinner_wrapper":"_styles-module__spinner_wrapper__2kRrU","card_wrapper":"_styles-module__card_wrapper__k0Id7","card_responsive":"_styles-module__card_responsive__RkWRK","card":"_styles-module__card__2oJlr","cardImg":"_styles-module__cardImg__2Cdaq","cardTitle":"_styles-module__cardTitle__2TkoH","comparison_bottom":"_styles-module__comparison_bottom__szn3i","dialog":"_styles-module__dialog__2srQO","content":"_styles-module__content__V2-t3","headerModal":"_styles-module__headerModal__2ZKPb","bodyModal":"_styles-module__bodyModal__2upb6","rowItem":"_styles-module__rowItem__2sAwf","item":"_styles-module__item__1pyid","tableBody":"_styles-module__tableBody__3Q342","grouptitle":"_styles-module__grouptitle__3xysj","check":"_styles-module__check__CXWwz","checkX":"_styles-module__checkX__36Y0r","dialogVietnam":"_styles-module__dialogVietnam__39lsG","modalVietnam":"_styles-module__modalVietnam__242RT","Header":"_styles-module__Header__3HYQ8","bottom":"_styles-module__bottom__1OWpN","btn_back_bottom_wrapper":"_styles-module__btn_back_bottom_wrapper__1Sbe6","btn_back_bottom":"_styles-module__btn_back_bottom__38m4y","modal_wrapper":"_styles-module__modal_wrapper__OoXyP","fadeIn":"_styles-module__fadeIn__1BVrX","closeModal":"_styles-module__closeModal___X3hR","Body":"_styles-module__Body__3p-Pa"};
+var styles$8 = {"block_on_md":"_styles-module__block_on_md__3JxMi","block_on_lg":"_styles-module__block_on_lg__e6rhF","none_on_md":"_styles-module__none_on_md__21bXq","flex_on_md":"_styles-module__flex_on_md__aMqYw","btn_back_top":"_styles-module__btn_back_top__1b_B-","btn_back_wrapper":"_styles-module__btn_back_wrapper__1ahW-","btn_primary":"_styles-module__btn_primary__1vbvH","title":"_styles-module__title__1XUe2","description_wrapper":"_styles-module__description_wrapper__N12AA","comparison_wrapper":"_styles-module__comparison_wrapper__3r5GS","button":"_styles-module__button__35es-","spinner_wrapper":"_styles-module__spinner_wrapper__2kRrU","card_wrapper":"_styles-module__card_wrapper__k0Id7","card_responsive":"_styles-module__card_responsive__RkWRK","card":"_styles-module__card__2oJlr","cardImg":"_styles-module__cardImg__2Cdaq","cardTitle":"_styles-module__cardTitle__2TkoH","comparison_bottom":"_styles-module__comparison_bottom__szn3i","dialog":"_styles-module__dialog__2srQO","content":"_styles-module__content__V2-t3","headerModal":"_styles-module__headerModal__2ZKPb","bodyModal":"_styles-module__bodyModal__2upb6","rowItem":"_styles-module__rowItem__2sAwf","item":"_styles-module__item__1pyid","tableBody":"_styles-module__tableBody__3Q342","grouptitle":"_styles-module__grouptitle__3xysj","check":"_styles-module__check__CXWwz","checkX":"_styles-module__checkX__36Y0r","dialogVietnam":"_styles-module__dialogVietnam__39lsG","modalVietnam":"_styles-module__modalVietnam__242RT","Header":"_styles-module__Header__3HYQ8","bottom":"_styles-module__bottom__1OWpN","btn_back_bottom_wrapper":"_styles-module__btn_back_bottom_wrapper__1Sbe6","btn_back_bottom":"_styles-module__btn_back_bottom__38m4y","modal_wrapper":"_styles-module__modal_wrapper__OoXyP","fadeIn":"_styles-module__fadeIn__1BVrX","closeModal":"_styles-module__closeModal___X3hR","Body":"_styles-module__Body__3p-Pa"};
 
 function TablePopup(country_id) {
   let content = '';
   switch (country_id) {
     case 250:
       content = /*#__PURE__*/React.createElement("div", {
-        className: styles$7.bodyModal
+        className: styles$8.bodyModal
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.rowItem
+        className: styles$8.rowItem
       }, /*#__PURE__*/React.createElement("span", {
-        className: styles$7.block_on_md
+        className: styles$8.block_on_md
       }), /*#__PURE__*/React.createElement("span", {
         style: {
           textAlign: 'center'
@@ -5771,229 +6362,229 @@ function TablePopup(country_id) {
           textAlign: 'center'
         }
       }, "Corporation")), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.tableBody
+        className: styles$8.tableBody
       }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.grouptitle
+        className: styles$8.grouptitle
       }, "Initial requirement"), /*#__PURE__*/React.createElement("div", {
         style: {
           paddingBottom: '8px'
         },
         className: "group"
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Director"), /*#__PURE__*/React.createElement("span", null, "None"), /*#__PURE__*/React.createElement("span", null, "At least one")), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Shareholders"), /*#__PURE__*/React.createElement("span", null, "At least one member"), /*#__PURE__*/React.createElement("span", null, "At least one shareholder")), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Tax treatment"), /*#__PURE__*/React.createElement("span", null, "Individual level"), /*#__PURE__*/React.createElement("span", null, "Company level")), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Legal status"), /*#__PURE__*/React.createElement("span", null, "Separate legal entity"), /*#__PURE__*/React.createElement("span", null, "Separate legal entity")), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Owner\u2019s limited liability"), /*#__PURE__*/React.createElement("span", null, "Bounded to interests owned"), /*#__PURE__*/React.createElement("span", null, "Bounded to shares owned")))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.grouptitle
+        className: styles$8.grouptitle
       }, "Corporate compliance"), /*#__PURE__*/React.createElement("div", {
         className: "group"
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Annual return"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_md
+        className: styles$8.block_on_md
       }, "No"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.checkX
+        className: styles$8.checkX
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_md
+        className: styles$8.block_on_md
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       }))), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Tax filing"), /*#__PURE__*/React.createElement("span", {
-        className: styles$7.flex_on_md
+        className: styles$8.flex_on_md
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_md
+        className: styles$8.block_on_md
       }, "Yes\xA0"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       }), /*#__PURE__*/React.createElement("br", {
-        className: styles$7.none_on_md
+        className: styles$8.none_on_md
       }), "(Only nominal)"), /*#__PURE__*/React.createElement("span", {
-        className: styles$7.flex_on_md
+        className: styles$8.flex_on_md
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_md
+        className: styles$8.block_on_md
       }, "Yes\xA0"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       }), /*#__PURE__*/React.createElement("br", {
-        className: styles$7.none_on_md
+        className: styles$8.none_on_md
       }), "(Only nominal)")), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Books and records maintenance"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_md
+        className: styles$8.block_on_md
       }, "No"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.checkX
+        className: styles$8.checkX
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_md
+        className: styles$8.block_on_md
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       })))))));
       break;
     case 237:
       content = /*#__PURE__*/React.createElement("div", {
-        className: styles$7.bodyModal
+        className: styles$8.bodyModal
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.rowItem
+        className: styles$8.rowItem
       }, /*#__PURE__*/React.createElement("span", {
-        className: styles$7.block_on_md
+        className: styles$8.block_on_md
       }), /*#__PURE__*/React.createElement("span", null, "Limited Liability Partnership"), /*#__PURE__*/React.createElement("span", null, "Limited Company")), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.tableBody
+        className: styles$8.tableBody
       }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.grouptitle
+        className: styles$8.grouptitle
       }, "Initial requirement"), /*#__PURE__*/React.createElement("div", {
         className: "group",
         style: {
           paddingBottom: '8px'
         }
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Legal status"), /*#__PURE__*/React.createElement("span", null, "Separate legal entity"), /*#__PURE__*/React.createElement("span", null, "Separate legal entity")), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Owner\u2019s liability"), /*#__PURE__*/React.createElement("span", null, "Limited to capital contribution"), /*#__PURE__*/React.createElement("span", null, "Limited to shares owned")), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Tax treatment"), /*#__PURE__*/React.createElement("span", null, "Individual level"), /*#__PURE__*/React.createElement("span", null, "Corporate level")), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Director"), /*#__PURE__*/React.createElement("span", null, "None"), /*#__PURE__*/React.createElement("span", null, "At least one")), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Other members"), /*#__PURE__*/React.createElement("span", null, "At least two designated members"), /*#__PURE__*/React.createElement("span", null, "At least one shareholder")))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.grouptitle
+        className: styles$8.grouptitle
       }, "Corporate compliance"), /*#__PURE__*/React.createElement("div", {
         className: "group"
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Annual return"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_md
+        className: styles$8.block_on_md
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_md
+        className: styles$8.block_on_md
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       }))), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Tax filing"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_md
+        className: styles$8.block_on_md
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_md
+        className: styles$8.block_on_md
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       }))), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Books and records maintenance"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_md
+        className: styles$8.block_on_md
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_md
+        className: styles$8.block_on_md
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       }))), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Annual general meeting"), /*#__PURE__*/React.createElement("span", null, "Not required"), /*#__PURE__*/React.createElement("span", null, "Required"))))));
       break;
     case 244:
       content = /*#__PURE__*/React.createElement("div", {
-        className: `${styles$7.modalVietnam}`
+        className: `${styles$8.modalVietnam}`
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.rowItem
+        className: styles$8.rowItem
       }, /*#__PURE__*/React.createElement("span", {
-        className: styles$7.block_on_lg
+        className: styles$8.block_on_lg
       }), /*#__PURE__*/React.createElement("span", null, "LLC"), /*#__PURE__*/React.createElement("span", null, "JSC"), /*#__PURE__*/React.createElement("span", null, "Branch"), /*#__PURE__*/React.createElement("span", null, "Rep. Office")), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.tableBody
+        className: styles$8.tableBody
       }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.grouptitle
+        className: styles$8.grouptitle
       }, "Initial requirement"), /*#__PURE__*/React.createElement("div", {
         className: "group",
         style: {
           paddingBottom: '8px'
         }
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Legal status"), /*#__PURE__*/React.createElement("span", null, "Separate legal entity"), /*#__PURE__*/React.createElement("span", null, "Separate legal entity"), /*#__PURE__*/React.createElement("span", null, "An extension of its parent company"), /*#__PURE__*/React.createElement("span", null, "An extension of its parent company")), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Owner\u2019s liability"), /*#__PURE__*/React.createElement("span", null, "Limited to capital contribution"), /*#__PURE__*/React.createElement("span", null, "Limited to shares owned"), /*#__PURE__*/React.createElement("span", null, "Extended to parent company"), /*#__PURE__*/React.createElement("span", null, "Extended to parent company")), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Tax treatment"), /*#__PURE__*/React.createElement("span", null, "Corporate level"), /*#__PURE__*/React.createElement("span", null, "Corporate level"), /*#__PURE__*/React.createElement("span", null, "Corporate level"), /*#__PURE__*/React.createElement("span", null, "Not permitted to trade or conduct business")), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Director"), /*#__PURE__*/React.createElement("span", null, "At least one"), /*#__PURE__*/React.createElement("span", null, "At least one"), /*#__PURE__*/React.createElement("span", null, "N/A"), /*#__PURE__*/React.createElement("span", null, "N/A")), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Other members"), /*#__PURE__*/React.createElement("span", null, "At least one member"), /*#__PURE__*/React.createElement("span", null, "At least three founding shareholders"), /*#__PURE__*/React.createElement("span", null, "One head of branch"), /*#__PURE__*/React.createElement("span", null, "One head of Rep. Office")))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.grouptitle
+        className: styles$8.grouptitle
       }, "Corporate compliance"), /*#__PURE__*/React.createElement("div", {
         className: "group"
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Annual return"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_lg
+        className: styles$8.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_lg
+        className: styles$8.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_lg
+        className: styles$8.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_lg
+        className: styles$8.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       }))), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Tax filing"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_lg
+        className: styles$8.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_lg
+        className: styles$8.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_lg
+        className: styles$8.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_lg
+        className: styles$8.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       }))), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Books and records maintenance"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_lg
+        className: styles$8.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_lg
+        className: styles$8.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_lg
+        className: styles$8.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_lg
+        className: styles$8.block_on_lg
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       }))), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Annual general meeting"), /*#__PURE__*/React.createElement("span", null, "Required for multi-member LLC"), /*#__PURE__*/React.createElement("span", null, "Yes"), /*#__PURE__*/React.createElement("span", null, "Not required"), /*#__PURE__*/React.createElement("span", null, "Not required"))))));
       break;
     case 23:
     case 205:
     case 209:
       content = /*#__PURE__*/React.createElement("div", {
-        className: styles$7.bodyModal
+        className: styles$8.bodyModal
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.rowItem
+        className: styles$8.rowItem
       }, /*#__PURE__*/React.createElement("span", {
-        className: styles$7.block_on_md
+        className: styles$8.block_on_md
       }), /*#__PURE__*/React.createElement("span", {
         style: {
           textAlign: 'center'
@@ -6003,55 +6594,55 @@ function TablePopup(country_id) {
           textAlign: 'center'
         }
       }, "IBC/BC")), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.tableBody
+        className: styles$8.tableBody
       }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.grouptitle
+        className: styles$8.grouptitle
       }, "Initial requirement"), /*#__PURE__*/React.createElement("div", {
         className: "group"
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Director"), /*#__PURE__*/React.createElement("span", null, "None"), /*#__PURE__*/React.createElement("span", null, "At least one")), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Shareholders"), /*#__PURE__*/React.createElement("span", null, "At least one member"), /*#__PURE__*/React.createElement("span", null, "At least one shareholder")), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Tax treatment"), /*#__PURE__*/React.createElement("span", null, "Individual level"), /*#__PURE__*/React.createElement("span", null, "Company level")), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Legal status"), /*#__PURE__*/React.createElement("span", null, "Separate legal entity"), /*#__PURE__*/React.createElement("span", null, "Separate legal entity")), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Owner\u2019s limited liability"), /*#__PURE__*/React.createElement("span", null, "Bounded to interests owned"), /*#__PURE__*/React.createElement("span", null, "Bounded to shares owned")))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.grouptitle
+        className: styles$8.grouptitle
       }, "Corporate compliance"), /*#__PURE__*/React.createElement("div", {
         className: "group"
       }, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Annual return"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_md
+        className: styles$8.block_on_md
       }, "No"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.checkX
+        className: styles$8.checkX
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_md
+        className: styles$8.block_on_md
       }, "No"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.checkX
+        className: styles$8.checkX
       }))), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Tax filing"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_md
+        className: styles$8.block_on_md
       }, "No"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.checkX
+        className: styles$8.checkX
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_md
+        className: styles$8.block_on_md
       }, "No"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.checkX
+        className: styles$8.checkX
       }))), /*#__PURE__*/React.createElement("div", {
-        className: styles$7.item
+        className: styles$8.item
       }, /*#__PURE__*/React.createElement("span", null, "Books and records maintenance"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_md
+        className: styles$8.block_on_md
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("div", {
-        className: styles$7.block_on_md
+        className: styles$8.block_on_md
       }, "Yes"), /*#__PURE__*/React.createElement("i", {
-        className: styles$7.check
+        className: styles$8.check
       })))))));
       break;
   }
@@ -6126,195 +6717,192 @@ function IncorporationCompanyType({
   useOnClickOutside(wrapperRef, () => {
     setShow(false);
   });
-  return (
-    /*#__PURE__*/
-    React.createElement("div", null, /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("div", {
-      className: `${styles$7.btn_back_top} ${styles$7.Header}`
-    }, /*#__PURE__*/React.createElement("div", {
-      className: `${styles$7.btn_back_wrapper}`
-    }, /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement(Layout, null, /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("div", {
+    className: `${styles$8.btn_back_top} ${styles$8.Header}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${styles$8.btn_back_wrapper}`
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: '0 0 auto'
+    }
+  }, /*#__PURE__*/React.createElement("a", {
+    className: styles$8.btn_primary,
+    style: {
+      fontSize: '20px',
+      lineHeight: '28px',
+      fontWeight: 500
+    },
+    onClick: handleBack
+  }, "Back")))), /*#__PURE__*/React.createElement(Title, {
+    text: "Country and Company Type",
+    className: styles$8.title
+  }), /*#__PURE__*/React.createElement("div", {
+    className: styles$8.Body
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$8.description_wrapper
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: '1'
+    }
+  }, /*#__PURE__*/React.createElement(Component, null, "Country:", ' ', /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontWeight: 500
+    }
+  }, dataCountry === null || dataCountry === void 0 ? void 0 : dataCountry.name)), /*#__PURE__*/React.createElement(Component, null, "Company type: ")), /*#__PURE__*/React.createElement("div", {
+    className: styles$8.comparison_wrapper
+  }, /*#__PURE__*/React.createElement("button", {
+    className: styles$8.button,
+    style: {
+      padding: '16px 8px 8px 8px',
+      border: '1px solid transparent',
+      marginTop: '16px',
+      cursor: 'pointer'
+    },
+    onClick: handleShow
+  }, /*#__PURE__*/React.createElement("img", {
+    src: comparisonTable,
+    alt: "bg-left-obd"
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: '4px'
+    }
+  }, "Comparison table")))), (dataCountry === null || dataCountry === void 0 ? void 0 : dataCountry.EntityTypes) && /*#__PURE__*/React.createElement("div", {
+    style: {
+      margin: '0 auto',
+      maxWidth: '992px'
+    }
+  }, loading ? /*#__PURE__*/React.createElement("div", {
+    className: `${styles$8.spinner_wrapper} embed-responsive embed-responsive-21by9`
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    className: "embed-responsive-item"
+  }, /*#__PURE__*/React.createElement(BiLoaderAlt, {
+    className: "animate_spin",
+    size: 20
+  }))) : /*#__PURE__*/React.createElement("div", {
+    className: styles$8.card_wrapper
+  }, dataCountry === null || dataCountry === void 0 ? void 0 : dataCountry.EntityTypes.map((item, index) => /*#__PURE__*/React.createElement("div", {
+    className: styles$8.card_responsive,
+    key: index
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      width: '100%'
+    },
+    className: styles$8.card,
+    onClick: () => handleClick(item.id)
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      alignItems: 'center'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: '0 0 auto'
+    }
+  }, /*#__PURE__*/React.createElement("img", {
+    src: buildingImg,
+    className: styles$8.cardImg,
+    alt: `${item.name}`
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: '1'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      paddingLeft: '24px'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${styles$8.cardTitle}`
+  }, item.name)))))))))), /*#__PURE__*/React.createElement("div", {
+    className: `${styles$8.comparison_bottom}`
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'center'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: '0 0 auto'
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    style: {
+      width: '100%',
+      padding: '8px'
+    },
+    className: styles$8.button,
+    onClick: handleShow
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      alignItems: 'center'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: '0 0 auto'
+    }
+  }, /*#__PURE__*/React.createElement("img", {
+    src: comparisonTable,
+    alt: "bg-left-obd",
+    style: {
+      width: '20px'
+    }
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: '1',
+      paddingLeft: '8px'
+    }
+  }, "Comparison table"))))))), /*#__PURE__*/React.createElement("section", {
+    className: styles$8.bottom
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$8.btn_back_bottom_wrapper
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$8.btn_back_bottom
+  }, /*#__PURE__*/React.createElement("a", {
+    style: {
+      color: '#2c2c51',
+      fontWeight: 500,
+      padding: '0',
+      cursor: 'pointer'
+    },
+    onClick: handleBack
+  }, "Back")))), /*#__PURE__*/React.createElement(Modal, {
+    show: show
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${styles$8.modal_wrapper}`
+  }, /*#__PURE__*/React.createElement("div", {
+    ref: wrapperRef,
+    className: ` ${styles$8.dialog}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$8.closeModal,
+    style: {
+      position: 'absolute',
+      top: '0.25rem',
+      right: '0.5rem',
+      zIndex: 1
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn",
+    onClick: handleClose
+  }, /*#__PURE__*/React.createElement(IconContext.Provider, {
+    value: {
       style: {
-        flex: '0 0 auto'
+        color: 'c4c4c4'
       }
-    }, /*#__PURE__*/React.createElement("a", {
-      className: styles$7.btn_primary,
-      style: {
-        fontSize: '20px',
-        lineHeight: '28px',
-        fontWeight: 500
-      },
-      onClick: handleBack
-    }, "Back")))), /*#__PURE__*/React.createElement(Title, {
-      text: "Country and Company Type",
-      className: styles$7.title
-    }), /*#__PURE__*/React.createElement("div", {
-      className: styles$7.Body
-    }, /*#__PURE__*/React.createElement("div", {
-      className: styles$7.description_wrapper
-    }, /*#__PURE__*/React.createElement("div", {
-      style: {
-        flex: '1'
-      }
-    }, /*#__PURE__*/React.createElement(Component, null, "Country:", ' ', /*#__PURE__*/React.createElement("span", {
-      style: {
-        fontWeight: 500
-      }
-    }, dataCountry === null || dataCountry === void 0 ? void 0 : dataCountry.name)), /*#__PURE__*/React.createElement(Component, null, "Company type: ")), /*#__PURE__*/React.createElement("div", {
-      className: styles$7.comparison_wrapper
-    }, /*#__PURE__*/React.createElement("button", {
-      className: styles$7.button,
-      style: {
-        padding: '16px 8px 8px 8px',
-        border: '1px solid transparent',
-        marginTop: '16px',
-        cursor: 'pointer'
-      },
-      onClick: handleShow
-    }, /*#__PURE__*/React.createElement("img", {
-      src: comparisonTable,
-      alt: "bg-left-obd"
-    }), /*#__PURE__*/React.createElement("div", {
-      style: {
-        marginTop: '4px'
-      }
-    }, "Comparison table")))), (dataCountry === null || dataCountry === void 0 ? void 0 : dataCountry.EntityTypes) && /*#__PURE__*/React.createElement("div", {
-      style: {
-        margin: '0 auto',
-        maxWidth: '992px'
-      }
-    }, loading ? /*#__PURE__*/React.createElement("div", {
-      className: `${styles$7.spinner_wrapper} embed-responsive embed-responsive-21by9`
-    }, /*#__PURE__*/React.createElement("div", {
-      style: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      },
-      className: "embed-responsive-item"
-    }, /*#__PURE__*/React.createElement(BiLoaderAlt, {
-      className: "animate_spin",
-      size: 20
-    }))) : /*#__PURE__*/React.createElement("div", {
-      className: styles$7.card_wrapper
-    }, dataCountry === null || dataCountry === void 0 ? void 0 : dataCountry.EntityTypes.map((item, index) => /*#__PURE__*/React.createElement("div", {
-      className: styles$7.card_responsive,
-      key: index
-    }, /*#__PURE__*/React.createElement("div", {
-      style: {
-        display: 'flex',
-        width: '100%'
-      },
-      className: styles$7.card,
-      onClick: () => handleClick(item.id)
-    }, /*#__PURE__*/React.createElement("div", {
-      style: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        alignItems: 'center'
-      }
-    }, /*#__PURE__*/React.createElement("div", {
-      style: {
-        flex: '0 0 auto'
-      }
-    }, /*#__PURE__*/React.createElement("img", {
-      src: buildingImg,
-      className: styles$7.cardImg,
-      alt: `${item.name}`
-    })), /*#__PURE__*/React.createElement("div", {
-      style: {
-        flex: '1'
-      }
-    }, /*#__PURE__*/React.createElement("div", {
-      style: {
-        paddingLeft: '24px'
-      }
-    }, /*#__PURE__*/React.createElement("div", {
-      className: `${styles$7.cardTitle}`
-    }, item.name)))))))))), /*#__PURE__*/React.createElement("div", {
-      className: `${styles$7.comparison_bottom}`
-    }, /*#__PURE__*/React.createElement("div", {
-      style: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center'
-      }
-    }, /*#__PURE__*/React.createElement("div", {
-      style: {
-        flex: '0 0 auto'
-      }
-    }, /*#__PURE__*/React.createElement("button", {
-      style: {
-        width: '100%',
-        padding: '8px'
-      },
-      className: styles$7.button,
-      onClick: handleShow
-    }, /*#__PURE__*/React.createElement("div", {
-      style: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        alignItems: 'center'
-      }
-    }, /*#__PURE__*/React.createElement("div", {
-      style: {
-        flex: '0 0 auto'
-      }
-    }, /*#__PURE__*/React.createElement("img", {
-      src: comparisonTable,
-      alt: "bg-left-obd",
-      style: {
-        width: '20px'
-      }
-    })), /*#__PURE__*/React.createElement("div", {
-      style: {
-        flex: '1',
-        paddingLeft: '8px'
-      }
-    }, "Comparison table"))))))), /*#__PURE__*/React.createElement("section", {
-      className: styles$7.bottom
-    }, /*#__PURE__*/React.createElement("div", {
-      className: styles$7.btn_back_bottom_wrapper
-    }, /*#__PURE__*/React.createElement("div", {
-      className: styles$7.btn_back_bottom
-    }, /*#__PURE__*/React.createElement("a", {
-      style: {
-        color: '#2c2c51',
-        fontWeight: 500,
-        padding: '0',
-        cursor: 'pointer'
-      },
-      onClick: handleBack
-    }, "Back")))), /*#__PURE__*/React.createElement(Modal, {
-      show: show
-    }, /*#__PURE__*/React.createElement("div", {
-      className: `${styles$7.modal_wrapper}`
-    }, /*#__PURE__*/React.createElement("div", {
-      ref: wrapperRef,
-      className: ` ${styles$7.dialog}`
-    }, /*#__PURE__*/React.createElement("div", {
-      className: styles$7.closeModal,
-      style: {
-        position: 'absolute',
-        top: '0.25rem',
-        right: '0.5rem',
-        zIndex: 1
-      }
-    }, /*#__PURE__*/React.createElement("button", {
-      className: "btn",
-      onClick: handleClose
-    }, /*#__PURE__*/React.createElement(IconContext.Provider, {
-      value: {
-        style: {
-          color: 'c4c4c4'
-        }
-      }
-    }, /*#__PURE__*/React.createElement(IoMdCloseCircle, {
-      size: `1.5rem`
-    })))), TablePopup(dataCountry.id)))))
-  );
+    }
+  }, /*#__PURE__*/React.createElement(IoMdCloseCircle, {
+    size: `1.5rem`
+  })))), TablePopup(dataCountry.id)))));
 }
 
-var styles$8 = {"modal_backdrop":"_styles-module__modal_backdrop__1sTFg","opacity":"_styles-module__opacity__6d18N","modal_container":"_styles-module__modal_container__17t6w","sidebar":"_styles-module__sidebar__1crKg","content":"_styles-module__content__3zOoB","description":"_styles-module__description__BReFc","sidebarBody":"_styles-module__sidebarBody__195H7","Modal":"_styles-module__Modal__37ldJ"};
+var styles$9 = {"modal_backdrop":"_styles-module__modal_backdrop__1sTFg","opacity":"_styles-module__opacity__6d18N","modal_container":"_styles-module__modal_container__17t6w","sidebar":"_styles-module__sidebar__1crKg","content":"_styles-module__content__3zOoB","description":"_styles-module__description__BReFc","sidebarBody":"_styles-module__sidebarBody__195H7","Modal":"_styles-module__Modal__37ldJ"};
 
 const Sidebar = ({
   sidebar,
@@ -6324,12 +6912,12 @@ const Sidebar = ({
   wrapperRef
 }) => {
   return /*#__PURE__*/React.createElement("div", null, sidebar ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$8.modal_backdrop
+    className: styles$9.modal_backdrop
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$8.modal_container
+    className: styles$9.modal_container
   }, /*#__PURE__*/React.createElement("div", {
     ref: wrapperRef,
-    className: styles$8.sidebar
+    className: styles$9.sidebar
   }, /*#__PURE__*/React.createElement("button", {
     type: "button",
     style: {
@@ -6337,13 +6925,13 @@ const Sidebar = ({
     },
     onClick: onClickClose
   }, "\xD7"), /*#__PURE__*/React.createElement("div", {
-    className: styles$8.content
+    className: styles$9.content
   }, /*#__PURE__*/React.createElement("h3", null, title), /*#__PURE__*/React.createElement("div", {
-    className: styles$8.description
+    className: styles$9.description
   }, parser(description)))))) : /*#__PURE__*/React.createElement("div", null));
 };
 
-var styles$9 = {"d_block":"_styles-module__d_block__37VJP","d_none":"_styles-module__d_none__e2m6o","form_header":"_styles-module__form_header__14RQs","top_wrapper":"_styles-module__top_wrapper__1cf-F","btn":"_styles-module__btn__3-FhX","title":"_styles-module__title__2A7Fl","title_page":"_styles-module__title_page__2lh4k","guideText":"_styles-module__guideText__WzeAY","description_wrapper":"_styles-module__description_wrapper__1fK2-","checkname_wrapper":"_styles-module__checkname_wrapper__uX092","fields":"_styles-module__fields__2W625","field_name":"_styles-module__field_name__1HTlU","company_name_input":"_styles-module__company_name_input__3SaA_","row_reverse":"_styles-module__row_reverse__1DOqB","entity_name":"_styles-module__entity_name__2yaHq","note_wrapper":"_styles-module__note_wrapper__3-mbi","note":"_styles-module__note__2V0Dw","input":"_styles-module__input__1COQd","search":"_styles-module__search__2fPee","nameHints":"_styles-module__nameHints__BWjaJ","nameHintsBadge":"_styles-module__nameHintsBadge__I_OHu","iconQuestionCircle":"_styles-module__iconQuestionCircle__1Z0DY","spinner_wrapper":"_styles-module__spinner_wrapper__3fos9","bottom_wrapper":"_styles-module__bottom_wrapper__2I_7D","back":"_styles-module__back__2zmPd","backMobile":"_styles-module__backMobile__1eN5O","Header":"_styles-module__Header__2oHKa","nextButton":"_styles-module__nextButton__2Lmoq","loader_wrapper":"_styles-module__loader_wrapper__1G6Cs","Body":"_styles-module__Body__r4L_A"};
+var styles$a = {"d_block":"_styles-module__d_block__37VJP","d_none":"_styles-module__d_none__e2m6o","form_header":"_styles-module__form_header__14RQs","top_wrapper":"_styles-module__top_wrapper__1cf-F","btn":"_styles-module__btn__3-FhX","title":"_styles-module__title__2A7Fl","title_page":"_styles-module__title_page__2lh4k","guideText":"_styles-module__guideText__WzeAY","description_wrapper":"_styles-module__description_wrapper__1fK2-","checkname_wrapper":"_styles-module__checkname_wrapper__uX092","fields":"_styles-module__fields__2W625","field_name":"_styles-module__field_name__1HTlU","company_name_input":"_styles-module__company_name_input__3SaA_","row_reverse":"_styles-module__row_reverse__1DOqB","entity_name":"_styles-module__entity_name__2yaHq","note_wrapper":"_styles-module__note_wrapper__3-mbi","note":"_styles-module__note__2V0Dw","input":"_styles-module__input__1COQd","search":"_styles-module__search__2fPee","nameHints":"_styles-module__nameHints__BWjaJ","nameHintsBadge":"_styles-module__nameHintsBadge__I_OHu","iconQuestionCircle":"_styles-module__iconQuestionCircle__1Z0DY","spinner_wrapper":"_styles-module__spinner_wrapper__3fos9","bottom_wrapper":"_styles-module__bottom_wrapper__2I_7D","back":"_styles-module__back__2zmPd","backMobile":"_styles-module__backMobile__1eN5O","Header":"_styles-module__Header__2oHKa","nextButton":"_styles-module__nextButton__2Lmoq","loader_wrapper":"_styles-module__loader_wrapper__1G6Cs","Body":"_styles-module__Body__r4L_A"};
 
 var name_restricted = [
 	{
@@ -7626,7 +8214,7 @@ var name_restricted = [
 		]
 	}
 ];
-var dataJson = {
+var dataJson$1 = {
 	name_restricted: name_restricted
 };
 
@@ -7819,7 +8407,7 @@ function IncorporationEntityNameCheck({
     }, 500);
   });
   const handleRestricted = (name, fieldName) => {
-    const hasRestricted = dataJson.name_restricted.find(item => item.id === dataCountry.id);
+    const hasRestricted = dataJson$1.name_restricted.find(item => item.id === dataCountry.id);
     if (hasRestricted) {
       const dataRestricted = hasRestricted.restricted.map(item => item.toLowerCase());
       const inputName = name.trim().toLowerCase();
@@ -7919,340 +8507,338 @@ function IncorporationEntityNameCheck({
   useOnClickOutside(wrapperRef, () => {
     setSidebar(false);
   });
-  return (
-    /*#__PURE__*/
-    React.createElement("div", {
-      style: {
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between'
-      }
-    }, /*#__PURE__*/React.createElement(Form, {
-      noValidate: true
+  return /*#__PURE__*/React.createElement(Layout, null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      height: '100%',
+      display: 'flex',
+      flex: '1 1 auto',
+      flexDirection: 'column',
+      justifyContent: 'space-between'
+    }
+  }, /*#__PURE__*/React.createElement(Form, {
+    noValidate: true
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${styles$a.form_header} ${styles$a.Header}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$a.top_wrapper
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: '0 0 auto'
+    }
+  }, /*#__PURE__*/React.createElement("a", {
+    className: `${styles$a.back} ${styles$a.btn}`,
+    onClick: handleBack
+  }, "Back")), dataSideBar && /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: '0 0 auto'
+    }
+  }, /*#__PURE__*/React.createElement("p", {
+    className: styles$a.guideText
+  }, "Need a guide for naming?", ' ', /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: `${styles$a.btn} `,
+    style: {
+      fontWeight: 500,
+      fontSize: 'inherit',
+      color: '#007eff',
+      textTransform: 'uppercase',
+      border: 'none',
+      background: 'transparent'
+    },
+    onClick: () => setSidebar(true)
+  }, "Click here"))))), dataSideBar && /*#__PURE__*/React.createElement(Sidebar, {
+    description: dataSideBar.content,
+    title: dataSideBar.title,
+    wrapperRef: wrapperRef,
+    sidebar: sidebar,
+    onClickClose: () => setSidebar(false)
+  }), /*#__PURE__*/React.createElement(Title, {
+    text: "Entity Name Check",
+    className: styles$a.title_page
+  }), /*#__PURE__*/React.createElement("div", {
+    className: dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes && dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix ? '' : styles$a.Body
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$a.description_wrapper
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: '1'
+    }
+  }, /*#__PURE__*/React.createElement(Component, null, "Country:", ' ', /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontWeight: 500
+    }
+  }, dataCountry === null || dataCountry === void 0 ? void 0 : dataCountry.name)), /*#__PURE__*/React.createElement(Component, null, "Company type:", ' ', /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontWeight: 500
+    }
+  }, dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.name))), /*#__PURE__*/React.createElement("a", {
+    onClick: () => setSidebar(true),
+    className: styles$a.iconQuestionCircle
+  }, dataSideBar && /*#__PURE__*/React.createElement(BsQuestionCircle, null))), /*#__PURE__*/React.createElement("div", {
+    className: styles$a.checkname_wrapper
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${styles$a.title}`
+  }, "Proposed company name"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      maxWidth: '992px'
+    }
+  }, fields.map((item, index) => {
+    var _errors$companyName, _errors$companyName$n, _errors$companyName2, _errors$companyName2$;
+    return /*#__PURE__*/React.createElement("div", {
+      key: item.id
     }, /*#__PURE__*/React.createElement("div", {
-      className: `${styles$9.form_header} ${styles$9.Header}`
-    }, /*#__PURE__*/React.createElement("div", {
-      className: styles$9.top_wrapper
+      className: `${styles$a.fields}`
     }, /*#__PURE__*/React.createElement("div", {
       style: {
-        flex: '0 0 auto'
+        flexGrow: '1',
+        flexBasis: '0',
+        maxWidth: '100%',
+        padding: '0 8px'
       }
-    }, /*#__PURE__*/React.createElement("a", {
-      className: `${styles$9.back} ${styles$9.btn}`,
-      onClick: handleBack
-    }, "Back")), dataSideBar && /*#__PURE__*/React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("div", {
+      className: `${styles$a.field_name} ${dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes && dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix ? styles$a.row_reverse : ''}`
+    }, /*#__PURE__*/React.createElement("div", {
       style: {
-        flex: '0 0 auto'
+        flexGrow: '1',
+        flexBasis: '0',
+        maxWidth: '100%',
+        padding: '0 8px'
       }
-    }, /*#__PURE__*/React.createElement("p", {
-      className: styles$9.guideText
-    }, "Need a guide for naming?", ' ', /*#__PURE__*/React.createElement("button", {
-      type: "button",
-      className: `${styles$9.btn} `,
-      style: {
-        fontWeight: 500,
-        fontSize: 'inherit',
-        color: '#007eff',
-        textTransform: 'uppercase',
-        border: 'none',
-        background: 'transparent'
+    }, /*#__PURE__*/React.createElement("input", Object.assign({
+      type: "text"
+    }, register(`companyName.${index}.name`, {
+      required: {
+        value: index === 0,
+        message: 'Your company name is required'
+      }
+    }), {
+      onChange: e => {
+        handleRestricted(e.target.value, `companyName.${index}.name`);
+        handleSuggestName(e.target.value, index);
       },
-      onClick: () => setSidebar(true)
-    }, "Click here"))))), dataSideBar && /*#__PURE__*/React.createElement(Sidebar, {
-      description: dataSideBar.content,
-      title: dataSideBar.title,
-      wrapperRef: wrapperRef,
-      sidebar: sidebar,
-      onClickClose: () => setSidebar(false)
-    }), /*#__PURE__*/React.createElement(Title, {
-      text: "Entity Name Check",
-      className: styles$9.title_page
-    }), /*#__PURE__*/React.createElement("div", {
-      className: dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes && dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix ? '' : styles$9.Body
+      onBlur: e => {
+        handleRestricted(e.target.value, `companyName.${index}.name`);
+        setTimeout(() => {
+          handleSuggestName('');
+          setLoadingSuggest(false);
+        }, 400);
+      },
+      className: `${styles$a.company_name_input} ${errors !== null && errors !== void 0 && errors.companyName && errors !== null && errors !== void 0 && (_errors$companyName = errors.companyName[`${index}`]) !== null && _errors$companyName !== void 0 && (_errors$companyName$n = _errors$companyName.name) !== null && _errors$companyName$n !== void 0 && _errors$companyName$n.message ? 'is-invalid' : ''} ${styles$a.input}`,
+      placeholder: dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes && dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix ? 'Parent company name' : 'Company name',
+      disabled: submitting
+    }))), /*#__PURE__*/React.createElement("div", {
+      className: styles$a.entity_name
+    }, /*#__PURE__*/React.createElement(Controller, {
+      render: ({
+        field
+      }) => {
+        const {
+          ref,
+          onChange,
+          ...fieldTemp
+        } = field;
+        return /*#__PURE__*/React.createElement(SelectSearchInside, Object.assign({
+          instanceId: item.id,
+          selectBorder: true,
+          options: (dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.CompanySuffixes) && (dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.CompanySuffixes.map(item => {
+            return {
+              value: item.id,
+              label: item.name
+            };
+          })),
+          onChange: newValue => {
+            if (!(Array.isArray(newValue) && newValue.length === 0)) {
+              setValue(field.name, newValue);
+            }
+          },
+          placeholder: "Search suffix",
+          toggleClass: `${styles$a.search}`,
+          isDisabled: submitting
+        }, fieldTemp));
+      },
+      name: `companyName.${index}.suffix`,
+      control: control
+    }))), /*#__PURE__*/React.createElement("div", {
+      className: `${styles$a.field_name} ${dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes && dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix ? styles$a.row_reverse : ''}`
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$9.description_wrapper
-    }, /*#__PURE__*/React.createElement("div", {
       style: {
-        flex: '1'
+        flexGrow: '1',
+        flexBasis: '0',
+        maxWidth: '100%',
+        padding: '0 8px',
+        marginTop: '4px'
       }
-    }, /*#__PURE__*/React.createElement(Component, null, "Country:", ' ', /*#__PURE__*/React.createElement("span", {
+    }, /*#__PURE__*/React.createElement(Form.Control.Feedback, {
+      type: "invalid",
+      className: `${errors !== null && errors !== void 0 && errors.companyName ? styles$a.d_block : styles$a.d_none}`
+    }, /*#__PURE__*/React.createElement("span", {
       style: {
-        fontWeight: 500
+        textAlign: 'left',
+        color: '#ff0000',
+        fontSize: '14px'
       }
-    }, dataCountry === null || dataCountry === void 0 ? void 0 : dataCountry.name)), /*#__PURE__*/React.createElement(Component, null, "Company type:", ' ', /*#__PURE__*/React.createElement("span", {
+    }, (errors === null || errors === void 0 ? void 0 : errors.companyName) && (errors === null || errors === void 0 ? void 0 : (_errors$companyName2 = errors.companyName[`${index}`]) === null || _errors$companyName2 === void 0 ? void 0 : (_errors$companyName2$ = _errors$companyName2.name) === null || _errors$companyName2$ === void 0 ? void 0 : _errors$companyName2$.message)))), /*#__PURE__*/React.createElement("div", {
       style: {
-        fontWeight: 500
+        flex: '0 0 33.3333333333%',
+        maxWidth: '33.3333333333%',
+        padding: '0 8px'
       }
-    }, dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.name))), /*#__PURE__*/React.createElement("a", {
-      onClick: () => setSidebar(true),
-      className: styles$9.iconQuestionCircle
-    }, dataSideBar && /*#__PURE__*/React.createElement(BsQuestionCircle, null))), /*#__PURE__*/React.createElement("div", {
-      className: styles$9.checkname_wrapper
-    }, /*#__PURE__*/React.createElement("div", {
-      className: `${styles$9.title}`
-    }, "Proposed company name"), /*#__PURE__*/React.createElement("div", {
+    }))), /*#__PURE__*/React.createElement("div", {
       style: {
-        maxWidth: '992px'
+        width: '42px',
+        flex: '0 0 auto',
+        padding: '0 8px'
       }
-    }, fields.map((item, index) => {
-      var _errors$companyName, _errors$companyName$n, _errors$companyName2, _errors$companyName2$;
-      return /*#__PURE__*/React.createElement("div", {
-        key: item.id
-      }, /*#__PURE__*/React.createElement("div", {
-        className: `${styles$9.fields}`
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          flexGrow: '1',
-          flexBasis: '0',
-          maxWidth: '100%',
-          padding: '0 8px'
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        className: `${styles$9.field_name} ${dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes && dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix ? styles$9.row_reverse : ''}`
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          flexGrow: '1',
-          flexBasis: '0',
-          maxWidth: '100%',
-          padding: '0 8px'
-        }
-      }, /*#__PURE__*/React.createElement("input", Object.assign({
-        type: "text"
-      }, register(`companyName.${index}.name`, {
-        required: {
-          value: index === 0,
-          message: 'Your company name is required'
-        }
-      }), {
-        onChange: e => {
-          handleRestricted(e.target.value, `companyName.${index}.name`);
-          handleSuggestName(e.target.value, index);
-        },
-        onBlur: e => {
-          handleRestricted(e.target.value, `companyName.${index}.name`);
-          setTimeout(() => {
-            handleSuggestName('');
-            setLoadingSuggest(false);
-          }, 400);
-        },
-        className: `${styles$9.company_name_input} ${errors !== null && errors !== void 0 && errors.companyName && errors !== null && errors !== void 0 && (_errors$companyName = errors.companyName[`${index}`]) !== null && _errors$companyName !== void 0 && (_errors$companyName$n = _errors$companyName.name) !== null && _errors$companyName$n !== void 0 && _errors$companyName$n.message ? 'is-invalid' : ''} ${styles$9.input}`,
-        placeholder: dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes && dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix ? 'Parent company name' : 'Company name',
-        disabled: submitting
-      }))), /*#__PURE__*/React.createElement("div", {
-        className: styles$9.entity_name
-      }, /*#__PURE__*/React.createElement(Controller, {
-        render: ({
-          field
-        }) => {
-          const {
-            ref,
-            onChange,
-            ...fieldTemp
-          } = field;
-          return /*#__PURE__*/React.createElement(SelectSearchInside, Object.assign({
-            instanceId: item.id,
-            selectBorder: true,
-            options: (dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.CompanySuffixes) && (dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.CompanySuffixes.map(item => {
-              return {
-                value: item.id,
-                label: item.name
-              };
-            })),
-            onChange: newValue => {
-              if (!(Array.isArray(newValue) && newValue.length === 0)) {
-                setValue(field.name, newValue);
-              }
-            },
-            placeholder: "Search suffix",
-            toggleClass: `${styles$9.search}`,
-            isDisabled: submitting
-          }, fieldTemp));
-        },
-        name: `companyName.${index}.suffix`,
-        control: control
-      }))), /*#__PURE__*/React.createElement("div", {
-        className: `${styles$9.field_name} ${dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes && dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix ? styles$9.row_reverse : ''}`
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          flexGrow: '1',
-          flexBasis: '0',
-          maxWidth: '100%',
-          padding: '0 8px',
-          marginTop: '4px'
-        }
-      }, /*#__PURE__*/React.createElement(Form.Control.Feedback, {
-        type: "invalid",
-        className: `${errors !== null && errors !== void 0 && errors.companyName ? styles$9.d_block : styles$9.d_none}`
-      }, /*#__PURE__*/React.createElement("span", {
-        style: {
-          textAlign: 'left',
-          color: '#ff0000',
-          fontSize: '14px'
-        }
-      }, (errors === null || errors === void 0 ? void 0 : errors.companyName) && (errors === null || errors === void 0 ? void 0 : (_errors$companyName2 = errors.companyName[`${index}`]) === null || _errors$companyName2 === void 0 ? void 0 : (_errors$companyName2$ = _errors$companyName2.name) === null || _errors$companyName2$ === void 0 ? void 0 : _errors$companyName2$.message)))), /*#__PURE__*/React.createElement("div", {
-        style: {
-          flex: '0 0 33.3333333333%',
-          maxWidth: '33.3333333333%',
-          padding: '0 8px'
-        }
-      }))), /*#__PURE__*/React.createElement("div", {
-        style: {
-          width: '42px',
-          flex: '0 0 auto',
-          padding: '0 8px'
-        }
-      }, index !== 0 && /*#__PURE__*/React.createElement("button", {
-        type: "button",
-        style: {
-          padding: '0',
-          border: 'none',
-          background: 'transparent',
-          cursor: 'pointer'
-        },
-        onClick: () => {
-          remove(index);
-        }
-      }, /*#__PURE__*/React.createElement(IconContext.Provider, {
-        value: {
-          color: '#007eff'
-        }
-      }, /*#__PURE__*/React.createElement(HiMinusCircle, {
-        size: `1.5rem`
-      }))))), (dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.CompanySuffixes) && !(dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix) && suggestNamePosition == index && suggestName.length > 0 && /*#__PURE__*/React.createElement("div", {
-        className: styles$9.nameHints
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          position: 'relative'
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          position: 'relative'
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          display: 'flex',
-          flexWrap: 'wrap',
-          margin: '0 -4px'
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          flex: '0 0 auto',
-          marginTop: '8px',
-          padding: '0 4px'
-        }
-      }, "Name hints:"), suggestName && suggestName.map((item, index) => /*#__PURE__*/React.createElement("div", {
-        style: {
-          flex: '0 0 auto',
-          marginTop: '8px',
-          padding: '0 4px'
-        },
-        key: index
-      }, /*#__PURE__*/React.createElement("div", {
-        type: "button",
-        className: styles$9.nameHintsBadge,
-        onClick: e => handleClickSuggestName(e.target.innerText, suggestNamePosition)
-      }, item))))), loadingSuggest && /*#__PURE__*/React.createElement("div", {
-        className: styles$9.spinner_wrapper,
-        style: {
-          top: 0,
-          left: 0,
-          zIndex: 2,
-          opacity: 0.7
-        }
-      }, /*#__PURE__*/React.createElement(BiLoaderAlt, {
-        className: "animate_spin",
-        size: 20
-      })))));
-    }), (dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.CompanySuffixes) && !(dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix) && /*#__PURE__*/React.createElement("button", {
+    }, index !== 0 && /*#__PURE__*/React.createElement("button", {
       type: "button",
       style: {
         padding: '0',
-        marginTop: '16px',
-        cursor: 'pointer',
         border: 'none',
-        background: 'transparent'
+        background: 'transparent',
+        cursor: 'pointer'
       },
       onClick: () => {
-        addCompanyName(dataEntityType);
-      },
-      disabled: fields.length >= 3 || submitting
-    }, /*#__PURE__*/React.createElement("div", {
-      style: {
-        display: 'flex',
-        alignItems: 'center'
+        remove(index);
       }
     }, /*#__PURE__*/React.createElement(IconContext.Provider, {
       value: {
-        color: fields.length >= 3 ? '#677294' : '#007eff'
+        color: '#007eff'
       }
-    }, /*#__PURE__*/React.createElement(MdAddCircle, {
+    }, /*#__PURE__*/React.createElement(HiMinusCircle, {
       size: `1.5rem`
-    })), /*#__PURE__*/React.createElement("span", {
+    }))))), (dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.CompanySuffixes) && !(dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix) && suggestNamePosition == index && suggestName.length > 0 && /*#__PURE__*/React.createElement("div", {
+      className: styles$a.nameHints
+    }, /*#__PURE__*/React.createElement("div", {
       style: {
-        fontWeight: 500,
-        color: fields.length >= 3 ? '#677294' : '#007eff',
-        marginLeft: '8px',
-        marginRight: '4px',
-        fontSize: '16px',
-        lineHeight: '24px'
-      }
-    }, "Add more company name")))), (dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.CompanySuffixes) && !(dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix) && /*#__PURE__*/React.createElement("div", {
-      style: {
-        display: 'flex',
-        flexWrap: 'wrap'
+        position: 'relative'
       }
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$9.note_wrapper
-    }, /*#__PURE__*/React.createElement("p", {
-      className: styles$9.note
-    }, "**The fact that a proposed name is available does NOT mean that name will be approved. The name approval solely depends on the government\u2019s decision.")))))), /*#__PURE__*/React.createElement("section", {
       style: {
-        margintop: '32px'
+        position: 'relative'
       }
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         display: 'flex',
         flexWrap: 'wrap',
-        alignItems: 'center'
+        margin: '0 -4px'
       }
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$9.bottom_wrapper
-    }, /*#__PURE__*/React.createElement("a", {
-      className: styles$9.backMobile,
       style: {
-        paddingRight: ' 15px',
-        cursor: 'pointer',
-        border: 'none',
-        background: 'transparent'
-      },
-      onClick: handleBack
-    }, "Back")), /*#__PURE__*/React.createElement("div", {
-      style: {
-        flex: ' 0 0 auto',
-        padding: '0 15px'
+        flex: '0 0 auto',
+        marginTop: '8px',
+        padding: '0 4px'
       }
-    }, /*#__PURE__*/React.createElement("button", {
-      type: "submit",
-      onClick: handleSubmit(onSubmit),
-      disabled: submitting,
-      className: styles$9.nextButton
+    }, "Name hints:"), suggestName && suggestName.map((item, index) => /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: '0 0 auto',
+        marginTop: '8px',
+        padding: '0 4px'
+      },
+      key: index
     }, /*#__PURE__*/React.createElement("div", {
+      type: "button",
+      className: styles$a.nameHintsBadge,
+      onClick: e => handleClickSuggestName(e.target.innerText, suggestNamePosition)
+    }, item))))), loadingSuggest && /*#__PURE__*/React.createElement("div", {
+      className: styles$a.spinner_wrapper,
       style: {
-        display: 'flex',
-        alignItems: 'center'
+        top: 0,
+        left: 0,
+        zIndex: 2,
+        opacity: 0.7
       }
-    }, "Next", submitting && /*#__PURE__*/React.createElement(BiLoaderAlt, {
-      style: {
-        marginLeft: '8px'
-      },
+    }, /*#__PURE__*/React.createElement(BiLoaderAlt, {
       className: "animate_spin",
       size: 20
-    })))))))
-  );
+    })))));
+  }), (dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.CompanySuffixes) && !(dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix) && /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    style: {
+      padding: '0',
+      marginTop: '16px',
+      cursor: 'pointer',
+      border: 'none',
+      background: 'transparent'
+    },
+    onClick: () => {
+      addCompanyName(dataEntityType);
+    },
+    disabled: fields.length >= 3 || submitting
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center'
+    }
+  }, /*#__PURE__*/React.createElement(IconContext.Provider, {
+    value: {
+      color: fields.length >= 3 ? '#677294' : '#007eff'
+    }
+  }, /*#__PURE__*/React.createElement(MdAddCircle, {
+    size: `1.5rem`
+  })), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontWeight: 500,
+      color: fields.length >= 3 ? '#677294' : '#007eff',
+      marginLeft: '8px',
+      marginRight: '4px',
+      fontSize: '16px',
+      lineHeight: '24px'
+    }
+  }, "Add more company name")))), (dataEntityType === null || dataEntityType === void 0 ? void 0 : dataEntityType.CompanySuffixes) && !(dataEntityType !== null && dataEntityType !== void 0 && dataEntityType.CompanySuffixes[0].is_prefix) && /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      flexWrap: 'wrap'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$a.note_wrapper
+  }, /*#__PURE__*/React.createElement("p", {
+    className: styles$a.note
+  }, "**The fact that a proposed name is available does NOT mean that name will be approved. The name approval solely depends on the government\u2019s decision.")))))), /*#__PURE__*/React.createElement("section", {
+    style: {
+      margintop: '32px'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      alignItems: 'center'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles$a.bottom_wrapper
+  }, /*#__PURE__*/React.createElement("a", {
+    className: styles$a.backMobile,
+    style: {
+      paddingRight: ' 15px',
+      cursor: 'pointer',
+      border: 'none',
+      background: 'transparent'
+    },
+    onClick: handleBack
+  }, "Back")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: ' 0 0 auto',
+      padding: '0 15px'
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "submit",
+    onClick: handleSubmit(onSubmit),
+    disabled: submitting,
+    className: styles$a.nextButton
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center'
+    }
+  }, "Next", submitting && /*#__PURE__*/React.createElement(BiLoaderAlt, {
+    style: {
+      marginLeft: '8px'
+    },
+    className: "animate_spin",
+    size: 20
+  }))))))));
 }
 
-var styles$a = {"btn_top_wrapper":"_styles-module__btn_top_wrapper__34DmI","btn_top":"_styles-module__btn_top__3qqS1","button":"_styles-module__button__3860g","title":"_styles-module__title__2BlXc","description_wrapper":"_styles-module__description_wrapper__3Nlot","description":"_styles-module__description__3VahP","comparison_wrapper":"_styles-module__comparison_wrapper__3GLBr","comparison_top":"_styles-module__comparison_top__nxU8b","loader_wrapper":"_styles-module__loader_wrapper__3VbNy","package":"_styles-module__package__110ld","package_container":"_styles-module__package_container__2x8Ni","card_wrapper":"_styles-module__card_wrapper__3w1_k","item_height":"_styles-module__item_height__6F5fK","content_wrapper_vn":"_styles-module__content_wrapper_vn__2QOXs","card":"_styles-module__card__3N8iG","card_inside":"_styles-module__card_inside__2aMYN","img_wrapper":"_styles-module__img_wrapper__hhqdG","cardName_wrapper":"_styles-module__cardName_wrapper__3OX3r","cardName":"_styles-module__cardName__22pk0","cardNameVN":"_styles-module__cardNameVN__7JTA6","cardPrice":"_styles-module__cardPrice__lMNoF","cardPriceVN":"_styles-module__cardPriceVN__sunAZ","cardDes":"_styles-module__cardDes__123Dc","basic":"_styles-module__basic__1pZey","local-lite":"_styles-module__local-lite__1fRKW","startup-for-locals":"_styles-module__startup-for-locals__2B7pn","standard":"_styles-module__standard__3mC0T","local-standard":"_styles-module__local-standard__3Fr5q","premium":"_styles-module__premium__10UG7","foreigner-basic":"_styles-module__foreigner-basic__1CpII","standard-with-employment-pass":"_styles-module__standard-with-employment-pass__23Y2O","foreigner-ultra":"_styles-module__foreigner-ultra__1mWaS","formSwich":"_styles-module__formSwich__1Glki","info":"_styles-module__info__1NfHz","note":"_styles-module__note__3O97i","note_vn":"_styles-module__note_vn__2QqH5","modal_wrapper":"_styles-module__modal_wrapper__260T9","fadeIn":"_styles-module__fadeIn__21U4U","close_button":"_styles-module__close_button__4X6g2","tab_container":"_styles-module__tab_container__3ZOMY","tab_wrapper":"_styles-module__tab_wrapper__3Mg2u","tab_item":"_styles-module__tab_item__36v3_","active_tab":"_styles-module__active_tab__g8EO3","dialog":"_styles-module__dialog___aI90","headerModal":"_styles-module__headerModal__1TU3P","bodyModal":"_styles-module__bodyModal__1hv_K","Header":"_styles-module__Header__1hw-O","comparison_bottom_wrapper":"_styles-module__comparison_bottom_wrapper__1rqx-","comparison_bottom":"_styles-module__comparison_bottom__3PrcN","comparison_btn":"_styles-module__comparison_btn__3qyHB","comparison_img":"_styles-module__comparison_img__3RYJD","btn_bottom_wrapper":"_styles-module__btn_bottom_wrapper__3kj8Y","btn_back_bottom":"_styles-module__btn_back_bottom__1fOjL","Body":"_styles-module__Body__2PprN","card_wrapper_sg":"_styles-module__card_wrapper_sg__19DVk"};
+var styles$b = {"btn_top_wrapper":"_styles-module__btn_top_wrapper__34DmI","btn_top":"_styles-module__btn_top__3qqS1","button":"_styles-module__button__3860g","title":"_styles-module__title__2BlXc","description_wrapper":"_styles-module__description_wrapper__3Nlot","description":"_styles-module__description__3VahP","comparison_wrapper":"_styles-module__comparison_wrapper__3GLBr","comparison_top":"_styles-module__comparison_top__nxU8b","loader_wrapper":"_styles-module__loader_wrapper__3VbNy","package":"_styles-module__package__110ld","package_container":"_styles-module__package_container__2x8Ni","card_wrapper":"_styles-module__card_wrapper__3w1_k","item_height":"_styles-module__item_height__6F5fK","content_wrapper_vn":"_styles-module__content_wrapper_vn__2QOXs","card":"_styles-module__card__3N8iG","card_inside":"_styles-module__card_inside__2aMYN","img_wrapper":"_styles-module__img_wrapper__hhqdG","cardName_wrapper":"_styles-module__cardName_wrapper__3OX3r","cardName":"_styles-module__cardName__22pk0","cardNameVN":"_styles-module__cardNameVN__7JTA6","cardPrice":"_styles-module__cardPrice__lMNoF","cardPriceVN":"_styles-module__cardPriceVN__sunAZ","cardDes":"_styles-module__cardDes__123Dc","basic":"_styles-module__basic__1pZey","local-lite":"_styles-module__local-lite__1fRKW","startup-for-locals":"_styles-module__startup-for-locals__2B7pn","standard":"_styles-module__standard__3mC0T","local-standard":"_styles-module__local-standard__3Fr5q","premium":"_styles-module__premium__10UG7","foreigner-basic":"_styles-module__foreigner-basic__1CpII","standard-with-employment-pass":"_styles-module__standard-with-employment-pass__23Y2O","foreigner-ultra":"_styles-module__foreigner-ultra__1mWaS","formSwich":"_styles-module__formSwich__1Glki","info":"_styles-module__info__1NfHz","note":"_styles-module__note__3O97i","note_vn":"_styles-module__note_vn__2QqH5","modal_wrapper":"_styles-module__modal_wrapper__260T9","fadeIn":"_styles-module__fadeIn__21U4U","close_button":"_styles-module__close_button__4X6g2","tab_container":"_styles-module__tab_container__3ZOMY","tab_wrapper":"_styles-module__tab_wrapper__3Mg2u","tab_item":"_styles-module__tab_item__36v3_","active_tab":"_styles-module__active_tab__g8EO3","dialog":"_styles-module__dialog___aI90","headerModal":"_styles-module__headerModal__1TU3P","bodyModal":"_styles-module__bodyModal__1hv_K","Header":"_styles-module__Header__1hw-O","comparison_bottom_wrapper":"_styles-module__comparison_bottom_wrapper__1rqx-","comparison_bottom":"_styles-module__comparison_bottom__3PrcN","comparison_btn":"_styles-module__comparison_btn__3qyHB","comparison_img":"_styles-module__comparison_img__3RYJD","btn_bottom_wrapper":"_styles-module__btn_bottom_wrapper__3kj8Y","btn_back_bottom":"_styles-module__btn_back_bottom__1fOjL","Body":"_styles-module__Body__2PprN","card_wrapper_sg":"_styles-module__card_wrapper_sg__19DVk"};
 
 function popupPackages(country_id, entity_type_id, tab) {
   let content = '';
@@ -9332,8 +9918,8 @@ function IncorporationPackage(params) {
   useOnClickOutside(wrapperRef, () => {
     setShow(false);
   });
-  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("div", {
-    className: `${styles$a.btn_top_wrapper} ${styles$a.Header}`
+  return /*#__PURE__*/React.createElement(Layout, null, /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("div", {
+    className: `${styles$b.btn_top_wrapper} ${styles$b.Header}`
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
@@ -9345,7 +9931,7 @@ function IncorporationPackage(params) {
       flex: '0 0 auto'
     }
   }, /*#__PURE__*/React.createElement("a", {
-    className: styles$a.btn_top,
+    className: styles$b.btn_top,
     style: {
       fontSize: '20px',
       lineHeight: '28px',
@@ -9354,17 +9940,17 @@ function IncorporationPackage(params) {
     onClick: handleBack
   }, "Back")))), /*#__PURE__*/React.createElement(Title, {
     text: "Select packages",
-    className: styles$a.title
+    className: styles$b.title
   }), /*#__PURE__*/React.createElement("div", {
-    className: styles$a.Body
+    className: styles$b.Body
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$a.description_wrapper
+    className: styles$b.description_wrapper
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$a.description
+    className: styles$b.description
   }, /*#__PURE__*/React.createElement(Component, null, "Our packages help you fulfill all requirements to register a company in the chosen jurisdiction.", /*#__PURE__*/React.createElement("br", null), "All the fees are included in our packages.")), /*#__PURE__*/React.createElement("div", {
-    className: styles$a.comparison_wrapper
+    className: styles$b.comparison_wrapper
   }, /*#__PURE__*/React.createElement("button", {
-    className: `${styles$a.button} ${styles$a.comparison_top}`,
+    className: `${styles$b.button} ${styles$b.comparison_top}`,
     onClick: handleShow
   }, /*#__PURE__*/React.createElement("img", {
     src: comparisonTable,
@@ -9374,17 +9960,17 @@ function IncorporationPackage(params) {
       marginTop: '4px'
     }
   }, "Comparison table")))), loading ? /*#__PURE__*/React.createElement("div", {
-    className: styles$a.loader_wrapper
+    className: styles$b.loader_wrapper
   }, /*#__PURE__*/React.createElement(BiLoaderAlt, {
     className: "animate_spin",
     size: 20
   })) : dataPackages ? /*#__PURE__*/React.createElement("div", {
-    className: styles$a.package,
+    className: styles$b.package,
     style: {
       maxWidth: `${isSing ? '100%' : '992px'}`
     }
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$a.package_container
+    className: styles$b.package_container
   }, dataPackages.map((item, index) => {
     var _item$PackageType, _currentItem$PackageT;
     const packageTypeId = item === null || item === void 0 ? void 0 : (_item$PackageType = item.PackageType) === null || _item$PackageType === void 0 ? void 0 : _item$PackageType.id;
@@ -9438,26 +10024,26 @@ function IncorporationPackage(params) {
       }
     }
     return /*#__PURE__*/React.createElement("div", {
-      className: `${styles$a.card_wrapper} ${isSing ? styles$a.card_wrapper_sg : ''} `,
+      className: `${styles$b.card_wrapper} ${isSing ? styles$b.card_wrapper_sg : ''} `,
       key: index
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$a.card
+      className: styles$b.card
     }, isVN ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-      className: `${packageTypeId === 5 ? '' : styles$a.item_height}`,
+      className: `${packageTypeId === 5 ? '' : styles$b.item_height}`,
       style: {
         cursor: 'pointer'
       },
       onClick: () => handleClick(currentItem)
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$a.content_wrapper_vn
+      className: styles$b.content_wrapper_vn
     }, /*#__PURE__*/React.createElement("img", {
       src: `/onboarding/custom-public/onboarding/images/items/${imgNamePackageVn}`,
       className: `w-auto`,
       alt: packageName
     }), /*#__PURE__*/React.createElement("div", {
-      className: `${styles$a.cardPriceVN} font-weight-bold pt-2`
+      className: `${styles$b.cardPriceVN} font-weight-bold pt-2`
     }, "US$", price), /*#__PURE__*/React.createElement("div", {
-      className: `${styles$a.cardNameVN} pt-2`
+      className: `${styles$b.cardNameVN} pt-2`
     }, packageName))), packageTypeId === 5 && /*#__PURE__*/React.createElement("div", {
       className: "p-3",
       style: {
@@ -9471,7 +10057,7 @@ function IncorporationPackage(params) {
       placement: "bottom-start",
       overlay: /*#__PURE__*/React.createElement(Popover, {
         id: "popover",
-        className: `${styles$a.info}`
+        className: `${styles$b.info}`
       }, /*#__PURE__*/React.createElement(Popover.Content, {
         className: "bg-primary rounded",
         style: {
@@ -9502,16 +10088,16 @@ function IncorporationPackage(params) {
     }, /*#__PURE__*/React.createElement(Form.Check, {
       type: "switch",
       id: "custom-switch",
-      className: `${styles$a.formSwich}`,
+      className: `${styles$b.formSwich}`,
       onChange: e => handleSwitch(!isSwitch)
     }))))) : /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-      className: `${styles$a[pacName]} ${styles$a.card_inside}`,
+      className: `${styles$b[pacName]} ${styles$b.card_inside}`,
       style: {
         cursor: 'pointer'
       },
       onClick: () => handleClick(currentItem)
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$a.img_wrapper
+      className: styles$b.img_wrapper
     }, /*#__PURE__*/React.createElement("img", {
       src: link,
       style: {
@@ -9519,36 +10105,36 @@ function IncorporationPackage(params) {
       },
       alt: packageName
     }), /*#__PURE__*/React.createElement("div", {
-      className: styles$a.cardName_wrapper
+      className: styles$b.cardName_wrapper
     }, /*#__PURE__*/React.createElement("div", {
-      className: styles$a.cardName
+      className: styles$b.cardName
     }, packageName))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-      className: styles$a.cardPrice
+      className: styles$b.cardPrice
     }, "US$", price), /*#__PURE__*/React.createElement("p", {
-      className: styles$a.cardDes
+      className: styles$b.cardDes
     }, !isSing && !isUk && !isDelaware && des))))));
   })), isVN && /*#__PURE__*/React.createElement("div", {
-    className: styles$a.note_vn
+    className: styles$b.note_vn
   }, /*#__PURE__*/React.createElement("p", {
-    className: styles$a.note
+    className: styles$b.note
   }, "* All listed packages are dedicated to company registration in HCM city only. Company formation in other cities would cost additional fee."), /*#__PURE__*/React.createElement("p", {
-    className: styles$a.note,
+    className: styles$b.note,
     style: {
       margin: '0'
     }
   }, "** Fees for applying sub-licenses fall outside the scope of above packages."))) : /*#__PURE__*/React.createElement("div", null)), /*#__PURE__*/React.createElement("div", {
-    className: styles$a.comparison_bottom_wrapper
+    className: styles$b.comparison_bottom_wrapper
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$a.comparison_bottom
+    className: styles$b.comparison_bottom
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       flex: '0 0 auto'
     }
   }, /*#__PURE__*/React.createElement("button", {
-    className: `${styles$a.button} ${styles$a.comparison_btn}`,
+    className: `${styles$b.button} ${styles$b.comparison_btn}`,
     onClick: handleShow
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$a.comparison_img
+    className: styles$b.comparison_img
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       flex: '0 0 auto'
@@ -9567,13 +10153,13 @@ function IncorporationPackage(params) {
       paddingLeft: '8px'
     }
   }, "Comparison table"))))))), /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("div", {
-    className: styles$a.btn_bottom_wrapper
+    className: styles$b.btn_bottom_wrapper
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       flex: '0 0 auto'
     }
   }, /*#__PURE__*/React.createElement("a", {
-    className: styles$a.btn_back_bottom,
+    className: styles$b.btn_back_bottom,
     style: {
       color: '#2c2c51',
       fontWeight: 500
@@ -9582,12 +10168,12 @@ function IncorporationPackage(params) {
   }, "Back")))), /*#__PURE__*/React.createElement(Modal, {
     show: show
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$a.modal_wrapper
+    className: styles$b.modal_wrapper
   }, /*#__PURE__*/React.createElement("div", {
     ref: wrapperRef,
-    className: styles$a.dialog
+    className: styles$b.dialog
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$a.closeModal,
+    className: styles$b.closeModal,
     style: {
       position: 'absolute',
       top: '0.25rem',
@@ -9595,7 +10181,7 @@ function IncorporationPackage(params) {
       zIndex: 1
     }
   }, /*#__PURE__*/React.createElement("button", {
-    className: styles$a.close_button,
+    className: styles$b.close_button,
     onClick: handleClose
   }, /*#__PURE__*/React.createElement(IconContext.Provider, {
     value: {
@@ -9608,25 +10194,25 @@ function IncorporationPackage(params) {
   })))), /*#__PURE__*/React.createElement("div", {
     className: "relative"
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$a.headerModal
+    className: styles$b.headerModal
   }, /*#__PURE__*/React.createElement("h3", null, "COMPANY PACKAGE")), /*#__PURE__*/React.createElement("div", {
-    className: styles$a.bodyModal
+    className: styles$b.bodyModal
   }, isSing && /*#__PURE__*/React.createElement("div", {
-    className: styles$a.tab_container
+    className: styles$b.tab_container
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$a.tab_wrapper
+    className: styles$b.tab_wrapper
   }, /*#__PURE__*/React.createElement("button", {
     onClick: () => setTab(1),
-    className: `${tab === 1 ? styles$a.active_tab : ''} ${styles$a.tab_item}`
+    className: `${tab === 1 ? styles$b.active_tab : ''} ${styles$b.tab_item}`
   }, "Incorporation"), /*#__PURE__*/React.createElement("button", {
     onClick: () => setTab(2),
-    className: `${tab === 2 ? styles$a.active_tab : ''} ${styles$a.tab_item}`
+    className: `${tab === 2 ? styles$b.active_tab : ''} ${styles$b.tab_item}`
   }, "Renewal"))), /*#__PURE__*/React.createElement("table", {
     id: "genPopupPackages"
   }, parser(popupPackages(dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor = dataOnboarding.incorporation) === null || _dataOnboarding$incor === void 0 ? void 0 : (_dataOnboarding$incor2 = _dataOnboarding$incor.country) === null || _dataOnboarding$incor2 === void 0 ? void 0 : _dataOnboarding$incor2.id, dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor3 = dataOnboarding.incorporation) === null || _dataOnboarding$incor3 === void 0 ? void 0 : _dataOnboarding$incor3.entity_type_id, tab)))))))));
 }
 
-var styles$b = {"container":"_styles-module__container__2vXIk","topWrapper":"_styles-module__topWrapper__28c0x","btnBackTop":"_styles-module__btnBackTop__m_6dT","faqWrapper":"_styles-module__faqWrapper__1JLCF","faqBtn":"_styles-module__faqBtn__2yZ8q","contentWrapper":"_styles-module__contentWrapper__2gHeF","titleWrapper":"_styles-module__titleWrapper__2thkl","description":"_styles-module__description__tNVXY","title":"_styles-module__title__2_Yi6","totalWrapper":"_styles-module__totalWrapper__WAW3C","price":"_styles-module__price__3T8vH","priceWrapper":"_styles-module__priceWrapper__2Q6Vf","serviceWrapper":"_styles-module__serviceWrapper__1Oy3i","colMd1":"_styles-module__colMd1__bzf3R","colMd2":"_styles-module__colMd2__2iDw8","colMd4":"_styles-module__colMd4__3yqXG","fieldNote":"_styles-module__fieldNote__u3owm","fieldWrapper":"_styles-module__fieldWrapper__1lzs8","customFieldWrapper":"_styles-module__customFieldWrapper__2sgp-","quantityField":"_styles-module__quantityField__31HpT","customField":"_styles-module__customField___fS2R","tableServices":"_styles-module__tableServices__1cOKS","servicesRow":"_styles-module__servicesRow__3WVMP","tableCellGroup1":"_styles-module__tableCellGroup1__2O3va","servicesGroup":"_styles-module__servicesGroup__2i0XR","tableGroup1":"_styles-module__tableGroup1__2w3A3","selectWrapper":"_styles-module__selectWrapper__1-euq","select":"_styles-module__select__3M50d","fieldBtn":"_styles-module__fieldBtn__1-4ke","quantity":"_styles-module__quantity__2RFXr","tableGroupLast":"_styles-module__tableGroupLast__3ANi8","lineDivider":"_styles-module__lineDivider__2iZZ2","singButton":"_styles-module__singButton__3g6k6","Header":"_styles-module__Header__HhmDt","CustomGroup":"_styles-module__CustomGroup__26U4s","CustomOption":"_styles-module__CustomOption__2iYUp","controlWrapper":"_styles-module__controlWrapper__2Um3k","addService":"_styles-module__addService__rM6ub","clearAll":"_styles-module__clearAll__yRnM0","bottomWrapper":"_styles-module__bottomWrapper__2a2zl","btnBackBottom":"_styles-module__btnBackBottom__2akVf","nextBtn":"_styles-module__nextBtn__vLeSM","skipBtn":"_styles-module__skipBtn__3O4rP","questionContainer":"_styles-module__questionContainer__1-t9Z","titleQuestionWrapper":"_styles-module__titleQuestionWrapper__355tw","answerWrapper":"_styles-module__answerWrapper__3IIn1","lineDividerWrapper":"_styles-module__lineDividerWrapper__9r4UN"};
+var styles$c = {"container":"_styles-module__container__2vXIk","topWrapper":"_styles-module__topWrapper__28c0x","btnBackTop":"_styles-module__btnBackTop__m_6dT","faqWrapper":"_styles-module__faqWrapper__1JLCF","faqBtn":"_styles-module__faqBtn__2yZ8q","contentWrapper":"_styles-module__contentWrapper__2gHeF","titleWrapper":"_styles-module__titleWrapper__2thkl","description":"_styles-module__description__tNVXY","title":"_styles-module__title__2_Yi6","totalWrapper":"_styles-module__totalWrapper__WAW3C","price":"_styles-module__price__3T8vH","priceWrapper":"_styles-module__priceWrapper__2Q6Vf","serviceWrapper":"_styles-module__serviceWrapper__1Oy3i","colMd1":"_styles-module__colMd1__bzf3R","colMd2":"_styles-module__colMd2__2iDw8","colMd4":"_styles-module__colMd4__3yqXG","fieldNote":"_styles-module__fieldNote__u3owm","fieldWrapper":"_styles-module__fieldWrapper__1lzs8","customFieldWrapper":"_styles-module__customFieldWrapper__2sgp-","quantityField":"_styles-module__quantityField__31HpT","customField":"_styles-module__customField___fS2R","tableServices":"_styles-module__tableServices__1cOKS","servicesRow":"_styles-module__servicesRow__3WVMP","tableCellGroup1":"_styles-module__tableCellGroup1__2O3va","servicesGroup":"_styles-module__servicesGroup__2i0XR","tableGroup1":"_styles-module__tableGroup1__2w3A3","selectWrapper":"_styles-module__selectWrapper__1-euq","select":"_styles-module__select__3M50d","fieldBtn":"_styles-module__fieldBtn__1-4ke","quantity":"_styles-module__quantity__2RFXr","tableGroupLast":"_styles-module__tableGroupLast__3ANi8","lineDivider":"_styles-module__lineDivider__2iZZ2","singButton":"_styles-module__singButton__3g6k6","Header":"_styles-module__Header__HhmDt","CustomGroup":"_styles-module__CustomGroup__26U4s","CustomOption":"_styles-module__CustomOption__2iYUp","controlWrapper":"_styles-module__controlWrapper__2Um3k","addService":"_styles-module__addService__rM6ub","clearAll":"_styles-module__clearAll__yRnM0","bottomWrapper":"_styles-module__bottomWrapper__2a2zl","btnBackBottom":"_styles-module__btnBackBottom__2akVf","nextBtn":"_styles-module__nextBtn__vLeSM","skipBtn":"_styles-module__skipBtn__3O4rP","questionContainer":"_styles-module__questionContainer__1-t9Z","titleQuestionWrapper":"_styles-module__titleQuestionWrapper__355tw","answerWrapper":"_styles-module__answerWrapper__3IIn1","lineDividerWrapper":"_styles-module__lineDividerWrapper__9r4UN"};
 
 const customStyles$1 = {
   menu: (provider, state) => ({
@@ -9720,12 +10306,12 @@ const questions = [{
 }];
 const Group = props => {
   return /*#__PURE__*/React.createElement("div", {
-    className: styles$b.CustomGroup
+    className: styles$c.CustomGroup
   }, /*#__PURE__*/React.createElement(components.Group, props));
 };
 const CustomOption = props => {
   return /*#__PURE__*/React.createElement(components.Option, Object.assign({}, props, {
-    className: styles$b.CustomOption
+    className: styles$c.CustomOption
   }));
 };
 const CustomField = ({
@@ -9739,7 +10325,7 @@ const CustomField = ({
   const [services, setServices] = useState([]);
   useEffect(() => {
     if (fieldValue && fieldValue.category && !fieldValue.readOnly) {
-      const newServices = _.uniqBy(additionalServices.map(item => ({
+      const newServices = _$1.uniqBy(additionalServices.map(item => ({
         ...item,
         value: item.id,
         label: item.name
@@ -9751,16 +10337,16 @@ const CustomField = ({
     }
   }, [fieldValue.category]);
   return /*#__PURE__*/React.createElement("div", {
-    className: `${styles$b.servicesGroup}`
+    className: `${styles$c.servicesGroup}`
   }, /*#__PURE__*/React.createElement("div", {
-    className: `${styles$b.tableCellGroup1} ${styles$b.tableGroup1}`
+    className: `${styles$c.tableCellGroup1} ${styles$c.tableGroup1}`
   }, idx + 1), /*#__PURE__*/React.createElement("div", {
-    className: `${styles$b.tableCellGroup1} ${styles$b.selectWrapper}`
+    className: `${styles$c.tableCellGroup1} ${styles$c.selectWrapper}`
   }, /*#__PURE__*/React.createElement(Select, {
     menuPlacement: "auto",
     menuPosition: "fixed",
     menuShouldBlockScroll: true,
-    className: styles$b.select,
+    className: styles$c.select,
     options: categories.filter(item => item.options ? item.options.some(i => additionalServices.some(el => el.service_type_id === i.id)) : additionalServices.some(el => el.service_type_id === item.id)),
     isSearchable: false,
     styles: customStyles$1,
@@ -9774,12 +10360,12 @@ const CustomField = ({
       Option: CustomOption
     }
   })), /*#__PURE__*/React.createElement("div", {
-    className: `${styles$b.tableCellGroup1} ${styles$b.selectWrapper}`
+    className: `${styles$c.tableCellGroup1} ${styles$c.selectWrapper}`
   }, /*#__PURE__*/React.createElement(Select, {
     menuPlacement: "auto",
     menuPosition: "fixed",
     menuShouldBlockScroll: true,
-    className: styles$b.select,
+    className: styles$c.select,
     isSearchable: false,
     options: services,
     styles: customStyles1,
@@ -9791,11 +10377,11 @@ const CustomField = ({
       IndicatorsContainer: props => fieldValue['readOnly'] ? null : /*#__PURE__*/React.createElement(DropdownIndicator, props)
     }
   })), /*#__PURE__*/React.createElement("div", {
-    className: `${styles$b.tableCellGroup1} ${styles$b.fieldBtn}`
+    className: `${styles$c.tableCellGroup1} ${styles$c.fieldBtn}`
   }, fieldValue['readOnly'] ? /*#__PURE__*/React.createElement("div", {
-    className: `${styles$b.quantity}`
+    className: `${styles$c.quantity}`
   }, fieldValue['quantity'] > 9 ? fieldValue['quantity'] : '0' + fieldValue['quantity']) : /*#__PURE__*/React.createElement("div", {
-    className: `${styles$b.quantity}`
+    className: `${styles$c.quantity}`
   }, fieldValue && fieldValue['quantity'] <= 1 ? /*#__PURE__*/React.createElement("button", {
     onClick: () => handleRemove(fieldValue),
     style: {
@@ -9815,7 +10401,7 @@ const CustomField = ({
     size: 22,
     color: "#fff"
   })))), /*#__PURE__*/React.createElement("div", {
-    className: `${styles$b.tableCellGroup1} ${styles$b.tableGroupLast}`
+    className: `${styles$c.tableCellGroup1} ${styles$c.tableGroupLast}`
   }, /*#__PURE__*/React.createElement("sub", null, "$US"), /*#__PURE__*/React.createElement("div", {
     className: "price"
   }, fieldValue['price'])));
@@ -9853,6 +10439,10 @@ function IncorporationAdditionalService(params) {
   const [emptyField, setEmtyField] = useState(false);
   const [note, setNote] = useState(true);
   const promotionCode = useRef(null);
+  const wrapperRef = useRef(null);
+  useOnClickOutside(wrapperRef, () => {
+    setSidebar(false);
+  });
   useEffect(() => {
     if (localStorage.getItem('data_onboarding')) {
       var _dataOnboarding$incor2, _dataOnboarding$incor3, _dataOnboarding$incor4, _dataOnboarding$incor5, _dataOnboarding$incor6, _dataOnboarding$incor7, _dataOnboarding$incor8, _dataOnboarding$incor9, _dataOnboarding$incor10, _dataOnboarding$incor11, _dataOnboarding$incor12, _dataOnboarding$incor13, _dataOnboarding$incor14, _dataOnboarding$incor15, _dataOnboarding$incor16, _dataOnboarding$incor17, _dataOnboarding$incor18, _dataOnboarding$incor19, _dataOnboarding$incor20, _dataOnboarding$incor21, _dataOnboarding$incor22, _dataOnboarding$incor23, _dataOnboarding$incor24, _dataOnboarding$incor25, _dataOnboarding$incor26, _dataOnboarding$incor27, _dataOnboarding$incor28, _dataOnboarding$incor29, _dataOnboarding$incor30;
@@ -9869,20 +10459,20 @@ function IncorporationAdditionalService(params) {
           company_suffix_id: item.suffix.value
         }))) || []
       };
-      const children = _.sortBy(_.uniqBy(newAdditionalServices.concat(newServicesAccounting).map(item => ({
+      const children = _$1.sortBy(_$1.uniqBy(newAdditionalServices.concat(newServicesAccounting).map(item => ({
         ...item.ServiceType,
         value: item.ServiceType.id,
         label: item.ServiceType.name
       })), 'value'), ['order']).filter(e => e.id !== 42);
-      const parent = _.unionBy(children.map(item => {
+      const parent = _$1.unionBy(children.map(item => {
         if ((item === null || item === void 0 ? void 0 : item.parent_id) !== null) {
           return {
             ...item.ServiceType
           };
         }
       }).filter(item => item !== undefined), 'name');
-      const group = _.groupBy(children, 'ServiceType.name');
-      const newCategories = _.sortBy([...parent.map(item => ({
+      const group = _$1.groupBy(children, 'ServiceType.name');
+      const newCategories = _$1.sortBy([...parent.map(item => ({
         ...item,
         label: item.name,
         options: group[item.name].map(i => ({
@@ -9908,9 +10498,9 @@ function IncorporationAdditionalService(params) {
           isLocalLoad: true
         })));
       }
-      if (Array.isArray(selectedPackages) && selectedPackages.length === 0 && (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor19 = dataOnboarding.incorporation) === null || _dataOnboarding$incor19 === void 0 ? void 0 : (_dataOnboarding$incor20 = _dataOnboarding$incor19.country) === null || _dataOnboarding$incor20 === void 0 ? void 0 : _dataOnboarding$incor20.id) === 191 && ((dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor21 = dataOnboarding.incorporation) === null || _dataOnboarding$incor21 === void 0 ? void 0 : (_dataOnboarding$incor22 = _dataOnboarding$incor21.package) === null || _dataOnboarding$incor22 === void 0 ? void 0 : _dataOnboarding$incor22.id) === 85 || (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor23 = dataOnboarding.incorporation) === null || _dataOnboarding$incor23 === void 0 ? void 0 : (_dataOnboarding$incor24 = _dataOnboarding$incor23.package) === null || _dataOnboarding$incor24 === void 0 ? void 0 : _dataOnboarding$incor24.id) === 86)) {
+      if (Array.isArray(selectedPackages) && selectedPackages.length === 0 && (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor19 = dataOnboarding.incorporation) === null || _dataOnboarding$incor19 === void 0 ? void 0 : (_dataOnboarding$incor20 = _dataOnboarding$incor19.country) === null || _dataOnboarding$incor20 === void 0 ? void 0 : _dataOnboarding$incor20.id) === 191 && ((dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor21 = dataOnboarding.incorporation) === null || _dataOnboarding$incor21 === void 0 ? void 0 : (_dataOnboarding$incor22 = _dataOnboarding$incor21.package) === null || _dataOnboarding$incor22 === void 0 ? void 0 : _dataOnboarding$incor22.id) === 86 || (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor23 = dataOnboarding.incorporation) === null || _dataOnboarding$incor23 === void 0 ? void 0 : (_dataOnboarding$incor24 = _dataOnboarding$incor23.package) === null || _dataOnboarding$incor24 === void 0 ? void 0 : _dataOnboarding$incor24.id) === 87)) {
         setQuestion(questions[1]);
-      } else if (Array.isArray(selectedPackages) && selectedPackages.length === 0 && (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor25 = dataOnboarding.incorporation) === null || _dataOnboarding$incor25 === void 0 ? void 0 : (_dataOnboarding$incor26 = _dataOnboarding$incor25.country) === null || _dataOnboarding$incor26 === void 0 ? void 0 : _dataOnboarding$incor26.id) === 191 && ((dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor27 = dataOnboarding.incorporation) === null || _dataOnboarding$incor27 === void 0 ? void 0 : (_dataOnboarding$incor28 = _dataOnboarding$incor27.package) === null || _dataOnboarding$incor28 === void 0 ? void 0 : _dataOnboarding$incor28.id) === 87 || (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor29 = dataOnboarding.incorporation) === null || _dataOnboarding$incor29 === void 0 ? void 0 : (_dataOnboarding$incor30 = _dataOnboarding$incor29.package) === null || _dataOnboarding$incor30 === void 0 ? void 0 : _dataOnboarding$incor30.id) === 88)) {
+      } else if (Array.isArray(selectedPackages) && selectedPackages.length === 0 && (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor25 = dataOnboarding.incorporation) === null || _dataOnboarding$incor25 === void 0 ? void 0 : (_dataOnboarding$incor26 = _dataOnboarding$incor25.country) === null || _dataOnboarding$incor26 === void 0 ? void 0 : _dataOnboarding$incor26.id) === 191 && ((dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor27 = dataOnboarding.incorporation) === null || _dataOnboarding$incor27 === void 0 ? void 0 : (_dataOnboarding$incor28 = _dataOnboarding$incor27.package) === null || _dataOnboarding$incor28 === void 0 ? void 0 : _dataOnboarding$incor28.id) === 88 || (dataOnboarding === null || dataOnboarding === void 0 ? void 0 : (_dataOnboarding$incor29 = dataOnboarding.incorporation) === null || _dataOnboarding$incor29 === void 0 ? void 0 : (_dataOnboarding$incor30 = _dataOnboarding$incor29.package) === null || _dataOnboarding$incor30 === void 0 ? void 0 : _dataOnboarding$incor30.id) === 89)) {
         setQuestion(questions[0]);
       } else {
         setQuestion('none');
@@ -9978,7 +10568,7 @@ function IncorporationAdditionalService(params) {
     }
   };
   const removeAll = () => {
-    if (country && country.id === 191 && (packageId === 85 || packageId === 86 || packageId === 87 || packageId === 88) && !emptyField || companyInfo && companyInfo.country_id === 23 && companyInfo.entity_type_id === 2) {
+    if (country && country.id === 191 && (packageId === 86 || packageId === 87 || packageId === 88 || packageId === 89) && !emptyField || companyInfo && companyInfo.country_id === 23 && companyInfo.entity_type_id === 2) {
       setFields(fields.filter((item, index) => index === 0));
     } else {
       setFields([]);
@@ -10014,7 +10604,7 @@ function IncorporationAdditionalService(params) {
   const handleSubmit = type => {
     if (type === 'skip') {
       setLoading('skip');
-      if (country && country.id === 191 && (packageId === 85 || packageId === 86 || packageId === 87 || packageId === 88) && !emptyField || companyInfo && companyInfo.country_id === 23 && companyInfo.entity_type_id === 2) {
+      if (country && country.id === 191 && (packageId === 86 || packageId === 87 || packageId === 88 || packageId === 89) && !emptyField || companyInfo && companyInfo.country_id === 23 && companyInfo.entity_type_id === 2) {
         handleAPIAdditional([{
           service_id: fields[0].service.id,
           quantity: fields[0].quantity
@@ -10024,7 +10614,7 @@ function IncorporationAdditionalService(params) {
       }
     } else {
       setLoading('next');
-      const orderItemTemps = _.uniqBy(fields.map(item => ({
+      const orderItemTemps = _$1.uniqBy(fields.map(item => ({
         service_id: item.service.id,
         quantity: item.quantity
       })), 'service_id');
@@ -10141,81 +10731,81 @@ function IncorporationAdditionalService(params) {
         break;
     }
   };
-  return question ? /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("div", {
-    className: styles$b.container
+  return /*#__PURE__*/React.createElement(Layout, null, question ? /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: styles$c.container
   }, /*#__PURE__*/React.createElement("div", {
-    className: `${styles$b.Header} ${styles$b.topWrapper}`
+    className: `${styles$c.Header} ${styles$c.topWrapper}`
   }, /*#__PURE__*/React.createElement("a", {
     disabled: loading && loading !== '',
     href: "/incorporation-package",
-    className: styles$b.btnBackTop,
+    className: styles$c.btnBackTop,
     onClick: clearSelectedPackages
-  }, "Back"), question && question !== 'none' && packageId != 85 && packageId != 86 ? /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("div", {
-    className: styles$b.faqWrapper,
+  }, "Back"), question && question !== 'none' && packageId != 86 && packageId != 87 ? /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: styles$c.faqWrapper,
     style: {
       fontSize: 20
     }
   }, "Frequently Asked Questions?", ' ', /*#__PURE__*/React.createElement("button", {
-    className: styles$b.faqBtn,
+    className: styles$c.faqBtn,
     style: {
       fontSize: 20
     },
     onClick: () => setSidebar(true)
   }, "CLICK HERE"))) : /*#__PURE__*/React.createElement(Fragment, null)), question === 'none' ? /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("div", {
-    className: styles$b.contentWrapper
+    className: styles$c.contentWrapper
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$b.content
+    className: styles$c.content
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$b.titleWrapper
+    className: styles$c.titleWrapper
   }, /*#__PURE__*/React.createElement("div", {
-    className: `${styles$b.titleDes} ${styles$b.description}`
+    className: `${styles$c.titleDes} ${styles$c.description}`
   }, /*#__PURE__*/React.createElement(Title, {
     text: "Additional Services",
-    className: styles$b.title
+    className: styles$c.title
   }), /*#__PURE__*/React.createElement(Component, null, "Additional services will help you to solve the problem relating to documentation. You can also skip this if you do not find the services suited to you")), /*#__PURE__*/React.createElement("div", {
-    className: `${styles$b.total} ${styles$b.totalWrapper}`
+    className: `${styles$c.total} ${styles$c.totalWrapper}`
   }, /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("span", {
     style: {
       color: '#333333'
     }
   }, "Total:"), /*#__PURE__*/React.createElement("span", {
-    className: styles$b.price
+    className: styles$c.price
   }, "$", getSum(), ".00")), /*#__PURE__*/React.createElement("h1", {
-    className: styles$b.priceWrapper
+    className: styles$c.priceWrapper
   }, "US$", getSum(), ".00"))), /*#__PURE__*/React.createElement("div", {
-    className: styles$b.tableServices
+    className: styles$c.tableServices
   }, /*#__PURE__*/React.createElement("div", {
-    className: `${styles$b.servicesRow} ${styles$b.serviceWrapper}`
+    className: `${styles$c.servicesRow} ${styles$c.serviceWrapper}`
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$b.colMd1,
+    className: styles$c.colMd1,
     scope: "col"
   }, "No."), /*#__PURE__*/React.createElement("div", {
-    className: styles$b.colMd4,
+    className: styles$c.colMd4,
     scope: "col"
   }, "Category"), /*#__PURE__*/React.createElement("div", {
-    className: styles$b.colMd4,
+    className: styles$c.colMd4,
     scope: "col"
   }, "Service"), /*#__PURE__*/React.createElement("div", {
-    className: styles$b.colMd2,
+    className: styles$c.colMd2,
     scope: "col"
   }, "Quantity"), /*#__PURE__*/React.createElement("div", {
-    className: styles$b.colMd1,
+    className: styles$c.colMd1,
     scope: "col"
   }, "Price")), fields.length === 0 && /*#__PURE__*/React.createElement("h3", {
-    className: styles$b.fieldNote
+    className: styles$c.fieldNote
   }, "Please add and choose services"), fields.map((field, index) => /*#__PURE__*/React.createElement("div", {
     key: index,
-    className: styles$b.fieldWrapper
+    className: styles$c.fieldWrapper
   }, index !== 0 && /*#__PURE__*/React.createElement("div", {
-    className: styles$b.lineDividerWrapper
+    className: styles$c.lineDividerWrapper
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$b.lineDivider
+    className: styles$c.lineDivider
   })), /*#__PURE__*/React.createElement("div", {
-    className: styles$b.customFieldWrapper
+    className: styles$c.customFieldWrapper
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$b.quantityField
+    className: styles$c.quantityField
   }, index + 1), /*#__PURE__*/React.createElement("div", {
-    className: styles$b.customField
+    className: styles$c.customField
   }, /*#__PURE__*/React.createElement(CustomField, {
     idx: index,
     fieldValue: field,
@@ -10224,16 +10814,16 @@ function IncorporationAdditionalService(params) {
     onFieldChange: onFieldChange,
     handleRemove: handleRemove
   })))))), /*#__PURE__*/React.createElement("div", {
-    className: styles$b.controlWrapper
+    className: styles$c.controlWrapper
   }, /*#__PURE__*/React.createElement("button", {
-    className: styles$b.addService,
+    className: styles$c.addService,
     onClick: handleClickAdd,
     style: {
       minWidth: 150
     },
     disabled: loading && loading !== ''
   }, "Add"), /*#__PURE__*/React.createElement("button", {
-    className: styles$b.clearAll,
+    className: styles$c.clearAll,
     onClick: removeAll,
     style: {
       minWidth: 150
@@ -10263,16 +10853,16 @@ function IncorporationAdditionalService(params) {
       fontWeight: `400`
     }
   }, /*#__PURE__*/React.createElement("strong", null, "Note:"), " Tax Identification Number (TIN) is mandatory for all Belize companies, regardless of whether they are included or non-included entities, to submit the filing of returns and tax payments. If you need further information and assistance, please do not hesitate to contact our customer service team."), /*#__PURE__*/React.createElement("div", {
-    className: styles$b.bottomWrapper
+    className: styles$c.bottomWrapper
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$b.btnBackBottom
+    className: styles$c.btnBackBottom
   }, /*#__PURE__*/React.createElement("a", {
     disabled: loading && loading !== '',
     href: "/incorporation-package",
     onClick: clearSelectedPackages
   }, "Back")), /*#__PURE__*/React.createElement("button", {
     onClick: () => handleSubmit('next'),
-    className: styles$b.nextBtn,
+    className: styles$c.nextBtn,
     disabled: loading && loading !== ''
   }, loading === 'next' ? /*#__PURE__*/React.createElement("span", null, "Next", /*#__PURE__*/React.createElement(BiLoaderAlt, {
     className: "animate_spin",
@@ -10281,7 +10871,7 @@ function IncorporationAdditionalService(params) {
       marginLeft: '8px'
     }
   })) : /*#__PURE__*/React.createElement("span", null, "Next")), /*#__PURE__*/React.createElement("button", {
-    className: styles$b.skipBtn,
+    className: styles$c.skipBtn,
     onClick: () => handleSubmit('skip'),
     disabled: loading && loading !== ''
   }, loading === 'skip' ? /*#__PURE__*/React.createElement("span", null, "Skip", /*#__PURE__*/React.createElement(BiLoaderAlt, {
@@ -10291,24 +10881,24 @@ function IncorporationAdditionalService(params) {
       marginLeft: '8px'
     }
   })) : /*#__PURE__*/React.createElement("span", null, "Skip")))))) : /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("div", {
-    className: styles$b.questionContainer
+    className: styles$c.questionContainer
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$b.content
+    className: styles$c.content
   }, /*#__PURE__*/React.createElement("div", {
-    className: styles$b.titleQuestionWrapper
+    className: styles$c.titleQuestionWrapper
   }, /*#__PURE__*/React.createElement(Title, {
     text: "Accounting and Tax Filing service",
-    className: styles$b.title
+    className: styles$c.title
   }), /*#__PURE__*/React.createElement("button", {
     onClick: () => setSidebar(true)
   }, /*#__PURE__*/React.createElement(FiHelpCircle, {
     color: "#007eff",
     size: 30
   }))), /*#__PURE__*/React.createElement(Component, null, question.text), /*#__PURE__*/React.createElement("div", {
-    className: styles$b.answerWrapper
+    className: styles$c.answerWrapper
   }, question.answers.map((item, index) => /*#__PURE__*/React.createElement("button", {
     onClick: () => handleQuestion(item),
-    className: ` ${styles$b.singButton}`,
+    className: ` ${styles$c.singButton}`,
     key: index
   }, /*#__PURE__*/React.createElement(FaCaretRight, {
     size: 30,
@@ -10317,9 +10907,1328 @@ function IncorporationAdditionalService(params) {
     description: `<div><h4>What is the fee if I use your accounting service?</h4><ul><li>Our accounting service starts from US$84/month for less than S$70,000 of revenue per year. You can check <a href='https://bbcincorp.com/sg/accounting-and-auditing' target='_blank' rel='nofollow noreferrer'>HERE</a> for accounting fee details.</li></ul><h4>If there is no transaction in my yearly accounting period, could I get my accounting fee back?</h4><ul><li>When you use nominee director service in Singapore, you are most likely required to deposit an initial amount of no less than S$2,000. However, we don’t require this, you must instead send your monthly accounting report for our local director’s review to discharge their liabilities from possible illicit business activities or practices.</li></ul></div>`,
     title: "FAQs",
     sidebar: sidebar,
+    wrapperRef: wrapperRef,
     onClickClose: () => setSidebar(false)
-  })) : /*#__PURE__*/React.createElement(Fragment, null);
+  })) : /*#__PURE__*/React.createElement(Fragment, null));
 }
 
-export { IncorporationAdditionalService, IncorporationCompanyType, IncorporationCountry, IncorporationEntityNameCheck, IncorporationPackage, Register, SelectService };
+var style$1 = {"Payment":"_styles-module__Payment__3YHGi","PaymentActive":"_styles-module__PaymentActive__3hiZt","OrderInformation":"_styles-module__OrderInformation__3VU0C","loaderWrapper":"_styles-module__loaderWrapper__3De3P","loaderWrapperBottom":"_styles-module__loaderWrapperBottom__3-5LU","loading":"_styles-module__loading__36kQd","spin":"_styles-module__spin__34RFv","InfoContent":"_styles-module__InfoContent__1kEqq","content":"_styles-module__content__38XZY","lineDivide":"_styles-module__lineDivide__17Kvn","promoBlock":"_styles-module__promoBlock__33hOn","lineDivideSpace":"_styles-module__lineDivideSpace__SY8JY","divideRow":"_styles-module__divideRow__1IK-8","Font500":"_styles-module__Font500__i4HM3","textRight":"_styles-module__textRight__3wAug","paymentBox":"_styles-module__paymentBox__9f23T","paymentBoxContainer":"_styles-module__paymentBoxContainer__1Cv6c","SubTitle":"_styles-module__SubTitle__1xKYa","checkboxWrapper":"_styles-module__checkboxWrapper__hthDj","TitleH2":"_styles-module__TitleH2__2SNsC","TitleH3":"_styles-module__TitleH3__qQXf7","TotalPrice":"_styles-module__TotalPrice__22Dq8","wrapperOrder":"_styles-module__wrapperOrder__1Skns","social":"_styles-module__social__3ogKL","refundGuarantee":"_styles-module__refundGuarantee__b0Kgm","totalOrder":"_styles-module__totalOrder__8nGid","amountWrapper":"_styles-module__amountWrapper__2elqt","OrderSummary":"_styles-module__OrderSummary__1rsVR","CloseButton":"_styles-module__CloseButton__1o3cR","PayButton":"_styles-module__PayButton__TFKpf","Link":"_styles-module__Link__19GiR","ButtonMakePayment":"_styles-module__ButtonMakePayment__1arhv","Header":"_styles-module__Header__22Oa6","contact":"_styles-module__contact__1ywpb","main":"_styles-module__main__GVoUF","informationWrapper":"_styles-module__informationWrapper__3N83Z","Body":"_styles-module__Body__TO73M","infoContentRow":"_styles-module__infoContentRow__36Ofh","infoContentRowMb":"_styles-module__infoContentRowMb__3Smvg","infoContentWrapper":"_styles-module__infoContentWrapper__37ssH","promoDiscountContent":"_styles-module__promoDiscountContent__DM98r","incorpInfoWrapper":"_styles-module__incorpInfoWrapper__3u68R","incorpInfo":"_styles-module__incorpInfo__30N5p","companyPackageWrapper":"_styles-module__companyPackageWrapper__1lb8l","serviceName":"_styles-module__serviceName__1PveS","customService":"_styles-module__customService__2c-E_","totalWrapper":"_styles-module__totalWrapper__2gsgP","formCheck":"_styles-module__formCheck__1IjJ0","formCheckImg":"_styles-module__formCheckImg__3uv-I","formCheckLabel":"_styles-module__formCheckLabel__24mnU","paymentBottomWrapper":"_styles-module__paymentBottomWrapper__A5a-0","policyWrapper":"_styles-module__policyWrapper__34QAm","policyText":"_styles-module__policyText__3o0SL","submitWrapper":"_styles-module__submitWrapper__2assh","submitWrapperDesk":"_styles-module__submitWrapperDesk__o9RCX","CardHolderName":"_styles-module__CardHolderName__Epnkn","CardDetails":"_styles-module__CardDetails__1AAzT","ErrorMessage":"_styles-module__ErrorMessage__2BaaY","BillingInformation":"_styles-module__BillingInformation__4UUi2","StripeForm":"_styles-module__StripeForm__1aNRA","backLinkBottom":"_styles-module__backLinkBottom__1F8a2","modal":"_styles-module__modal__2k9Hi","topModalContent":"_styles-module__topModalContent__2BnEv","logo":"_styles-module__logo__2YtHq","modalWrapper":"_styles-module__modalWrapper__1tUPL","Button":"_styles-module__Button__1Mgf3","promoDiscountWrapper":"_styles-module__promoDiscountWrapper__3aUoH"};
+
+function BankingInfo({
+  orderInfo
+}) {
+  var _orderInfo$OtherItems, _orderInfo$OtherItems2;
+  return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: `${style$1.lineDivide} ${style$1.lineDivideSpace}`
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "mb-1"
+  }, "BANKING SUPPORT SERVICE"), /*#__PURE__*/React.createElement("div", {
+    className: style$1.InfoContent
+  }, /*#__PURE__*/React.createElement("div", {
+    className: style$1.content
+  }, /*#__PURE__*/React.createElement("p", {
+    className: style$1.Font500
+  }, orderInfo && (orderInfo === null || orderInfo === void 0 ? void 0 : (_orderInfo$OtherItems = orderInfo.OtherItems[0]) === null || _orderInfo$OtherItems === void 0 ? void 0 : (_orderInfo$OtherItems2 = _orderInfo$OtherItems.Service) === null || _orderInfo$OtherItems2 === void 0 ? void 0 : _orderInfo$OtherItems2.name)), /*#__PURE__*/React.createElement("p", {
+    className: style$1.Font500
+  }, /*#__PURE__*/React.createElement("span", null, "$"), orderInfo && (orderInfo === null || orderInfo === void 0 ? void 0 : orderInfo.OtherItems.reduce((accumulator, service) => accumulator + service.amount, 0)))))));
+}
+
+function IncorpInfo({
+  orderInfo,
+  suffixList,
+  orderSummary
+}) {
+  var _orderInfo$Company, _orderInfo$Company$Co, _orderInfo$Company2, _orderInfo$Company2$E, _orderInfo$Company3, _orderSummary$company, _orderSummary$company2, _orderSummary$company3, _orderSummary$company4;
+  function getCompanyName(item, suffixList) {
+    let suffix = '',
+      prefix = '';
+    let companySuffix = suffixList === null || suffixList === void 0 ? void 0 : suffixList.find(i => i.id === item.company_suffix_id);
+    if (companySuffix) {
+      if (companySuffix.is_prefix == true) {
+        prefix = companySuffix.name + ' ';
+      } else {
+        suffix = ' ' + companySuffix.name;
+      }
+    }
+    return prefix + item.name + suffix;
+  }
+  return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: `${style$1.lineDivide} ${style$1.lineDivideSpace}`
+  }, /*#__PURE__*/React.createElement("h4", {
+    style: {
+      marginBottom: '8px'
+    }
+  }, "COMPANY INFORMATION"), /*#__PURE__*/React.createElement("div", {
+    className: style$1.InfoContent
+  }, /*#__PURE__*/React.createElement("div", {
+    className: style$1.infoContentWrapper
+  }, /*#__PURE__*/React.createElement("p", null, "Country of Incorporation:"), /*#__PURE__*/React.createElement("p", {
+    className: `${style$1.Font500} ${style$1.textRight}`
+  }, orderInfo && (orderInfo === null || orderInfo === void 0 ? void 0 : (_orderInfo$Company = orderInfo.Company) === null || _orderInfo$Company === void 0 ? void 0 : (_orderInfo$Company$Co = _orderInfo$Company.Country) === null || _orderInfo$Company$Co === void 0 ? void 0 : _orderInfo$Company$Co.name))), /*#__PURE__*/React.createElement("div", {
+    className: style$1.infoContentWrapper
+  }, /*#__PURE__*/React.createElement("p", null, "Company Type:"), /*#__PURE__*/React.createElement("p", {
+    className: `${style$1.Font500} ${style$1.textRight}`
+  }, orderInfo && (orderInfo === null || orderInfo === void 0 ? void 0 : (_orderInfo$Company2 = orderInfo.Company) === null || _orderInfo$Company2 === void 0 ? void 0 : (_orderInfo$Company2$E = _orderInfo$Company2.EntityType) === null || _orderInfo$Company2$E === void 0 ? void 0 : _orderInfo$Company2$E.name))), /*#__PURE__*/React.createElement("div", {
+    className: style$1.incorpInfoWrapper
+  }, orderInfo === null || orderInfo === void 0 ? void 0 : (_orderInfo$Company3 = orderInfo.Company) === null || _orderInfo$Company3 === void 0 ? void 0 : _orderInfo$Company3.ProposedNames.map((item, index) => index == 0 ? /*#__PURE__*/React.createElement("div", {
+    key: index,
+    className: style$1.incorpInfo
+  }, /*#__PURE__*/React.createElement("p", null, "Proposed company name:"), /*#__PURE__*/React.createElement("p", {
+    key: index,
+    className: `${style$1.Font500} ${style$1.textRight}`
+  }, getCompanyName(item, suffixList))) : /*#__PURE__*/React.createElement("div", {
+    key: index,
+    className: `${style$1.Font500} ${style$1.textRight}`
+  }, getCompanyName(item, suffixList)))))), /*#__PURE__*/React.createElement("div", {
+    className: `${style$1.lineDivide} ${style$1.lineDivideSpace}`
+  }, /*#__PURE__*/React.createElement("h4", {
+    style: {
+      marginBottom: '8px'
+    }
+  }, "COMPANY PACKAGE"), /*#__PURE__*/React.createElement("div", {
+    className: style$1.InfoContent
+  }, /*#__PURE__*/React.createElement("div", {
+    className: style$1.companyPackageWrapper
+  }, /*#__PURE__*/React.createElement("p", {
+    className: `${style$1.Font500}`
+  }, (_orderSummary$company = orderSummary.companyPackage[0]) === null || _orderSummary$company === void 0 ? void 0 : (_orderSummary$company2 = _orderSummary$company.Package) === null || _orderSummary$company2 === void 0 ? void 0 : _orderSummary$company2.name), /*#__PURE__*/React.createElement("p", {
+    className: style$1.Font500
+  }, /*#__PURE__*/React.createElement("span", null, "$"), (_orderSummary$company3 = orderSummary.companyPackage) === null || _orderSummary$company3 === void 0 ? void 0 : _orderSummary$company3.reduce((accumulator, service) => accumulator + service.amount, 0))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("ul", {
+    style: {
+      marginLeft: '24px'
+    }
+  }, (_orderSummary$company4 = orderSummary.companyPackage) === null || _orderSummary$company4 === void 0 ? void 0 : _orderSummary$company4.map((item, index) => {
+    var _item$Service;
+    return /*#__PURE__*/React.createElement("li", {
+      key: index,
+      style: {
+        listStyleType: 'disc'
+      }
+    }, /*#__PURE__*/React.createElement("p", {
+      className: style$1.serviceName
+    }, /*#__PURE__*/React.createElement("span", null, item === null || item === void 0 ? void 0 : (_item$Service = item.Service) === null || _item$Service === void 0 ? void 0 : _item$Service.name), /*#__PURE__*/React.createElement("span", null, (item === null || item === void 0 ? void 0 : item.amount) < 0 ? `-$${Math.abs(item === null || item === void 0 ? void 0 : item.amount)}` : `$${item === null || item === void 0 ? void 0 : item.amount}`)));
+  }))))), orderSummary.additonalServices.length > 0 && /*#__PURE__*/React.createElement("div", {
+    className: `${style$1.lineDivide} ${style$1.lineDivideSpace}`
+  }, /*#__PURE__*/React.createElement("h4", {
+    style: {
+      marginBottom: '8px'
+    }
+  }, "ADDITIONAL SERVICES"), /*#__PURE__*/React.createElement("div", {
+    className: style$1.InfoContent
+  }, orderSummary.arrOtherServiceCategory.map((category, index) => /*#__PURE__*/React.createElement("div", {
+    key: index,
+    style: {
+      marginBottom: '8px'
+    }
+  }, /*#__PURE__*/React.createElement("p", {
+    className: `${style$1.Font500}`,
+    style: {
+      marginBottom: '4px'
+    }
+  }, category.name), /*#__PURE__*/React.createElement("ul", {
+    style: {
+      marginLeft: '24px'
+    }
+  }, orderSummary.additonalServices.map((item, index) => {
+    var _item$Service2, _item$Service3, _item$Service3$Servic, _item$Service4, _item$Service4$Servic;
+    return item.Service.ServiceType.id == category.id && /*#__PURE__*/React.createElement("li", {
+      key: index,
+      style: {
+        listStyleType: 'disc'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: style$1.serviceName
+    }, /*#__PURE__*/React.createElement("p", null, item === null || item === void 0 ? void 0 : (_item$Service2 = item.Service) === null || _item$Service2 === void 0 ? void 0 : _item$Service2.name, /*#__PURE__*/React.createElement("span", null, ' (', item === null || item === void 0 ? void 0 : item.quantity, ' ', (item === null || item === void 0 ? void 0 : item.quantity) > 1 ? item === null || item === void 0 ? void 0 : (_item$Service3 = item.Service) === null || _item$Service3 === void 0 ? void 0 : (_item$Service3$Servic = _item$Service3.ServiceUnit) === null || _item$Service3$Servic === void 0 ? void 0 : _item$Service3$Servic.plural : item === null || item === void 0 ? void 0 : (_item$Service4 = item.Service) === null || _item$Service4 === void 0 ? void 0 : (_item$Service4$Servic = _item$Service4.ServiceUnit) === null || _item$Service4$Servic === void 0 ? void 0 : _item$Service4$Servic.name, ')')), /*#__PURE__*/React.createElement("p", null, (item === null || item === void 0 ? void 0 : item.amount) < 0 ? `-$${Math.abs(item === null || item === void 0 ? void 0 : item.amount)}` : `$${item === null || item === void 0 ? void 0 : item.amount}`)));
+  })))))), (orderSummary.customServices.length > 0 || orderSummary.customDiscount.length > 0) && /*#__PURE__*/React.createElement("div", {
+    className: `${style$1.lineDivide} ${style$1.lineDivideSpace}`
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "mb-1"
+  }, "CUSTOM SERVICES"), /*#__PURE__*/React.createElement("div", {
+    className: style$1.InfoContent
+  }, orderSummary.customServices.map((item, index) => /*#__PURE__*/React.createElement("div", {
+    key: index,
+    className: `${style$1.Font500} ${style$1.customService}`
+  }, /*#__PURE__*/React.createElement("p", null, item === null || item === void 0 ? void 0 : item.description, /*#__PURE__*/React.createElement("span", null, ' (', item === null || item === void 0 ? void 0 : item.quantity, ')')), /*#__PURE__*/React.createElement("p", null, (item === null || item === void 0 ? void 0 : item.amount) < 0 ? `-$${Math.abs(item === null || item === void 0 ? void 0 : item.amount)}` : `$${item === null || item === void 0 ? void 0 : item.amount}`))), orderSummary.customDiscount.map((item, index) => /*#__PURE__*/React.createElement("div", {
+    key: index,
+    className: `${style$1.Font500} ${style$1.customService}`
+  }, /*#__PURE__*/React.createElement("p", null, item === null || item === void 0 ? void 0 : item.description, /*#__PURE__*/React.createElement("span", null, ' (', item === null || item === void 0 ? void 0 : item.quantity, ')')), /*#__PURE__*/React.createElement("p", null, (item === null || item === void 0 ? void 0 : item.amount) < 0 ? `-$${Math.abs(item === null || item === void 0 ? void 0 : item.amount)}` : `$${item === null || item === void 0 ? void 0 : item.amount}`))))));
+}
+
+const stripePromise = loadStripe(`pk_test_1Ye75HNRIDTrZq8obBLVMelv00qSEk2ZGJ`);
+const stripePromiseSG = loadStripe(`pk_test_51M4EpCEHyFIZX0tcE0baqX0hGdvmR6pdMQEc2E25gLfXkXwA6r9zHOtG7D4g5a6NKBfZhwOPYcqsT4rmzZJjsVYi00IoTbLitl`);
+function parseUScurrency(number) {
+  if (number > 0) {
+    return number.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  } else {
+    return 0.0;
+  }
+}
+const getQueryCode = (queryPromotionCode, queryDate, queryType) => {
+  let queryCode = '';
+  let promotionCode = queryPromotionCode;
+  let date = queryDate;
+  let type = queryType;
+  if (promotionCode) {
+    if (date && type) {
+      queryCode = 'promotion_code=' + promotionCode + '&date=' + date + '&type=' + type;
+    } else {
+      queryCode = 'promotion_code=' + promotionCode;
+    }
+  }
+  return queryCode;
+};
+const customStyles$2 = {
+  menu: provided => ({
+    ...provided,
+    boxShadow: 'none',
+    marginBottom: 0,
+    border: 0
+  }),
+  control: provided => ({
+    ...provided,
+    border: 0,
+    boxShadow: 'none'
+  }),
+  container: provided => ({
+    ...provided,
+    boxShadow: '0 7px 14px 0 rgba(49,49,93,0.10), 0 3px 6px 0 rgba(0,0,0,0.08)',
+    borderRadius: '4px'
+  }),
+  valueContainer: provided => ({
+    ...provided,
+    padding: '12px 16px',
+    fontSize: '14px'
+  })
+};
+const CheckoutForm = ({
+  dataForm,
+  orderCode,
+  queryPromotionCode,
+  queryDate,
+  queryType,
+  countryList
+}) => {
+  const stripe = useStripe();
+  const elements = useElements();
+  const [error, setError] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState();
+  console.log(orderCode);
+  const {
+    register,
+    handleSubmit,
+    formState: {
+      isSubmitted,
+      errors
+    }
+  } = useForm();
+  const onSubmit = async data => {
+    setIsLoading(true);
+    if (!stripe || !elements) {
+      return;
+    }
+    const card = elements.getElement(CardElement);
+    if (card == null) {
+      return;
+    }
+    const {
+      error
+    } = await stripe.createPaymentMethod({
+      type: 'card',
+      card
+    });
+    if (error) {
+      setIsLoading(false);
+      setError(error);
+    } else {
+      var _dataForm$Customer, _token$token;
+      let dataStripe = {
+        name: data.cardholder_name,
+        address_country: selectedCountry,
+        address_line1: data.address_line1,
+        address_state: data.address_state,
+        address_zip: data.address_zip,
+        address_city: data.address_city
+      };
+      if (data.address_line2) {
+        dataStripe['address_line2'] = data.address_line2;
+      }
+      const token = await stripe.createToken(card, dataStripe);
+      let body = {
+        email: dataForm === null || dataForm === void 0 ? void 0 : (_dataForm$Customer = dataForm.Customer) === null || _dataForm$Customer === void 0 ? void 0 : _dataForm$Customer.email,
+        id: token === null || token === void 0 ? void 0 : (_token$token = token.token) === null || _token$token === void 0 ? void 0 : _token$token.id,
+        order_code: orderCode,
+        cardholder_name: data.cardholder_name
+      };
+      if (token) {
+        let queryPromCode = '';
+        let queryPromCodeFp = '';
+        const typeChristmas = localStorage.getItem('type-christmas');
+        if (queryPromotionCode != '' && queryType != '' && queryDate != '') {
+          queryPromCode = '?' + getQueryCode(queryPromotionCode, queryDate, queryType);
+          queryPromCodeFp = '&' + getQueryCode(queryPromotionCode, queryDate, queryType);
+        }
+        if (typeChristmas) {
+          if (queryPromCode.length > 0) {
+            queryPromCode += typeChristmas.replace('?', '&');
+          } else {
+            queryPromCode = typeChristmas;
+          }
+        }
+        axios.post(`https://core.test-lp.bbcincorp.com/api/onboarding/order/payment/stripe${queryPromCode}`, JSON.stringify(body), {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(response => {
+          if (response.data.state) {
+            var _JSON$parse;
+            if (window.localStorage.getItem('layout') && (_JSON$parse = JSON.parse(window.localStorage.getItem('layout'))) !== null && _JSON$parse !== void 0 && _JSON$parse.incorp_to_bank) {
+              let data = JSON.parse(window.localStorage.getItem('layout'));
+              delete data.incorp_to_bank;
+              window.localStorage.layout = JSON.stringify(data);
+            }
+            window.localStorage.removeItem('data_onboarding');
+            window.localStorage.removeItem('type-christmas');
+            location.href = `/payment-success?type_payment=card&order_code=${orderCode}`;
+          }
+        }).catch(error => {
+          location.href = `/payment-failure?order_code=${orderCode + queryPromCodeFp}`;
+        });
+      }
+    }
+  };
+  const handleChangeSelect = data => {
+    setSelectedCountry(data.name);
+  };
+  return /*#__PURE__*/React.createElement(Form, {
+    onSubmit: handleSubmit(onSubmit),
+    style: {
+      marginLeft: '20px',
+      marginRight: '20px'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: style$1.StripeForm
+  }, /*#__PURE__*/React.createElement("div", {
+    className: style$1.CardHolderName
+  }, /*#__PURE__*/React.createElement("p", null, "Name on card"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(FaUserAlt, {
+    color: "#cfd1d6"
+  }), /*#__PURE__*/React.createElement("input", Object.assign({
+    type: 'text'
+  }, register('cardholder_name', {
+    required: {
+      value: true,
+      message: 'Card holder name is required'
+    }
+  }), {
+    placeholder: "Card holder name",
+    autoComplete: "off"
+  }))), errors && errors.cardholder_name && /*#__PURE__*/React.createElement("p", {
+    className: `m-0 text-danger ${style$1.ErrorMessage}`
+  }, errors.cardholder_name.message)), /*#__PURE__*/React.createElement("div", {
+    className: style$1.CardDetails
+  }, /*#__PURE__*/React.createElement("p", null, "Card details"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CardElement, {
+    onChange: e => {
+      setError(e.error);
+    },
+    options: {
+      hidePostalCode: true
+    }
+  })), error && /*#__PURE__*/React.createElement("p", {
+    className: `m-0 text-danger ${style$1.ErrorMessage}`
+  }, error.message)), /*#__PURE__*/React.createElement("div", {
+    className: `row ${style$1.BillingInformation}`
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "col-12"
+  }, "Billing information"), /*#__PURE__*/React.createElement("div", {
+    className: "col-12"
+  }, /*#__PURE__*/React.createElement(Select, {
+    options: countryList,
+    styles: customStyles$2,
+    onChange: handleChangeSelect
+  }), !selectedCountry && isSubmitted && /*#__PURE__*/React.createElement("p", {
+    className: `m-0 text-danger ${style$1.ErrorMessage}`
+  }, "Country is required")), /*#__PURE__*/React.createElement("div", {
+    className: "col-12"
+  }, /*#__PURE__*/React.createElement("input", Object.assign({
+    type: 'text'
+  }, register('address_line1', {
+    required: {
+      value: true,
+      message: 'Address line 1 is required'
+    }
+  }), {
+    placeholder: "Address line 1",
+    autoComplete: "off"
+  })), errors && errors.address_line1 && /*#__PURE__*/React.createElement("p", {
+    className: `m-0 text-danger ${style$1.ErrorMessage}`
+  }, errors.address_line1.message)), /*#__PURE__*/React.createElement("div", {
+    className: "col-12"
+  }, /*#__PURE__*/React.createElement("input", Object.assign({
+    type: 'text'
+  }, register('address_line2'), {
+    placeholder: "Address line 2 (optional)",
+    autoComplete: "off"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "col-6"
+  }, /*#__PURE__*/React.createElement("input", Object.assign({
+    type: 'text'
+  }, register('address_city', {
+    required: {
+      value: true,
+      message: 'City is required'
+    }
+  }), {
+    placeholder: "City",
+    autoComplete: "off"
+  })), errors && errors.address_city && /*#__PURE__*/React.createElement("p", {
+    className: `m-0 text-danger ${style$1.ErrorMessage}`
+  }, errors.address_city.message)), /*#__PURE__*/React.createElement("div", {
+    className: "col-6"
+  }, /*#__PURE__*/React.createElement("input", Object.assign({
+    type: 'text'
+  }, register('address_state', {
+    required: {
+      value: true,
+      message: 'State is required'
+    }
+  }), {
+    placeholder: "State",
+    autoComplete: "off"
+  })), errors && errors.address_state && /*#__PURE__*/React.createElement("p", {
+    className: `m-0 text-danger ${style$1.ErrorMessage}`
+  }, errors.address_state.message)), /*#__PURE__*/React.createElement("div", {
+    className: "col-6"
+  }, /*#__PURE__*/React.createElement("input", Object.assign({
+    type: 'text'
+  }, register('address_zip', {
+    required: {
+      value: true,
+      message: 'Zip is required'
+    }
+  }), {
+    placeholder: "Zip",
+    autoComplete: "off"
+  })), errors && errors.address_zip && /*#__PURE__*/React.createElement("p", {
+    className: `m-0 text-danger ${style$1.ErrorMessage}`
+  }, errors.address_zip.message)))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      textAlign: 'center',
+      marginTop: '24px'
+    }
+  }, isLoading ? /*#__PURE__*/React.createElement("span", {
+    style: {
+      display: 'inline-block'
+    }
+  }, /*#__PURE__*/React.createElement(BiLoaderAlt, {
+    className: "animate_spin",
+    size: 20
+  })) : /*#__PURE__*/React.createElement("button", {
+    type: "submit",
+    disabled: !stripe,
+    className: style$1.PayButton
+  }, "PAY $", dataForm === null || dataForm === void 0 ? void 0 : dataForm.amount)));
+};
+const PaymentModal = ({
+  websiteId,
+  data,
+  show,
+  onReceiveData,
+  orderCode,
+  countryList
+}) => {
+  return /*#__PURE__*/React.createElement(Modal, {
+    show: show
+  }, /*#__PURE__*/React.createElement("div", {
+    className: style$1.modalWrapper
+  }, /*#__PURE__*/React.createElement("div", {
+    className: style$1.modal
+  }, /*#__PURE__*/React.createElement(FaTimes, {
+    onClick: onReceiveData,
+    className: style$1.CloseButton
+  }), /*#__PURE__*/React.createElement("div", {
+    className: style$1.topModalContent
+  }, /*#__PURE__*/React.createElement("div", {
+    className: style$1.logo
+  }, /*#__PURE__*/React.createElement("img", {
+    src: logoIcon,
+    loading: "eager",
+    width: 64,
+    height: 64,
+    alt: "incorporation"
+  })), /*#__PURE__*/React.createElement("h3", null, "BBCIncorp Limited"), /*#__PURE__*/React.createElement("a", {
+    href: "mailto:service@bbcincorp.com",
+    style: {
+      color: '#333'
+    }
+  }, "service@bbcincorp.com")), /*#__PURE__*/React.createElement(Elements, {
+    stripe: websiteId === 2 ? stripePromiseSG : stripePromise
+  }, /*#__PURE__*/React.createElement(CheckoutForm, {
+    dataForm: data,
+    orderCode: orderCode,
+    countryList: countryList
+  })))));
+};
+function OrderInformation(params) {
+  var _orderInfo$Customer, _orderInfo$Customer2, _orderInfo$Customer3;
+  const [dataOrder, setDataOrder] = useState({});
+  const [payment, setPayment] = useState('card');
+  const [allow, setAllow] = useState(false);
+  const [orderInfo, setOrderInfo] = useState();
+  const [show, setShow] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [suffixList, setSuffixList] = useState([]);
+  const [countryList, setCountryList] = useState([]);
+  const [websiteId, setWebsiteId] = useState();
+  const [backLink, setBackLink] = useState('');
+  const [orderSummary, setOrderSummary] = useState({
+    customDiscount: [],
+    customServices: [],
+    promoDiscount: [],
+    companyPackage: [],
+    additonalServices: [],
+    arrOtherServiceCategory: []
+  });
+  const [loading, setLoading] = useState(true);
+  const getUrlVars = () => {
+    let vars = {};
+    let parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+      vars[key] = value;
+    });
+    return vars;
+  };
+  const queryPromotionCode = getUrlVars()['promotion_code'];
+  const queryDate = getUrlVars()['date'];
+  const queryType = getUrlVars()['type'];
+  const queryOrderCode = getUrlVars()['order_code'];
+  const getQueryCodeChristmas = () => {
+    const queryChristmas = localStorage.getItem('type-christmas');
+    if (queryChristmas) {
+      return queryChristmas;
+    } else {
+      return '';
+    }
+  };
+  useEffect(() => {
+    if (window.location && queryOrderCode) {
+      let orderCode = queryOrderCode;
+      let urlApi = '';
+      let queryCode = getQueryCode();
+      let queryCodeChristmas = getQueryCodeChristmas();
+      if (queryCode.length > 0) {
+        urlApi = `https://core.test-lp.bbcincorp.com/api/onboarding/order/${orderCode}?${queryCode}`;
+      } else if (queryCodeChristmas.length > 0) {
+        urlApi = `https://core.test-lp.bbcincorp.com/api/onboarding/order/${orderCode + queryCodeChristmas}`;
+      } else {
+        urlApi = `https://core.test-lp.bbcincorp.com/api/onboarding/order/${orderCode}`;
+      }
+      axios.get(urlApi).then(res => {
+        let data = res.data.data;
+        setDataOrder(data);
+      });
+    }
+  }, []);
+  useEffect(() => {
+    var _dataOrder$OrderItems;
+    setWebsiteId(dataOrder && dataOrder.OrderItems && dataOrder.OrderItems[0].Service ? (_dataOrder$OrderItems = dataOrder.OrderItems[0].Service) === null || _dataOrder$OrderItems === void 0 ? void 0 : _dataOrder$OrderItems.website_id : 1);
+    let data = JSON.parse(window.localStorage.getItem('data_onboarding'));
+    let layout = JSON.parse(window.localStorage.getItem('layout'));
+    if (window.location) {
+      if (queryOrderCode) {
+        if (Object.keys(dataOrder).length > 0) {
+          let orderCode = queryOrderCode;
+          setOrderInfo(dataOrder);
+          filterOrderSumary(dataOrder);
+          let lastest_order_code = JSON.parse(window.localStorage.getItem('lastest_order_code'));
+          if (lastest_order_code) {
+            lastest_order_code.order_code = orderCode;
+            lastest_order_code.ordered_already = dataOrder === null || dataOrder === void 0 ? void 0 : dataOrder.ordered_already;
+            window.localStorage.setItem('lastest_order_code', JSON.stringify(lastest_order_code));
+          } else {
+            window.localStorage.setItem('lastest_order_code', JSON.stringify({
+              order_code: orderCode,
+              ordered_already: dataOrder === null || dataOrder === void 0 ? void 0 : dataOrder.ordered_already
+            }));
+          }
+          setLoading(false);
+        }
+      } else {
+        location.href = '/register';
+      }
+    }
+    if (layout && data) {
+      if ((layout === null || layout === void 0 ? void 0 : layout.type) == 'banking') {
+        var _data$banking;
+        if (data !== null && data !== void 0 && (_data$banking = data.banking) !== null && _data$banking !== void 0 && _data$banking.banking_scores) {
+          setBackLink('/banking-result');
+        } else {
+          setBackLink('/banking-choice');
+        }
+      } else {
+        setBackLink('/incorporation-additional-service');
+      }
+    }
+  }, [dataOrder]);
+  useEffect(() => {
+    axios.get(`https://core.test-lp.bbcincorp.com/api/onboarding/country/entity_suffix`).then(response => {
+      var _response$data;
+      return setSuffixList(response === null || response === void 0 ? void 0 : (_response$data = response.data) === null || _response$data === void 0 ? void 0 : _response$data.data);
+    });
+    axios.get(`https://core.test-lp.bbcincorp.com/api/onboarding/country`).then(response => setCountryList(response.data.data.map(item => ({
+      ...item,
+      label: item.name,
+      value: item.id
+    }))));
+  }, []);
+  useEffect(() => {
+    if (!window.localStorage.getItem('timestamp')) {
+      window.localStorage.setItem('timestamp', JSON.stringify(new Date().toLocaleString()));
+    }
+  }, []);
+  const filterOrderSumary = orderInfoRes => {
+    let promotionArray = [],
+      additionalArray = [],
+      customArray = [];
+    let orderSummaryTemp = {
+      customDiscount: [],
+      customServices: [],
+      promoDiscount: [],
+      companyPackage: [],
+      additonalServices: [],
+      arrOtherServiceCategory: []
+    };
+    if (orderInfoRes) {
+      orderInfoRes === null || orderInfoRes === void 0 ? void 0 : orderInfoRes.OrderItems.map(item => {
+        if (item !== null && item !== void 0 && item.package_id) {
+          item !== null && item !== void 0 && item.service_id ? orderSummaryTemp.companyPackage.push(item) : promotionArray.push(item);
+        } else {
+          item !== null && item !== void 0 && item.service_id ? additionalArray.push(item) : customArray.push(item);
+        }
+      });
+      orderSummaryTemp.additonalServices = additionalArray;
+      customArray.map(item => {
+        if (item.promotion_id) {
+          orderSummaryTemp.promoDiscount.push(item);
+        } else {
+          if (parseFloat(item.amount) >= 0) {
+            orderSummaryTemp.customServices.push(item);
+          } else {
+            orderSummaryTemp.customDiscount.push(item);
+          }
+        }
+      });
+      let arr = additionalArray.reduce((accumulator, service) => {
+        let object = accumulator.find(category => category && category.id === service.Service.ServiceType.id);
+        if (object) {
+          return [...accumulator];
+        } else {
+          return [...accumulator, {
+            ...service.Service.ServiceType
+          }];
+        }
+      }, []);
+      orderSummaryTemp.arrOtherServiceCategory = arr;
+      setOrderSummary(orderSummaryTemp);
+    }
+  };
+  const handleChange = value => {
+    setPayment(value);
+  };
+  const handleChangePolicy = value => {
+    setAllow(value);
+  };
+  const getSuffixList = () => {
+    var _suffixList$find, _suffixList$find$Enti, _suffixList$find$Enti2;
+    return (_suffixList$find = suffixList.find(item => {
+      var _orderInfo$Company, _orderInfo$Company$Co;
+      return item.id === (orderInfo === null || orderInfo === void 0 ? void 0 : (_orderInfo$Company = orderInfo.Company) === null || _orderInfo$Company === void 0 ? void 0 : (_orderInfo$Company$Co = _orderInfo$Company.Country) === null || _orderInfo$Company$Co === void 0 ? void 0 : _orderInfo$Company$Co.id);
+    })) === null || _suffixList$find === void 0 ? void 0 : (_suffixList$find$Enti = _suffixList$find.EntityTypes) === null || _suffixList$find$Enti === void 0 ? void 0 : (_suffixList$find$Enti2 = _suffixList$find$Enti.find(item => {
+      var _orderInfo$Company2, _orderInfo$Company2$E;
+      return item.id === (orderInfo === null || orderInfo === void 0 ? void 0 : (_orderInfo$Company2 = orderInfo.Company) === null || _orderInfo$Company2 === void 0 ? void 0 : (_orderInfo$Company2$E = _orderInfo$Company2.EntityType) === null || _orderInfo$Company2$E === void 0 ? void 0 : _orderInfo$Company2$E.id);
+    })) === null || _suffixList$find$Enti2 === void 0 ? void 0 : _suffixList$find$Enti2.CompanySuffixes;
+  };
+  const getSubtotal = (amount, promoDiscount) => {
+    if (promoDiscount.length > 0) {
+      const tatalPromoDiscount = promoDiscount.reduce((prev, cur) => prev + Math.abs(cur.amount), 0);
+      return parseFloat(amount) + tatalPromoDiscount;
+    }
+    return amount;
+  };
+  const handleClick = () => {
+    setIsLoading(true);
+    setAllow(false);
+    if (payment === 'card') {
+      setShow(true);
+    } else {
+      let promotionCode = queryPromotionCode;
+      let date = queryDate;
+      let type = queryType;
+      let body = {
+        customer_id: orderInfo.Customer.id,
+        order_code: queryOrderCode,
+        website_id: websiteId,
+        promotion_code: promotionCode || undefined,
+        date: date || undefined,
+        type: type || undefined
+      };
+      axios.post(`https://core.test-lp.bbcincorp.com/api/onboarding/order/send-email-pending`, JSON.stringify(body), {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(response => {
+        if (response.data.state) {
+          var _JSON$parse2;
+          if (window.localStorage.getItem('layout') && (_JSON$parse2 = JSON.parse(window.localStorage.getItem('layout'))) !== null && _JSON$parse2 !== void 0 && _JSON$parse2.incorp_to_bank) {
+            let data = JSON.parse(window.localStorage.getItem('layout'));
+            delete data.incorp_to_bank;
+            window.localStorage.layout = JSON.stringify(data);
+          }
+          window.localStorage.removeItem('data_onboarding');
+          location.href = `/payment-pending${window.location.search}`;
+        }
+      }).catch(error => {
+        console.error(error);
+      });
+    }
+  };
+  const receiveData = () => {
+    setShow(false);
+    setAllow(true);
+    setIsLoading(false);
+  };
+  return /*#__PURE__*/React.createElement(Layout, null, loading ? /*#__PURE__*/React.createElement("div", {
+    className: style$1.loaderWrapper
+  }, /*#__PURE__*/React.createElement(BiLoaderAlt, {
+    className: style$1.loading,
+    size: 20
+  })) : /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("section", {
+    className: style$1.OrderInformation
+  }, /*#__PURE__*/React.createElement("div", {
+    className: style$1.Header
+  }, (orderInfo === null || orderInfo === void 0 ? void 0 : orderInfo.payment_gateway_id) == null && (orderInfo === null || orderInfo === void 0 ? void 0 : orderInfo.order_status_id) == 0 ? /*#__PURE__*/React.createElement("a", {
+    href: backLink || '/404'
+  }, "Back") : null), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: style$1.main
+  }, /*#__PURE__*/React.createElement("div", {
+    className: style$1.informationWrapper
+  }, /*#__PURE__*/React.createElement(Title, {
+    as: "h2",
+    text: "Order summary",
+    className: style$1.TitleH2
+  }), /*#__PURE__*/React.createElement("div", {
+    className: `${style$1.Body}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: style$1.wrapperOrder
+  }, /*#__PURE__*/React.createElement("div", {
+    className: style$1.OrderSummary
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: '8px'
+    }
+  }, /*#__PURE__*/React.createElement("h4", {
+    style: {
+      marginBottom: '8px'
+    }
+  }, "CONTACT PERSON"), /*#__PURE__*/React.createElement("div", {
+    className: `${style$1.InfoContent}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${style$1.infoContentRow} ${style$1.informationWrapperMb}`
+  }, /*#__PURE__*/React.createElement("p", null, "Name:"), /*#__PURE__*/React.createElement("p", {
+    className: `${style$1.Font500} ${style$1.textRight}`
+  }, orderInfo && (orderInfo === null || orderInfo === void 0 ? void 0 : (_orderInfo$Customer = orderInfo.Customer) === null || _orderInfo$Customer === void 0 ? void 0 : _orderInfo$Customer.first_name))), /*#__PURE__*/React.createElement("div", {
+    className: `${style$1.infoContentRow} ${style$1.informationWrapperMb}`
+  }, /*#__PURE__*/React.createElement("p", null, "Email:"), /*#__PURE__*/React.createElement("p", {
+    className: `${style$1.Font500} ${style$1.textRight}`
+  }, orderInfo && (orderInfo === null || orderInfo === void 0 ? void 0 : (_orderInfo$Customer2 = orderInfo.Customer) === null || _orderInfo$Customer2 === void 0 ? void 0 : _orderInfo$Customer2.email))), /*#__PURE__*/React.createElement("div", {
+    className: style$1.infoContentRow
+  }, /*#__PURE__*/React.createElement("p", null, "Phone number:"), /*#__PURE__*/React.createElement("p", {
+    className: `${style$1.Font500} ${style$1.textRight}`
+  }, orderInfo && (orderInfo === null || orderInfo === void 0 ? void 0 : (_orderInfo$Customer3 = orderInfo.Customer) === null || _orderInfo$Customer3 === void 0 ? void 0 : _orderInfo$Customer3.phone))))), orderInfo && ((orderInfo === null || orderInfo === void 0 ? void 0 : orderInfo.OrderItems[0].service_id) == 1670 && (orderInfo === null || orderInfo === void 0 ? void 0 : orderInfo.PackageItems.length) == 0 ? /*#__PURE__*/React.createElement(BankingInfo, {
+    orderInfo: orderInfo
+  }) : /*#__PURE__*/React.createElement(IncorpInfo, {
+    orderInfo: orderInfo,
+    suffixList: getSuffixList(),
+    orderSummary: orderSummary
+  })), orderSummary.promoDiscount.length > 0 && /*#__PURE__*/React.createElement("div", {
+    className: `${style$1.promoBlock} ${style$1.lineDivide}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: style$1.divideRow
+  }, /*#__PURE__*/React.createElement("h4", {
+    style: {
+      marginBottom: '0'
+    }
+  }, "SUBTOTAL"), /*#__PURE__*/React.createElement("p", {
+    className: style$1.Font500
+  }, "$", getSubtotal(orderInfo === null || orderInfo === void 0 ? void 0 : orderInfo.amount, orderSummary.promoDiscount))), orderSummary.promoDiscount.map((item, index) => /*#__PURE__*/React.createElement("div", {
+    key: index,
+    className: style$1.divideRow
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "wrapper-title"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "title-discount"
+  }, "PROMO DISCOUNT"), /*#__PURE__*/React.createElement("span", {
+    className: "tag-discount"
+  }, "5% OFF TODAY")), /*#__PURE__*/React.createElement("p", {
+    className: "amount-discount"
+  }, (item === null || item === void 0 ? void 0 : item.amount) < 0 ? `-$${Math.abs(item === null || item === void 0 ? void 0 : item.amount)}` : `$${item === null || item === void 0 ? void 0 : item.amount}`))))), /*#__PURE__*/React.createElement("div", {
+    className: style$1.totalOrder
+  }, /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: '32px',
+      fontWeight: '500'
+    }
+  }, "TOTAL"), /*#__PURE__*/React.createElement("div", {
+    className: style$1.amountWrapper
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "amount"
+  }, "$", /*#__PURE__*/React.createElement("span", null, orderInfo && parseUScurrency(orderInfo === null || orderInfo === void 0 ? void 0 : orderInfo.amount))), /*#__PURE__*/React.createElement("p", {
+    className: "additional_charge"
+  }, "No additional charge")))))), /*#__PURE__*/React.createElement("div", {
+    className: `${style$1.paymentBox} box-payment-method`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: style$1.paymentBoxContainer
+  }, orderSummary.promoDiscount.length > 0 && /*#__PURE__*/React.createElement("div", {
+    className: style$1.promoDiscountWrapper
+  }, /*#__PURE__*/React.createElement("div", {
+    className: style$1.promoDiscountContent
+  }, /*#__PURE__*/React.createElement("p", {
+    className: style$1.SubTitle
+  }, "SUBTOTAL"), /*#__PURE__*/React.createElement("p", {
+    className: style$1.Font500
+  }, "$", getSubtotal(orderInfo === null || orderInfo === void 0 ? void 0 : orderInfo.amount, orderSummary.promoDiscount))), orderSummary.promoDiscount.map((item, index) => /*#__PURE__*/React.createElement("div", {
+    key: index,
+    className: `discount ${style$1.promoDiscountContent}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "wrapper-title"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "title-discount"
+  }, "PROMO DISCOUNT"), /*#__PURE__*/React.createElement("span", {
+    className: "tag-discount"
+  }, "5% OFF TODAY")), /*#__PURE__*/React.createElement("p", {
+    className: `amount-discount`
+  }, (item === null || item === void 0 ? void 0 : item.amount) < 0 ? `-$${Math.abs(item === null || item === void 0 ? void 0 : item.amount)}` : `$${item === null || item === void 0 ? void 0 : item.amount}`)))), /*#__PURE__*/React.createElement("div", {
+    className: style$1.totalWrapper
+  }, /*#__PURE__*/React.createElement("p", {
+    className: style$1.SubTitle
+  }, "TOTAL"), /*#__PURE__*/React.createElement("p", {
+    className: style$1.SubTitle,
+    style: {
+      color: '#007EFF',
+      marginLeft: '8px'
+    }
+  }, "$", /*#__PURE__*/React.createElement("span", null, orderInfo && parseUScurrency(orderInfo === null || orderInfo === void 0 ? void 0 : orderInfo.amount))))), (orderInfo === null || orderInfo === void 0 ? void 0 : orderInfo.order_status_id) == 0 && /*#__PURE__*/React.createElement("div", {
+    className: style$1.Payment
+  }, /*#__PURE__*/React.createElement("p", {
+    className: `title-method`
+  }, "Payment Method"), /*#__PURE__*/React.createElement("div", {
+    className: `${payment == 'card' ? `${style$1.PaymentActive}` : null} ${style$1.checkboxWrapper}`,
+    style: {
+      lineHeight: '0'
+    }
+  }, /*#__PURE__*/React.createElement(Form.Check, {
+    type: "radio",
+    id: "card",
+    value: "card",
+    name: "payment",
+    defaultChecked: true,
+    className: style$1.formCheck,
+    onChange: e => handleChange(e.target.value)
+  }), /*#__PURE__*/React.createElement(Form.Label, {
+    htmlFor: "card"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: cardStripe,
+    loading: "eager",
+    alt: "incorporation",
+    className: style$1.formCheckImg
+  }), /*#__PURE__*/React.createElement("p", {
+    className: style$1.formCheckLabel,
+    style: {
+      color: '#2C2C51'
+    }
+  }, "Card payment"))), (orderInfo === null || orderInfo === void 0 ? void 0 : orderInfo.payment_gateway_id) == null && /*#__PURE__*/React.createElement("div", {
+    className: `${payment == 'bank' ? `${style$1.PaymentActive}` : null} ${style$1.checkboxWrapper}`,
+    style: {
+      lineHeight: '0'
+    }
+  }, /*#__PURE__*/React.createElement(Form.Check, {
+    type: "radio",
+    id: "bank",
+    value: "bank",
+    name: "payment",
+    className: style$1.formCheck,
+    onChange: e => handleChange(e.target.value)
+  }), /*#__PURE__*/React.createElement(Form.Label, {
+    htmlFor: "bank"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: bankTransfer,
+    loading: "eager",
+    alt: "incorporation",
+    className: style$1.formCheckImg
+  }), /*#__PURE__*/React.createElement("p", {
+    className: style$1.formCheckLabel,
+    style: {
+      color: '#2C2C51'
+    }
+  }, "Bank transfer"))), /*#__PURE__*/React.createElement("div", {
+    className: `${style$1.refundGuarantee}`
+  }, /*#__PURE__*/React.createElement("img", {
+    src: refundGuarantee,
+    loading: "eager",
+    alt: "refund-guarantee"
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", {
+    className: "title"
+  }, "Refund Guarantee"), /*#__PURE__*/React.createElement("p", {
+    className: "des"
+  }, "We refund your money in full for services that we cannot deliver."))), (orderInfo === null || orderInfo === void 0 ? void 0 : orderInfo.order_status_id) == 0 && /*#__PURE__*/React.createElement("div", {
+    className: style$1.paymentBottomWrapper
+  }, /*#__PURE__*/React.createElement("div", {
+    className: style$1.policyWrapper
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "checkbox",
+    id: "checkboxPolicy",
+    name: "checkboxPolicy",
+    onChange: e => handleChangePolicy(e.target.checked)
+  }), /*#__PURE__*/React.createElement("label", {
+    htmlFor: "checkboxPolicy"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: style$1.policyText
+  }, "I confirm that I have read, understood and agreed to all terms and conditions in", ' ', /*#__PURE__*/React.createElement("a", {
+    href: "/hk/terms-of-services",
+    target: "_blank",
+    style: {
+      textDecoration: 'underline'
+    }
+  }, "Terms"), ` & `, /*#__PURE__*/React.createElement("a", {
+    href: "/hk/legal-of-agreement",
+    target: "_blank",
+    style: {
+      textDecoration: 'underline'
+    }
+  }, "Policy"), ' ', "and", ' ', /*#__PURE__*/React.createElement("a", {
+    href: "/hk/refund-policy",
+    target: "_blank",
+    style: {
+      textDecoration: 'underline'
+    }
+  }, "Refund Policy"), ' ', "at BBCIncorp.com"))), /*#__PURE__*/React.createElement("div", {
+    className: style$1.submitWrapper
+  }, /*#__PURE__*/React.createElement("a", {
+    className: style$1.backLinkBottom,
+    href: backLink
+  }, "Back"), /*#__PURE__*/React.createElement("button", {
+    disabled: !allow,
+    onClick: handleClick,
+    className: style$1.ButtonMakePayment,
+    style: {
+      cursor: !allow ? 'not-allowed' : ''
+    }
+  }, "Continue to secure payment", isLoading && /*#__PURE__*/React.createElement("span", {
+    className: style$1.loaderWrapperBottom
+  }, /*#__PURE__*/React.createElement(BiLoaderAlt, {
+    className: style$1.loading,
+    size: 20
+  }))))), /*#__PURE__*/React.createElement("div", {
+    className: style$1.submitWrapperDesk
+  }, /*#__PURE__*/React.createElement("button", {
+    disabled: !allow,
+    onClick: handleClick,
+    className: style$1.ButtonMakePayment,
+    style: {
+      cursor: !allow ? 'not-allowed' : ''
+    }
+  }, "Continue to secure payment", isLoading && /*#__PURE__*/React.createElement("span", {
+    style: {
+      display: 'inline-block',
+      marginLeft: '8px'
+    }
+  }, /*#__PURE__*/React.createElement(BiLoaderAlt, {
+    className: style$1.loading,
+    size: 14
+  }))))), (orderInfo === null || orderInfo === void 0 ? void 0 : orderInfo.order_status_id) == 1 && /*#__PURE__*/React.createElement("div", {
+    className: `${style$1.contact}`
+  }, /*#__PURE__*/React.createElement("h4", null, "Keep in touch with us"), /*#__PURE__*/React.createElement("p", {
+    className: "name-company",
+    style: {
+      marginBottom: '8px'
+    }
+  }, "BBCIncorp Limited"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: '16px'
+    }
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "info-company"
+  }, /*#__PURE__*/React.createElement("span", null, "Tel: "), /*#__PURE__*/React.createElement("span", null, "(+65) 3138 1666")), /*#__PURE__*/React.createElement("p", {
+    className: "info-company"
+  }, /*#__PURE__*/React.createElement("span", null, "Email: "), /*#__PURE__*/React.createElement("span", null, "service@bbcincorp.com")), /*#__PURE__*/React.createElement("p", {
+    className: "info-company"
+  }, /*#__PURE__*/React.createElement("span", null, "Address: "), /*#__PURE__*/React.createElement("span", null, "68 Circular road, #02-01 Singapore (049422), Singapore"))), /*#__PURE__*/React.createElement("div", {
+    className: `${style$1.social}`
+  }, /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+    href: "https://twitter.com/bbcincorp",
+    target: "_blank",
+    rel: "nofollow noreferrer"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: twitterImg,
+    alt: "twitter"
+  }))), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+    href: "https://www.facebook.com/bbcincorp",
+    target: "_blank",
+    rel: "nofollow noreferrer"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: facebookImg,
+    alt: "facebook"
+  }))), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+    href: "https://www.linkedin.com/company/bbcincorp",
+    target: "_blank",
+    rel: "nofollow noreferrer"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: linkedinImg,
+    alt: "linkedin"
+  }))), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+    href: "https://www.youtube.com/channel/UCm9z045jcWyhncuHoyYNbMw",
+    target: "_blank",
+    rel: "nofollow noreferrer"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: youtubeImg,
+    alt: "youtube"
+  })))))))))), /*#__PURE__*/React.createElement(PaymentModal, {
+    onReceiveData: receiveData,
+    websiteId: websiteId,
+    data: orderInfo,
+    countryList: countryList,
+    orderCode: queryOrderCode,
+    show: show
+  })));
+}
+
+var style$2 = {"Title":"_styles-module__Title__2xhcx","Content":"_styles-module__Content__2-IAQ","Footer":"_styles-module__Footer__h6O8h","highlightBtn":"_styles-module__highlightBtn__1B57N"};
+
+const moveToBanking = queryOrderCode => {
+  let data = JSON.parse(window.localStorage.getItem('layout'));
+  if (data) {
+    data.type = 'banking';
+    data.incorp_to_bank = true;
+    window.localStorage.layout = JSON.stringify(data);
+  } else {
+    let myData = {
+      type: 'banking',
+      incorp_to_bank: true
+    };
+    window.localStorage.setItem('layout', JSON.stringify(myData));
+  }
+  window.location.href = `/banking-choice?order_code=${queryOrderCode}`;
+};
+const Success1 = ({
+  queryOrderCode,
+  buttonMoveToBank
+}) => {
+  return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("h3", {
+    className: `${style$2.Title}`
+  }, "Thank you for entrusting our service at", ' ', /*#__PURE__*/React.createElement("a", {
+    href: "https://test-site.bbcincorp.com/hk",
+    rel: "nofollow",
+    target: "_blank"
+  }, "bbcincorp.com")), /*#__PURE__*/React.createElement("div", {
+    className: style$2.Content
+  }, /*#__PURE__*/React.createElement("p", null, "We have received your order, and a dedicated manager will contact you soon to proceed further. An email has been sent to you detailing order and payment information for your reference. It also includes login account information to access our Company Management Portal."), /*#__PURE__*/React.createElement("p", null, "In the meantime, you can log into the account provided to prepare necessary documents and complete the KYC procedure in advance."), /*#__PURE__*/React.createElement("p", null, "Nevertheless, you can also move to the next step to fill out the questionnaire for helping you select your relevant banking partners.")), /*#__PURE__*/React.createElement("div", {
+    className: style$2.Footer
+  }, buttonMoveToBank ? /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("button", {
+    className: style$2.highlightBtn,
+    onClick: () => moveToBanking(queryOrderCode)
+  }, "See your banking options"), /*#__PURE__*/React.createElement("a", {
+    href: process.env.NEXT_PUBLIC_DASHBOARD_URL,
+    target: "_blank"
+  }, "Move to Portal")) : /*#__PURE__*/React.createElement("a", {
+    href: process.env.NEXT_PUBLIC_DASHBOARD_URL,
+    target: "_blank",
+    className: style$2.highlightBtn,
+    style: {
+      padding: '0'
+    }
+  }, /*#__PURE__*/React.createElement("button", null, "Move to Portal"))));
+};
+const Success2 = () => {
+  return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("h3", {
+    className: `${style$2.Title}`
+  }, "Congratulation!!! Your payment was successful."), /*#__PURE__*/React.createElement("div", {
+    className: style$2.Content
+  }, /*#__PURE__*/React.createElement("p", null, "Thank you for entrusting our service at", ' ', /*#__PURE__*/React.createElement("a", {
+    href: "https://test-site.bbcincorp.com/hk",
+    rel: "nofollow",
+    target: "_blank"
+  }, "bbcincorp.com")), /*#__PURE__*/React.createElement("p", null, "We have received your order, and a dedicated manager will contact you soon to proceed further. An email has been sent to you detailing order and payment information for your reference. It also includes login account information to access our Company Management Portal."), /*#__PURE__*/React.createElement("p", null, "In the meantime, you can log into the account provided to prepare necessary documents and complete the KYC procedure in advance.")), /*#__PURE__*/React.createElement("div", {
+    className: style$2.Footer
+  }, /*#__PURE__*/React.createElement("a", {
+    href: process.env.NEXT_PUBLIC_DASHBOARD_URL,
+    target: "_blank",
+    className: style$2.highlightBtn,
+    style: {
+      padding: '0'
+    }
+  }, /*#__PURE__*/React.createElement("button", null, "Move to Portal"))));
+};
+const Success3 = () => {
+  return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("h3", {
+    className: `${style$2.Title}`
+  }, "We\u2019ve recorded your banking selection."), /*#__PURE__*/React.createElement("div", {
+    className: style$2.Content
+  }, /*#__PURE__*/React.createElement("p", null, "An account manager will contact you shortly to get you onboard and give you advice about other banking alternatives should you need one."), /*#__PURE__*/React.createElement("p", null, "To follow up the process and complete the KYC, you can now log into company management portal with account information already sent to your email.")), /*#__PURE__*/React.createElement("div", {
+    className: style$2.Footer
+  }, /*#__PURE__*/React.createElement("a", {
+    href: process.env.NEXT_PUBLIC_DASHBOARD_URL,
+    target: "_blank",
+    className: style$2.highlightBtn,
+    style: {
+      padding: '0'
+    }
+  }, /*#__PURE__*/React.createElement("button", null, "Move to Portal"))));
+};
+const Success4 = () => {
+  return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("h3", {
+    className: `${style$2.Title}`
+  }, "Congratulation!!! Your payment was successful."), /*#__PURE__*/React.createElement("div", {
+    className: style$2.Content
+  }, /*#__PURE__*/React.createElement("p", null, "Thank you for entrusting our service at", ' ', /*#__PURE__*/React.createElement("a", {
+    href: "https://test-site.bbcincorp.com/hk",
+    rel: "nofollow",
+    target: "_blank"
+  }, "bbcincorp.com")), /*#__PURE__*/React.createElement("p", null, "An account manager will contact you shortly to get you onboard and give you advice about other banking alternatives should you need one."), /*#__PURE__*/React.createElement("p", null, "You can now log into ", /*#__PURE__*/React.createElement("b", null, "Company Management Portal"), " to follow up the process and complete the KYC.")), /*#__PURE__*/React.createElement("div", {
+    className: style$2.Footer
+  }, /*#__PURE__*/React.createElement("a", {
+    href: process.env.NEXT_PUBLIC_DASHBOARD_URL,
+    target: "_blank",
+    className: style$2.highlightBtn,
+    style: {
+      padding: '0'
+    }
+  }, /*#__PURE__*/React.createElement("button", null, "Move to Portal"))));
+};
+const Failure1 = () => {
+  return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("h3", {
+    className: `${style$2.Title}`
+  }, "Thank you for entrusting our service at", ' ', /*#__PURE__*/React.createElement("a", {
+    href: "https://test-site.bbcincorp.com/hk",
+    rel: "nofollow",
+    target: "_blank"
+  }, "bbcincorp.com")), /*#__PURE__*/React.createElement("div", {
+    className: style$2.Content
+  }, /*#__PURE__*/React.createElement("p", null, "We are sorry that your payment was not successful yet. It could be rejected by some reasons:"), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, "\u2022 You cancelled the payment;"), /*#__PURE__*/React.createElement("li", null, "\u2022 You have entered incorrect card expiration or CVV;"), /*#__PURE__*/React.createElement("li", null, "\u2022 Your credit has reached the limit;"), /*#__PURE__*/React.createElement("li", null, "\u2022 Computer or network error;"), /*#__PURE__*/React.createElement("li", null, "\u2022 Your card has insufficient balance to charge;")), /*#__PURE__*/React.createElement("p", null, "An email has been sent to you detailing order summary and payment information to help you make payment again."), /*#__PURE__*/React.createElement("p", null, "Still, you can make payment directly through this", ' ', /*#__PURE__*/React.createElement("a", {
+    href: `/order-information${window.location.search}`
+  }, "LINK")), /*#__PURE__*/React.createElement("p", {
+    style: {
+      marginBottom: '0'
+    }
+  }, "Please feel free to contact us via", ' ', /*#__PURE__*/React.createElement("a", {
+    href: "mailto:service@bbcincorp.com"
+  }, "service@bbcincorp.com"), " if you have any further questions or concerns.")));
+};
+const Failure2 = () => {
+  return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("h3", {
+    className: `${style$2.Title}`
+  }, "Thank you for entrusting our service at", ' ', /*#__PURE__*/React.createElement("a", {
+    href: "https://test-site.bbcincorp.com/hk",
+    rel: "nofollow",
+    target: "_blank"
+  }, "bbcincorp.com")), /*#__PURE__*/React.createElement("div", {
+    className: style$2.Content
+  }, /*#__PURE__*/React.createElement("p", null, "We are sorry that your payment was not successful yet. It could be rejected by some reasons:"), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, "\u2022 You cancelled the payment;"), /*#__PURE__*/React.createElement("li", null, "\u2022 You have entered incorrect card expiration or CVV;"), /*#__PURE__*/React.createElement("li", null, "\u2022 Your credit has reached the limit;"), /*#__PURE__*/React.createElement("li", null, "\u2022 Computer or network error;"), /*#__PURE__*/React.createElement("li", null, "\u2022 Your card has insufficient balance to charge;")), /*#__PURE__*/React.createElement("p", null, "An email has been sent to you detailing order summary and payment information to help you make payment again."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      marginBottom: '0'
+    }
+  }, "Still, you can make payment directly through this", ' ', /*#__PURE__*/React.createElement("a", {
+    href: `/order-information${window.location.search}`
+  }, "LINK"))));
+};
+const Pending1 = () => {
+  return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("h3", {
+    className: `${style$2.Title}`
+  }, "Thank you for entrusting our service at", ' ', /*#__PURE__*/React.createElement("a", {
+    href: "https://test-site.bbcincorp.com/hk",
+    rel: "nofollow",
+    target: "_blank"
+  }, "bbcincorp.com")), /*#__PURE__*/React.createElement("div", {
+    className: style$2.Content
+  }, /*#__PURE__*/React.createElement("p", null, "We have received your order, and a dedicated manager will contact you soon to proceed further.An email has been sent to you detailing order and payment information for your reference.Please arrange your payment for the service charge according to one of the methods listed in the email."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      marginBottom: '0'
+    }
+  }, "Still, you can make payment directly through this", ' ', /*#__PURE__*/React.createElement("a", {
+    href: `/order-information${window.location.search}`
+  }, "LINK"))));
+};
+const Pending2 = ({
+  queryOrderCode,
+  buttonMoveToBank
+}) => {
+  return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("h3", {
+    className: `${style$2.Title}`
+  }, "Thank you for entrusting our service at", ' ', /*#__PURE__*/React.createElement("a", {
+    href: "https://test-site.bbcincorp.com/hk",
+    rel: "nofollow",
+    target: "_blank"
+  }, "bbcincorp.com")), /*#__PURE__*/React.createElement("div", {
+    className: style$2.Content
+  }, /*#__PURE__*/React.createElement("p", null, "We have received your order, and a dedicated manager will contact you soon to proceed further. An email has been sent to you detailing order and payment information for your reference. Please arrange your payment for the service charge according to one of the methods listed in the email."), /*#__PURE__*/React.createElement("p", null, "Still, you can make payment directly through this", ' ', /*#__PURE__*/React.createElement("a", {
+    href: `/order-information${window.location.search}`
+  }, "LINK")), /*#__PURE__*/React.createElement("p", null, "Nevertheless, you can also move to the next step to fill out the questionnaire for helping you select your relevant banking partners.")), buttonMoveToBank && /*#__PURE__*/React.createElement("div", {
+    className: style$2.Footer
+  }, /*#__PURE__*/React.createElement("button", {
+    className: style$2.highlightBtn,
+    onClick: () => moveToBanking(queryOrderCode)
+  }, "See your banking options")));
+};
+const Pending3 = () => {
+  return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("h3", {
+    className: `${style$2.Title}`
+  }, "Thank you for entrusting our service at", ' ', /*#__PURE__*/React.createElement("a", {
+    href: "https://test-site.bbcincorp.com/hk",
+    rel: "nofollow",
+    target: "_blank"
+  }, "bbcincorp.com")), /*#__PURE__*/React.createElement("div", {
+    className: style$2.Content
+  }, /*#__PURE__*/React.createElement("p", null, "An email has been sent to you detailing order information for your reference.Please arrange your payment for the service charge according to one of the methods listed in the email. Or you can also make payment directly through this", ' ', /*#__PURE__*/React.createElement("a", {
+    href: `/order-information${window.location.search}`
+  }, "LINK")), /*#__PURE__*/React.createElement("p", {
+    style: {
+      marginBottom: '0'
+    }
+  }, "An account manager will contact you shortly to get you onboard and give you advice about other banking alternatives should you need one.")));
+};
+const Pending4 = () => {
+  return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("h3", {
+    className: `${style$2.Title}`
+  }, "We\u2019ve recorded your banking selection."), /*#__PURE__*/React.createElement("div", {
+    className: style$2.Content
+  }, /*#__PURE__*/React.createElement("p", {
+    style: {
+      marginBottom: '0'
+    }
+  }, "An account manager will contact you shortly to get you onboard and give you advice about other banking alternatives should you need one.")));
+};
+const getBody = (pathname, data, queryOrderCode) => {
+  let isCheckIncorp = JSON.parse(window.localStorage.getItem('layout'));
+  if (isCheckIncorp && (isCheckIncorp === null || isCheckIncorp === void 0 ? void 0 : isCheckIncorp.incorp_to_bank) === true) {
+    if (pathname === '/payment-success' && data.order_status_id == 1) {
+      return /*#__PURE__*/React.createElement(Success3, null);
+    }
+    if (pathname === '/payment-pending' && data.order_status_id == 0) {
+      return /*#__PURE__*/React.createElement(Pending4, null);
+    }
+  } else {
+    if (pathname === '/payment-success' && data.order_status_id == 1) {
+      if (data.OrderItems[0].service_id == 1670 && data.OrderItems[0].Package == null) {
+        return /*#__PURE__*/React.createElement(Success4, null);
+      } else {
+        let country_id = data.Company.Country.id;
+        let package_type_id = data.PackageItems[0].Package.package_type_id;
+        if (country_id != 191) {
+          if (package_type_id == 1 || package_type_id == 4 || package_type_id == 5 || package_type_id == 6 || package_type_id == 7 || package_type_id == 8) {
+            return /*#__PURE__*/React.createElement(Success2, null);
+          } else if (package_type_id == 2 || package_type_id == 3) {
+            return /*#__PURE__*/React.createElement(Success1, {
+              queryOrderCode: queryOrderCode,
+              buttonMoveToBank: (data === null || data === void 0 ? void 0 : data.Banks.length) > 0 ? false : true
+            });
+          }
+        } else {
+          if (package_type_id == 14 || package_type_id == 15) {
+            return /*#__PURE__*/React.createElement(Success1, {
+              queryOrderCode: queryOrderCode,
+              buttonMoveToBank: (data === null || data === void 0 ? void 0 : data.Banks.length) > 0 ? false : true
+            });
+          } else if (package_type_id == 12 || package_type_id == 13) {
+            return /*#__PURE__*/React.createElement(Success2, null);
+          }
+        }
+      }
+    } else if (pathname === '/payment-failure') {
+      if (data.OrderItems[0].service_id == 1670 && data.OrderItems[0].Package == null) {
+        return /*#__PURE__*/React.createElement(Failure2, null);
+      } else {
+        return /*#__PURE__*/React.createElement(Failure1, null);
+      }
+    } else if (pathname === '/payment-pending' && data.order_status_id == 0) {
+      if (data.OrderItems[0].service_id == 1670 && data.OrderItems[0].Package == null) {
+        return /*#__PURE__*/React.createElement(Pending3, null);
+      } else {
+        let country_id = data.Company.Country.id;
+        let package_type_id = data.PackageItems[0].Package.package_type_id;
+        if (country_id != 191) {
+          if (package_type_id == 1 || package_type_id == 4 || package_type_id == 5 || package_type_id == 6 || package_type_id == 7 || package_type_id == 8) {
+            return /*#__PURE__*/React.createElement(Pending1, null);
+          } else if (package_type_id == 2 || package_type_id == 3) {
+            return /*#__PURE__*/React.createElement(Pending2, {
+              queryOrderCode: queryOrderCode,
+              buttonMoveToBank: (data === null || data === void 0 ? void 0 : data.Banks.length) > 0 ? false : true
+            });
+          }
+        } else {
+          if (package_type_id == 14 || package_type_id == 15) {
+            return /*#__PURE__*/React.createElement(Pending2, {
+              queryOrderCode: queryOrderCode,
+              buttonMoveToBank: (data === null || data === void 0 ? void 0 : data.Banks.length) > 0 ? false : true
+            });
+          } else if (package_type_id == 12 || package_type_id == 13) {
+            return /*#__PURE__*/React.createElement(Pending1, null);
+          }
+        }
+      }
+    }
+  }
+  window.location.href = '/register';
+};
+function OnboardingNotification() {
+  const [data, setData] = useState();
+  const pathname = location.pathname;
+  const getUrlVars = () => {
+    let vars = {};
+    let parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+      vars[key] = value;
+    });
+    return vars;
+  };
+  const queryOrderCode = getUrlVars()['order_code'];
+  useEffect(() => {
+    if (window.location) {
+      if (queryOrderCode) {
+        axios.get(`https://core.test-lp.bbcincorp.com/api/onboarding/order/${queryOrderCode}`).then(result => {
+          var _result$data;
+          return setData(result === null || result === void 0 ? void 0 : (_result$data = result.data) === null || _result$data === void 0 ? void 0 : _result$data.data);
+        }).catch(error => window.location.href = '/register');
+      } else {
+        window.location.href = '/register';
+      }
+    }
+  }, [queryOrderCode]);
+  return /*#__PURE__*/React.createElement(Layout, null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "d-none d-lg-block",
+    style: {
+      height: '50px'
+    }
+  }), pathname && data && getBody(pathname, data, queryOrderCode)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: '#717171'
+    }
+  }, "Rate us on", ' ', /*#__PURE__*/React.createElement("a", {
+    href: "https://www.trustpilot.com/review/bbcincorp.com",
+    target: "_blank",
+    style: {
+      fontWeight: '500',
+      fontSize: '1.25rem'
+    }
+  }, "TRUSTPILOT")));
+}
+
+function PaymentSuccess(params) {
+  return /*#__PURE__*/React.createElement(OnboardingNotification, null);
+}
+
+function PaymentPending(params) {
+  return /*#__PURE__*/React.createElement(OnboardingNotification, null);
+}
+
+function PaymentFailure(params) {
+  return /*#__PURE__*/React.createElement(OnboardingNotification, null);
+}
+
+export { IncorporationAdditionalService, IncorporationCompanyType, IncorporationCountry, IncorporationEntityNameCheck, IncorporationPackage, OrderInformation, PaymentFailure, PaymentPending, PaymentSuccess, Register, SelectService };
 //# sourceMappingURL=index.modern.js.map

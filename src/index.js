@@ -6,6 +6,11 @@ import IncorporationCompanyType from './components/IncorporationCompanyType'
 import IncorporationEntityNameCheck from './components/IncorporationEntityNameCheck'
 import IncorporationPackage from './components/IncorporationPackage'
 import IncorporationAdditionalService from './components/IncorporationAdditionalService'
+import OrderInformation from './components/OrderInformation'
+import PaymentSuccess from './components/PaymentSuccess'
+import PaymentPending from './components/PaymentPending'
+import PaymentFailure from './components/PaymentFailure'
+
 import './styles.module.css'
 
 export {
@@ -15,7 +20,11 @@ export {
   IncorporationCompanyType,
   IncorporationEntityNameCheck,
   IncorporationPackage,
-  IncorporationAdditionalService
+  IncorporationAdditionalService,
+  OrderInformation,
+  PaymentSuccess,
+  PaymentPending,
+  PaymentFailure
 }
 
 // export default {

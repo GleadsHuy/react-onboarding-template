@@ -9,11 +9,11 @@ import { BiLoaderAlt } from 'react-icons/bi'
 import { FiHelpCircle } from 'react-icons/fi'
 import Sidebar from '../common/SideBar'
 import axios from 'axios'
-
+import Layout from '../common/Layout'
 import Description from '../common/Description'
 import Select, { components } from 'react-select'
 import _ from 'lodash'
-import Label from '../common/Label'
+import { useOnClickOutside } from '../common/functions'
 
 const customStyles = {
   menu: (provider, state) => ({
@@ -281,6 +281,11 @@ export default function IncorporationAdditionalService(params) {
   const [emptyField, setEmtyField] = useState(false)
   const [note, setNote] = useState(true)
   const promotionCode = useRef(null)
+  const wrapperRef = useRef(null)
+
+  useOnClickOutside(wrapperRef, () => {
+    setSidebar(false)
+  })
 
   useEffect(() => {
     if (localStorage.getItem('data_onboarding')) {
@@ -374,16 +379,16 @@ export default function IncorporationAdditionalService(params) {
         Array.isArray(selectedPackages) &&
         selectedPackages.length === 0 &&
         dataOnboarding?.incorporation?.country?.id === 191 &&
-        (dataOnboarding?.incorporation?.package?.id === 85 ||
-          dataOnboarding?.incorporation?.package?.id === 86)
+        (dataOnboarding?.incorporation?.package?.id === 86 ||
+          dataOnboarding?.incorporation?.package?.id === 87)
       ) {
         setQuestion(questions[1])
       } else if (
         Array.isArray(selectedPackages) &&
         selectedPackages.length === 0 &&
         dataOnboarding?.incorporation?.country?.id === 191 &&
-        (dataOnboarding?.incorporation?.package?.id === 87 ||
-          dataOnboarding?.incorporation?.package?.id === 88)
+        (dataOnboarding?.incorporation?.package?.id === 88 ||
+          dataOnboarding?.incorporation?.package?.id === 89)
       ) {
         setQuestion(questions[0])
       } else {
@@ -497,10 +502,10 @@ export default function IncorporationAdditionalService(params) {
     if (
       (country &&
         country.id === 191 &&
-        (packageId === 85 ||
-          packageId === 86 ||
+        (packageId === 86 ||
           packageId === 87 ||
-          packageId === 88) &&
+          packageId === 88 ||
+          packageId === 89) &&
         !emptyField) ||
       (companyInfo &&
         companyInfo.country_id === 23 &&
@@ -560,10 +565,10 @@ export default function IncorporationAdditionalService(params) {
       if (
         (country &&
           country.id === 191 &&
-          (packageId === 85 ||
-            packageId === 86 ||
+          (packageId === 86 ||
             packageId === 87 ||
-            packageId === 88) &&
+            packageId === 88 ||
+            packageId === 89) &&
           !emptyField) ||
         (companyInfo &&
           companyInfo.country_id === 23 &&
@@ -717,266 +722,277 @@ export default function IncorporationAdditionalService(params) {
         break
     }
   }
-  return question ? (
-    <>
-      <div className={styles.container}>
-        <div className={`${styles.Header} ${styles.topWrapper}`}>
-          <a
-            disabled={loading && loading !== ''}
-            href='/incorporation-package'
-            className={styles.btnBackTop}
-            onClick={clearSelectedPackages}
-          >
-            Back
-          </a>
-          {question &&
-          question !== 'none' &&
-          packageId != 85 &&
-          packageId != 86 ? (
-            <>
-              <div className={styles.faqWrapper} style={{ fontSize: 20 }}>
-                Frequently Asked Questions?{' '}
-                <button
-                  className={styles.faqBtn}
-                  style={{ fontSize: 20 }}
-                  onClick={() => setSidebar(true)}
-                >
-                  CLICK HERE
-                </button>
-              </div>
-            </>
-          ) : (
-            <></>
-          )}
-        </div>
-        {question === 'none' ? (
-          <>
-            <div className={styles.contentWrapper}>
-              <div className={styles.content}>
-                <div className={styles.titleWrapper}>
-                  <div className={`${styles.titleDes} ${styles.description}`}>
-                    <Title
-                      text='Additional Services'
-                      className={styles.title}
-                    />
-                    <Description>
-                      Additional services will help you to solve the problem
-                      relating to documentation. You can also skip this if you
-                      do not find the services suited to you
-                    </Description>
+  return (
+    <Layout>
+      {question ? (
+        <>
+          <div className={styles.container}>
+            <div className={`${styles.Header} ${styles.topWrapper}`}>
+              <a
+                disabled={loading && loading !== ''}
+                href='/incorporation-package'
+                className={styles.btnBackTop}
+                onClick={clearSelectedPackages}
+              >
+                Back
+              </a>
+              {question &&
+              question !== 'none' &&
+              packageId != 86 &&
+              packageId != 87 ? (
+                <>
+                  <div className={styles.faqWrapper} style={{ fontSize: 20 }}>
+                    Frequently Asked Questions?{' '}
+                    <button
+                      className={styles.faqBtn}
+                      style={{ fontSize: 20 }}
+                      onClick={() => setSidebar(true)}
+                    >
+                      CLICK HERE
+                    </button>
                   </div>
-                  <div className={`${styles.total} ${styles.totalWrapper}`}>
-                    <h3>
-                      <span style={{ color: '#333333' }}>Total:</span>
-                      <span className={styles.price}>${getSum()}.00</span>
-                    </h3>
-                    <h1 className={styles.priceWrapper}>US${getSum()}.00</h1>
-                  </div>
-                </div>
-                <div className={styles.tableServices}>
-                  <div
-                    className={`${styles.servicesRow} ${styles.serviceWrapper}`}
-                  >
-                    <div className={styles.colMd1} scope='col'>
-                      No.
-                    </div>
-                    <div className={styles.colMd4} scope='col'>
-                      Category
-                    </div>
-                    <div className={styles.colMd4} scope='col'>
-                      Service
-                    </div>
-                    <div className={styles.colMd2} scope='col'>
-                      Quantity
-                    </div>
-                    <div className={styles.colMd1} scope='col'>
-                      Price
-                    </div>
-                  </div>
-                  {fields.length === 0 && (
-                    <h3 className={styles.fieldNote}>
-                      Please add and choose services
-                    </h3>
-                  )}
-                  {fields.map((field, index) => (
-                    <div key={index} className={styles.fieldWrapper}>
-                      {index !== 0 && (
-                        <div className={styles.lineDividerWrapper}>
-                          <div className={styles.lineDivider}></div>
-                        </div>
-                      )}
-                      <div className={styles.customFieldWrapper}>
-                        <div className={styles.quantityField}>{index + 1}</div>
-                        <div className={styles.customField}>
-                          <CustomField
-                            idx={index}
-                            fieldValue={field}
-                            additionalServices={additionalServices}
-                            categories={categories}
-                            onFieldChange={onFieldChange}
-                            handleRemove={handleRemove}
-                          />
-                        </div>
+                </>
+              ) : (
+                <></>
+              )}
+            </div>
+            {question === 'none' ? (
+              <>
+                <div className={styles.contentWrapper}>
+                  <div className={styles.content}>
+                    <div className={styles.titleWrapper}>
+                      <div
+                        className={`${styles.titleDes} ${styles.description}`}
+                      >
+                        <Title
+                          text='Additional Services'
+                          className={styles.title}
+                        />
+                        <Description>
+                          Additional services will help you to solve the problem
+                          relating to documentation. You can also skip this if
+                          you do not find the services suited to you
+                        </Description>
+                      </div>
+                      <div className={`${styles.total} ${styles.totalWrapper}`}>
+                        <h3>
+                          <span style={{ color: '#333333' }}>Total:</span>
+                          <span className={styles.price}>${getSum()}.00</span>
+                        </h3>
+                        <h1 className={styles.priceWrapper}>
+                          US${getSum()}.00
+                        </h1>
                       </div>
                     </div>
-                  ))}
-                </div>
-                <div className={styles.controlWrapper}>
-                  <button
-                    className={styles.addService}
-                    onClick={handleClickAdd}
-                    style={{ minWidth: 150 }}
-                    disabled={loading && loading !== ''}
-                  >
-                    Add
-                  </button>
-                  <button
-                    className={styles.clearAll}
-                    onClick={removeAll}
-                    style={{ minWidth: 150 }}
-                    disabled={loading && loading !== ''}
-                  >
-                    Remove all
-                  </button>
-                </div>
-              </div>
-              <div>
-                {country.id == 191 && note && (
-                  <p
-                    style={{
-                      marginBottom: `60px`,
-                      fontSize: `20px`,
-                      lineHeight: `28px`,
-                      fontWeight: `400`
-                    }}
-                  >
-                    <strong>Note:</strong> Accounting fee is depended on client
-                    company’s yearly revenue. You may take a look at{' '}
-                    <a
-                      style={{
-                        display: `inline-block`,
-                        textDecoration: 'none',
-                        color: '#007eff'
-                      }}
-                      target='_blank'
-                      rel='noreferrer nofollow'
-                      href='https://bbcincorp.com/sg/accounting-and-auditing'
-                    >
-                      our price range
-                    </a>
-                    .<br /> If you want to customize this package, please
-                    contact our customer service team for assistance.
-                  </p>
-                )}
-                {companyInfo &&
-                  companyInfo.country_id === 23 &&
-                  companyInfo.entity_type_id === 2 &&
-                  note && (
-                    <p
-                      style={{
-                        marginBottom: `60px`,
-                        fontSize: `20px`,
-                        lineHeight: `28px`,
-                        fontWeight: `400`
-                      }}
-                    >
-                      <strong>Note:</strong> Tax Identification Number (TIN) is
-                      mandatory for all Belize companies, regardless of whether
-                      they are included or non-included entities, to submit the
-                      filing of returns and tax payments. If you need further
-                      information and assistance, please do not hesitate to
-                      contact our customer service team.
-                    </p>
-                  )}
-                <div className={styles.bottomWrapper}>
-                  <div className={styles.btnBackBottom}>
-                    <a
-                      disabled={loading && loading !== ''}
-                      href='/incorporation-package'
-                      onClick={clearSelectedPackages}
-                    >
-                      Back
-                    </a>
+                    <div className={styles.tableServices}>
+                      <div
+                        className={`${styles.servicesRow} ${styles.serviceWrapper}`}
+                      >
+                        <div className={styles.colMd1} scope='col'>
+                          No.
+                        </div>
+                        <div className={styles.colMd4} scope='col'>
+                          Category
+                        </div>
+                        <div className={styles.colMd4} scope='col'>
+                          Service
+                        </div>
+                        <div className={styles.colMd2} scope='col'>
+                          Quantity
+                        </div>
+                        <div className={styles.colMd1} scope='col'>
+                          Price
+                        </div>
+                      </div>
+                      {fields.length === 0 && (
+                        <h3 className={styles.fieldNote}>
+                          Please add and choose services
+                        </h3>
+                      )}
+                      {fields.map((field, index) => (
+                        <div key={index} className={styles.fieldWrapper}>
+                          {index !== 0 && (
+                            <div className={styles.lineDividerWrapper}>
+                              <div className={styles.lineDivider}></div>
+                            </div>
+                          )}
+                          <div className={styles.customFieldWrapper}>
+                            <div className={styles.quantityField}>
+                              {index + 1}
+                            </div>
+                            <div className={styles.customField}>
+                              <CustomField
+                                idx={index}
+                                fieldValue={field}
+                                additionalServices={additionalServices}
+                                categories={categories}
+                                onFieldChange={onFieldChange}
+                                handleRemove={handleRemove}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className={styles.controlWrapper}>
+                      <button
+                        className={styles.addService}
+                        onClick={handleClickAdd}
+                        style={{ minWidth: 150 }}
+                        disabled={loading && loading !== ''}
+                      >
+                        Add
+                      </button>
+                      <button
+                        className={styles.clearAll}
+                        onClick={removeAll}
+                        style={{ minWidth: 150 }}
+                        disabled={loading && loading !== ''}
+                      >
+                        Remove all
+                      </button>
+                    </div>
                   </div>
-                  <button
-                    onClick={() => handleSubmit('next')}
-                    className={styles.nextBtn}
-                    disabled={loading && loading !== ''}
-                  >
-                    {loading === 'next' ? (
-                      <span>
-                        Next
-                        <BiLoaderAlt
-                          className='animate_spin'
-                          size={20}
-                          style={{ marginLeft: '8px' }}
-                        />
-                      </span>
-                    ) : (
-                      <span>Next</span>
+                  <div>
+                    {country.id == 191 && note && (
+                      <p
+                        style={{
+                          marginBottom: `60px`,
+                          fontSize: `20px`,
+                          lineHeight: `28px`,
+                          fontWeight: `400`
+                        }}
+                      >
+                        <strong>Note:</strong> Accounting fee is depended on
+                        client company’s yearly revenue. You may take a look at{' '}
+                        <a
+                          style={{
+                            display: `inline-block`,
+                            textDecoration: 'none',
+                            color: '#007eff'
+                          }}
+                          target='_blank'
+                          rel='noreferrer nofollow'
+                          href='https://bbcincorp.com/sg/accounting-and-auditing'
+                        >
+                          our price range
+                        </a>
+                        .<br /> If you want to customize this package, please
+                        contact our customer service team for assistance.
+                      </p>
                     )}
-                  </button>
-                  <button
-                    className={styles.skipBtn}
-                    onClick={() => handleSubmit('skip')}
-                    disabled={loading && loading !== ''}
-                  >
-                    {loading === 'skip' ? (
-                      <span>
-                        Skip
-                        <BiLoaderAlt
-                          className='animate_spin'
-                          size={20}
-                          style={{ marginLeft: '8px' }}
-                        />
-                      </span>
-                    ) : (
-                      <span>Skip</span>
-                    )}
-                  </button>
+                    {companyInfo &&
+                      companyInfo.country_id === 23 &&
+                      companyInfo.entity_type_id === 2 &&
+                      note && (
+                        <p
+                          style={{
+                            marginBottom: `60px`,
+                            fontSize: `20px`,
+                            lineHeight: `28px`,
+                            fontWeight: `400`
+                          }}
+                        >
+                          <strong>Note:</strong> Tax Identification Number (TIN)
+                          is mandatory for all Belize companies, regardless of
+                          whether they are included or non-included entities, to
+                          submit the filing of returns and tax payments. If you
+                          need further information and assistance, please do not
+                          hesitate to contact our customer service team.
+                        </p>
+                      )}
+                    <div className={styles.bottomWrapper}>
+                      <div className={styles.btnBackBottom}>
+                        <a
+                          disabled={loading && loading !== ''}
+                          href='/incorporation-package'
+                          onClick={clearSelectedPackages}
+                        >
+                          Back
+                        </a>
+                      </div>
+                      <button
+                        onClick={() => handleSubmit('next')}
+                        className={styles.nextBtn}
+                        disabled={loading && loading !== ''}
+                      >
+                        {loading === 'next' ? (
+                          <span>
+                            Next
+                            <BiLoaderAlt
+                              className='animate_spin'
+                              size={20}
+                              style={{ marginLeft: '8px' }}
+                            />
+                          </span>
+                        ) : (
+                          <span>Next</span>
+                        )}
+                      </button>
+                      <button
+                        className={styles.skipBtn}
+                        onClick={() => handleSubmit('skip')}
+                        disabled={loading && loading !== ''}
+                      >
+                        {loading === 'skip' ? (
+                          <span>
+                            Skip
+                            <BiLoaderAlt
+                              className='animate_spin'
+                              size={20}
+                              style={{ marginLeft: '8px' }}
+                            />
+                          </span>
+                        ) : (
+                          <span>Skip</span>
+                        )}
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className={styles.questionContainer}>
-              <div className={styles.content}>
-                <div className={styles.titleQuestionWrapper}>
-                  <Title
-                    text='Accounting and Tax Filing service'
-                    className={styles.title}
-                  />
-                  <button onClick={() => setSidebar(true)}>
-                    <FiHelpCircle color='#007eff' size={30} />
-                  </button>
+              </>
+            ) : (
+              <>
+                <div className={styles.questionContainer}>
+                  <div className={styles.content}>
+                    <div className={styles.titleQuestionWrapper}>
+                      <Title
+                        text='Accounting and Tax Filing service'
+                        className={styles.title}
+                      />
+                      <button onClick={() => setSidebar(true)}>
+                        <FiHelpCircle color='#007eff' size={30} />
+                      </button>
+                    </div>
+                    <Description>{question.text}</Description>
+                    <div className={styles.answerWrapper}>
+                      {question.answers.map((item, index) => (
+                        <button
+                          onClick={() => handleQuestion(item)}
+                          className={` ${styles.singButton}`}
+                          key={index}
+                        >
+                          <FaCaretRight size={30} color='#333' />
+                          {item.text}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <Description>{question.text}</Description>
-                <div className={styles.answerWrapper}>
-                  {question.answers.map((item, index) => (
-                    <button
-                      onClick={() => handleQuestion(item)}
-                      className={` ${styles.singButton}`}
-                      key={index}
-                    >
-                      <FaCaretRight size={30} color='#333' />
-                      {item.text}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </>
-        )}
-      </div>
-      <Sidebar
-        description={`<div><h4>What is the fee if I use your accounting service?</h4><ul><li>Our accounting service starts from US$84/month for less than S$70,000 of revenue per year. You can check <a href='https://bbcincorp.com/sg/accounting-and-auditing' target='_blank' rel='nofollow noreferrer'>HERE</a> for accounting fee details.</li></ul><h4>If there is no transaction in my yearly accounting period, could I get my accounting fee back?</h4><ul><li>When you use nominee director service in Singapore, you are most likely required to deposit an initial amount of no less than S$2,000. However, we don’t require this, you must instead send your monthly accounting report for our local director’s review to discharge their liabilities from possible illicit business activities or practices.</li></ul></div>`}
-        title='FAQs'
-        sidebar={sidebar}
-        onClickClose={() => setSidebar(false)}
-      />
-    </>
-  ) : (
-    <></>
+              </>
+            )}
+          </div>
+          <Sidebar
+            description={`<div><h4>What is the fee if I use your accounting service?</h4><ul><li>Our accounting service starts from US$84/month for less than S$70,000 of revenue per year. You can check <a href='https://bbcincorp.com/sg/accounting-and-auditing' target='_blank' rel='nofollow noreferrer'>HERE</a> for accounting fee details.</li></ul><h4>If there is no transaction in my yearly accounting period, could I get my accounting fee back?</h4><ul><li>When you use nominee director service in Singapore, you are most likely required to deposit an initial amount of no less than S$2,000. However, we don’t require this, you must instead send your monthly accounting report for our local director’s review to discharge their liabilities from possible illicit business activities or practices.</li></ul></div>`}
+            title='FAQs'
+            sidebar={sidebar}
+            wrapperRef={wrapperRef}
+            onClickClose={() => setSidebar(false)}
+          />
+        </>
+      ) : (
+        <></>
+      )}
+    </Layout>
   )
 }

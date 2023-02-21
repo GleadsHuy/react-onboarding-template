@@ -8,7 +8,11 @@ import {
   IncorporationCompanyType,
   IncorporationEntityNameCheck,
   IncorporationPackage,
-  IncorporationAdditionalService
+  IncorporationAdditionalService,
+  OrderInformation,
+  PaymentSuccess,
+  PaymentPending,
+  PaymentFailure
 } from 'react-onboarding-template'
 import 'react-onboarding-template/dist/index.css'
 
@@ -43,6 +47,14 @@ const App = () => {
           component={IncorporationAdditionalService}
           exact
         ></Route>
+        <Route
+          path='/order-information'
+          component={OrderInformation}
+          exact
+        ></Route>
+        <Route path='/payment-success' component={PaymentSuccess} exact></Route>
+        <Route path='/payment-pending' component={PaymentPending} exact></Route>
+        <Route path='/payment-failure' component={PaymentFailure} exact></Route>
       </BrowserRouter>
     </Fragment>
   )

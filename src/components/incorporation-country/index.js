@@ -25,7 +25,7 @@ import _ from 'lodash'
 import Title from '../common/Title'
 import SelectSearch from '../common/Selects/SelectSearchInside'
 import Modal from '../common/Modal'
-
+import Layout from '../common/Layout'
 /**
  * styles
  */
@@ -268,7 +268,7 @@ export default function IncorporationCountry({ data }) {
     //       'Select the country that you want to incorporate in. BBCIncorp provides incorporation service for more than 18 countries worldwide.'
     //   }}
     // >
-    <div>
+    <Layout>
       <section>
         <div className={`${styles.btn_back_top}  ${styles.Header}`}>
           <div className={styles.btn_back_container}>
@@ -473,79 +473,6 @@ export default function IncorporationCountry({ data }) {
           )}
         </div>
       </Modal>
-      {/* {show && (
-        <div>
-          <div className={styles.modal_backdrop}></div>
-          <div className={styles.modal_container}>
-            <div ref={wrapperRef} className={styles.modal_wrapper}>
-              <div
-                className={styles.closeModal}
-                style={{
-                  position: 'absolute',
-                  top: '0.25rem',
-                  right: '0.25rem',
-                  zIndex: 1
-                }}
-              >
-                <button className='btn' onClick={handleClose}>
-                  <IconContext.Provider value={{ style: { color: 'c4c4c4' } }}>
-                    <IoMdCloseCircle size={`2rem`} />
-                  </IconContext.Provider>
-                </button>
-              </div>
-              <div className={styles.tab_container}>
-                <div className={styles.tab_wrapper}>
-                  <button
-                    onClick={() => setTab(1)}
-                    className={`${tab === 1 ? styles.active_tab : ''} ${
-                      styles.tab_item
-                    }`}
-                  >
-                    Jurisdiction's Features
-                  </button>
-                  <button
-                    onClick={() => setTab(2)}
-                    className={`${tab === 2 ? styles.active_tab : ''} ${
-                      styles.tab_item
-                    }`}
-                  >
-                    Jurisdiction Comparison
-                  </button>
-                </div>
-              </div>
-              {tab === 1 ? (
-                <JurisdictionFeatures
-                  data={dataComparison.DataFeatures}
-                  countries={dataComparison.countries}
-                  publicRegister={dataComparison.public_register}
-                  euList={dataComparison.eu_list}
-                  selectDefault={dataComparison.select_default}
-                  auditList={dataComparison.audited_accounts}
-                  exemptionList={dataComparison.offshore_exemptions}
-                  commonUsedList={dataComparison.common_used}
-                />
-              ) : (
-                <div style={{ color: '#333' }}>
-                  <p style={{ marginBottom: '16px' }}>
-                    The following table compares different jurisdictions
-                    (maximum 3 at one time) in regard to crucial aspects that
-                    you need to know when incorporating.
-                  </p>
-                  <p style={{ marginBottom: '16px' }}>
-                    <b>How to use: </b>Please select the jurisdiction you want
-                    to compare in the header <b>[Country Name]</b> in the table
-                    to see the information
-                  </p>
-                  <JurisdictionComparison
-                    data={dataComparison.DataComparison}
-                    countries={dataComparison.countries}
-                  />
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )} */}
-    </div>
+    </Layout>
   )
 }

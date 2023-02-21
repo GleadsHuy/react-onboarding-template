@@ -11,6 +11,8 @@ import {
 } from 'react-bootstrap'
 import Modal from '../common/Modal'
 import Description from '../common/Description'
+import Layout from '../common/Layout'
+
 import parse from 'html-react-parser'
 import _ from 'lodash'
 import axios from 'axios'
@@ -1163,7 +1165,7 @@ export default function IncorporationPackage(params) {
   })
 
   return (
-    <div>
+    <Layout>
       <section>
         <div className={`${styles.btn_top_wrapper} ${styles.Header}`}>
           <div
@@ -1550,6 +1552,6 @@ export default function IncorporationPackage(params) {
           </div>
         </div>
       </Modal>
-    </div>
+    </Layout>
   )
 }

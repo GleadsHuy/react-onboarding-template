@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import bankingImg from 'assets/banking.png'
 import incorpImg from 'assets/incorporation.png'
+import Layout from '../common/Layout'
+import obdIncorp2Img from 'assets/obd-incorporation-2.png'
+import tabletBuildImg from 'assets/bg-tablet-build.svg'
 
 export default function SelectService(params) {
   const [promotion, setPromotion] = useState(false)
@@ -81,7 +84,7 @@ export default function SelectService(params) {
   }, [querySignature, queryPromotionCode])
 
   return (
-    <div>
+    <Layout pattern={{ desktop: obdIncorp2Img, mobile: tabletBuildImg }}>
       <section className={styles.SelectServiceScreen}>
         <a
           href='/register'
@@ -151,6 +154,6 @@ export default function SelectService(params) {
       >
         Back
       </a>
-    </div>
+    </Layout>
   )
 }

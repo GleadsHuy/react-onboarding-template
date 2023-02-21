@@ -31,5 +31,12 @@
   padding-bottom: 0;
   z-index: 2;
   margin-top: 2px;
-  transform: translate(translate(0, 48px)) !important;
+  min-width: 10rem;
+  transform: translate(0, 58px);
+}
+
+@media (max-width: 991px) {
+  .dropdown_menu {
+    transform: none;
+  }
 }

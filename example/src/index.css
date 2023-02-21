@@ -7,7 +7,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
-  padding: 48px 64px !important;
 }
 
 code {
@@ -19,10 +18,4 @@ html,
 body,
 #root {
   height: 100%;
-}
-
-@media (max-width: 991px) {
-  body {
-    padding: 84px 24px 24px;
-  }
 }

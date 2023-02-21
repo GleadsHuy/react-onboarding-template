@@ -17,6 +17,7 @@ import Description from '../common/Description'
 import buildingImg from 'assets/building.png'
 import comparisonTableImg from 'assets/comparison-table.png'
 import Modal from '../common/Modal'
+import Layout from '../common/Layout'
 // import ModalNoti from "./ModalNoti";
 
 /**
@@ -528,14 +529,7 @@ export default function IncorporationCompanyType({ data }) {
   })
 
   return (
-    // <Layout
-    //   head={{
-    //     title: 'Select your desired company type - BBCIncorp',
-    //     description:
-    //       "With each company type comes different perks and drawbacks. Pick your company type wisely or after you've done your research."
-    //   }}
-    // >
-    <div>
+    <Layout>
       <section>
         <div className={`${styles.btn_back_top} ${styles.Header}`}>
           <div className={`${styles.btn_back_wrapper}`}>
@@ -720,6 +714,6 @@ export default function IncorporationCompanyType({ data }) {
           </div>
         </div>
       </Modal>
-    </div>
+    </Layout>
   )
 }

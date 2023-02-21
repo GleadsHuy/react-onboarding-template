@@ -3,6 +3,9 @@ import FatfScreen from './FatfScreen'
 import RegisterScreen from './RegisterScreen'
 import data from './data.json'
 import styles from './styles.module.css'
+import Layout from '../common/Layout'
+import tabletBuildImg from 'assets/bg-tablet-build.svg'
+import obdIncorp2Img from 'assets/obd-incorporation-2.png'
 
 export default function Register({ isTypeChristmas }) {
   const [fatfScreen, setFatfScreen] = useState(true)
@@ -33,15 +36,33 @@ export default function Register({ isTypeChristmas }) {
   }, [])
 
   return (
-    <div className={styles.Register}>
-      {fatfScreen ? (
-        <FatfScreen onReceiveData={receiveData} />
-      ) : (
-        <RegisterScreen
-          trustpilot={data.trust_pilot}
-          isTypeChristmas={isTypeChristmas}
-        />
-      )}
-    </div>
+    <Layout
+      // head={{
+      //   title:
+      //     'Kick off your business with our fast & simple service - BBCIncorp',
+      //   description:
+      //     "Simplify your incorporation process by registering to BBCIncorp's formation service. Get your registration ready in minutes!"
+      // }}
+      fatf={fatfScreen}
+      pattern={
+        FatfScreen
+          ? {
+              desktop: obdIncorp2Img,
+              mobile: tabletBuildImg
+            }
+          : {}
+      }
+    >
+      <div className={styles.Register}>
+        {fatfScreen ? (
+          <FatfScreen onReceiveData={receiveData} />
+        ) : (
+          <RegisterScreen
+            trustpilot={data.trust_pilot}
+            isTypeChristmas={isTypeChristmas}
+          />
+        )}
+      </div>
+    </Layout>
   )
 }
