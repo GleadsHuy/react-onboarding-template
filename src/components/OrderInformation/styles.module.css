@@ -1,3 +1,9 @@
+.backBtnTop {
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 500;
+}
+
 .Payment {
   margin-top: 0;
 }
@@ -85,6 +91,8 @@
   }
 }
 .InfoContent {
+  font-size: 16px;
+  line-height: 24px;
   margin-left: 8px;
 }
 
@@ -136,6 +144,7 @@
 .paymentBox {
   flex: 0 0 33.3333333333%;
   max-width: 33.3333333333%;
+  padding: 0 15px;
 }
 
 .paymentBoxContainer {
@@ -178,13 +187,16 @@
   filter: drop-shadow(0px 2px 8px rgba(201, 201, 201, 0.75));
   background-color: #fff;
   height: 100%;
-  border-radius: 16px;
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
 }
 
 .social ul {
   display: flex;
   flex-wrap: wrap;
   margin: 0 -4px 0 -4px;
+  list-style-type: none;
+  padding: 0;
 }
 .social ul li {
   width: 34px;
@@ -306,12 +318,18 @@
 }
 
 .contact h4 {
-  font-size: 24px;
+  font-size: 24px !important;
   font-weight: 500;
   line-height: 32px;
   color: #2c2c51;
   margin-bottom: 16px;
 }
+
+.contact p {
+  font-size: 16px;
+  line-height: 24px;
+}
+
 .contact :global(.name-company) {
   font-size: 20px;
   font-weight: 500;
@@ -346,9 +364,12 @@
 }
 
 .infoContentRow {
+  font-size: 16px;
+  line-height: 24px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-bottom: 4px;
 }
 
 .infoContentRowMb {
@@ -359,6 +380,8 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 4px;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .promoDiscountContent {
@@ -374,6 +397,7 @@
 }
 
 .incorpInfo {
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -381,12 +405,16 @@
 .companyPackageWrapper {
   display: flex;
   justify-content: space-between;
+  font-size: 16px;
+  line-height: 24px;
   margin-bottom: 8px;
 }
 
 .serviceName {
   display: flex;
   justify-content: space-between;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .customService {

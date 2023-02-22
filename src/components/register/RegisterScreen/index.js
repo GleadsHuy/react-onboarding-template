@@ -15,6 +15,8 @@ import _ from 'lodash'
 import trust_pilot from 'assets/trust-pilot.svg'
 import { BiLoaderAlt } from 'react-icons/bi'
 
+import Layout from '../../common/Layout'
+
 const FormSwal = withReactContent(Swal)
 
 const Trustpilot = ({ data }) => {
@@ -284,7 +286,7 @@ const RegisterScreen = ({ trustpilot, isTypeChristmas }) => {
   }, [])
 
   return (
-    <div>
+    <Layout>
       <section className={styles.RegisterScreen}>
         <div
           className={styles.space_top}
@@ -411,7 +413,7 @@ const RegisterScreen = ({ trustpilot, isTypeChristmas }) => {
                 </div>
               </div>
             </div>
-            <div className={styles.RegisterText}>
+            <div className={styles.registerCheckText}>
               <input
                 id='register_checkbox'
                 type='checkbox'
@@ -450,7 +452,6 @@ const RegisterScreen = ({ trustpilot, isTypeChristmas }) => {
                 )}
               </button>
               <a
-                style={{ fontWeight: `600` }}
                 className={`${styles.RegisterLink} ${styles.Link}`}
                 // href={process.env.NEXT_PUBLIC_DASHBOARD_URL}
                 href='https://test-dashboard.bbcincorp.com/auth/login'
@@ -469,7 +470,7 @@ const RegisterScreen = ({ trustpilot, isTypeChristmas }) => {
           <Trustpilot data={trustpilot} />
         </div>
       </section>
-    </div>
+    </Layout>
   )
 }
 

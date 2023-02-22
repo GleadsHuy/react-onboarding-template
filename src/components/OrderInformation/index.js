@@ -688,7 +688,9 @@ export default function OrderInformation(params) {
             <div className={style.Header}>
               {orderInfo?.payment_gateway_id == null &&
               orderInfo?.order_status_id == 0 ? (
-                <a href={backLink || '/404'}>Back</a>
+                <a className={style.backBtnTop} href={backLink || '/404'}>
+                  Back
+                </a>
               ) : null}
             </div>
             <div>

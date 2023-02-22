@@ -35,7 +35,10 @@ function IncorpInfo({ orderInfo, suffixList, orderSummary }) {
               {orderInfo && orderInfo?.Company?.EntityType?.name}
             </p>
           </div>
-          <div className={style.incorpInfoWrapper}>
+          <div
+            className={style.infoContentWrapper}
+            style={{ marginBottom: '0!important' }}
+          >
             {orderInfo?.Company?.ProposedNames.map((item, index) =>
               index == 0 ? (
                 <div key={index} className={style.incorpInfo}>
@@ -75,7 +78,7 @@ function IncorpInfo({ orderInfo, suffixList, orderSummary }) {
             </p>
           </div>
           <div>
-            <ul style={{ marginLeft: '24px' }}>
+            <ul style={{ marginLeft: '24px', padding: '0' }}>
               {orderSummary.companyPackage?.map((item, index) => (
                 <li key={index} style={{ listStyleType: 'disc' }}>
                   <p className={style.serviceName}>
@@ -104,7 +107,7 @@ function IncorpInfo({ orderInfo, suffixList, orderSummary }) {
                 >
                   {category.name}
                 </p>
-                <ul style={{ marginLeft: '24px' }}>
+                <ul style={{ marginLeft: '24px', padding: '0' }}>
                   {orderSummary.additonalServices.map(
                     (item, index) =>
                       item.Service.ServiceType.id == category.id && (
@@ -139,7 +142,7 @@ function IncorpInfo({ orderInfo, suffixList, orderSummary }) {
       {(orderSummary.customServices.length > 0 ||
         orderSummary.customDiscount.length > 0) && (
         <div className={`${style.lineDivide} ${style.lineDivideSpace}`}>
-          <h4 className='mb-1'>CUSTOM SERVICES</h4>
+          <h4 style={{ marginBottom: '4px' }}>CUSTOM SERVICES</h4>
           <div className={style.InfoContent}>
             {orderSummary.customServices.map((item, index) => (
               <div

@@ -1,9 +1,9 @@
-.select_title {
+.selectTitle {
   margin-top: 40px;
   color: #2c2c51;
   font-size: 32px;
   line-height: 40px;
-  margin: 0;
+  font-weight: 500;
 }
 
 .descriptionText {
@@ -92,7 +92,7 @@
   line-height: 1.75rem;
   text-decoration: none;
   color: #007eff;
-  font-weight: 600;
+  font-weight: 500;
   max-width: max-content;
 }
 
@@ -111,8 +111,8 @@
   height: 64px;
 }
 
-.arrow_circle {
-  margin-top: 24px;
+.arrowCircle {
+  margin-top: 24px !important;
   background-color: #fff;
   border-radius: 24px;
   color: #007eff;

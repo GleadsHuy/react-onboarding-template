@@ -281,7 +281,7 @@ export default function Layout({ head, fatf, pattern, children }) {
                   _.find(item.sub_step, function (i) {
                     return i.slug.includes(slug)
                   }) && (
-                    <ul style={{ paddingLeft: '32px', marginBottom: '0' }}>
+                    <ul style={{ paddingLeft: '48px', marginBottom: '0' }}>
                       {item.sub_step.map((item, index) => (
                         <li key={index} className={`${styles.child}`}>
                           <div style={{ display: 'flex' }}>
@@ -389,9 +389,6 @@ export default function Layout({ head, fatf, pattern, children }) {
               <div
                 className={styles.backgroundWrapper}
                 style={{
-                  bottom: 0,
-                  left: 0,
-                  zIndex: 10,
                   mixBlendMode:
                     isFirstScreen || isPay ? 'initial' : 'luminosity'
                 }}
@@ -403,11 +400,6 @@ export default function Layout({ head, fatf, pattern, children }) {
                       : isFirstScreen || isPay
                       ? obdIncorpImg
                       : onboardingIncorpImg
-                    // : `/onboarding/custom-public/onboarding/images/items/${
-                    //     isFirstScreen || isPay
-                    //       ? 'obd-incorporation.svg'
-                    //       : 'onboarding-incorp.png'
-                    // }`
                   }
                   className={styles.backgroundImg}
                   alt='pattern'
@@ -428,7 +420,6 @@ export default function Layout({ head, fatf, pattern, children }) {
             <div className={styles.mainBg}>
               <div
                 className={`${styles.mainContainer}`}
-                // className={`${styles.mainContainer} position-relative`}
                 style={{
                   zIndex: 50
                 }}

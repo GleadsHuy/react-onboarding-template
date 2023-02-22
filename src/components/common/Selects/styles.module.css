@@ -15,6 +15,8 @@
 
 .dropdown_toggle {
   position: relative;
+  font-size: 16px;
+  line-height: 24px;
   overflow: hidden;
   width: 100%;
   padding: 8px 0;
@@ -33,6 +35,7 @@
   margin-top: 2px;
   min-width: 10rem;
   transform: translate(0, 58px);
+  color: #333333;
 }
 
 @media (max-width: 991px) {

@@ -92,7 +92,7 @@ export default function SelectService(params) {
         >
           Back
         </a>
-        <h2 className={styles.select_title}>
+        <h2 className={styles.selectTitle}>
           Select service you want to proceed
         </h2>
         <div className={styles.Body}>
@@ -121,7 +121,7 @@ export default function SelectService(params) {
                   {promotion && <div className={styles.promotion}>-5%</div>}
                   <img src={incorpImg} alt='incorporation' />
                   <h3>INCORPORATION</h3>
-                  <p className={styles.arrow_circle}>{'\u2192'}</p>
+                  <p className={styles.arrowCircle}>{'\u2192'}</p>
                 </button>
               </a>
             </div>
@@ -141,7 +141,7 @@ export default function SelectService(params) {
                 >
                   <img src={bankingImg} alt='banking' />
                   <h3>BANKING</h3>
-                  <p className={styles.arrow_circle}>{'\u2192'}</p>
+                  <p className={styles.arrowCircle}>{'\u2192'}</p>
                 </button>
               </a>
             </div>

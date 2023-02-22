@@ -304,54 +304,6 @@ export default function IncorporationEntityNameCheck({ data }) {
       )
       const inputName = name.trim().toLowerCase()
 
-      // dataRestricted.some((item) => {
-      //   let indexOf = inputName
-      //     .toLocaleLowerCase()
-      //     .indexOf(item.toLocaleLowerCase());
-      //   if (indexOf >= 0) {
-      //     if (item.length === inputName.length) {
-      //       // input trùng tên cấm
-      //       isNameRestricted = true;
-      //       return true;
-      //     } else {
-      //       // input chứa tên cấm
-      //       if (indexOf === 0) {
-      //         // tên cấm ở đầu input -> check khoảng trắng sau tên cấm
-      //         if (
-      //           inputName
-      //             .toLocaleLowerCase()
-      //             .indexOf(item.toLocaleLowerCase() + " ") >= 0
-      //         ) {
-      //           isNameRestricted = true;
-      //           return true;
-      //         }
-      //       } else {
-      //         if (indexOf + item.length === inputName.length) {
-      //           // tên cấm ở cuối input -> check khoảng trắng trước tên cấm
-      //           if (
-      //             inputName
-      //               .toLocaleLowerCase()
-      //               .indexOf(" " + item.toLocaleLowerCase()) >= 0
-      //           ) {
-      //             isNameRestricted = true;
-      //             return true;
-      //           }
-      //         } else {
-      //           // tên cấm ở giữa chuỗi -> check khoảng trắng 2 bên tên cấm
-      //           if (
-      //             inputName
-      //               .toLocaleLowerCase()
-      //               .indexOf(" " + item.toLocaleLowerCase() + " ") >= 0
-      //           ) {
-      //             isNameRestricted = true;
-      //             return true;
-      //           }
-      //         }
-      //       }
-      //     }
-      //   }
-      // });
-
       const isNameRestricted = dataRestricted.some(
         (item) =>
           item === inputName ||
@@ -411,10 +363,6 @@ export default function IncorporationEntityNameCheck({ data }) {
         )
       }
 
-      //   router.push({
-      //     pathname: '/incorporation-package',
-      //     query: router.query
-      //   })
       window.location.href = '/incorporation-package'
     } else {
       setSubmitting(false)
@@ -434,12 +382,6 @@ export default function IncorporationEntityNameCheck({ data }) {
         ? 'company-type'
         : 'country'
     }`
-
-    // location.href = `/onboarding/incorporation-${
-    //   dataCountry?.EntityTypes && dataCountry?.EntityTypes.length > 1
-    //     ? "company-type"
-    //     : "country"
-    // }`;
   }
 
   const onSubmit = (data, e) => {
@@ -636,9 +578,6 @@ export default function IncorporationEntityNameCheck({ data }) {
                                   handleSuggestName(e.target.value, index)
                                 }}
                                 onBlur={(e) => {
-                                  // setTimeout(() => {
-                                  //   setLoadingSuggest(true);
-                                  // }, 200);
                                   handleRestricted(
                                     e.target.value,
                                     `companyName.${index}.name`

@@ -1203,7 +1203,7 @@ export default function IncorporationPackage(params) {
                 onClick={handleShow}
               >
                 <img src={comparisonImg} alt='bg-left-obd' />
-                <div style={{ marginTop: '4px' }}>Comparison table</div>
+                <div>Comparison table</div>
               </button>
             </div>
           </div>

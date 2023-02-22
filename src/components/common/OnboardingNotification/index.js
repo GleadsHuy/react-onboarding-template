@@ -59,18 +59,20 @@ const Success1 = ({ queryOrderCode, buttonMoveToBank }) => {
             >
               See your banking options
             </button>
-            <a href={process.env.NEXT_PUBLIC_DASHBOARD_URL} target='_blank'>
+            <a
+              href='https://test-dashboard.bbcincorp.com/auth/login'
+              target='_blank'
+            >
               Move to Portal
             </a>
           </>
         ) : (
           <a
-            href={process.env.NEXT_PUBLIC_DASHBOARD_URL}
+            href='https://test-dashboard.bbcincorp.com/auth/login'
             target='_blank'
             className={style.highlightBtn}
-            style={{ padding: '0' }}
           >
-            <button>Move to Portal</button>
+            Move to Portal
           </a>
         )}
       </div>
@@ -108,12 +110,11 @@ const Success2 = () => {
       </div>
       <div className={style.Footer}>
         <a
-          href={process.env.NEXT_PUBLIC_DASHBOARD_URL}
+          href='https://test-dashboard.bbcincorp.com/auth/login'
           target='_blank'
           className={style.highlightBtn}
-          style={{ padding: '0' }}
         >
-          <button>Move to Portal</button>
+          Move to Portal
         </a>
       </div>
     </>
@@ -139,12 +140,11 @@ const Success3 = () => {
       </div>
       <div className={style.Footer}>
         <a
-          href={process.env.NEXT_PUBLIC_DASHBOARD_URL}
+          href='https://test-dashboard.bbcincorp.com/auth/login'
           target='_blank'
           className={style.highlightBtn}
-          style={{ padding: '0' }}
         >
-          <button>Move to Portal</button>
+          Move to Portal
         </a>
       </div>
     </>
@@ -179,12 +179,11 @@ const Success4 = () => {
       </div>
       <div className={style.Footer}>
         <a
-          href={process.env.NEXT_PUBLIC_DASHBOARD_URL}
+          href='https://test-dashboard.bbcincorp.com/auth/login'
           target='_blank'
           className={style.highlightBtn}
-          style={{ padding: '0' }}
         >
-          <button>Move to Portal</button>
+          Move to Portal
         </a>
       </div>
     </>

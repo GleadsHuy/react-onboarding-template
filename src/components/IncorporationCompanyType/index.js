@@ -551,7 +551,7 @@ export default function IncorporationCompanyType({ data }) {
         <Title text='Country and Company Type' className={styles.title} />
         <div className={styles.Body}>
           <div className={styles.description_wrapper}>
-            <div style={{ flex: '1' }}>
+            <div style={{ flexBasis: 0, flexGrow: 1, maxWidth: '100%' }}>
               <Description>
                 Country:{' '}
                 <span style={{ fontWeight: 500 }}>{dataCountry?.name}</span>

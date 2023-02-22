@@ -4,8 +4,20 @@ var React = require('react');
 var React__default = _interopDefault(React);
 var fa = require('react-icons/fa');
 var _$1 = _interopDefault(require('lodash'));
-var reactBootstrap = require('react-bootstrap');
+var reactIcons = require('react-icons');
+var bs = require('react-icons/bs');
+var vsc = require('react-icons/vsc');
 var axios = _interopDefault(require('axios'));
+var mergeProps = _interopDefault(require('merge-props'));
+var logoImg = _interopDefault(require('./logo~JBjuysve.svg'));
+var logotextImg = _interopDefault(require('./logo-text~kPYYnKwZ.svg'));
+var obdIncorpImg = _interopDefault(require('./obd-incorporation~YnruNpVP.svg'));
+var onboardingIncorpImg = _interopDefault(require('./onboarding-incorp~bhdlMaCS.png'));
+var leftObdImg = _interopDefault(require('./bg-left-obd~UgZSiaCI.png'));
+var menuNavImg = _interopDefault(require('./menu-nav~AOjLftbh.png'));
+var tabletBuildImg = _interopDefault(require('./bg-tablet-build~kDAEKiYW.svg'));
+var obdIncorp2Img = _interopDefault(require('./obd-incorporation-2~cvSdbBtL.png'));
+var reactBootstrap = require('react-bootstrap');
 var reactHookForm = require('react-hook-form');
 var Select = require('react-select');
 var Select__default = _interopDefault(Select);
@@ -18,18 +30,6 @@ var Swal = _interopDefault(require('sweetalert2'));
 var withReactContent = _interopDefault(require('sweetalert2-react-content'));
 var trust_pilot$1 = _interopDefault(require('./trust-pilot~VtJXwXCM.svg'));
 var bi = require('react-icons/bi');
-var reactIcons = require('react-icons');
-var bs = require('react-icons/bs');
-var vsc = require('react-icons/vsc');
-var mergeProps = _interopDefault(require('merge-props'));
-var logoImg = _interopDefault(require('./logo~JBjuysve.svg'));
-var logotextImg = _interopDefault(require('./logo-text~kPYYnKwZ.svg'));
-var obdIncorpImg = _interopDefault(require('./obd-incorporation~YnruNpVP.svg'));
-var onboardingIncorpImg = _interopDefault(require('./onboarding-incorp~bhdlMaCS.png'));
-var leftObdImg = _interopDefault(require('./bg-left-obd~UgZSiaCI.png'));
-var menuNavImg = _interopDefault(require('./menu-nav~AOjLftbh.png'));
-var tabletBuildImg = _interopDefault(require('./bg-tablet-build~kDAEKiYW.svg'));
-var obdIncorp2Img = _interopDefault(require('./obd-incorporation-2~cvSdbBtL.png'));
 var bankingImg = _interopDefault(require('./banking~nKuKLkod.png'));
 var incorpImg = _interopDefault(require('./incorporation~BKidfgKY.png'));
 var fi = require('react-icons/fi');
@@ -70,94 +70,7 @@ var linkedinImg = _interopDefault(require('./linkedin~bhuYKrBL.svg'));
 var facebookImg = _interopDefault(require('./facebook~CpjjVQBM.svg'));
 var youtubeImg = _interopDefault(require('./youtube~GUnNFvMg.svg'));
 
-var styles = {"FatfScreen":"_styles-module__FatfScreen__2ROgK","descriptionText":"_styles-module__descriptionText__2Vd8e","title":"_styles-module__title__35EYE","RegisterInput":"_styles-module__RegisterInput__gW7RG","item":"_styles-module__item__3hx7A","space_top":"_styles-module__space_top__yST6I","ErrorMessage":"_styles-module__ErrorMessage__qZ3vy","Link":"_styles-module__Link__1wNX0","Slider":"_styles-module__Slider__1Th7t","PhoneSelect":"_styles-module__PhoneSelect__1B3qM","CustomSelect":"_styles-module__CustomSelect__3bJjM","PhoneInput":"_styles-module__PhoneInput__2_4Q0","phonenumber_container":"_styles-module__phonenumber_container__HLp-P","RegisterScreen":"_styles-module__RegisterScreen__3hn-F","discountChristmas":"_styles-module__discountChristmas__i1zWx","CheckBox":"_styles-module__CheckBox__3klwe","button_wrapper":"_styles-module__button_wrapper__RJ7yj","Button":"_styles-module__Button__26moK","recaptcha":"_styles-module__recaptcha__14pK3","RegisterButton":"_styles-module__RegisterButton__1WoJs","RegisterLink":"_styles-module__RegisterLink__2p_CN","restricted_countries_wrapper":"_styles-module__restricted_countries_wrapper__5339W","restricted_countries_container":"_styles-module__restricted_countries_container__30wCB","restricted_countries_cols":"_styles-module__restricted_countries_cols__17jba","restricted_countries_cols_md":"_styles-module__restricted_countries_cols_md__wx9cR","listCollapse":"_styles-module__listCollapse__P54fa","active":"_styles-module__active__1yv7q","buttonCollapse":"_styles-module__buttonCollapse__BL6zk","isCollapse":"_styles-module__isCollapse__38GJw","iconCollapse":"_styles-module__iconCollapse__3YmIy","RegisterText":"_styles-module__RegisterText__3dZ-C","RegisterForm":"_styles-module__RegisterForm__2sn5j","formControl":"_styles-module__formControl__MkpSE","inputWrapper":"_styles-module__inputWrapper__u_8Hb","SelectWrapper":"_styles-module__SelectWrapper__2wTl0","CountrySelectWrapper":"_styles-module__CountrySelectWrapper__cRn99","nationalitySelect":"_styles-module__nationalitySelect__3tlRp","nationalityLabel":"_styles-module__nationalityLabel__1-615","phonenumber_wrapper":"_styles-module__phonenumber_wrapper__3q5qp","trustpilot":"_styles-module__trustpilot__2V00g","trustpilot_wrapper":"_styles-module__trustpilot_wrapper__1PI3w","FormFooter":"_styles-module__FormFooter__29TuF","Body":"_styles-module__Body__3J0ny","Menu":"_styles-module__Menu__3AI86","marginTopMenu":"_styles-module__marginTopMenu__2vzmR","noteText":"_styles-module__noteText__9TPd0"};
-
-var restricted_countries = ['Cambodia', 'Jordan', 'Myanmar', 'Pakistan', 'Philippines', 'Syria', 'Turkey', 'Yemen', 'Iran', 'The Democratic People’s Republic of Korea', 'Iraq', 'Afghanistan', 'Turkmenistan', 'Albania', 'Gibraltar', 'Barbados', 'Haiti', 'Jamaica', 'US Virgin Islands', 'Trinidad and Tobago', 'Venezuela', 'Burkina Faso', 'Mali', 'Morocco', 'Senegal', 'South Sudan', 'Uganda', 'Somalia', 'Democratic Republic of the Congo', 'Sudan', 'Libya', 'Central African Republic', 'Nigeria', 'Burundi', 'Equatorial Guinea', 'Guinea-Bissau', 'Samoa', 'Fiji', 'Palau', 'American Samoa', 'Vanuatu', 'Guam', 'Niger', 'Crimea Region', 'Donetsk Region', 'Luhansk Region', 'Cuba', 'Tanzania', 'Mozambique'];
-var FatfScreen = function FatfScreen(_ref) {
-  var onReceiveData = _ref.onReceiveData;
-  var _useState = React.useState(true),
-    isCollapse = _useState[0],
-    setIsCollapse = _useState[1];
-  var handleCollapseToggle = function handleCollapseToggle() {
-    if (isCollapse) {
-      setIsCollapse(false);
-    } else {
-      setIsCollapse(true);
-    }
-  };
-  return /*#__PURE__*/React__default.createElement("section", {
-    className: styles.FatfScreen
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: styles.space_top,
-    style: {
-      height: '95px'
-    }
-  }), /*#__PURE__*/React__default.createElement("h2", {
-    className: styles.title
-  }, "Restricted Industries"), /*#__PURE__*/React__default.createElement("div", {
-    className: styles.descriptionText
-  }, /*#__PURE__*/React__default.createElement("p", null, "Pursuant to the anti-money laundering and countering terrorism regulations, BBCIncorp will not provide our services for customers, who are involved in restricted industries including but not limited to:"), /*#__PURE__*/React__default.createElement("p", null, "Weapons dealing; Pornography/adult entertainment; Marijuana-related business; Money service business; Gambling-related business; Money remittance and payment services; Tobacco business; Alcohol business; Debt loan collection business; Precious metal trading business; sensitive virtual asset businesses.")), /*#__PURE__*/React__default.createElement("h2", {
-    className: styles.title,
-    style: {
-      marginTop: "16px"
-    }
-  }, "Restricted Territories List"), /*#__PURE__*/React__default.createElement("div", {
-    className: styles.descriptionText
-  }, /*#__PURE__*/React__default.createElement("p", null, "Before proceeding to the incorporation process, kindly note that BBCIncorp DOES NOT provide services for nationalities under the below list."), /*#__PURE__*/React__default.createElement("p", null, "The list is made based on recommendations by credible sources such as FATF as part of our effort to comply with AML/CTF regulations and is reviewed and updated from time to time.")), /*#__PURE__*/React__default.createElement("div", {
-    className: "px-3 p-lg-4 " + styles.restricted_countries_wrapper
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: "" + styles.restricted_countries_container
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: styles.listCollapse + " " + (!isCollapse && styles.active)
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: "" + styles.restricted_countries_cols
-  }, new Array(3).fill(3).map(function (item, idx) {
-    var count = restricted_countries.length / 3;
-    return /*#__PURE__*/React__default.createElement("div", {
-      key: idx,
-      style: {
-        flex: "1"
-      }
-    }, _$1.sortBy(restricted_countries).filter(function (item, index) {
-      return index < (idx + 1) * count && index >= idx * count;
-    }).map(function (item, index) {
-      return /*#__PURE__*/React__default.createElement("div", {
-        key: index,
-        className: styles.item + " mb-1"
-      }, item);
-    }));
-  })), /*#__PURE__*/React__default.createElement("div", {
-    className: "" + styles.restricted_countries_cols_md
-  }, new Array(2).fill(2).map(function (item, idx) {
-    var count = restricted_countries.length / 2;
-    return /*#__PURE__*/React__default.createElement("div", {
-      key: idx,
-      style: {
-        flex: "1"
-      }
-    }, _$1.sortBy(restricted_countries).filter(function (item, index) {
-      return index < (idx + 1) * count && index >= idx * count;
-    }).map(function (item, index) {
-      return /*#__PURE__*/React__default.createElement("div", {
-        key: index,
-        className: styles.item + " mb-1"
-      }, item);
-    }));
-  }))), /*#__PURE__*/React__default.createElement("div", {
-    className: styles.buttonCollapse + " " + (isCollapse && styles.isCollapse)
-  }, /*#__PURE__*/React__default.createElement("button", {
-    onClick: handleCollapseToggle
-  }, isCollapse ? 'Expand' : 'Collapse', /*#__PURE__*/React__default.createElement(fa.FaAngleDoubleUp, {
-    className: isCollapse && styles.iconCollapse
-  }))))), /*#__PURE__*/React__default.createElement("p", {
-    className: "mb-0 mt-2 mt-lg-0 " + styles.noteText
-  }, /*#__PURE__*/React__default.createElement("b", null, "Note:"), " Nationalities under consideration are applicable to all members of your company, including directors, shareholders and beneficial owners."), /*#__PURE__*/React__default.createElement("div", {
-    className: styles.button_wrapper
-  }, /*#__PURE__*/React__default.createElement("button", {
-    className: styles.Button + " btn py-2 px-4 rounded border-0 m-0",
-    onClick: onReceiveData
-  }, "I understand")));
-};
+var styles = {"FatfScreen":"_styles-module__FatfScreen__2ROgK","descriptionText":"_styles-module__descriptionText__2Vd8e","title":"_styles-module__title__35EYE","RegisterInput":"_styles-module__RegisterInput__gW7RG","item":"_styles-module__item__3hx7A","space_top":"_styles-module__space_top__yST6I","ErrorMessage":"_styles-module__ErrorMessage__qZ3vy","Link":"_styles-module__Link__1wNX0","Slider":"_styles-module__Slider__1Th7t","PhoneSelect":"_styles-module__PhoneSelect__1B3qM","CustomSelect":"_styles-module__CustomSelect__3bJjM","PhoneInput":"_styles-module__PhoneInput__2_4Q0","phonenumber_container":"_styles-module__phonenumber_container__HLp-P","RegisterScreen":"_styles-module__RegisterScreen__3hn-F","discountChristmas":"_styles-module__discountChristmas__i1zWx","CheckBox":"_styles-module__CheckBox__3klwe","button_wrapper":"_styles-module__button_wrapper__RJ7yj","Button":"_styles-module__Button__26moK","recaptcha":"_styles-module__recaptcha__14pK3","RegisterButton":"_styles-module__RegisterButton__1WoJs","RegisterLink":"_styles-module__RegisterLink__2p_CN","restricted_countries_wrapper":"_styles-module__restricted_countries_wrapper__5339W","restricted_countries_container":"_styles-module__restricted_countries_container__30wCB","restricted_countries_cols":"_styles-module__restricted_countries_cols__17jba","restricted_countries_cols_md":"_styles-module__restricted_countries_cols_md__wx9cR","listCollapse":"_styles-module__listCollapse__P54fa","active":"_styles-module__active__1yv7q","buttonCollapse":"_styles-module__buttonCollapse__BL6zk","isCollapse":"_styles-module__isCollapse__38GJw","iconCollapse":"_styles-module__iconCollapse__3YmIy","RegisterText":"_styles-module__RegisterText__3dZ-C","RegisterForm":"_styles-module__RegisterForm__2sn5j","formControl":"_styles-module__formControl__MkpSE","inputWrapper":"_styles-module__inputWrapper__u_8Hb","registerCheckText":"_styles-module__registerCheckText__2Go8d","SelectWrapper":"_styles-module__SelectWrapper__2wTl0","CountrySelectWrapper":"_styles-module__CountrySelectWrapper__cRn99","nationalitySelect":"_styles-module__nationalitySelect__3tlRp","nationalityLabel":"_styles-module__nationalityLabel__1-615","phonenumber_wrapper":"_styles-module__phonenumber_wrapper__3q5qp","trustpilot":"_styles-module__trustpilot__2V00g","trustpilot_wrapper":"_styles-module__trustpilot_wrapper__1PI3w","FormFooter":"_styles-module__FormFooter__29TuF","Body":"_styles-module__Body__3J0ny","Menu":"_styles-module__Menu__3AI86","marginTopMenu":"_styles-module__marginTopMenu__2vzmR","noteText":"_styles-module__noteText__9TPd0"};
 
 function _extends() {
   _extends = Object.assign ? Object.assign.bind() : function (target) {
@@ -515,7 +428,689 @@ var sanitizeTitle = function sanitizeTitle(title) {
   }
 };
 
-var styles$1 = {"option_value":"_styles-module__option_value__2TkBO","selected_option":"_styles-module__selected_option__10wda","select_panel":"_styles-module__select_panel__2zR0k","dropdown_toggle":"_styles-module__dropdown_toggle__32V9c","dropdown_menu":"_styles-module__dropdown_menu__2zSL3"};
+var Title = function Title(props) {
+  var text = props.text,
+    as = props.as,
+    hasid = props.hasid;
+  var As = as ? as : 'h2';
+  return /*#__PURE__*/React__default.createElement(As, _extends({
+    id: text && hasid ? sanitizeTitle(text) : ''
+  }, mergeProps(props)), text);
+};
+
+var styles$1 = {"onboarding":"_styles-module__onboarding__1k6q4","onboardingContainer":"_styles-module__onboardingContainer__35vz7","cookiesBtn":"_styles-module__cookiesBtn__1A25e","sidebar":"_styles-module__sidebar__Rv_X4","mainContainer":"_styles-module__mainContainer__34t-k","bgWhite":"_styles-module__bgWhite__1Krgo","linkToHomepage":"_styles-module__linkToHomepage__1fVlf","promotionCodeWrapper":"_styles-module__promotionCodeWrapper__2DTlf","percent":"_styles-module__percent__1cXWL","backgroundWrapper":"_styles-module__backgroundWrapper__2KV9O","backgroundImg":"_styles-module__backgroundImg__29FqM","stepImg":"_styles-module__stepImg__2YXMG","leftObdImg":"_styles-module__leftObdImg__D7ouT","sidebarContainer":"_styles-module__sidebarContainer__3CfK8","sidebarTitle":"_styles-module__sidebarTitle__2REJj","sidebarDescription":"_styles-module__sidebarDescription__361rJ","progress":"_styles-module__progress__1khJ-","dot":"_styles-module__dot__2MvYl","dotStyles":"_styles-module__dotStyles__39bcc","child":"_styles-module__child__dehy_","dotPrimary":"_styles-module__dotPrimary__2rZg_","dotSuccess":"_styles-module__dotSuccess__2INcD","textPrimary":"_styles-module__textPrimary__38T6_","textSuccess":"_styles-module__textSuccess__23fgB","logo":"_styles-module__logo__P7CHJ","logoText":"_styles-module__logoText__24CBM","main":"_styles-module__main__3hS3P","mainBg":"_styles-module__mainBg__2Z58x","firstScreenMb1":"_styles-module__firstScreenMb1__3wL-o","firstScreenMb":"_styles-module__firstScreenMb__3Zqtc","navBar":"_styles-module__navBar__39_Fl","navBarContainer":"_styles-module__navBarContainer__1SpQo","expandMenuBtn":"_styles-module__expandMenuBtn__1_bJF","navBarWrapper":"_styles-module__navBarWrapper__1ksTO","navBarImageWrapper":"_styles-module__navBarImageWrapper__23EKm","navBarPannel":"_styles-module__navBarPannel__OYFR7","navBarPannelOpen":"_styles-module__navBarPannelOpen__U-hQy","navBarPannelContainer":"_styles-module__navBarPannelContainer__3q0Zo","navBarPannelWrapper":"_styles-module__navBarPannelWrapper__1pWRN","linkWrapper":"_styles-module__linkWrapper__3m7xV","menuNavImg":"_styles-module__menuNavImg__2i6cr","navBarPannelTitleWrapper":"_styles-module__navBarPannelTitleWrapper__1rzcC","navBarPannelTitle":"_styles-module__navBarPannelTitle__1LiIV","navBarPannelTextContact":"_styles-module__navBarPannelTextContact__2Dvcb","navBarPannelTextSmall":"_styles-module__navBarPannelTextSmall__29pWB","colItem":"_styles-module__colItem__6fF-J","cookies":"_styles-module__cookies__3nukM"};
+
+function Cookies() {
+  var _useState = React.useState(false),
+    show = _useState[0],
+    setShow = _useState[1];
+  var handleCookiesClick = function handleCookiesClick() {
+    localStorage.setItem('statusPopup', 1);
+    localStorage.setItem('expirationCookies', new Date().getTime());
+    setShow(false);
+  };
+  React.useEffect(function () {
+    var timer = setTimeout(function () {
+      var statusPopup = localStorage.getItem('statusPopup');
+      var expirationCookies = localStorage.getItem('expirationCookies');
+      if (!statusPopup || Number.parseInt(statusPopup) !== 1 || !expirationCookies || new Date().getTime() - expirationCookies > 7 * 86400000) {
+        setShow(true);
+      }
+    }, 10000);
+    return function () {
+      return clearTimeout(timer);
+    };
+  }, []);
+  return show ? /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.cookies
+  }, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("p", null, "By using our website you consent to all cookies in accordance with our", ' ', /*#__PURE__*/React__default.createElement("a", {
+    href: "/hk/privacy-policy",
+    target: "_blank",
+    rel: "nofollow"
+  }, "Privacy Policy")), /*#__PURE__*/React__default.createElement("button", {
+    onClick: handleCookiesClick,
+    className: styles$1.cookiesBtn
+  }, /*#__PURE__*/React__default.createElement(fa.FaCookieBite, {
+    size: 16,
+    style: {
+      marginRight: '8px',
+      display: 'inline-block'
+    }
+  }), "Accept"))) : /*#__PURE__*/React__default.createElement(React.Fragment, null);
+}
+
+var listMenu = {
+	incorporation: [
+		{
+			name: "Country and Company Type",
+			slug: [
+				"incorporation-country",
+				"incorporation-company-type"
+			]
+		},
+		{
+			name: "Entity name check",
+			slug: [
+				"incorporation-entity-name-check"
+			]
+		},
+		{
+			name: "Service packages",
+			sub_step: [
+				{
+					name: "Select packages",
+					slug: [
+						"incorporation-package"
+					]
+				},
+				{
+					name: "Additional services",
+					slug: [
+						"incorporation-additional-service"
+					]
+				}
+			]
+		}
+	],
+	banking: [
+		{
+			name: "Service packages",
+			slug: [
+				"banking-package"
+			]
+		},
+		{
+			name: "Take your choices",
+			slug: [
+				"banking-choice"
+			]
+		},
+		{
+			name: "Banking assessment",
+			sub_step: [
+				{
+					name: "Questionnaire",
+					slug: [
+						"banking-questionnaire"
+					]
+				},
+				{
+					name: "Result",
+					slug: [
+						"banking-result"
+					]
+				}
+			]
+		}
+	],
+	payment: [
+		{
+			name: "Confirm & pay",
+			slug: [
+				"order-information"
+			]
+		},
+		{
+			name: "Notification",
+			slug: [
+				"payment-success",
+				"payment-pending",
+				"payment-failure"
+			]
+		}
+	]
+};
+var dataJson = {
+	listMenu: listMenu
+};
+
+var OnboardingContext = React__default.createContext({});
+function Layout(_ref) {
+  var fatf = _ref.fatf,
+    pattern = _ref.pattern,
+    children = _ref.children;
+  var _useState = React.useState(false),
+    show = _useState[0],
+    setShow = _useState[1];
+  var handleShow = function handleShow() {
+    setShow(!show);
+  };
+  var getUrlVars = function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+      vars[key] = value;
+    });
+    return vars;
+  };
+  var queryPromotionCode = getUrlVars()['promotion_code'];
+  var queryDate = getUrlVars()['date'];
+  var queryType = getUrlVars()['type'];
+  var queryOrderCode = getUrlVars()['order_code'];
+  var slug = window.location.pathname.split('/').join('');
+  var getQueryCode = function getQueryCode() {
+    var queryCode = '';
+    var promotionCode = queryPromotionCode;
+    var date = queryDate;
+    var type = queryType;
+    if (promotionCode) {
+      if (date && type) {
+        queryCode = 'promotion_code=' + promotionCode + '&date=' + date + '&type=' + type;
+      } else {
+        queryCode = 'promotion_code=' + promotionCode;
+      }
+    }
+    return queryCode;
+  };
+  var getQueryCodeChristmas = function getQueryCodeChristmas() {
+    var queryChristmas = localStorage.getItem('type-christmas');
+    if (queryChristmas) {
+      return queryChristmas;
+    } else {
+      return '';
+    }
+  };
+  var _useState2 = React.useState({}),
+    dataOnboarding = _useState2[0],
+    setDataOnboarding = _useState2[1];
+  var _useState3 = React.useState({}),
+    dataOrder = _useState3[0],
+    setDataOrder = _useState3[1];
+  var _useState4 = React.useState(),
+    type = _useState4[0],
+    setType = _useState4[1];
+  var isFirstScreen = slug == 'register' ? !fatf ? true : false : false;
+  var _useState5 = React.useState(slug !== 'register' && slug !== 'select-service'),
+    isStep = _useState5[0],
+    setIsStep = _useState5[1];
+  var _useState6 = React.useState(false),
+    isPay = _useState6[0],
+    setIsPay = _useState6[1];
+  var _useState7 = React.useState(false),
+    isIncorpToBank = _useState7[0],
+    setIsIncorpToBank = _useState7[1];
+  React.useEffect(function () {
+    var data = JSON.parse(window.localStorage.getItem('data_onboarding'));
+    setDataOnboarding(data);
+    var layout = JSON.parse(window.localStorage.getItem('layout'));
+    setType(layout !== null && layout !== void 0 && layout.type ? layout === null || layout === void 0 ? void 0 : layout.type : null);
+    setIsIncorpToBank(layout === null || layout === void 0 ? void 0 : layout.incorp_to_bank);
+    if (window.location && queryOrderCode) {
+      var orderCode = queryOrderCode;
+      var urlApi = '';
+      var queryCode = getQueryCode();
+      var queryCodeChristmas = getQueryCodeChristmas();
+      if (queryCode.length > 0) {
+        urlApi = "https://core.test-lp.bbcincorp.com/api/onboarding/order/" + orderCode + "?" + queryCode;
+      } else if (queryCodeChristmas.length > 0) {
+        urlApi = "https://core.test-lp.bbcincorp.com/api/onboarding/order/" + (orderCode + queryCodeChristmas);
+      } else {
+        urlApi = "https://core.test-lp.bbcincorp.com/api/onboarding/order/" + orderCode;
+      }
+      axios.get(urlApi).then(function (res) {
+        var data = res.data.data;
+        setDataOrder(data);
+        var pay = slug == 'order-information' && (data.order_status_id || data.payment_gateway_id);
+        setIsPay(pay);
+        setIsStep(!pay);
+        if (['order-information', 'payment-success', 'payment-pending', 'payment-failure'].includes(slug)) {
+          var _data$OrderItems$, _data$OrderItems$2;
+          setType((data === null || data === void 0 ? void 0 : (_data$OrderItems$ = data.OrderItems[0]) === null || _data$OrderItems$ === void 0 ? void 0 : _data$OrderItems$.service_id) === 1670 && (data === null || data === void 0 ? void 0 : (_data$OrderItems$2 = data.OrderItems[0]) === null || _data$OrderItems$2 === void 0 ? void 0 : _data$OrderItems$2.Package) === null ? 'banking' : isIncorpToBank ? 'banking' : 'incorporation');
+        }
+      });
+    }
+  }, [isIncorpToBank]);
+  React.useEffect(function () {
+    var detech = function detech() {
+      var mediaQuery = window.matchMedia('(min-width: 992px)');
+      var body = document.querySelector('body');
+      body.style.overflowY = mediaQuery.matches ? 'auto' : show ? 'hidden' : 'auto';
+    };
+    detech();
+    window.addEventListener('resize', function () {
+      detech();
+    });
+  }, [show]);
+  var listMenu = [];
+  if (type) {
+    var _dataOrder$Company, _dataOrder$Company$Co;
+    var countryId = dataOrder === null || dataOrder === void 0 ? void 0 : (_dataOrder$Company = dataOrder.Company) === null || _dataOrder$Company === void 0 ? void 0 : (_dataOrder$Company$Co = _dataOrder$Company.Country) === null || _dataOrder$Company$Co === void 0 ? void 0 : _dataOrder$Company$Co.id;
+    var listMenuType = isIncorpToBank ? dataJson.listMenu[type].filter(function (item, index) {
+      return item && (countryId === 191 || countryId === 237 || countryId === 250) ? index !== 0 && index !== 2 : index !== 0;
+    }) : dataJson.listMenu[type];
+    var listMenuPayment = isIncorpToBank ? dataJson.listMenu.payment.filter(function (item, index) {
+      return item && index !== 0;
+    }) : dataJson.listMenu.payment;
+    listMenu = [].concat(listMenuType, listMenuPayment);
+  }
+  React.useEffect(function () {
+    if (!dataOnboarding) {
+      if (!['order-information', 'payment-success', 'payment-pending', 'payment-failure'].includes(slug)) {
+        var pathName = '/register';
+        if (['incorporation-country', 'incorporation-company-type', 'incorporation-entity-name-check', 'incorporation-package', 'incorporation-additional-service', 'banking-package'].includes(slug)) {
+          location.href = pathName;
+        }
+      }
+    }
+  }, [dataOnboarding]);
+  var Progress = function Progress(_ref2) {
+    var props = _extends({}, (_objectDestructuringEmpty(_ref2), _ref2));
+    var activeParent = false;
+    var successStep = true;
+    return isStep ? /*#__PURE__*/React__default.createElement("div", _extends({}, props, {
+      className: styles$1.progress + " " + props.className
+    }), /*#__PURE__*/React__default.createElement("ul", null, listMenu.map(function (item, index) {
+      if (item.slug && item.slug.includes(slug) || item.sub_step && _.find(item.sub_step, function (i) {
+        return i.slug.includes(slug);
+      })) {
+        activeParent = true;
+        successStep = false;
+      } else {
+        activeParent = false;
+      }
+      return /*#__PURE__*/React__default.createElement("li", {
+        key: index,
+        style: {
+          marginBottom: '16px'
+        }
+      }, /*#__PURE__*/React__default.createElement("div", {
+        style: {
+          display: 'flex'
+        }
+      }, /*#__PURE__*/React__default.createElement("div", {
+        className: styles$1.dot + " " + (activeParent ? styles$1.dotPrimary : successStep ? styles$1.dotSuccess : '') + " " + styles$1.dotStyles
+      }, successStep && /*#__PURE__*/React__default.createElement(reactIcons.IconContext.Provider, {
+        value: {
+          color: 'white'
+        },
+        style: {
+          position: 'absolute'
+        }
+      }, /*#__PURE__*/React__default.createElement(bs.BsCheckLg, {
+        size: "10px"
+      }))), /*#__PURE__*/React__default.createElement("span", {
+        style: {
+          marginLeft: '16px'
+        },
+        className: " " + (activeParent ? styles$1.textPrimary : successStep ? styles$1.textSuccess : '')
+      }, item.name)), item.sub_step && _.find(item.sub_step, function (i) {
+        return i.slug.includes(slug);
+      }) && /*#__PURE__*/React__default.createElement("ul", {
+        style: {
+          paddingLeft: '48px',
+          marginBottom: '0'
+        }
+      }, item.sub_step.map(function (item, index) {
+        return /*#__PURE__*/React__default.createElement("li", {
+          key: index,
+          className: "" + styles$1.child
+        }, /*#__PURE__*/React__default.createElement("div", {
+          style: {
+            display: 'flex'
+          }
+        }, /*#__PURE__*/React__default.createElement("span", {
+          className: "" + (item.slug && item.slug.includes(slug) ? styles$1.textPrimary : '')
+        }, item.name)));
+      })));
+    }))) : /*#__PURE__*/React__default.createElement(React.Fragment, null);
+  };
+  return /*#__PURE__*/React__default.createElement(React.Fragment, null, /*#__PURE__*/React__default.createElement(OnboardingContext.Provider, {
+    value: {
+      dataOrder: dataOrder
+    }
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.onboarding + " " + styles$1.onboardingContainer
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: "" + styles$1.sidebar
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: "" + styles$1.sidebarContainer
+  }, /*#__PURE__*/React__default.createElement("div", {
+    style: {
+      zIndex: 50,
+      position: 'relative'
+    }
+  }, /*#__PURE__*/React__default.createElement("a", {
+    href: "https://bbcincorp.com/hk",
+    className: "" + styles$1.linkToHomepage,
+    target: "_blank"
+  }, /*#__PURE__*/React__default.createElement("img", {
+    src: logoImg,
+    alt: "logo",
+    className: "" + styles$1.logo,
+    style: {
+      filter: "" + (!isStep ? 'brightness(0) invert(1)' : '')
+    }
+  }), /*#__PURE__*/React__default.createElement("img", {
+    src: logotextImg,
+    alt: "logo text",
+    className: "" + styles$1.logoText,
+    style: {
+      filter: "" + (!isStep ? 'brightness(0) invert(1)' : '')
+    }
+  })), !isStep && /*#__PURE__*/React__default.createElement("div", {
+    style: {
+      maxWidth: '28rem'
+    }
+  }, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(Title, {
+    text: "" + (isPay ? 'Thank you for choosing our service' : 'A fast and better way to kickstart your business ventures globally'),
+    as: "h1",
+    className: "" + styles$1.sidebarTitle
+  }), /*#__PURE__*/React__default.createElement("p", {
+    className: "" + styles$1.sidebarDescription
+  }, isPay ? 'If you couldn’t pay the package or item, please contact us for help. Our team are always ready to support.' : 'Simple, frictionless and easy-to-use platform to help you start your company in minutes.')), location && queryPromotionCode ? /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.promotionCodeWrapper
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.percent
+  }, "5%"), /*#__PURE__*/React__default.createElement("div", {
+    style: {
+      color: '#007eff'
+    }
+  }, "Discount Is Here."), /*#__PURE__*/React__default.createElement("div", null, "Start Your Company With Us!")) : /*#__PURE__*/React__default.createElement(React.Fragment, null)), /*#__PURE__*/React__default.createElement(Progress, null)), /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.backgroundWrapper,
+    style: {
+      mixBlendMode: isFirstScreen || isPay ? 'initial' : 'luminosity'
+    }
+  }, /*#__PURE__*/React__default.createElement("img", {
+    src: pattern !== null && pattern !== void 0 && pattern.desktop ? pattern === null || pattern === void 0 ? void 0 : pattern.desktop : isFirstScreen || isPay ? obdIncorpImg : onboardingIncorpImg,
+    className: styles$1.backgroundImg,
+    alt: "pattern"
+  })), !isStep && /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.stepImg
+  }, /*#__PURE__*/React__default.createElement("img", {
+    src: leftObdImg,
+    alt: "bg-left-obd",
+    className: styles$1.leftObdImg
+  })))), /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.main
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.mainBg
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: "" + styles$1.mainContainer,
+    style: {
+      zIndex: 50
+    }
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.navBar + " " + (show ? styles$1.bgWhite : isFirstScreen ? '' : styles$1.bgWhite),
+    style: {
+      boxShadow: show ? 'initial' : isFirstScreen ? 'initial' : '0 0 8px rgb(65 65 65 / 25%)'
+    }
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: "" + styles$1.navBarContainer
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.navBarWrapper
+  }, /*#__PURE__*/React__default.createElement("div", {
+    style: {
+      flex: '0 0 auto'
+    }
+  }, /*#__PURE__*/React__default.createElement("div", {
+    style: {
+      display: 'flex'
+    }
+  }, /*#__PURE__*/React__default.createElement("a", {
+    href: "https://bbcincorp.com/hk",
+    className: styles$1.linkToHomepage,
+    target: "_blank"
+  }, /*#__PURE__*/React__default.createElement("img", {
+    src: logoImg,
+    alt: "logo",
+    className: "" + styles$1.logo,
+    style: {
+      filter: "" + (show ? '' : isFirstScreen ? 'brightness(0) invert(1)' : '')
+    }
+  }), /*#__PURE__*/React__default.createElement("img", {
+    src: logotextImg,
+    alt: "logo text",
+    className: "" + styles$1.logoText,
+    style: {
+      filter: "" + (show ? '' : isFirstScreen ? 'brightness(0) invert(1)' : '')
+    }
+  })))), /*#__PURE__*/React__default.createElement("div", {
+    style: {
+      flex: '0 0 auto'
+    }
+  }, show ? /*#__PURE__*/React__default.createElement("button", {
+    className: styles$1.expandMenuBtn,
+    onClick: handleShow
+  }, /*#__PURE__*/React__default.createElement(vsc.VscChromeClose, {
+    size: "1.75rem"
+  })) : /*#__PURE__*/React__default.createElement("button", {
+    className: styles$1.expandMenuBtn,
+    onClick: handleShow
+  }, /*#__PURE__*/React__default.createElement(reactIcons.IconContext.Provider, {
+    value: {
+      color: isFirstScreen ? 'white' : ''
+    }
+  }, /*#__PURE__*/React__default.createElement(vsc.VscMenu, {
+    size: "1.75rem"
+  }))))))), /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.navBarPannel + " " + (show ? styles$1.navBarPannelOpen : '')
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: "" + styles$1.navBarPannelContainer
+  }, !isStep ? /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.navBarImageWrapper
+  }, /*#__PURE__*/React__default.createElement("div", {
+    style: {
+      flex: '0 0 auto'
+    }
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.menuNavImg
+  }, /*#__PURE__*/React__default.createElement("img", {
+    src: menuNavImg,
+    alt: "menu nav"
+  })))) : /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.navBarWrapper
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.navBarPannelTitleWrapper
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: "" + styles$1.navBarPannelTitle
+  }, "Progress"), /*#__PURE__*/React__default.createElement(Progress, {
+    style: {
+      marginTop: '16px'
+    }
+  }))), /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.navBarPannelWrapper
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.navBarPannelTitleWrapper
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: "" + styles$1.navBarPannelTitle
+  }, "Contact us"), /*#__PURE__*/React__default.createElement("div", {
+    className: "" + styles$1.navBarPannelTextContact
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.linkWrapper
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.colItem,
+    style: {
+      flex: '0 0 auto'
+    }
+  }, "Skype:"), /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.colItem,
+    style: {
+      flex: '0 0 auto',
+      textAlign: 'right'
+    }
+  }, /*#__PURE__*/React__default.createElement("a", {
+    href: "skype:live:bbcincorp?chat",
+    rel: "nofollow"
+  }, "live:bbcincorp"))), /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.linkWrapper,
+    style: {
+      marginTop: '4px'
+    }
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.colItem,
+    style: {
+      flex: '0 0 auto'
+    }
+  }, "Email:"), /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.colItem,
+    style: {
+      flex: '0 0 auto',
+      textAlign: 'right'
+    }
+  }, /*#__PURE__*/React__default.createElement("a", {
+    href: "mailto:service@bbcincorp.com",
+    rel: "nofollow",
+    target: "_blank"
+  }, "service@bbcincorp.com"))), /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.linkWrapper,
+    style: {
+      marginTop: '4px'
+    }
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.colItem,
+    style: {
+      flex: '0 0 auto'
+    }
+  }, "Phone number:"), /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.colItem,
+    style: {
+      flex: '0 0 auto',
+      textAlign: 'right'
+    }
+  }, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("a", {
+    href: "tel:+85281928666",
+    rel: "nofollow"
+  }, "(+852) 8192 8666")), /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("a", {
+    href: "tel:+6531381666",
+    rel: "nofollow"
+  }, "(+65) 3138 1666"))))))), /*#__PURE__*/React__default.createElement("div", {
+    style: {
+      marginTop: '32px'
+    }
+  }, /*#__PURE__*/React__default.createElement("p", {
+    className: "" + styles$1.navBarPannelTextSmall,
+    style: {
+      marginBottom: '8px'
+    }
+  }, "Ver 1.0"), /*#__PURE__*/React__default.createElement("p", {
+    className: "" + styles$1.navBarPannelTextSmall,
+    style: {
+      marginBottom: '0'
+    }
+  }, "Copyright of BBCIncorp")))), children), /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.firstScreenMb1,
+    style: {
+      bottom: 0,
+      left: 0,
+      zIndex: 10,
+      transform: isFirstScreen || isPay ? 'translateY(25%)' : 'initial',
+      opacity: pattern !== null && pattern !== void 0 && pattern.mobile ? 1 : 0.4
+    }
+  }, /*#__PURE__*/React__default.createElement("img", {
+    src: pattern !== null && pattern !== void 0 && pattern.mobile ? pattern === null || pattern === void 0 ? void 0 : pattern.mobile : isFirstScreen || isPay ? obdIncorpImg : onboardingIncorpImg,
+    style: {
+      width: '100%',
+      height: 'auto'
+    },
+    alt: "pattern"
+  })), isFirstScreen && /*#__PURE__*/React__default.createElement("div", {
+    className: styles$1.firstScreenMb
+  }, /*#__PURE__*/React__default.createElement("img", {
+    src: leftObdImg,
+    alt: "bg-left-obd",
+    style: {
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      objectPosition: 'right top'
+    }
+  })))))), /*#__PURE__*/React__default.createElement(Cookies, null));
+}
+
+var restricted_countries = ['Cambodia', 'Jordan', 'Myanmar', 'Pakistan', 'Philippines', 'Syria', 'Turkey', 'Yemen', 'Iran', 'The Democratic People’s Republic of Korea', 'Iraq', 'Afghanistan', 'Turkmenistan', 'Albania', 'Gibraltar', 'Barbados', 'Haiti', 'Jamaica', 'US Virgin Islands', 'Trinidad and Tobago', 'Venezuela', 'Burkina Faso', 'Mali', 'Morocco', 'Senegal', 'South Sudan', 'Uganda', 'Somalia', 'Democratic Republic of the Congo', 'Sudan', 'Libya', 'Central African Republic', 'Nigeria', 'Burundi', 'Equatorial Guinea', 'Guinea-Bissau', 'Samoa', 'Fiji', 'Palau', 'American Samoa', 'Vanuatu', 'Guam', 'Niger', 'Crimea Region', 'Donetsk Region', 'Luhansk Region', 'Cuba', 'Tanzania', 'Mozambique'];
+var FatfScreen = function FatfScreen(_ref) {
+  var onReceiveData = _ref.onReceiveData,
+    fatfScreen = _ref.fatfScreen;
+  var _useState = React.useState(true),
+    isCollapse = _useState[0],
+    setIsCollapse = _useState[1];
+  var handleCollapseToggle = function handleCollapseToggle() {
+    if (isCollapse) {
+      setIsCollapse(false);
+    } else {
+      setIsCollapse(true);
+    }
+  };
+  return /*#__PURE__*/React__default.createElement(Layout, {
+    fatf: fatfScreen,
+    pattern: FatfScreen ? {
+      desktop: obdIncorp2Img,
+      mobile: tabletBuildImg
+    } : {}
+  }, /*#__PURE__*/React__default.createElement("section", {
+    className: styles.FatfScreen
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles.space_top,
+    style: {
+      height: '95px'
+    }
+  }), /*#__PURE__*/React__default.createElement("h2", {
+    className: styles.title
+  }, "Restricted Industries"), /*#__PURE__*/React__default.createElement("div", {
+    className: styles.descriptionText
+  }, /*#__PURE__*/React__default.createElement("p", null, "Pursuant to the anti-money laundering and countering terrorism regulations, BBCIncorp will not provide our services for customers, who are involved in restricted industries including but not limited to:"), /*#__PURE__*/React__default.createElement("p", null, "Weapons dealing; Pornography/adult entertainment; Marijuana-related business; Money service business; Gambling-related business; Money remittance and payment services; Tobacco business; Alcohol business; Debt loan collection business; Precious metal trading business; sensitive virtual asset businesses.")), /*#__PURE__*/React__default.createElement("h2", {
+    className: styles.title,
+    style: {
+      marginTop: "16px"
+    }
+  }, "Restricted Territories List"), /*#__PURE__*/React__default.createElement("div", {
+    className: styles.descriptionText
+  }, /*#__PURE__*/React__default.createElement("p", null, "Before proceeding to the incorporation process, kindly note that BBCIncorp DOES NOT provide services for nationalities under the below list."), /*#__PURE__*/React__default.createElement("p", null, "The list is made based on recommendations by credible sources such as FATF as part of our effort to comply with AML/CTF regulations and is reviewed and updated from time to time.")), /*#__PURE__*/React__default.createElement("div", {
+    className: "px-3 p-lg-4 " + styles.restricted_countries_wrapper
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: "" + styles.restricted_countries_container
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: styles.listCollapse + " " + (!isCollapse && styles.active)
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: "" + styles.restricted_countries_cols
+  }, new Array(3).fill(3).map(function (item, idx) {
+    var count = restricted_countries.length / 3;
+    return /*#__PURE__*/React__default.createElement("div", {
+      key: idx,
+      style: {
+        flex: "1"
+      }
+    }, _$1.sortBy(restricted_countries).filter(function (item, index) {
+      return index < (idx + 1) * count && index >= idx * count;
+    }).map(function (item, index) {
+      return /*#__PURE__*/React__default.createElement("div", {
+        key: index,
+        className: styles.item + " mb-1"
+      }, item);
+    }));
+  })), /*#__PURE__*/React__default.createElement("div", {
+    className: "" + styles.restricted_countries_cols_md
+  }, new Array(2).fill(2).map(function (item, idx) {
+    var count = restricted_countries.length / 2;
+    return /*#__PURE__*/React__default.createElement("div", {
+      key: idx,
+      style: {
+        flex: "1"
+      }
+    }, _$1.sortBy(restricted_countries).filter(function (item, index) {
+      return index < (idx + 1) * count && index >= idx * count;
+    }).map(function (item, index) {
+      return /*#__PURE__*/React__default.createElement("div", {
+        key: index,
+        className: styles.item + " mb-1"
+      }, item);
+    }));
+  }))), /*#__PURE__*/React__default.createElement("div", {
+    className: styles.buttonCollapse + " " + (isCollapse && styles.isCollapse)
+  }, /*#__PURE__*/React__default.createElement("button", {
+    onClick: handleCollapseToggle
+  }, isCollapse ? 'Expand' : 'Collapse', /*#__PURE__*/React__default.createElement(fa.FaAngleDoubleUp, {
+    className: isCollapse && styles.iconCollapse
+  }))))), /*#__PURE__*/React__default.createElement("p", {
+    className: "mb-0 mt-2 mt-lg-0 " + styles.noteText
+  }, /*#__PURE__*/React__default.createElement("b", null, "Note:"), " Nationalities under consideration are applicable to all members of your company, including directors, shareholders and beneficial owners."), /*#__PURE__*/React__default.createElement("div", {
+    className: styles.button_wrapper
+  }, /*#__PURE__*/React__default.createElement("button", {
+    className: styles.Button + " btn py-2 px-4 rounded border-0 m-0",
+    onClick: onReceiveData
+  }, "I understand"))));
+};
+
+var styles$2 = {"option_value":"_styles-module__option_value__2TkBO","selected_option":"_styles-module__selected_option__10wda","select_panel":"_styles-module__select_panel__2zR0k","dropdown_toggle":"_styles-module__dropdown_toggle__32V9c","dropdown_menu":"_styles-module__dropdown_menu__2zSL3"};
 
 var _excluded = ["data", "result", "children"],
   _excluded2 = ["value", "onChange", "toggleClass", "menuClass", "placeholder", "selectBorder", "dropdown_container"];
@@ -542,7 +1137,7 @@ var _Option = function Option(_ref) {
     style: {
       padding: "0"
     },
-    className: "" + (data && result && data.value === result.value ? "" + styles$1.selected_option : '')
+    className: "" + (data && result && data.value === result.value ? "" + styles$2.selected_option : '')
   }, props), /*#__PURE__*/React__default.createElement("div", {
     style: {
       cursor: 'pointer'
@@ -618,7 +1213,7 @@ function SelectSearchInside(_ref2) {
       borderRadius: '0.25rem',
       cursor: 'pointer'
     },
-    className: "select-with-search-inside text-dark " + styles$1.dropdown_toggle + " " + (toggleClass ? ' ' + toggleClass : ''),
+    className: "select-with-search-inside text-dark " + styles$2.dropdown_toggle + " " + (toggleClass ? ' ' + toggleClass : ''),
     onClick: openMenu
   }, getLabel(), /*#__PURE__*/React__default.createElement("div", {
     style: {
@@ -629,11 +1224,11 @@ function SelectSearchInside(_ref2) {
     size: 13,
     color: show ? '#6e6e6e' : '#ccc'
   }))), /*#__PURE__*/React__default.createElement(Dropdown.Menu, {
-    className: styles$1.dropdown_menu + " " + (menuClass ? ' ' + menuClass : ''),
+    className: styles$2.dropdown_menu + " " + (menuClass ? ' ' + menuClass : ''),
     show: show
   }, /*#__PURE__*/React__default.createElement("div", {
     id: "select-panel",
-    className: styles$1.select_panel
+    className: styles$2.select_panel
   }, show ? /*#__PURE__*/React__default.createElement(Select__default, _extends({}, props, {
     styles: customStyles,
     autoFocus: true,
@@ -912,7 +1507,7 @@ var RegisterScreen = function RegisterScreen(_ref2) {
       window.localStorage.removeItem('promotion_code');
     }
   }, []);
-  return /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("section", {
+  return /*#__PURE__*/React__default.createElement(Layout, null, /*#__PURE__*/React__default.createElement("section", {
     className: styles.RegisterScreen
   }, /*#__PURE__*/React__default.createElement("div", {
     className: styles.space_top,
@@ -1024,7 +1619,7 @@ var RegisterScreen = function RegisterScreen(_ref2) {
     },
     className: styles.RegisterInput + " " + styles.PhoneInput
   }))))), /*#__PURE__*/React__default.createElement("div", {
-    className: styles.RegisterText
+    className: styles.registerCheckText
   }, /*#__PURE__*/React__default.createElement("input", _extends({
     id: "register_checkbox",
     type: "checkbox",
@@ -1064,9 +1659,6 @@ var RegisterScreen = function RegisterScreen(_ref2) {
     className: "animate_spin",
     size: 16
   })) : 'Start my business'), /*#__PURE__*/React__default.createElement("a", {
-    style: {
-      fontWeight: "600"
-    },
     className: styles.RegisterLink + " " + styles.Link,
     href: "https://test-dashboard.bbcincorp.com/auth/login"
   }, "Already have an account?"))))), /*#__PURE__*/React__default.createElement("section", {
@@ -1129,597 +1721,6 @@ var data = {
 	trust_pilot: trust_pilot
 };
 
-var Title = function Title(props) {
-  var text = props.text,
-    as = props.as,
-    hasid = props.hasid;
-  var As = as ? as : 'h2';
-  return /*#__PURE__*/React__default.createElement(As, _extends({
-    id: text && hasid ? sanitizeTitle(text) : ''
-  }, mergeProps(props)), text);
-};
-
-var styles$2 = {"onboarding":"_styles-module__onboarding__1k6q4","onboardingContainer":"_styles-module__onboardingContainer__35vz7","cookiesBtn":"_styles-module__cookiesBtn__1A25e","sidebar":"_styles-module__sidebar__Rv_X4","mainContainer":"_styles-module__mainContainer__34t-k","bgWhite":"_styles-module__bgWhite__1Krgo","linkToHomepage":"_styles-module__linkToHomepage__1fVlf","promotionCodeWrapper":"_styles-module__promotionCodeWrapper__2DTlf","percent":"_styles-module__percent__1cXWL","backgroundWrapper":"_styles-module__backgroundWrapper__2KV9O","backgroundImg":"_styles-module__backgroundImg__29FqM","stepImg":"_styles-module__stepImg__2YXMG","leftObdImg":"_styles-module__leftObdImg__D7ouT","sidebarContainer":"_styles-module__sidebarContainer__3CfK8","sidebarTitle":"_styles-module__sidebarTitle__2REJj","sidebarDescription":"_styles-module__sidebarDescription__361rJ","progress":"_styles-module__progress__1khJ-","dot":"_styles-module__dot__2MvYl","dotStyles":"_styles-module__dotStyles__39bcc","child":"_styles-module__child__dehy_","dotPrimary":"_styles-module__dotPrimary__2rZg_","dotSuccess":"_styles-module__dotSuccess__2INcD","textPrimary":"_styles-module__textPrimary__38T6_","textSuccess":"_styles-module__textSuccess__23fgB","logo":"_styles-module__logo__P7CHJ","logoText":"_styles-module__logoText__24CBM","main":"_styles-module__main__3hS3P","mainBg":"_styles-module__mainBg__2Z58x","firstScreenMb1":"_styles-module__firstScreenMb1__3wL-o","firstScreenMb":"_styles-module__firstScreenMb__3Zqtc","navBar":"_styles-module__navBar__39_Fl","navBarContainer":"_styles-module__navBarContainer__1SpQo","expandMenuBtn":"_styles-module__expandMenuBtn__1_bJF","navBarWrapper":"_styles-module__navBarWrapper__1ksTO","navBarImageWrapper":"_styles-module__navBarImageWrapper__23EKm","navBarPannel":"_styles-module__navBarPannel__OYFR7","navBarPannelOpen":"_styles-module__navBarPannelOpen__U-hQy","navBarPannelContainer":"_styles-module__navBarPannelContainer__3q0Zo","navBarPannelWrapper":"_styles-module__navBarPannelWrapper__1pWRN","linkWrapper":"_styles-module__linkWrapper__3m7xV","menuNavImg":"_styles-module__menuNavImg__2i6cr","navBarPannelTitleWrapper":"_styles-module__navBarPannelTitleWrapper__1rzcC","navBarPannelTitle":"_styles-module__navBarPannelTitle__1LiIV","navBarPannelTextContact":"_styles-module__navBarPannelTextContact__2Dvcb","navBarPannelTextSmall":"_styles-module__navBarPannelTextSmall__29pWB","colItem":"_styles-module__colItem__6fF-J","cookies":"_styles-module__cookies__3nukM"};
-
-function Cookies() {
-  var _useState = React.useState(false),
-    show = _useState[0],
-    setShow = _useState[1];
-  var handleCookiesClick = function handleCookiesClick() {
-    localStorage.setItem('statusPopup', 1);
-    localStorage.setItem('expirationCookies', new Date().getTime());
-    setShow(false);
-  };
-  React.useEffect(function () {
-    var timer = setTimeout(function () {
-      var statusPopup = localStorage.getItem('statusPopup');
-      var expirationCookies = localStorage.getItem('expirationCookies');
-      if (!statusPopup || Number.parseInt(statusPopup) !== 1 || !expirationCookies || new Date().getTime() - expirationCookies > 7 * 86400000) {
-        setShow(true);
-      }
-    }, 10000);
-    return function () {
-      return clearTimeout(timer);
-    };
-  }, []);
-  return show ? /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.cookies
-  }, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("p", null, "By using our website you consent to all cookies in accordance with our", ' ', /*#__PURE__*/React__default.createElement("a", {
-    href: "/hk/privacy-policy",
-    target: "_blank",
-    rel: "nofollow"
-  }, "Privacy Policy")), /*#__PURE__*/React__default.createElement("button", {
-    onClick: handleCookiesClick,
-    className: styles$2.cookiesBtn
-  }, /*#__PURE__*/React__default.createElement(fa.FaCookieBite, {
-    size: 16,
-    style: {
-      marginRight: '8px',
-      display: 'inline-block'
-    }
-  }), "Accept"))) : /*#__PURE__*/React__default.createElement(React.Fragment, null);
-}
-
-var listMenu = {
-	incorporation: [
-		{
-			name: "Country and Company Type",
-			slug: [
-				"incorporation-country",
-				"incorporation-company-type"
-			]
-		},
-		{
-			name: "Entity name check",
-			slug: [
-				"incorporation-entity-name-check"
-			]
-		},
-		{
-			name: "Service packages",
-			sub_step: [
-				{
-					name: "Select packages",
-					slug: [
-						"incorporation-package"
-					]
-				},
-				{
-					name: "Additional services",
-					slug: [
-						"incorporation-additional-service"
-					]
-				}
-			]
-		}
-	],
-	banking: [
-		{
-			name: "Service packages",
-			slug: [
-				"banking-package"
-			]
-		},
-		{
-			name: "Take your choices",
-			slug: [
-				"banking-choice"
-			]
-		},
-		{
-			name: "Banking assessment",
-			sub_step: [
-				{
-					name: "Questionnaire",
-					slug: [
-						"banking-questionnaire"
-					]
-				},
-				{
-					name: "Result",
-					slug: [
-						"banking-result"
-					]
-				}
-			]
-		}
-	],
-	payment: [
-		{
-			name: "Confirm & pay",
-			slug: [
-				"order-information"
-			]
-		},
-		{
-			name: "Notification",
-			slug: [
-				"payment-success",
-				"payment-pending",
-				"payment-failure"
-			]
-		}
-	]
-};
-var dataJson = {
-	listMenu: listMenu
-};
-
-var OnboardingContext = React__default.createContext({});
-function Layout(_ref) {
-  var fatf = _ref.fatf,
-    pattern = _ref.pattern,
-    children = _ref.children;
-  var _useState = React.useState(false),
-    show = _useState[0],
-    setShow = _useState[1];
-  var handleShow = function handleShow() {
-    setShow(!show);
-  };
-  var getUrlVars = function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
-      vars[key] = value;
-    });
-    return vars;
-  };
-  var queryPromotionCode = getUrlVars()['promotion_code'];
-  var queryDate = getUrlVars()['date'];
-  var queryType = getUrlVars()['type'];
-  var queryOrderCode = getUrlVars()['order_code'];
-  var slug = window.location.pathname.split('/').join('');
-  var getQueryCode = function getQueryCode() {
-    var queryCode = '';
-    var promotionCode = queryPromotionCode;
-    var date = queryDate;
-    var type = queryType;
-    if (promotionCode) {
-      if (date && type) {
-        queryCode = 'promotion_code=' + promotionCode + '&date=' + date + '&type=' + type;
-      } else {
-        queryCode = 'promotion_code=' + promotionCode;
-      }
-    }
-    return queryCode;
-  };
-  var getQueryCodeChristmas = function getQueryCodeChristmas() {
-    var queryChristmas = localStorage.getItem('type-christmas');
-    if (queryChristmas) {
-      return queryChristmas;
-    } else {
-      return '';
-    }
-  };
-  var _useState2 = React.useState({}),
-    dataOnboarding = _useState2[0],
-    setDataOnboarding = _useState2[1];
-  var _useState3 = React.useState({}),
-    dataOrder = _useState3[0],
-    setDataOrder = _useState3[1];
-  var _useState4 = React.useState(),
-    type = _useState4[0],
-    setType = _useState4[1];
-  var isFirstScreen = slug == 'register' ? !fatf ? true : false : false;
-  var _useState5 = React.useState(slug !== 'register' && slug !== 'select-service'),
-    isStep = _useState5[0],
-    setIsStep = _useState5[1];
-  var _useState6 = React.useState(false),
-    isPay = _useState6[0],
-    setIsPay = _useState6[1];
-  var _useState7 = React.useState(false),
-    isIncorpToBank = _useState7[0],
-    setIsIncorpToBank = _useState7[1];
-  React.useEffect(function () {
-    var data = JSON.parse(window.localStorage.getItem('data_onboarding'));
-    setDataOnboarding(data);
-    var layout = JSON.parse(window.localStorage.getItem('layout'));
-    setType(layout !== null && layout !== void 0 && layout.type ? layout === null || layout === void 0 ? void 0 : layout.type : null);
-    setIsIncorpToBank(layout === null || layout === void 0 ? void 0 : layout.incorp_to_bank);
-    if (window.location && queryOrderCode) {
-      var orderCode = queryOrderCode;
-      var urlApi = '';
-      var queryCode = getQueryCode();
-      var queryCodeChristmas = getQueryCodeChristmas();
-      if (queryCode.length > 0) {
-        urlApi = "https://core.test-lp.bbcincorp.com/api/onboarding/order/" + orderCode + "?" + queryCode;
-      } else if (queryCodeChristmas.length > 0) {
-        urlApi = "https://core.test-lp.bbcincorp.com/api/onboarding/order/" + (orderCode + queryCodeChristmas);
-      } else {
-        urlApi = "https://core.test-lp.bbcincorp.com/api/onboarding/order/" + orderCode;
-      }
-      axios.get(urlApi).then(function (res) {
-        var data = res.data.data;
-        setDataOrder(data);
-        var pay = slug == 'order-information' && (data.order_status_id || data.payment_gateway_id);
-        setIsPay(pay);
-        setIsStep(!pay);
-        if (['order-information', 'payment-success', 'payment-pending', 'payment-failure'].includes(slug)) {
-          var _data$OrderItems$, _data$OrderItems$2;
-          setType((data === null || data === void 0 ? void 0 : (_data$OrderItems$ = data.OrderItems[0]) === null || _data$OrderItems$ === void 0 ? void 0 : _data$OrderItems$.service_id) === 1670 && (data === null || data === void 0 ? void 0 : (_data$OrderItems$2 = data.OrderItems[0]) === null || _data$OrderItems$2 === void 0 ? void 0 : _data$OrderItems$2.Package) === null ? 'banking' : isIncorpToBank ? 'banking' : 'incorporation');
-        }
-      });
-    }
-  }, [isIncorpToBank]);
-  React.useEffect(function () {
-    var detech = function detech() {
-      var mediaQuery = window.matchMedia('(min-width: 992px)');
-      var body = document.querySelector('body');
-      body.style.overflowY = mediaQuery.matches ? 'auto' : show ? 'hidden' : 'auto';
-    };
-    detech();
-    window.addEventListener('resize', function () {
-      detech();
-    });
-  }, [show]);
-  var listMenu = [];
-  if (type) {
-    var _dataOrder$Company, _dataOrder$Company$Co;
-    var countryId = dataOrder === null || dataOrder === void 0 ? void 0 : (_dataOrder$Company = dataOrder.Company) === null || _dataOrder$Company === void 0 ? void 0 : (_dataOrder$Company$Co = _dataOrder$Company.Country) === null || _dataOrder$Company$Co === void 0 ? void 0 : _dataOrder$Company$Co.id;
-    var listMenuType = isIncorpToBank ? dataJson.listMenu[type].filter(function (item, index) {
-      return item && (countryId === 191 || countryId === 237 || countryId === 250) ? index !== 0 && index !== 2 : index !== 0;
-    }) : dataJson.listMenu[type];
-    var listMenuPayment = isIncorpToBank ? dataJson.listMenu.payment.filter(function (item, index) {
-      return item && index !== 0;
-    }) : dataJson.listMenu.payment;
-    listMenu = [].concat(listMenuType, listMenuPayment);
-  }
-  React.useEffect(function () {
-    if (!dataOnboarding) {
-      if (!['order-information', 'payment-success', 'payment-pending', 'payment-failure'].includes(slug)) {
-        var pathName = '/register';
-        if (['incorporation-country', 'incorporation-company-type', 'incorporation-entity-name-check', 'incorporation-package', 'incorporation-additional-service', 'banking-package'].includes(slug)) {
-          location.href = pathName;
-        }
-      }
-    }
-  }, [dataOnboarding]);
-  var Progress = function Progress(_ref2) {
-    var props = _extends({}, (_objectDestructuringEmpty(_ref2), _ref2));
-    var activeParent = false;
-    var successStep = true;
-    return isStep ? /*#__PURE__*/React__default.createElement("div", _extends({}, props, {
-      className: styles$2.progress + " " + props.className
-    }), /*#__PURE__*/React__default.createElement("ul", null, listMenu.map(function (item, index) {
-      if (item.slug && item.slug.includes(slug) || item.sub_step && _.find(item.sub_step, function (i) {
-        return i.slug.includes(slug);
-      })) {
-        activeParent = true;
-        successStep = false;
-      } else {
-        activeParent = false;
-      }
-      return /*#__PURE__*/React__default.createElement("li", {
-        key: index,
-        style: {
-          marginBottom: '16px'
-        }
-      }, /*#__PURE__*/React__default.createElement("div", {
-        style: {
-          display: 'flex'
-        }
-      }, /*#__PURE__*/React__default.createElement("div", {
-        className: styles$2.dot + " " + (activeParent ? styles$2.dotPrimary : successStep ? styles$2.dotSuccess : '') + " " + styles$2.dotStyles
-      }, successStep && /*#__PURE__*/React__default.createElement(reactIcons.IconContext.Provider, {
-        value: {
-          color: 'white'
-        },
-        style: {
-          position: 'absolute'
-        }
-      }, /*#__PURE__*/React__default.createElement(bs.BsCheckLg, {
-        size: "10px"
-      }))), /*#__PURE__*/React__default.createElement("span", {
-        style: {
-          marginLeft: '16px'
-        },
-        className: " " + (activeParent ? styles$2.textPrimary : successStep ? styles$2.textSuccess : '')
-      }, item.name)), item.sub_step && _.find(item.sub_step, function (i) {
-        return i.slug.includes(slug);
-      }) && /*#__PURE__*/React__default.createElement("ul", {
-        style: {
-          paddingLeft: '32px',
-          marginBottom: '0'
-        }
-      }, item.sub_step.map(function (item, index) {
-        return /*#__PURE__*/React__default.createElement("li", {
-          key: index,
-          className: "" + styles$2.child
-        }, /*#__PURE__*/React__default.createElement("div", {
-          style: {
-            display: 'flex'
-          }
-        }, /*#__PURE__*/React__default.createElement("span", {
-          className: "" + (item.slug && item.slug.includes(slug) ? styles$2.textPrimary : '')
-        }, item.name)));
-      })));
-    }))) : /*#__PURE__*/React__default.createElement(React.Fragment, null);
-  };
-  return /*#__PURE__*/React__default.createElement(React.Fragment, null, /*#__PURE__*/React__default.createElement(OnboardingContext.Provider, {
-    value: {
-      dataOrder: dataOrder
-    }
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.onboarding + " " + styles$2.onboardingContainer
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: "" + styles$2.sidebar
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: "" + styles$2.sidebarContainer
-  }, /*#__PURE__*/React__default.createElement("div", {
-    style: {
-      zIndex: 50,
-      position: 'relative'
-    }
-  }, /*#__PURE__*/React__default.createElement("a", {
-    href: "https://bbcincorp.com/hk",
-    className: "" + styles$2.linkToHomepage,
-    target: "_blank"
-  }, /*#__PURE__*/React__default.createElement("img", {
-    src: logoImg,
-    alt: "logo",
-    className: "" + styles$2.logo,
-    style: {
-      filter: "" + (!isStep ? 'brightness(0) invert(1)' : '')
-    }
-  }), /*#__PURE__*/React__default.createElement("img", {
-    src: logotextImg,
-    alt: "logo text",
-    className: "" + styles$2.logoText,
-    style: {
-      filter: "" + (!isStep ? 'brightness(0) invert(1)' : '')
-    }
-  })), !isStep && /*#__PURE__*/React__default.createElement("div", {
-    style: {
-      maxWidth: '28rem'
-    }
-  }, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(Title, {
-    text: "" + (isPay ? 'Thank you for choosing our service' : 'A fast and better way to kickstart your business ventures globally'),
-    as: "h1",
-    className: "" + styles$2.sidebarTitle
-  }), /*#__PURE__*/React__default.createElement("p", {
-    className: "" + styles$2.sidebarDescription
-  }, isPay ? 'If you couldn’t pay the package or item, please contact us for help. Our team are always ready to support.' : 'Simple, frictionless and easy-to-use platform to help you start your company in minutes.')), location && queryPromotionCode ? /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.promotionCodeWrapper
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.percent
-  }, "5%"), /*#__PURE__*/React__default.createElement("div", {
-    style: {
-      color: '#007eff'
-    }
-  }, "Discount Is Here."), /*#__PURE__*/React__default.createElement("div", null, "Start Your Company With Us!")) : /*#__PURE__*/React__default.createElement(React.Fragment, null)), /*#__PURE__*/React__default.createElement(Progress, null)), /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.backgroundWrapper,
-    style: {
-      bottom: 0,
-      left: 0,
-      zIndex: 10,
-      mixBlendMode: isFirstScreen || isPay ? 'initial' : 'luminosity'
-    }
-  }, /*#__PURE__*/React__default.createElement("img", {
-    src: pattern !== null && pattern !== void 0 && pattern.desktop ? pattern === null || pattern === void 0 ? void 0 : pattern.desktop : isFirstScreen || isPay ? obdIncorpImg : onboardingIncorpImg,
-    className: styles$2.backgroundImg,
-    alt: "pattern"
-  })), !isStep && /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.stepImg
-  }, /*#__PURE__*/React__default.createElement("img", {
-    src: leftObdImg,
-    alt: "bg-left-obd",
-    className: styles$2.leftObdImg
-  })))), /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.main
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.mainBg
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: "" + styles$2.mainContainer,
-    style: {
-      zIndex: 50
-    }
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.navBar + " " + (show ? styles$2.bgWhite : isFirstScreen ? '' : styles$2.bgWhite),
-    style: {
-      boxShadow: show ? 'initial' : isFirstScreen ? 'initial' : '0 0 8px rgb(65 65 65 / 25%)'
-    }
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: "" + styles$2.navBarContainer
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.navBarWrapper
-  }, /*#__PURE__*/React__default.createElement("div", {
-    style: {
-      flex: '0 0 auto'
-    }
-  }, /*#__PURE__*/React__default.createElement("div", {
-    style: {
-      display: 'flex'
-    }
-  }, /*#__PURE__*/React__default.createElement("a", {
-    href: "https://bbcincorp.com/hk",
-    className: styles$2.linkToHomepage,
-    target: "_blank"
-  }, /*#__PURE__*/React__default.createElement("img", {
-    src: logoImg,
-    alt: "logo",
-    className: "" + styles$2.logo,
-    style: {
-      filter: "" + (show ? '' : isFirstScreen ? 'brightness(0) invert(1)' : '')
-    }
-  }), /*#__PURE__*/React__default.createElement("img", {
-    src: logotextImg,
-    alt: "logo text",
-    className: "" + styles$2.logoText,
-    style: {
-      filter: "" + (show ? '' : isFirstScreen ? 'brightness(0) invert(1)' : '')
-    }
-  })))), /*#__PURE__*/React__default.createElement("div", {
-    style: {
-      flex: '0 0 auto'
-    }
-  }, show ? /*#__PURE__*/React__default.createElement("button", {
-    className: styles$2.expandMenuBtn,
-    onClick: handleShow
-  }, /*#__PURE__*/React__default.createElement(vsc.VscChromeClose, {
-    size: "1.75rem"
-  })) : /*#__PURE__*/React__default.createElement("button", {
-    className: styles$2.expandMenuBtn,
-    onClick: handleShow
-  }, /*#__PURE__*/React__default.createElement(reactIcons.IconContext.Provider, {
-    value: {
-      color: isFirstScreen ? 'white' : ''
-    }
-  }, /*#__PURE__*/React__default.createElement(vsc.VscMenu, {
-    size: "1.75rem"
-  }))))))), /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.navBarPannel + " " + (show ? styles$2.navBarPannelOpen : '')
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: "" + styles$2.navBarPannelContainer
-  }, !isStep ? /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.navBarImageWrapper
-  }, /*#__PURE__*/React__default.createElement("div", {
-    style: {
-      flex: '0 0 auto'
-    }
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.menuNavImg
-  }, /*#__PURE__*/React__default.createElement("img", {
-    src: menuNavImg,
-    alt: "menu nav"
-  })))) : /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.navBarWrapper
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.navBarPannelTitleWrapper
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: "" + styles$2.navBarPannelTitle
-  }, "Progress"), /*#__PURE__*/React__default.createElement(Progress, {
-    style: {
-      marginTop: '16px'
-    }
-  }))), /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.navBarPannelWrapper
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.navBarPannelTitleWrapper
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: "" + styles$2.navBarPannelTitle
-  }, "Contact us"), /*#__PURE__*/React__default.createElement("div", {
-    className: "" + styles$2.navBarPannelTextContact
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.linkWrapper
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.colItem,
-    style: {
-      flex: '0 0 auto'
-    }
-  }, "Skype:"), /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.colItem,
-    style: {
-      flex: '0 0 auto',
-      textAlign: 'right'
-    }
-  }, /*#__PURE__*/React__default.createElement("a", {
-    href: "skype:live:bbcincorp?chat",
-    rel: "nofollow"
-  }, "live:bbcincorp"))), /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.linkWrapper,
-    style: {
-      marginTop: '4px'
-    }
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.colItem,
-    style: {
-      flex: '0 0 auto'
-    }
-  }, "Email:"), /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.colItem,
-    style: {
-      flex: '0 0 auto',
-      textAlign: 'right'
-    }
-  }, /*#__PURE__*/React__default.createElement("a", {
-    href: "mailto:service@bbcincorp.com",
-    rel: "nofollow",
-    target: "_blank"
-  }, "service@bbcincorp.com"))), /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.linkWrapper,
-    style: {
-      marginTop: '4px'
-    }
-  }, /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.colItem,
-    style: {
-      flex: '0 0 auto'
-    }
-  }, "Phone number:"), /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.colItem,
-    style: {
-      flex: '0 0 auto',
-      textAlign: 'right'
-    }
-  }, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("a", {
-    href: "tel:+85281928666",
-    rel: "nofollow"
-  }, "(+852) 8192 8666")), /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("a", {
-    href: "tel:+6531381666",
-    rel: "nofollow"
-  }, "(+65) 3138 1666"))))))), /*#__PURE__*/React__default.createElement("div", {
-    style: {
-      marginTop: '32px'
-    }
-  }, /*#__PURE__*/React__default.createElement("p", {
-    className: "" + styles$2.navBarPannelTextSmall,
-    style: {
-      marginBottom: '8px'
-    }
-  }, "Ver 1.0"), /*#__PURE__*/React__default.createElement("p", {
-    className: "" + styles$2.navBarPannelTextSmall,
-    style: {
-      marginBottom: '0'
-    }
-  }, "Copyright of BBCIncorp")))), children), /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.firstScreenMb1,
-    style: {
-      bottom: 0,
-      left: 0,
-      zIndex: 10,
-      transform: isFirstScreen || isPay ? 'translateY(25%)' : 'initial',
-      opacity: pattern !== null && pattern !== void 0 && pattern.mobile ? 1 : 0.4
-    }
-  }, /*#__PURE__*/React__default.createElement("img", {
-    src: pattern !== null && pattern !== void 0 && pattern.mobile ? pattern === null || pattern === void 0 ? void 0 : pattern.mobile : isFirstScreen || isPay ? obdIncorpImg : onboardingIncorpImg,
-    style: {
-      width: '100%',
-      height: 'auto'
-    },
-    alt: "pattern"
-  })), isFirstScreen && /*#__PURE__*/React__default.createElement("div", {
-    className: styles$2.firstScreenMb
-  }, /*#__PURE__*/React__default.createElement("img", {
-    src: leftObdImg,
-    alt: "bg-left-obd",
-    style: {
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover',
-      objectPosition: 'right top'
-    }
-  })))))), /*#__PURE__*/React__default.createElement(Cookies, null));
-}
-
 function Register(_ref) {
   var isTypeChristmas = _ref.isTypeChristmas;
   var _useState = React.useState(true),
@@ -1744,23 +1745,18 @@ function Register(_ref) {
       localStorage.removeItem('setExpirationDateObd');
     }
   }, []);
-  return /*#__PURE__*/React__default.createElement(Layout, {
-    fatf: fatfScreen,
-    pattern: FatfScreen ? {
-      desktop: obdIncorp2Img,
-      mobile: tabletBuildImg
-    } : {}
-  }, /*#__PURE__*/React__default.createElement("div", {
+  return /*#__PURE__*/React__default.createElement(React.Fragment, null, /*#__PURE__*/React__default.createElement("div", {
     className: styles.Register
   }, fatfScreen ? /*#__PURE__*/React__default.createElement(FatfScreen, {
-    onReceiveData: receiveData
+    onReceiveData: receiveData,
+    fatfScreen: fatfScreen
   }) : /*#__PURE__*/React__default.createElement(RegisterScreen, {
     trustpilot: data.trust_pilot,
     isTypeChristmas: isTypeChristmas
   })));
 }
 
-var styles$3 = {"select_title":"_styles-module__select_title__2K9oK","descriptionText":"_styles-module__descriptionText__39yY1","btn_back_top":"_styles-module__btn_back_top__1Wixw","btn_back_bottom":"_styles-module__btn_back_bottom__15HAn","selecttype_container":"_styles-module__selecttype_container__1Rr4C","select_type":"_styles-module__select_type__22Dgm","Package":"_styles-module__Package__1diqG","Package_title":"_styles-module__Package_title__2CKOy","SelectServiceScreen":"_styles-module__SelectServiceScreen__2YoN5","Link":"_styles-module__Link__2qWh0","promotion":"_styles-module__promotion__3HJX6","arrow_circle":"_styles-module__arrow_circle__3e_eN","Header":"_styles-module__Header__BIlvy","Body":"_styles-module__Body__iHyQI"};
+var styles$3 = {"selectTitle":"_styles-module__selectTitle__1D6oy","descriptionText":"_styles-module__descriptionText__39yY1","btn_back_top":"_styles-module__btn_back_top__1Wixw","btn_back_bottom":"_styles-module__btn_back_bottom__15HAn","selecttype_container":"_styles-module__selecttype_container__1Rr4C","select_type":"_styles-module__select_type__22Dgm","Package":"_styles-module__Package__1diqG","Package_title":"_styles-module__Package_title__2CKOy","SelectServiceScreen":"_styles-module__SelectServiceScreen__2YoN5","Link":"_styles-module__Link__2qWh0","promotion":"_styles-module__promotion__3HJX6","arrowCircle":"_styles-module__arrowCircle__39pCg","Header":"_styles-module__Header__BIlvy","Body":"_styles-module__Body__iHyQI","select_title":"_styles-module__select_title__2K9oK"};
 
 function SelectService(params) {
   var _useState = React.useState(false),
@@ -1840,7 +1836,7 @@ function SelectService(params) {
     href: "/register",
     className: styles$3.Link + " " + styles$3.Header + " " + styles$3.btn_back_top
   }, "Back"), /*#__PURE__*/React__default.createElement("h2", {
-    className: styles$3.select_title
+    className: styles$3.selectTitle
   }, "Select service you want to proceed"), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.Body
   }, /*#__PURE__*/React__default.createElement("p", {
@@ -1875,7 +1871,7 @@ function SelectService(params) {
     src: incorpImg,
     alt: "incorporation"
   }), /*#__PURE__*/React__default.createElement("h3", null, "INCORPORATION"), /*#__PURE__*/React__default.createElement("p", {
-    className: styles$3.arrow_circle
+    className: styles$3.arrowCircle
   }, "\u2192")))), /*#__PURE__*/React__default.createElement("div", {
     className: styles$3.select_type
   }, /*#__PURE__*/React__default.createElement("a", {
@@ -1898,7 +1894,7 @@ function SelectService(params) {
     src: bankingImg,
     alt: "banking"
   }), /*#__PURE__*/React__default.createElement("h3", null, "BANKING"), /*#__PURE__*/React__default.createElement("p", {
-    className: styles$3.arrow_circle
+    className: styles$3.arrowCircle
   }, "\u2192"))))))), /*#__PURE__*/React__default.createElement("a", {
     href: "/register",
     className: styles$3.Link + " " + styles$3.btn_back_bottom
@@ -7009,7 +7005,9 @@ function IncorporationCompanyType(_ref) {
     className: styles$8.description_wrapper
   }, /*#__PURE__*/React__default.createElement("div", {
     style: {
-      flex: '1'
+      flexBasis: 0,
+      flexGrow: 1,
+      maxWidth: '100%'
     }
   }, /*#__PURE__*/React__default.createElement(Component, null, "Country:", ' ', /*#__PURE__*/React__default.createElement("span", {
     style: {
@@ -9144,7 +9142,7 @@ function IncorporationEntityNameCheck(_ref) {
   }))))))));
 }
 
-var styles$b = {"btn_top_wrapper":"_styles-module__btn_top_wrapper__34DmI","btn_top":"_styles-module__btn_top__3qqS1","button":"_styles-module__button__3860g","title":"_styles-module__title__2BlXc","description_wrapper":"_styles-module__description_wrapper__3Nlot","description":"_styles-module__description__3VahP","comparison_wrapper":"_styles-module__comparison_wrapper__3GLBr","comparison_top":"_styles-module__comparison_top__nxU8b","loader_wrapper":"_styles-module__loader_wrapper__3VbNy","package":"_styles-module__package__110ld","package_container":"_styles-module__package_container__2x8Ni","card_wrapper":"_styles-module__card_wrapper__3w1_k","item_height":"_styles-module__item_height__6F5fK","content_wrapper_vn":"_styles-module__content_wrapper_vn__2QOXs","card":"_styles-module__card__3N8iG","card_inside":"_styles-module__card_inside__2aMYN","img_wrapper":"_styles-module__img_wrapper__hhqdG","cardName_wrapper":"_styles-module__cardName_wrapper__3OX3r","cardName":"_styles-module__cardName__22pk0","cardNameVN":"_styles-module__cardNameVN__7JTA6","cardPrice":"_styles-module__cardPrice__lMNoF","cardPriceVN":"_styles-module__cardPriceVN__sunAZ","cardDes":"_styles-module__cardDes__123Dc","basic":"_styles-module__basic__1pZey","local-lite":"_styles-module__local-lite__1fRKW","startup-for-locals":"_styles-module__startup-for-locals__2B7pn","standard":"_styles-module__standard__3mC0T","local-standard":"_styles-module__local-standard__3Fr5q","premium":"_styles-module__premium__10UG7","foreigner-basic":"_styles-module__foreigner-basic__1CpII","standard-with-employment-pass":"_styles-module__standard-with-employment-pass__23Y2O","foreigner-ultra":"_styles-module__foreigner-ultra__1mWaS","formSwich":"_styles-module__formSwich__1Glki","info":"_styles-module__info__1NfHz","note":"_styles-module__note__3O97i","note_vn":"_styles-module__note_vn__2QqH5","modal_wrapper":"_styles-module__modal_wrapper__260T9","fadeIn":"_styles-module__fadeIn__21U4U","close_button":"_styles-module__close_button__4X6g2","tab_container":"_styles-module__tab_container__3ZOMY","tab_wrapper":"_styles-module__tab_wrapper__3Mg2u","tab_item":"_styles-module__tab_item__36v3_","active_tab":"_styles-module__active_tab__g8EO3","dialog":"_styles-module__dialog___aI90","headerModal":"_styles-module__headerModal__1TU3P","bodyModal":"_styles-module__bodyModal__1hv_K","Header":"_styles-module__Header__1hw-O","comparison_bottom_wrapper":"_styles-module__comparison_bottom_wrapper__1rqx-","comparison_bottom":"_styles-module__comparison_bottom__3PrcN","comparison_btn":"_styles-module__comparison_btn__3qyHB","comparison_img":"_styles-module__comparison_img__3RYJD","btn_bottom_wrapper":"_styles-module__btn_bottom_wrapper__3kj8Y","btn_back_bottom":"_styles-module__btn_back_bottom__1fOjL","Body":"_styles-module__Body__2PprN","card_wrapper_sg":"_styles-module__card_wrapper_sg__19DVk"};
+var styles$b = {"btn_top_wrapper":"_styles-module__btn_top_wrapper__34DmI","btn_top":"_styles-module__btn_top__3qqS1","button":"_styles-module__button__3860g","title":"_styles-module__title__2BlXc","description_wrapper":"_styles-module__description_wrapper__3Nlot","description":"_styles-module__description__3VahP","comparison_wrapper":"_styles-module__comparison_wrapper__3GLBr","comparison_top":"_styles-module__comparison_top__nxU8b","loader_wrapper":"_styles-module__loader_wrapper__3VbNy","package_container":"_styles-module__package_container__2x8Ni","card_wrapper":"_styles-module__card_wrapper__3w1_k","item_height":"_styles-module__item_height__6F5fK","content_wrapper_vn":"_styles-module__content_wrapper_vn__2QOXs","card":"_styles-module__card__3N8iG","card_inside":"_styles-module__card_inside__2aMYN","img_wrapper":"_styles-module__img_wrapper__hhqdG","cardName_wrapper":"_styles-module__cardName_wrapper__3OX3r","cardName":"_styles-module__cardName__22pk0","cardNameVN":"_styles-module__cardNameVN__7JTA6","cardPrice":"_styles-module__cardPrice__lMNoF","cardPriceVN":"_styles-module__cardPriceVN__sunAZ","cardDes":"_styles-module__cardDes__123Dc","basic":"_styles-module__basic__1pZey","local-lite":"_styles-module__local-lite__1fRKW","startup-for-locals":"_styles-module__startup-for-locals__2B7pn","standard":"_styles-module__standard__3mC0T","local-standard":"_styles-module__local-standard__3Fr5q","premium":"_styles-module__premium__10UG7","foreigner-basic":"_styles-module__foreigner-basic__1CpII","standard-with-employment-pass":"_styles-module__standard-with-employment-pass__23Y2O","foreigner-ultra":"_styles-module__foreigner-ultra__1mWaS","formSwich":"_styles-module__formSwich__1Glki","info":"_styles-module__info__1NfHz","note":"_styles-module__note__3O97i","note_vn":"_styles-module__note_vn__2QqH5","modal_wrapper":"_styles-module__modal_wrapper__260T9","fadeIn":"_styles-module__fadeIn__21U4U","close_button":"_styles-module__close_button__4X6g2","tab_container":"_styles-module__tab_container__3ZOMY","tab_wrapper":"_styles-module__tab_wrapper__3Mg2u","tab_item":"_styles-module__tab_item__36v3_","active_tab":"_styles-module__active_tab__g8EO3","dialog":"_styles-module__dialog___aI90","headerModal":"_styles-module__headerModal__1TU3P","bodyModal":"_styles-module__bodyModal__1hv_K","Header":"_styles-module__Header__1hw-O","comparison_bottom_wrapper":"_styles-module__comparison_bottom_wrapper__1rqx-","comparison_bottom":"_styles-module__comparison_bottom__3PrcN","comparison_btn":"_styles-module__comparison_btn__3qyHB","comparison_img":"_styles-module__comparison_img__3RYJD","btn_bottom_wrapper":"_styles-module__btn_bottom_wrapper__3kj8Y","btn_back_bottom":"_styles-module__btn_back_bottom__1fOjL","Body":"_styles-module__Body__2PprN","package":"_styles-module__package__110ld","card_wrapper_sg":"_styles-module__card_wrapper_sg__19DVk"};
 
 function popupPackages(country_id, entity_type_id, tab) {
   var content = '';
@@ -9372,11 +9370,7 @@ function IncorporationPackage(params) {
   }, /*#__PURE__*/React__default.createElement("img", {
     src: comparisonTable,
     alt: "bg-left-obd"
-  }), /*#__PURE__*/React__default.createElement("div", {
-    style: {
-      marginTop: '4px'
-    }
-  }, "Comparison table")))), loading ? /*#__PURE__*/React__default.createElement("div", {
+  }), /*#__PURE__*/React__default.createElement("div", null, "Comparison table")))), loading ? /*#__PURE__*/React__default.createElement("div", {
     className: styles$b.loader_wrapper
   }, /*#__PURE__*/React__default.createElement(bi.BiLoaderAlt, {
     className: "animate_spin",
@@ -10485,7 +10479,7 @@ function IncorporationAdditionalService(params) {
   })) : /*#__PURE__*/React__default.createElement(React.Fragment, null));
 }
 
-var style$1 = {"Payment":"_styles-module__Payment__3YHGi","PaymentActive":"_styles-module__PaymentActive__3hiZt","OrderInformation":"_styles-module__OrderInformation__3VU0C","loaderWrapper":"_styles-module__loaderWrapper__3De3P","loaderWrapperBottom":"_styles-module__loaderWrapperBottom__3-5LU","loading":"_styles-module__loading__36kQd","spin":"_styles-module__spin__34RFv","InfoContent":"_styles-module__InfoContent__1kEqq","content":"_styles-module__content__38XZY","lineDivide":"_styles-module__lineDivide__17Kvn","promoBlock":"_styles-module__promoBlock__33hOn","lineDivideSpace":"_styles-module__lineDivideSpace__SY8JY","divideRow":"_styles-module__divideRow__1IK-8","Font500":"_styles-module__Font500__i4HM3","textRight":"_styles-module__textRight__3wAug","paymentBox":"_styles-module__paymentBox__9f23T","paymentBoxContainer":"_styles-module__paymentBoxContainer__1Cv6c","SubTitle":"_styles-module__SubTitle__1xKYa","checkboxWrapper":"_styles-module__checkboxWrapper__hthDj","TitleH2":"_styles-module__TitleH2__2SNsC","TitleH3":"_styles-module__TitleH3__qQXf7","TotalPrice":"_styles-module__TotalPrice__22Dq8","wrapperOrder":"_styles-module__wrapperOrder__1Skns","social":"_styles-module__social__3ogKL","refundGuarantee":"_styles-module__refundGuarantee__b0Kgm","totalOrder":"_styles-module__totalOrder__8nGid","amountWrapper":"_styles-module__amountWrapper__2elqt","OrderSummary":"_styles-module__OrderSummary__1rsVR","CloseButton":"_styles-module__CloseButton__1o3cR","PayButton":"_styles-module__PayButton__TFKpf","Link":"_styles-module__Link__19GiR","ButtonMakePayment":"_styles-module__ButtonMakePayment__1arhv","Header":"_styles-module__Header__22Oa6","contact":"_styles-module__contact__1ywpb","main":"_styles-module__main__GVoUF","informationWrapper":"_styles-module__informationWrapper__3N83Z","Body":"_styles-module__Body__TO73M","infoContentRow":"_styles-module__infoContentRow__36Ofh","infoContentRowMb":"_styles-module__infoContentRowMb__3Smvg","infoContentWrapper":"_styles-module__infoContentWrapper__37ssH","promoDiscountContent":"_styles-module__promoDiscountContent__DM98r","incorpInfoWrapper":"_styles-module__incorpInfoWrapper__3u68R","incorpInfo":"_styles-module__incorpInfo__30N5p","companyPackageWrapper":"_styles-module__companyPackageWrapper__1lb8l","serviceName":"_styles-module__serviceName__1PveS","customService":"_styles-module__customService__2c-E_","totalWrapper":"_styles-module__totalWrapper__2gsgP","formCheck":"_styles-module__formCheck__1IjJ0","formCheckImg":"_styles-module__formCheckImg__3uv-I","formCheckLabel":"_styles-module__formCheckLabel__24mnU","paymentBottomWrapper":"_styles-module__paymentBottomWrapper__A5a-0","policyWrapper":"_styles-module__policyWrapper__34QAm","policyText":"_styles-module__policyText__3o0SL","submitWrapper":"_styles-module__submitWrapper__2assh","submitWrapperDesk":"_styles-module__submitWrapperDesk__o9RCX","CardHolderName":"_styles-module__CardHolderName__Epnkn","CardDetails":"_styles-module__CardDetails__1AAzT","ErrorMessage":"_styles-module__ErrorMessage__2BaaY","BillingInformation":"_styles-module__BillingInformation__4UUi2","StripeForm":"_styles-module__StripeForm__1aNRA","backLinkBottom":"_styles-module__backLinkBottom__1F8a2","modal":"_styles-module__modal__2k9Hi","topModalContent":"_styles-module__topModalContent__2BnEv","logo":"_styles-module__logo__2YtHq","modalWrapper":"_styles-module__modalWrapper__1tUPL","Button":"_styles-module__Button__1Mgf3","promoDiscountWrapper":"_styles-module__promoDiscountWrapper__3aUoH"};
+var style$1 = {"backBtnTop":"_styles-module__backBtnTop__1pfu-","Payment":"_styles-module__Payment__3YHGi","PaymentActive":"_styles-module__PaymentActive__3hiZt","OrderInformation":"_styles-module__OrderInformation__3VU0C","loaderWrapper":"_styles-module__loaderWrapper__3De3P","loaderWrapperBottom":"_styles-module__loaderWrapperBottom__3-5LU","loading":"_styles-module__loading__36kQd","spin":"_styles-module__spin__34RFv","InfoContent":"_styles-module__InfoContent__1kEqq","content":"_styles-module__content__38XZY","lineDivide":"_styles-module__lineDivide__17Kvn","promoBlock":"_styles-module__promoBlock__33hOn","lineDivideSpace":"_styles-module__lineDivideSpace__SY8JY","divideRow":"_styles-module__divideRow__1IK-8","Font500":"_styles-module__Font500__i4HM3","textRight":"_styles-module__textRight__3wAug","paymentBox":"_styles-module__paymentBox__9f23T","paymentBoxContainer":"_styles-module__paymentBoxContainer__1Cv6c","SubTitle":"_styles-module__SubTitle__1xKYa","checkboxWrapper":"_styles-module__checkboxWrapper__hthDj","TitleH2":"_styles-module__TitleH2__2SNsC","TitleH3":"_styles-module__TitleH3__qQXf7","TotalPrice":"_styles-module__TotalPrice__22Dq8","wrapperOrder":"_styles-module__wrapperOrder__1Skns","social":"_styles-module__social__3ogKL","refundGuarantee":"_styles-module__refundGuarantee__b0Kgm","totalOrder":"_styles-module__totalOrder__8nGid","amountWrapper":"_styles-module__amountWrapper__2elqt","OrderSummary":"_styles-module__OrderSummary__1rsVR","CloseButton":"_styles-module__CloseButton__1o3cR","PayButton":"_styles-module__PayButton__TFKpf","Link":"_styles-module__Link__19GiR","ButtonMakePayment":"_styles-module__ButtonMakePayment__1arhv","Header":"_styles-module__Header__22Oa6","contact":"_styles-module__contact__1ywpb","main":"_styles-module__main__GVoUF","informationWrapper":"_styles-module__informationWrapper__3N83Z","Body":"_styles-module__Body__TO73M","infoContentRow":"_styles-module__infoContentRow__36Ofh","infoContentRowMb":"_styles-module__infoContentRowMb__3Smvg","infoContentWrapper":"_styles-module__infoContentWrapper__37ssH","promoDiscountContent":"_styles-module__promoDiscountContent__DM98r","incorpInfoWrapper":"_styles-module__incorpInfoWrapper__3u68R","incorpInfo":"_styles-module__incorpInfo__30N5p","companyPackageWrapper":"_styles-module__companyPackageWrapper__1lb8l","serviceName":"_styles-module__serviceName__1PveS","customService":"_styles-module__customService__2c-E_","totalWrapper":"_styles-module__totalWrapper__2gsgP","formCheck":"_styles-module__formCheck__1IjJ0","formCheckImg":"_styles-module__formCheckImg__3uv-I","formCheckLabel":"_styles-module__formCheckLabel__24mnU","paymentBottomWrapper":"_styles-module__paymentBottomWrapper__A5a-0","policyWrapper":"_styles-module__policyWrapper__34QAm","policyText":"_styles-module__policyText__3o0SL","submitWrapper":"_styles-module__submitWrapper__2assh","submitWrapperDesk":"_styles-module__submitWrapperDesk__o9RCX","CardHolderName":"_styles-module__CardHolderName__Epnkn","CardDetails":"_styles-module__CardDetails__1AAzT","ErrorMessage":"_styles-module__ErrorMessage__2BaaY","BillingInformation":"_styles-module__BillingInformation__4UUi2","StripeForm":"_styles-module__StripeForm__1aNRA","backLinkBottom":"_styles-module__backLinkBottom__1F8a2","modal":"_styles-module__modal__2k9Hi","topModalContent":"_styles-module__topModalContent__2BnEv","logo":"_styles-module__logo__2YtHq","modalWrapper":"_styles-module__modalWrapper__1tUPL","Button":"_styles-module__Button__1Mgf3","promoDiscountWrapper":"_styles-module__promoDiscountWrapper__3aUoH"};
 
 function BankingInfo(_ref) {
   var _orderInfo$OtherItems, _orderInfo$OtherItems2;
@@ -10544,7 +10538,10 @@ function IncorpInfo(_ref) {
   }, /*#__PURE__*/React__default.createElement("p", null, "Company Type:"), /*#__PURE__*/React__default.createElement("p", {
     className: style$1.Font500 + " " + style$1.textRight
   }, orderInfo && (orderInfo === null || orderInfo === void 0 ? void 0 : (_orderInfo$Company2 = orderInfo.Company) === null || _orderInfo$Company2 === void 0 ? void 0 : (_orderInfo$Company2$E = _orderInfo$Company2.EntityType) === null || _orderInfo$Company2$E === void 0 ? void 0 : _orderInfo$Company2$E.name))), /*#__PURE__*/React__default.createElement("div", {
-    className: style$1.incorpInfoWrapper
+    className: style$1.infoContentWrapper,
+    style: {
+      marginBottom: '0!important'
+    }
   }, orderInfo === null || orderInfo === void 0 ? void 0 : (_orderInfo$Company3 = orderInfo.Company) === null || _orderInfo$Company3 === void 0 ? void 0 : _orderInfo$Company3.ProposedNames.map(function (item, index) {
     return index == 0 ? /*#__PURE__*/React__default.createElement("div", {
       key: index,
@@ -10574,7 +10571,8 @@ function IncorpInfo(_ref) {
     return accumulator + service.amount;
   }, 0))), /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("ul", {
     style: {
-      marginLeft: '24px'
+      marginLeft: '24px',
+      padding: '0'
     }
   }, (_orderSummary$company4 = orderSummary.companyPackage) === null || _orderSummary$company4 === void 0 ? void 0 : _orderSummary$company4.map(function (item, index) {
     var _item$Service;
@@ -10607,7 +10605,8 @@ function IncorpInfo(_ref) {
       }
     }, category.name), /*#__PURE__*/React__default.createElement("ul", {
       style: {
-        marginLeft: '24px'
+        marginLeft: '24px',
+        padding: '0'
       }
     }, orderSummary.additonalServices.map(function (item, index) {
       var _item$Service2, _item$Service3, _item$Service3$Servic, _item$Service4, _item$Service4$Servic;
@@ -10623,7 +10622,9 @@ function IncorpInfo(_ref) {
   }))), (orderSummary.customServices.length > 0 || orderSummary.customDiscount.length > 0) && /*#__PURE__*/React__default.createElement("div", {
     className: style$1.lineDivide + " " + style$1.lineDivideSpace
   }, /*#__PURE__*/React__default.createElement("h4", {
-    className: "mb-1"
+    style: {
+      marginBottom: '4px'
+    }
   }, "CUSTOM SERVICES"), /*#__PURE__*/React__default.createElement("div", {
     className: style$1.InfoContent
   }, orderSummary.customServices.map(function (item, index) {
@@ -11233,6 +11234,7 @@ function OrderInformation(params) {
   }, /*#__PURE__*/React__default.createElement("div", {
     className: style$1.Header
   }, (orderInfo === null || orderInfo === void 0 ? void 0 : orderInfo.payment_gateway_id) == null && (orderInfo === null || orderInfo === void 0 ? void 0 : orderInfo.order_status_id) == 0 ? /*#__PURE__*/React__default.createElement("a", {
+    className: style$1.backBtnTop,
     href: backLink || '/404'
   }, "Back") : null), /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("div", {
     className: style$1.main
@@ -11574,16 +11576,13 @@ var Success1 = function Success1(_ref) {
       return moveToBanking(queryOrderCode);
     }
   }, "See your banking options"), /*#__PURE__*/React__default.createElement("a", {
-    href: process.env.NEXT_PUBLIC_DASHBOARD_URL,
+    href: "https://test-dashboard.bbcincorp.com/auth/login",
     target: "_blank"
   }, "Move to Portal")) : /*#__PURE__*/React__default.createElement("a", {
-    href: process.env.NEXT_PUBLIC_DASHBOARD_URL,
+    href: "https://test-dashboard.bbcincorp.com/auth/login",
     target: "_blank",
-    className: style$2.highlightBtn,
-    style: {
-      padding: '0'
-    }
-  }, /*#__PURE__*/React__default.createElement("button", null, "Move to Portal"))));
+    className: style$2.highlightBtn
+  }, "Move to Portal")));
 };
 var Success2 = function Success2() {
   return /*#__PURE__*/React__default.createElement(React.Fragment, null, /*#__PURE__*/React__default.createElement("h3", {
@@ -11597,13 +11596,10 @@ var Success2 = function Success2() {
   }, "bbcincorp.com")), /*#__PURE__*/React__default.createElement("p", null, "We have received your order, and a dedicated manager will contact you soon to proceed further. An email has been sent to you detailing order and payment information for your reference. It also includes login account information to access our Company Management Portal."), /*#__PURE__*/React__default.createElement("p", null, "In the meantime, you can log into the account provided to prepare necessary documents and complete the KYC procedure in advance.")), /*#__PURE__*/React__default.createElement("div", {
     className: style$2.Footer
   }, /*#__PURE__*/React__default.createElement("a", {
-    href: process.env.NEXT_PUBLIC_DASHBOARD_URL,
+    href: "https://test-dashboard.bbcincorp.com/auth/login",
     target: "_blank",
-    className: style$2.highlightBtn,
-    style: {
-      padding: '0'
-    }
-  }, /*#__PURE__*/React__default.createElement("button", null, "Move to Portal"))));
+    className: style$2.highlightBtn
+  }, "Move to Portal")));
 };
 var Success3 = function Success3() {
   return /*#__PURE__*/React__default.createElement(React.Fragment, null, /*#__PURE__*/React__default.createElement("h3", {
@@ -11613,13 +11609,10 @@ var Success3 = function Success3() {
   }, /*#__PURE__*/React__default.createElement("p", null, "An account manager will contact you shortly to get you onboard and give you advice about other banking alternatives should you need one."), /*#__PURE__*/React__default.createElement("p", null, "To follow up the process and complete the KYC, you can now log into company management portal with account information already sent to your email.")), /*#__PURE__*/React__default.createElement("div", {
     className: style$2.Footer
   }, /*#__PURE__*/React__default.createElement("a", {
-    href: process.env.NEXT_PUBLIC_DASHBOARD_URL,
+    href: "https://test-dashboard.bbcincorp.com/auth/login",
     target: "_blank",
-    className: style$2.highlightBtn,
-    style: {
-      padding: '0'
-    }
-  }, /*#__PURE__*/React__default.createElement("button", null, "Move to Portal"))));
+    className: style$2.highlightBtn
+  }, "Move to Portal")));
 };
 var Success4 = function Success4() {
   return /*#__PURE__*/React__default.createElement(React.Fragment, null, /*#__PURE__*/React__default.createElement("h3", {
@@ -11633,13 +11626,10 @@ var Success4 = function Success4() {
   }, "bbcincorp.com")), /*#__PURE__*/React__default.createElement("p", null, "An account manager will contact you shortly to get you onboard and give you advice about other banking alternatives should you need one."), /*#__PURE__*/React__default.createElement("p", null, "You can now log into ", /*#__PURE__*/React__default.createElement("b", null, "Company Management Portal"), " to follow up the process and complete the KYC.")), /*#__PURE__*/React__default.createElement("div", {
     className: style$2.Footer
   }, /*#__PURE__*/React__default.createElement("a", {
-    href: process.env.NEXT_PUBLIC_DASHBOARD_URL,
+    href: "https://test-dashboard.bbcincorp.com/auth/login",
     target: "_blank",
-    className: style$2.highlightBtn,
-    style: {
-      padding: '0'
-    }
-  }, /*#__PURE__*/React__default.createElement("button", null, "Move to Portal"))));
+    className: style$2.highlightBtn
+  }, "Move to Portal")));
 };
 var Failure1 = function Failure1() {
   return /*#__PURE__*/React__default.createElement(React.Fragment, null, /*#__PURE__*/React__default.createElement("h3", {
