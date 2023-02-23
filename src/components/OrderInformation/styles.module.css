@@ -523,6 +523,12 @@
   margin: 0;
   color: #dc3545;
 }
+
+.BillingInformation {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .BillingInformation > p:first-of-type {
   margin-bottom: 8px;
   color: #004099;
@@ -576,6 +582,7 @@
 .topModalContent h3 {
   margin-top: 24px;
   margin-bottom: 8px;
+  font-weight: 600;
 }
 
 .topModalContent .logo {

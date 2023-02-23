@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
 import styles from '../styles.module.css'
-import { Form, Spinner } from 'react-bootstrap'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import Selects from '../../common/Selects/SelectSearchInside'

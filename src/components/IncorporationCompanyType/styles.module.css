@@ -132,6 +132,19 @@
   z-index: 1050;
   font-size: 14px;
   line-height: 1.5;
+  animation: fadeIn 0.25s ease-in;
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(-2%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .dialog :global(.modal-content) {

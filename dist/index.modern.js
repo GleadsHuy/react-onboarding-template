@@ -14,7 +14,6 @@ import leftObdImg from './bg-left-obd~UgZSiaCI.png';
 import menuNavImg from './menu-nav~AOjLftbh.png';
 import tabletBuildImg from './bg-tablet-build~kDAEKiYW.svg';
 import obdIncorp2Img from './obd-incorporation-2~cvSdbBtL.png';
-import { Form, OverlayTrigger, Popover } from 'react-bootstrap';
 import { useForm, useFormState, useFieldArray, Controller } from 'react-hook-form';
 import Select, { components } from 'react-select';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -46,6 +45,10 @@ import comparisonTable from './comparison-table~bpwyRZHM.png';
 import buildingImg from './building~IFwjSqIH.png';
 import { MdAddCircle } from 'react-icons/md';
 import { HiMinusCircle } from 'react-icons/hi';
+import { Form } from 'react-bootstrap';
+import { usePopperTooltip } from 'react-popper-tooltip';
+import 'react-popper-tooltip/dist/styles.css';
+import { Switch } from '@headlessui/react';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import pacbasic from './pac-basic~AyzXROgI.png';
 import pacpremium from './pac-premium~XjDmcCNY.png';
@@ -54,6 +57,11 @@ import locallite from './local-lite~TJhbcTdX.png';
 import localstandard from './local-standard~AyzXROgI.png';
 import foreignerbasic from './foreigner-basic~uQZFFwrd.png';
 import foreignerultra from './foreigner-ultra~XjDmcCNY.png';
+import jointventurecompanyorganization from './joint-venture-company-organization~ygCSDNoP.svg';
+import jointventurecompanyindividual from './joint-venture-company-individual~VtMqmgzt.svg';
+import establishmentofwhollyownedforeignenterprise from './establishment-of-wholly-owned-foreign-enterprise~mFOPCCSv.svg';
+import establishmentofbranch from './establishment-of-branch~LiXqOEXr.svg';
+import establishmentofrepresentativeoffice from './establishment-of-representative-office~RtWuekwm.svg';
 import { RiSubtractFill } from 'react-icons/ri';
 import { Elements, useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
@@ -66,7 +74,7 @@ import linkedinImg from './linkedin~bhuYKrBL.svg';
 import facebookImg from './facebook~CpjjVQBM.svg';
 import youtubeImg from './youtube~GUnNFvMg.svg';
 
-var styles = {"FatfScreen":"_styles-module__FatfScreen__2ROgK","descriptionText":"_styles-module__descriptionText__2Vd8e","title":"_styles-module__title__35EYE","RegisterInput":"_styles-module__RegisterInput__gW7RG","item":"_styles-module__item__3hx7A","space_top":"_styles-module__space_top__yST6I","ErrorMessage":"_styles-module__ErrorMessage__qZ3vy","Link":"_styles-module__Link__1wNX0","Slider":"_styles-module__Slider__1Th7t","PhoneSelect":"_styles-module__PhoneSelect__1B3qM","CustomSelect":"_styles-module__CustomSelect__3bJjM","PhoneInput":"_styles-module__PhoneInput__2_4Q0","phonenumber_container":"_styles-module__phonenumber_container__HLp-P","RegisterScreen":"_styles-module__RegisterScreen__3hn-F","discountChristmas":"_styles-module__discountChristmas__i1zWx","CheckBox":"_styles-module__CheckBox__3klwe","button_wrapper":"_styles-module__button_wrapper__RJ7yj","Button":"_styles-module__Button__26moK","recaptcha":"_styles-module__recaptcha__14pK3","RegisterButton":"_styles-module__RegisterButton__1WoJs","RegisterLink":"_styles-module__RegisterLink__2p_CN","restricted_countries_wrapper":"_styles-module__restricted_countries_wrapper__5339W","restricted_countries_container":"_styles-module__restricted_countries_container__30wCB","restricted_countries_cols":"_styles-module__restricted_countries_cols__17jba","restricted_countries_cols_md":"_styles-module__restricted_countries_cols_md__wx9cR","listCollapse":"_styles-module__listCollapse__P54fa","active":"_styles-module__active__1yv7q","buttonCollapse":"_styles-module__buttonCollapse__BL6zk","isCollapse":"_styles-module__isCollapse__38GJw","iconCollapse":"_styles-module__iconCollapse__3YmIy","RegisterText":"_styles-module__RegisterText__3dZ-C","RegisterForm":"_styles-module__RegisterForm__2sn5j","formControl":"_styles-module__formControl__MkpSE","inputWrapper":"_styles-module__inputWrapper__u_8Hb","registerCheckText":"_styles-module__registerCheckText__2Go8d","SelectWrapper":"_styles-module__SelectWrapper__2wTl0","CountrySelectWrapper":"_styles-module__CountrySelectWrapper__cRn99","nationalitySelect":"_styles-module__nationalitySelect__3tlRp","nationalityLabel":"_styles-module__nationalityLabel__1-615","phonenumber_wrapper":"_styles-module__phonenumber_wrapper__3q5qp","trustpilot":"_styles-module__trustpilot__2V00g","trustpilot_wrapper":"_styles-module__trustpilot_wrapper__1PI3w","FormFooter":"_styles-module__FormFooter__29TuF","Body":"_styles-module__Body__3J0ny","Menu":"_styles-module__Menu__3AI86","marginTopMenu":"_styles-module__marginTopMenu__2vzmR","noteText":"_styles-module__noteText__9TPd0"};
+var styles = {"FatfScreen":"_styles-module__FatfScreen__2ROgK","descriptionText":"_styles-module__descriptionText__2Vd8e","title":"_styles-module__title__35EYE","RegisterInput":"_styles-module__RegisterInput__gW7RG","item":"_styles-module__item__3hx7A","space_top":"_styles-module__space_top__yST6I","ErrorMessage":"_styles-module__ErrorMessage__qZ3vy","Link":"_styles-module__Link__1wNX0","Slider":"_styles-module__Slider__1Th7t","PhoneSelect":"_styles-module__PhoneSelect__1B3qM","CustomSelect":"_styles-module__CustomSelect__3bJjM","PhoneInput":"_styles-module__PhoneInput__2_4Q0","phonenumber_container":"_styles-module__phonenumber_container__HLp-P","RegisterScreen":"_styles-module__RegisterScreen__3hn-F","discountChristmas":"_styles-module__discountChristmas__i1zWx","CheckBox":"_styles-module__CheckBox__3klwe","button_wrapper":"_styles-module__button_wrapper__RJ7yj","Button":"_styles-module__Button__26moK","recaptcha":"_styles-module__recaptcha__14pK3","RegisterButton":"_styles-module__RegisterButton__1WoJs","RegisterLink":"_styles-module__RegisterLink__2p_CN","restricted_countries_wrapper":"_styles-module__restricted_countries_wrapper__5339W","restricted_countries_container":"_styles-module__restricted_countries_container__30wCB","restricted_countries_cols":"_styles-module__restricted_countries_cols__17jba","restricted_countries_cols_md":"_styles-module__restricted_countries_cols_md__wx9cR","listCollapse":"_styles-module__listCollapse__P54fa","active":"_styles-module__active__1yv7q","buttonCollapse":"_styles-module__buttonCollapse__BL6zk","isCollapse":"_styles-module__isCollapse__38GJw","iconCollapse":"_styles-module__iconCollapse__3YmIy","RegisterText":"_styles-module__RegisterText__3dZ-C","RegisterForm":"_styles-module__RegisterForm__2sn5j","formControl":"_styles-module__formControl__MkpSE","inputWrapper":"_styles-module__inputWrapper__u_8Hb","registerCheckText":"_styles-module__registerCheckText__2Go8d","SelectWrapper":"_styles-module__SelectWrapper__2wTl0","CountrySelectWrapper":"_styles-module__CountrySelectWrapper__cRn99","nationalitySelect":"_styles-module__nationalitySelect__3tlRp","nationalityLabel":"_styles-module__nationalityLabel__1-615","phonenumber_wrapper":"_styles-module__phonenumber_wrapper__3q5qp","trustpilot":"_styles-module__trustpilot__2V00g","trustpilot_wrapper":"_styles-module__trustpilot_wrapper__1PI3w","noteText":"_styles-module__noteText__9TPd0","FormFooter":"_styles-module__FormFooter__29TuF","Body":"_styles-module__Body__3J0ny","Menu":"_styles-module__Menu__3AI86","marginTopMenu":"_styles-module__marginTopMenu__2vzmR"};
 
 const useOnClickOutside = (ref, handler) => {
   useEffect(() => {
@@ -1001,9 +1009,9 @@ const FatfScreen = ({
   }, "Restricted Territories List"), /*#__PURE__*/React.createElement("div", {
     className: styles.descriptionText
   }, /*#__PURE__*/React.createElement("p", null, "Before proceeding to the incorporation process, kindly note that BBCIncorp DOES NOT provide services for nationalities under the below list."), /*#__PURE__*/React.createElement("p", null, "The list is made based on recommendations by credible sources such as FATF as part of our effort to comply with AML/CTF regulations and is reviewed and updated from time to time.")), /*#__PURE__*/React.createElement("div", {
-    className: `px-3 p-lg-4 ${styles.restricted_countries_wrapper}`
+    className: styles.restricted_countries_wrapper
   }, /*#__PURE__*/React.createElement("div", {
-    className: `${styles.restricted_countries_container}`
+    className: styles.restricted_countries_container
   }, /*#__PURE__*/React.createElement("div", {
     className: `${styles.listCollapse} ${!isCollapse && styles.active}`
   }, /*#__PURE__*/React.createElement("div", {
@@ -1043,11 +1051,11 @@ const FatfScreen = ({
   }, isCollapse ? 'Expand' : 'Collapse', /*#__PURE__*/React.createElement(FaAngleDoubleUp, {
     className: isCollapse && styles.iconCollapse
   }))))), /*#__PURE__*/React.createElement("p", {
-    className: `mb-0 mt-2 mt-lg-0 ${styles.noteText}`
+    className: styles.noteText
   }, /*#__PURE__*/React.createElement("b", null, "Note:"), " Nationalities under consideration are applicable to all members of your company, including directors, shareholders and beneficial owners."), /*#__PURE__*/React.createElement("div", {
     className: styles.button_wrapper
   }, /*#__PURE__*/React.createElement("button", {
-    className: `${styles.Button} btn py-2 px-4 rounded border-0 m-0`,
+    className: styles.Button,
     onClick: onReceiveData
   }, "I understand"))));
 };
@@ -6337,7 +6345,7 @@ const Component = ({
 Component.propTypes = {};
 Component.defaultProps = {};
 
-var styles$8 = {"block_on_md":"_styles-module__block_on_md__3JxMi","block_on_lg":"_styles-module__block_on_lg__e6rhF","none_on_md":"_styles-module__none_on_md__21bXq","flex_on_md":"_styles-module__flex_on_md__aMqYw","btn_back_top":"_styles-module__btn_back_top__1b_B-","btn_back_wrapper":"_styles-module__btn_back_wrapper__1ahW-","btn_primary":"_styles-module__btn_primary__1vbvH","title":"_styles-module__title__1XUe2","description_wrapper":"_styles-module__description_wrapper__N12AA","comparison_wrapper":"_styles-module__comparison_wrapper__3r5GS","button":"_styles-module__button__35es-","spinner_wrapper":"_styles-module__spinner_wrapper__2kRrU","card_wrapper":"_styles-module__card_wrapper__k0Id7","card_responsive":"_styles-module__card_responsive__RkWRK","card":"_styles-module__card__2oJlr","cardImg":"_styles-module__cardImg__2Cdaq","cardTitle":"_styles-module__cardTitle__2TkoH","comparison_bottom":"_styles-module__comparison_bottom__szn3i","dialog":"_styles-module__dialog__2srQO","content":"_styles-module__content__V2-t3","headerModal":"_styles-module__headerModal__2ZKPb","bodyModal":"_styles-module__bodyModal__2upb6","rowItem":"_styles-module__rowItem__2sAwf","item":"_styles-module__item__1pyid","tableBody":"_styles-module__tableBody__3Q342","grouptitle":"_styles-module__grouptitle__3xysj","check":"_styles-module__check__CXWwz","checkX":"_styles-module__checkX__36Y0r","dialogVietnam":"_styles-module__dialogVietnam__39lsG","modalVietnam":"_styles-module__modalVietnam__242RT","Header":"_styles-module__Header__3HYQ8","bottom":"_styles-module__bottom__1OWpN","btn_back_bottom_wrapper":"_styles-module__btn_back_bottom_wrapper__1Sbe6","btn_back_bottom":"_styles-module__btn_back_bottom__38m4y","modal_wrapper":"_styles-module__modal_wrapper__OoXyP","fadeIn":"_styles-module__fadeIn__1BVrX","closeModal":"_styles-module__closeModal___X3hR","Body":"_styles-module__Body__3p-Pa"};
+var styles$8 = {"block_on_md":"_styles-module__block_on_md__3JxMi","block_on_lg":"_styles-module__block_on_lg__e6rhF","none_on_md":"_styles-module__none_on_md__21bXq","flex_on_md":"_styles-module__flex_on_md__aMqYw","btn_back_top":"_styles-module__btn_back_top__1b_B-","btn_back_wrapper":"_styles-module__btn_back_wrapper__1ahW-","btn_primary":"_styles-module__btn_primary__1vbvH","title":"_styles-module__title__1XUe2","description_wrapper":"_styles-module__description_wrapper__N12AA","comparison_wrapper":"_styles-module__comparison_wrapper__3r5GS","button":"_styles-module__button__35es-","spinner_wrapper":"_styles-module__spinner_wrapper__2kRrU","card_wrapper":"_styles-module__card_wrapper__k0Id7","card_responsive":"_styles-module__card_responsive__RkWRK","card":"_styles-module__card__2oJlr","cardImg":"_styles-module__cardImg__2Cdaq","cardTitle":"_styles-module__cardTitle__2TkoH","comparison_bottom":"_styles-module__comparison_bottom__szn3i","dialog":"_styles-module__dialog__2srQO","fadeIn":"_styles-module__fadeIn__1BVrX","content":"_styles-module__content__V2-t3","headerModal":"_styles-module__headerModal__2ZKPb","bodyModal":"_styles-module__bodyModal__2upb6","rowItem":"_styles-module__rowItem__2sAwf","item":"_styles-module__item__1pyid","tableBody":"_styles-module__tableBody__3Q342","grouptitle":"_styles-module__grouptitle__3xysj","check":"_styles-module__check__CXWwz","checkX":"_styles-module__checkX__36Y0r","dialogVietnam":"_styles-module__dialogVietnam__39lsG","modalVietnam":"_styles-module__modalVietnam__242RT","Header":"_styles-module__Header__3HYQ8","bottom":"_styles-module__bottom__1OWpN","btn_back_bottom_wrapper":"_styles-module__btn_back_bottom_wrapper__1Sbe6","btn_back_bottom":"_styles-module__btn_back_bottom__38m4y","modal_wrapper":"_styles-module__modal_wrapper__OoXyP","closeModal":"_styles-module__closeModal___X3hR","Body":"_styles-module__Body__3p-Pa"};
 
 function TablePopup(country_id) {
   let content = '';
@@ -6929,7 +6937,7 @@ const Sidebar = ({
   }, parser(description)))))) : /*#__PURE__*/React.createElement("div", null));
 };
 
-var styles$a = {"d_block":"_styles-module__d_block__37VJP","d_none":"_styles-module__d_none__e2m6o","form_header":"_styles-module__form_header__14RQs","top_wrapper":"_styles-module__top_wrapper__1cf-F","btn":"_styles-module__btn__3-FhX","title":"_styles-module__title__2A7Fl","title_page":"_styles-module__title_page__2lh4k","guideText":"_styles-module__guideText__WzeAY","description_wrapper":"_styles-module__description_wrapper__1fK2-","checkname_wrapper":"_styles-module__checkname_wrapper__uX092","fields":"_styles-module__fields__2W625","field_name":"_styles-module__field_name__1HTlU","company_name_input":"_styles-module__company_name_input__3SaA_","row_reverse":"_styles-module__row_reverse__1DOqB","entity_name":"_styles-module__entity_name__2yaHq","note_wrapper":"_styles-module__note_wrapper__3-mbi","note":"_styles-module__note__2V0Dw","input":"_styles-module__input__1COQd","search":"_styles-module__search__2fPee","nameHints":"_styles-module__nameHints__BWjaJ","nameHintsBadge":"_styles-module__nameHintsBadge__I_OHu","iconQuestionCircle":"_styles-module__iconQuestionCircle__1Z0DY","spinner_wrapper":"_styles-module__spinner_wrapper__3fos9","bottom_wrapper":"_styles-module__bottom_wrapper__2I_7D","back":"_styles-module__back__2zmPd","backMobile":"_styles-module__backMobile__1eN5O","Header":"_styles-module__Header__2oHKa","nextButton":"_styles-module__nextButton__2Lmoq","loader_wrapper":"_styles-module__loader_wrapper__1G6Cs","Body":"_styles-module__Body__r4L_A"};
+var styles$a = {"d_block":"_styles-module__d_block__37VJP","d_none":"_styles-module__d_none__e2m6o","form_header":"_styles-module__form_header__14RQs","top_wrapper":"_styles-module__top_wrapper__1cf-F","btn":"_styles-module__btn__3-FhX","title":"_styles-module__title__2A7Fl","title_page":"_styles-module__title_page__2lh4k","guideText":"_styles-module__guideText__WzeAY","description_wrapper":"_styles-module__description_wrapper__1fK2-","checkname_wrapper":"_styles-module__checkname_wrapper__uX092","fields":"_styles-module__fields__2W625","field_name":"_styles-module__field_name__1HTlU","company_name_input":"_styles-module__company_name_input__3SaA_","row_reverse":"_styles-module__row_reverse__1DOqB","entity_name":"_styles-module__entity_name__2yaHq","note_wrapper":"_styles-module__note_wrapper__3-mbi","note":"_styles-module__note__2V0Dw","input":"_styles-module__input__1COQd","search":"_styles-module__search__2fPee","nameHints":"_styles-module__nameHints__BWjaJ","nameHintsBadge":"_styles-module__nameHintsBadge__I_OHu","iconQuestionCircle":"_styles-module__iconQuestionCircle__1Z0DY","spinnerWrapper":"_styles-module__spinnerWrapper__2_kb8","bottom_wrapper":"_styles-module__bottom_wrapper__2I_7D","back":"_styles-module__back__2zmPd","backMobile":"_styles-module__backMobile__1eN5O","Header":"_styles-module__Header__2oHKa","nextButton":"_styles-module__nextButton__2Lmoq","loader_wrapper":"_styles-module__loader_wrapper__1G6Cs","Body":"_styles-module__Body__r4L_A"};
 
 var name_restricted = [
 	{
@@ -8738,13 +8746,7 @@ function IncorporationEntityNameCheck({
       className: styles$a.nameHintsBadge,
       onClick: e => handleClickSuggestName(e.target.innerText, suggestNamePosition)
     }, item))))), loadingSuggest && /*#__PURE__*/React.createElement("div", {
-      className: styles$a.spinner_wrapper,
-      style: {
-        top: 0,
-        left: 0,
-        zIndex: 2,
-        opacity: 0.7
-      }
+      className: styles$a.spinnerWrapper
     }, /*#__PURE__*/React.createElement(BiLoaderAlt, {
       className: "animate_spin",
       size: 20
@@ -8836,7 +8838,7 @@ function IncorporationEntityNameCheck({
   }))))))));
 }
 
-var styles$b = {"btn_top_wrapper":"_styles-module__btn_top_wrapper__34DmI","btn_top":"_styles-module__btn_top__3qqS1","button":"_styles-module__button__3860g","title":"_styles-module__title__2BlXc","description_wrapper":"_styles-module__description_wrapper__3Nlot","description":"_styles-module__description__3VahP","comparison_wrapper":"_styles-module__comparison_wrapper__3GLBr","comparison_top":"_styles-module__comparison_top__nxU8b","loader_wrapper":"_styles-module__loader_wrapper__3VbNy","package_container":"_styles-module__package_container__2x8Ni","card_wrapper":"_styles-module__card_wrapper__3w1_k","item_height":"_styles-module__item_height__6F5fK","content_wrapper_vn":"_styles-module__content_wrapper_vn__2QOXs","card":"_styles-module__card__3N8iG","card_inside":"_styles-module__card_inside__2aMYN","img_wrapper":"_styles-module__img_wrapper__hhqdG","cardName_wrapper":"_styles-module__cardName_wrapper__3OX3r","cardName":"_styles-module__cardName__22pk0","cardNameVN":"_styles-module__cardNameVN__7JTA6","cardPrice":"_styles-module__cardPrice__lMNoF","cardPriceVN":"_styles-module__cardPriceVN__sunAZ","cardDes":"_styles-module__cardDes__123Dc","basic":"_styles-module__basic__1pZey","local-lite":"_styles-module__local-lite__1fRKW","startup-for-locals":"_styles-module__startup-for-locals__2B7pn","standard":"_styles-module__standard__3mC0T","local-standard":"_styles-module__local-standard__3Fr5q","premium":"_styles-module__premium__10UG7","foreigner-basic":"_styles-module__foreigner-basic__1CpII","standard-with-employment-pass":"_styles-module__standard-with-employment-pass__23Y2O","foreigner-ultra":"_styles-module__foreigner-ultra__1mWaS","formSwich":"_styles-module__formSwich__1Glki","info":"_styles-module__info__1NfHz","note":"_styles-module__note__3O97i","note_vn":"_styles-module__note_vn__2QqH5","modal_wrapper":"_styles-module__modal_wrapper__260T9","fadeIn":"_styles-module__fadeIn__21U4U","close_button":"_styles-module__close_button__4X6g2","tab_container":"_styles-module__tab_container__3ZOMY","tab_wrapper":"_styles-module__tab_wrapper__3Mg2u","tab_item":"_styles-module__tab_item__36v3_","active_tab":"_styles-module__active_tab__g8EO3","dialog":"_styles-module__dialog___aI90","headerModal":"_styles-module__headerModal__1TU3P","bodyModal":"_styles-module__bodyModal__1hv_K","Header":"_styles-module__Header__1hw-O","comparison_bottom_wrapper":"_styles-module__comparison_bottom_wrapper__1rqx-","comparison_bottom":"_styles-module__comparison_bottom__3PrcN","comparison_btn":"_styles-module__comparison_btn__3qyHB","comparison_img":"_styles-module__comparison_img__3RYJD","btn_bottom_wrapper":"_styles-module__btn_bottom_wrapper__3kj8Y","btn_back_bottom":"_styles-module__btn_back_bottom__1fOjL","Body":"_styles-module__Body__2PprN","package":"_styles-module__package__110ld","card_wrapper_sg":"_styles-module__card_wrapper_sg__19DVk"};
+var styles$b = {"btn_top_wrapper":"_styles-module__btn_top_wrapper__34DmI","btn_top":"_styles-module__btn_top__3qqS1","button":"_styles-module__button__3860g","title":"_styles-module__title__2BlXc","description_wrapper":"_styles-module__description_wrapper__3Nlot","description":"_styles-module__description__3VahP","comparison_wrapper":"_styles-module__comparison_wrapper__3GLBr","comparison_top":"_styles-module__comparison_top__nxU8b","loader_wrapper":"_styles-module__loader_wrapper__3VbNy","package_container":"_styles-module__package_container__2x8Ni","card_wrapper":"_styles-module__card_wrapper__3w1_k","item_height":"_styles-module__item_height__6F5fK","content_wrapper_vn":"_styles-module__content_wrapper_vn__2QOXs","card":"_styles-module__card__3N8iG","card_inside":"_styles-module__card_inside__2aMYN","img_wrapper":"_styles-module__img_wrapper__hhqdG","cardName_wrapper":"_styles-module__cardName_wrapper__3OX3r","cardName":"_styles-module__cardName__22pk0","cardNameVN":"_styles-module__cardNameVN__7JTA6","cardPrice":"_styles-module__cardPrice__lMNoF","cardPriceVN":"_styles-module__cardPriceVN__sunAZ","cardDes":"_styles-module__cardDes__123Dc","basic":"_styles-module__basic__1pZey","local-lite":"_styles-module__local-lite__1fRKW","startup-for-locals":"_styles-module__startup-for-locals__2B7pn","standard":"_styles-module__standard__3mC0T","local-standard":"_styles-module__local-standard__3Fr5q","premium":"_styles-module__premium__10UG7","foreigner-basic":"_styles-module__foreigner-basic__1CpII","standard-with-employment-pass":"_styles-module__standard-with-employment-pass__23Y2O","foreigner-ultra":"_styles-module__foreigner-ultra__1mWaS","switchPackageWrapper":"_styles-module__switchPackageWrapper__3NhDk","switchItem":"_styles-module__switchItem__15JW8","buttonSwitch":"_styles-module__buttonSwitch__1iJsP","switchToggle":"_styles-module__switchToggle__3J5ey","formSwich":"_styles-module__formSwich__1Glki","info":"_styles-module__info__1NfHz","note":"_styles-module__note__3O97i","note_vn":"_styles-module__note_vn__2QqH5","modal_wrapper":"_styles-module__modal_wrapper__260T9","fadeIn":"_styles-module__fadeIn__21U4U","close_button":"_styles-module__close_button__4X6g2","tab_container":"_styles-module__tab_container__3ZOMY","tab_wrapper":"_styles-module__tab_wrapper__3Mg2u","tab_item":"_styles-module__tab_item__36v3_","active_tab":"_styles-module__active_tab__g8EO3","dialog":"_styles-module__dialog___aI90","headerModal":"_styles-module__headerModal__1TU3P","bodyModal":"_styles-module__bodyModal__1hv_K","Header":"_styles-module__Header__1hw-O","comparison_bottom_wrapper":"_styles-module__comparison_bottom_wrapper__1rqx-","comparison_bottom":"_styles-module__comparison_bottom__3PrcN","comparison_btn":"_styles-module__comparison_btn__3qyHB","comparison_img":"_styles-module__comparison_img__3RYJD","btn_bottom_wrapper":"_styles-module__btn_bottom_wrapper__3kj8Y","btn_back_bottom":"_styles-module__btn_back_bottom__1fOjL","Body":"_styles-module__Body__2PprN","package":"_styles-module__package__110ld","card_wrapper_sg":"_styles-module__card_wrapper_sg__19DVk"};
 
 function popupPackages(country_id, entity_type_id, tab) {
   let content = '';
@@ -8978,7 +8980,6 @@ function popupPackages(country_id, entity_type_id, tab) {
 						<td><i class="itemCheck"></i></td>
 						<td><i class="itemCheck"></i></td>
 					</tr>
-			
 					<tr>
 						<th>Lifetime Support/ Instant Response</th>
 						<td><i class="itemCheck"></i></td>
@@ -9916,6 +9917,13 @@ function IncorporationPackage(params) {
   useOnClickOutside(wrapperRef, () => {
     setShow(false);
   });
+  const {
+    getArrowProps,
+    getTooltipProps,
+    setTooltipRef,
+    setTriggerRef,
+    visible
+  } = usePopperTooltip();
   return /*#__PURE__*/React.createElement(Layout, null, /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("div", {
     className: `${styles$b.btn_top_wrapper} ${styles$b.Header}`
   }, /*#__PURE__*/React.createElement("div", {
@@ -9970,7 +9978,27 @@ function IncorporationPackage(params) {
     const packageTypeId = item === null || item === void 0 ? void 0 : (_item$PackageType = item.PackageType) === null || _item$PackageType === void 0 ? void 0 : _item$PackageType.id;
     let id = isVN && packageTypeId === 5 && isSwitch ? 4 : packageTypeId;
     let currentItem = dataPackagesTmp.find(item => item.PackageType.id === id);
-    let imgNamePackageVn = `${sanitizeTitle(currentItem.PackageType.name)}.svg`;
+    let imgNamePackageVn = sanitizeTitle(currentItem.PackageType.name).split('-').join('');
+    let linkImgPackageVn = '';
+    if (isVN) {
+      switch (imgNamePackageVn) {
+        case 'jointventurecompanyindividual':
+          linkImgPackageVn = jointventurecompanyindividual;
+          break;
+        case 'jointventurecompanyorganization':
+          linkImgPackageVn = jointventurecompanyorganization;
+          break;
+        case 'establishmentofwhollyownedforeignenterprise':
+          linkImgPackageVn = establishmentofwhollyownedforeignenterprise;
+          break;
+        case 'establishmentofbranch':
+          linkImgPackageVn = establishmentofbranch;
+          break;
+        case 'establishmentofrepresentativeoffice':
+          linkImgPackageVn = establishmentofrepresentativeoffice;
+          break;
+      }
+    }
     let pacName = isVN ? currentItem.name : currentItem === null || currentItem === void 0 ? void 0 : (_currentItem$PackageT = currentItem.PackageType) === null || _currentItem$PackageT === void 0 ? void 0 : _currentItem$PackageT.name.toLowerCase();
     let packageName = pacName;
     const price = currentItem === null || currentItem === void 0 ? void 0 : currentItem.Services.reduce((sum, item) => {
@@ -10031,46 +10059,56 @@ function IncorporationPackage(params) {
     }, /*#__PURE__*/React.createElement("div", {
       className: styles$b.content_wrapper_vn
     }, /*#__PURE__*/React.createElement("img", {
-      src: `/onboarding/custom-public/onboarding/images/items/${imgNamePackageVn}`,
-      className: `w-auto`,
+      src: linkImgPackageVn,
+      style: {
+        width: 'auto'
+      },
       alt: packageName
     }), /*#__PURE__*/React.createElement("div", {
-      className: `${styles$b.cardPriceVN} font-weight-bold pt-2`
-    }, "US$", price), /*#__PURE__*/React.createElement("div", {
-      className: `${styles$b.cardNameVN} pt-2`
-    }, packageName))), packageTypeId === 5 && /*#__PURE__*/React.createElement("div", {
-      className: "p-3",
+      className: styles$b.cardPriceVN,
       style: {
-        background: 'rgba(207,207,207,.4)'
+        fontWeight: 'bold',
+        paddingTop: '8px'
+      }
+    }, "US$", price), /*#__PURE__*/React.createElement("div", {
+      className: styles$b.cardNameVN,
+      style: {
+        paddingTop: '8px'
+      }
+    }, packageName))), packageTypeId === 5 && /*#__PURE__*/React.createElement("div", {
+      style: {
+        background: 'rgba(207,207,207,.4)',
+        padding: '16px'
       }
     }, /*#__PURE__*/React.createElement("div", {
-      className: `row align-items-center justify-content-between mx-n1`
+      className: styles$b.switchPackageWrapper
     }, /*#__PURE__*/React.createElement("div", {
-      className: "col-auto px-1"
-    }, /*#__PURE__*/React.createElement(OverlayTrigger, {
-      placement: "bottom-start",
-      overlay: /*#__PURE__*/React.createElement(Popover, {
-        id: "popover",
-        className: `${styles$b.info}`
-      }, /*#__PURE__*/React.createElement(Popover.Content, {
-        className: "bg-primary rounded",
-        style: {
-          maxWidth: '380px',
-          zIndex: 99
-        }
-      }, /*#__PURE__*/React.createElement("p", {
-        className: "text-white mb-0"
-      }, "The price will change depending on whether company member is an individual or a corporation.")))
+      className: styles$b.switchItem
     }, /*#__PURE__*/React.createElement("button", {
-      className: "btn p-0"
+      ref: setTriggerRef
     }, /*#__PURE__*/React.createElement(IconContext.Provider, {
       value: {
         color: '#007eff'
       }
     }, /*#__PURE__*/React.createElement(AiOutlineInfoCircle, {
       size: "20px"
-    }))))), /*#__PURE__*/React.createElement("div", {
-      className: "col-auto px-1"
+    }))), visible && /*#__PURE__*/React.createElement("div", Object.assign({
+      ref: setTooltipRef
+    }, getTooltipProps({
+      style: {
+        width: '300px',
+        backgroundColor: '#007eff',
+        color: '#fff',
+        borderRadius: '10px'
+      },
+      className: 'tooltip-container'
+    })), /*#__PURE__*/React.createElement("div", getArrowProps({
+      style: {
+        borderTopColor: '#007eff!important'
+      },
+      className: 'tooltip-arrow'
+    })), "The price will change depending on whether company member is an individual or a corporation.")), /*#__PURE__*/React.createElement("div", {
+      className: styles$b.switchItem
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         fontWeight: 500,
@@ -10078,13 +10116,24 @@ function IncorporationPackage(params) {
         paddingTop: '2px'
       }
     }, "Individual")), /*#__PURE__*/React.createElement("div", {
-      className: "col-auto px-1"
-    }, /*#__PURE__*/React.createElement(Form.Check, {
-      type: "switch",
-      id: "custom-switch",
-      className: `${styles$b.formSwich}`,
-      onChange: e => handleSwitch(!isSwitch)
-    }))))) : /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      className: styles$b.switchItem
+    }, /*#__PURE__*/React.createElement(Switch, {
+      checked: isSwitch,
+      onChange: e => handleSwitch(!isSwitch),
+      style: {
+        background: 'transparent'
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      className: styles$b.buttonSwitch,
+      style: {
+        backgroundColor: isSwitch ? '#007eff' : '#ccc'
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        transform: isSwitch ? 'translateX(1.15rem)' : 'translateX(-0.15rem)'
+      },
+      className: styles$b.switchToggle
+    }))))))) : /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
       className: `${styles$b[pacName]} ${styles$b.card_inside}`,
       style: {
         cursor: 'pointer'
@@ -11114,7 +11163,6 @@ const CheckoutForm = ({
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState();
-  console.log(orderCode);
   const {
     register,
     handleSubmit,
@@ -11224,7 +11272,7 @@ const CheckoutForm = ({
     placeholder: "Card holder name",
     autoComplete: "off"
   }))), errors && errors.cardholder_name && /*#__PURE__*/React.createElement("p", {
-    className: `m-0 text-danger ${style$1.ErrorMessage}`
+    className: style$1.ErrorMessage
   }, errors.cardholder_name.message)), /*#__PURE__*/React.createElement("div", {
     className: style$1.CardDetails
   }, /*#__PURE__*/React.createElement("p", null, "Card details"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CardElement, {
@@ -11235,21 +11283,30 @@ const CheckoutForm = ({
       hidePostalCode: true
     }
   })), error && /*#__PURE__*/React.createElement("p", {
-    className: `m-0 text-danger ${style$1.ErrorMessage}`
+    className: style$1.ErrorMessage
   }, error.message)), /*#__PURE__*/React.createElement("div", {
-    className: `row ${style$1.BillingInformation}`
+    className: style$1.BillingInformation
   }, /*#__PURE__*/React.createElement("p", {
-    className: "col-12"
+    style: {
+      flex: '0 0 100%',
+      maxWidth: '100%'
+    }
   }, "Billing information"), /*#__PURE__*/React.createElement("div", {
-    className: "col-12"
+    style: {
+      flex: '0 0 100%',
+      maxWidth: '100%'
+    }
   }, /*#__PURE__*/React.createElement(Select, {
     options: countryList,
     styles: customStyles$2,
     onChange: handleChangeSelect
   }), !selectedCountry && isSubmitted && /*#__PURE__*/React.createElement("p", {
-    className: `m-0 text-danger ${style$1.ErrorMessage}`
+    className: style$1.ErrorMessage
   }, "Country is required")), /*#__PURE__*/React.createElement("div", {
-    className: "col-12"
+    style: {
+      flex: '0 0 100%',
+      maxWidth: '100%'
+    }
   }, /*#__PURE__*/React.createElement("input", Object.assign({
     type: 'text'
   }, register('address_line1', {
@@ -11261,16 +11318,23 @@ const CheckoutForm = ({
     placeholder: "Address line 1",
     autoComplete: "off"
   })), errors && errors.address_line1 && /*#__PURE__*/React.createElement("p", {
-    className: `m-0 text-danger ${style$1.ErrorMessage}`
+    className: style$1.ErrorMessage
   }, errors.address_line1.message)), /*#__PURE__*/React.createElement("div", {
-    className: "col-12"
+    style: {
+      flex: '0 0 100%',
+      maxWidth: '100%'
+    }
   }, /*#__PURE__*/React.createElement("input", Object.assign({
     type: 'text'
   }, register('address_line2'), {
     placeholder: "Address line 2 (optional)",
     autoComplete: "off"
   }))), /*#__PURE__*/React.createElement("div", {
-    className: "col-6"
+    style: {
+      flex: '0 0 50%',
+      maxWidth: '50%',
+      paddingRight: '15px'
+    }
   }, /*#__PURE__*/React.createElement("input", Object.assign({
     type: 'text'
   }, register('address_city', {
@@ -11282,9 +11346,13 @@ const CheckoutForm = ({
     placeholder: "City",
     autoComplete: "off"
   })), errors && errors.address_city && /*#__PURE__*/React.createElement("p", {
-    className: `m-0 text-danger ${style$1.ErrorMessage}`
+    className: style$1.ErrorMessage
   }, errors.address_city.message)), /*#__PURE__*/React.createElement("div", {
-    className: "col-6"
+    style: {
+      flex: '0 0 50%',
+      maxWidth: '50%',
+      paddingLeft: '15px'
+    }
   }, /*#__PURE__*/React.createElement("input", Object.assign({
     type: 'text'
   }, register('address_state', {
@@ -11296,9 +11364,13 @@ const CheckoutForm = ({
     placeholder: "State",
     autoComplete: "off"
   })), errors && errors.address_state && /*#__PURE__*/React.createElement("p", {
-    className: `m-0 text-danger ${style$1.ErrorMessage}`
+    className: style$1.ErrorMessage
   }, errors.address_state.message)), /*#__PURE__*/React.createElement("div", {
-    className: "col-6"
+    style: {
+      flex: '0 0 50%',
+      maxWidth: '50%',
+      paddingRight: '15px'
+    }
   }, /*#__PURE__*/React.createElement("input", Object.assign({
     type: 'text'
   }, register('address_zip', {
@@ -11310,7 +11382,7 @@ const CheckoutForm = ({
     placeholder: "Zip",
     autoComplete: "off"
   })), errors && errors.address_zip && /*#__PURE__*/React.createElement("p", {
-    className: `m-0 text-danger ${style$1.ErrorMessage}`
+    className: style$1.ErrorMessage
   }, errors.address_zip.message)))), /*#__PURE__*/React.createElement("div", {
     style: {
       textAlign: 'center',
@@ -11335,17 +11407,20 @@ const PaymentModal = ({
   show,
   onReceiveData,
   orderCode,
-  countryList
+  countryList,
+  wrapperRef
 }) => {
   return /*#__PURE__*/React.createElement(Modal, {
     show: show
   }, /*#__PURE__*/React.createElement("div", {
+    ref: wrapperRef,
     className: style$1.modalWrapper
   }, /*#__PURE__*/React.createElement("div", {
     className: style$1.modal
   }, /*#__PURE__*/React.createElement(FaTimes, {
     onClick: onReceiveData,
-    className: style$1.CloseButton
+    className: style$1.CloseButton,
+    color: "#333333"
   }), /*#__PURE__*/React.createElement("div", {
     className: style$1.topModalContent
   }, /*#__PURE__*/React.createElement("div", {
@@ -11390,6 +11465,12 @@ function OrderInformation(params) {
     arrOtherServiceCategory: []
   });
   const [loading, setLoading] = useState(true);
+  const wrapperRef = useRef(null);
+  useOnClickOutside(wrapperRef, () => {
+    setShow(false);
+    setAllow(true);
+    setIsLoading(false);
+  });
   const getUrlVars = () => {
     let vars = {};
     let parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
@@ -11898,7 +11979,8 @@ function OrderInformation(params) {
     data: orderInfo,
     countryList: countryList,
     orderCode: queryOrderCode,
-    show: show
+    show: show,
+    wrapperRef: wrapperRef
   })));
 }
 

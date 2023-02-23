@@ -121,8 +121,8 @@ const FatfScreen = ({ onReceiveData, fatfScreen }) => {
             is reviewed and updated from time to time.
           </p>
         </div>
-        <div className={`px-3 p-lg-4 ${styles.restricted_countries_wrapper}`}>
-          <div className={`${styles.restricted_countries_container}`}>
+        <div className={styles.restricted_countries_wrapper}>
+          <div className={styles.restricted_countries_container}>
             <div
               className={`${styles.listCollapse} ${
                 !isCollapse && styles.active
@@ -190,16 +190,13 @@ const FatfScreen = ({ onReceiveData, fatfScreen }) => {
             </div>
           </div>
         </div>
-        <p className={`mb-0 mt-2 mt-lg-0 ${styles.noteText}`}>
+        <p className={styles.noteText}>
           <b>Note:</b> Nationalities under consideration are applicable to all
           members of your company, including directors, shareholders and
           beneficial owners.
         </p>
         <div className={styles.button_wrapper}>
-          <button
-            className={`${styles.Button} btn py-2 px-4 rounded border-0 m-0`}
-            onClick={onReceiveData}
-          >
+          <button className={styles.Button} onClick={onReceiveData}>
             I understand
           </button>
         </div>

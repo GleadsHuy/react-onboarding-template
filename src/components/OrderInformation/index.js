@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, Fragment } from 'react'
+import React, { useContext, useEffect, useState, useRef, Fragment } from 'react'
 import {
   CardElement,
   Elements,
@@ -7,6 +7,7 @@ import {
 } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import axios from 'axios'
+import { useOnClickOutside } from '../common/functions'
 import { Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { BiLoaderAlt } from 'react-icons/bi'
@@ -96,7 +97,7 @@ const CheckoutForm = ({
   const [error, setError] = useState()
   const [isLoading, setIsLoading] = useState(false)
   const [selectedCountry, setSelectedCountry] = useState()
-  console.log(orderCode)
+
   const {
     register,
     handleSubmit,
@@ -223,7 +224,7 @@ const CheckoutForm = ({
             />
           </div>
           {errors && errors.cardholder_name && (
-            <p className={`m-0 text-danger ${style.ErrorMessage}`}>
+            <p className={style.ErrorMessage}>
               {errors.cardholder_name.message}
             </p>
           )}
@@ -238,27 +239,23 @@ const CheckoutForm = ({
               options={{ hidePostalCode: true }}
             />
           </div>
-          {error && (
-            <p className={`m-0 text-danger ${style.ErrorMessage}`}>
-              {error.message}
-            </p>
-          )}
+          {error && <p className={style.ErrorMessage}>{error.message}</p>}
         </div>
-        <div className={`row ${style.BillingInformation}`}>
-          <p className='col-12'>Billing information</p>
-          <div className='col-12'>
+        <div className={style.BillingInformation}>
+          <p style={{ flex: '0 0 100%', maxWidth: '100%' }}>
+            Billing information
+          </p>
+          <div style={{ flex: '0 0 100%', maxWidth: '100%' }}>
             <Select
               options={countryList}
               styles={customStyles}
               onChange={handleChangeSelect}
             />
             {!selectedCountry && isSubmitted && (
-              <p className={`m-0 text-danger ${style.ErrorMessage}`}>
-                Country is required
-              </p>
+              <p className={style.ErrorMessage}>Country is required</p>
             )}
           </div>
-          <div className='col-12'>
+          <div style={{ flex: '0 0 100%', maxWidth: '100%' }}>
             <input
               type={'text'}
               {...register('address_line1', {
@@ -271,12 +268,12 @@ const CheckoutForm = ({
               autoComplete='off'
             />
             {errors && errors.address_line1 && (
-              <p className={`m-0 text-danger ${style.ErrorMessage}`}>
+              <p className={style.ErrorMessage}>
                 {errors.address_line1.message}
               </p>
             )}
           </div>
-          <div className='col-12'>
+          <div style={{ flex: '0 0 100%', maxWidth: '100%' }}>
             <input
               type={'text'}
               {...register('address_line2')}
@@ -284,7 +281,9 @@ const CheckoutForm = ({
               autoComplete='off'
             />
           </div>
-          <div className='col-6'>
+          <div
+            style={{ flex: '0 0 50%', maxWidth: '50%', paddingRight: '15px' }}
+          >
             <input
               type={'text'}
               {...register('address_city', {
@@ -297,12 +296,14 @@ const CheckoutForm = ({
               autoComplete='off'
             />
             {errors && errors.address_city && (
-              <p className={`m-0 text-danger ${style.ErrorMessage}`}>
+              <p className={style.ErrorMessage}>
                 {errors.address_city.message}
               </p>
             )}
           </div>
-          <div className='col-6'>
+          <div
+            style={{ flex: '0 0 50%', maxWidth: '50%', paddingLeft: '15px' }}
+          >
             <input
               type={'text'}
               {...register('address_state', {
@@ -315,12 +316,14 @@ const CheckoutForm = ({
               autoComplete='off'
             />
             {errors && errors.address_state && (
-              <p className={`m-0 text-danger ${style.ErrorMessage}`}>
+              <p className={style.ErrorMessage}>
                 {errors.address_state.message}
               </p>
             )}
           </div>
-          <div className='col-6'>
+          <div
+            style={{ flex: '0 0 50%', maxWidth: '50%', paddingRight: '15px' }}
+          >
             <input
               type={'text'}
               {...register('address_zip', {
@@ -333,9 +336,7 @@ const CheckoutForm = ({
               autoComplete='off'
             />
             {errors && errors.address_zip && (
-              <p className={`m-0 text-danger ${style.ErrorMessage}`}>
-                {errors.address_zip.message}
-              </p>
+              <p className={style.ErrorMessage}>{errors.address_zip.message}</p>
             )}
           </div>
         </div>
@@ -361,13 +362,18 @@ const PaymentModal = ({
   show,
   onReceiveData,
   orderCode,
-  countryList
+  countryList,
+  wrapperRef
 }) => {
   return (
     <Modal show={show}>
-      <div className={style.modalWrapper}>
+      <div ref={wrapperRef} className={style.modalWrapper}>
         <div className={style.modal}>
-          <FaTimes onClick={onReceiveData} className={style.CloseButton} />
+          <FaTimes
+            onClick={onReceiveData}
+            className={style.CloseButton}
+            color='#333333'
+          />
           <div className={style.topModalContent}>
             <div className={style.logo}>
               <img
@@ -420,6 +426,12 @@ export default function OrderInformation(params) {
     arrOtherServiceCategory: []
   })
   const [loading, setLoading] = useState(true)
+  const wrapperRef = useRef(null)
+  useOnClickOutside(wrapperRef, () => {
+    setShow(false)
+    setAllow(true)
+    setIsLoading(false)
+  })
 
   const getUrlVars = () => {
     let vars = {}
@@ -1095,6 +1107,7 @@ export default function OrderInformation(params) {
             countryList={countryList}
             orderCode={queryOrderCode}
             show={show}
+            wrapperRef={wrapperRef}
           />
         </>
       )}

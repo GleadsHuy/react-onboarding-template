@@ -86,7 +86,7 @@
 
 .card {
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
   text-align: center;
   height: 100%;
   background: #fff;
@@ -169,6 +169,45 @@
 .card .foreigner-ultra {
   color: #002d9f;
 }
+
+.switchPackageWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 4px;
+}
+
+.switchItem {
+  flex: 0 0 auto;
+  width: auto;
+  max-width: 100%;
+  padding: 4px;
+}
+
+.switchItem button {
+  border: none;
+}
+
+.buttonSwitch {
+  position: relative;
+  display: inline-flex;
+  height: 24px;
+  width: 44px;
+  align-items: center;
+  border-radius: 24px;
+  cursor: pointer;
+}
+
+.switchToggle {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  transition: all 0.2s ease-in-out;
+  border-radius: 50%;
+}
+
 .formSwich label {
   cursor: pointer;
 }
@@ -244,9 +283,12 @@
   box-shadow: 0 0 8px 0 rgba(119, 119, 119, 0.15) !important;
   border-radius: 50rem;
   padding: 4px;
+  width: 100%;
+  max-width: 285px;
 }
 
 .tab_item {
+  width: 50%;
   padding: 10px 15px;
   font-weight: 500;
   border-radius: 50rem;

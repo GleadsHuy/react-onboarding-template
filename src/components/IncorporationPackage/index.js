@@ -1,14 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, Fragment } from 'react'
+import { usePopperTooltip } from 'react-popper-tooltip'
+import 'react-popper-tooltip/dist/styles.css'
+import { Switch } from '@headlessui/react'
+
 import styles from './styles.module.css'
 import Title from '../common/Title'
 import { useOnClickOutside } from '../common/functions'
-import {
-  Spinner,
-  Form,
-  OverlayTrigger,
-  Popover,
-  Tooltip
-} from 'react-bootstrap'
 import Modal from '../common/Modal'
 import Description from '../common/Description'
 import Layout from '../common/Layout'
@@ -30,6 +27,11 @@ import locallite from 'assets/local-lite.png'
 import localstandard from 'assets/local-standard.png'
 import foreignerbasic from 'assets/foreigner-basic.png'
 import foreignerultra from 'assets/foreigner-ultra.png'
+import jointventurecompanyorganization from 'assets/joint-venture-company-organization.svg'
+import jointventurecompanyindividual from 'assets/joint-venture-company-individual.svg'
+import establishmentofwhollyownedforeignenterprise from 'assets/establishment-of-wholly-owned-foreign-enterprise.svg'
+import establishmentofbranch from 'assets/establishment-of-branch.svg'
+import establishmentofrepresentativeoffice from 'assets/establishment-of-representative-office.svg'
 
 function popupPackages(country_id, entity_type_id, tab) {
   let content = ''
@@ -173,7 +175,6 @@ function popupPackages(country_id, entity_type_id, tab) {
 						<td><i class="itemCheck"></i></td>
 						<td><i class="itemCheck"></i></td>
 					</tr>
-			
 					<tr>
 						<th>Lifetime Support/ Instant Response</th>
 						<td><i class="itemCheck"></i></td>
@@ -1002,16 +1003,11 @@ function popupPackages(country_id, entity_type_id, tab) {
 
 export default function IncorporationPackage(params) {
   useEffect(() => {
-    // window.onpopstate = function() {
-    //   handleBack();
-    // };
-    // history.pushState({}, "");
     if (window.history && window.history.pushState) {
       window.history.pushState('forward', null, './incorporation-package')
       window.onpopstate = function () {
         handleBack()
       }
-      // history.pushState({}, "");
     }
   }, [])
 
@@ -1116,7 +1112,6 @@ export default function IncorporationPackage(params) {
         }
       )
     }
-    // router.push('/incorporation-additional-service')
     location.href = '/incorporation-additional-service'
   }
 
@@ -1128,7 +1123,6 @@ export default function IncorporationPackage(params) {
     delete customer.package_id
     window.localStorage.setItem('customer', JSON.stringify(customer))
 
-    // router.push('/incorporation-entity-name-check')
     location.href = '/incorporation-entity-name-check'
   }
 
@@ -1163,6 +1157,14 @@ export default function IncorporationPackage(params) {
   useOnClickOutside(wrapperRef, () => {
     setShow(false)
   })
+
+  const {
+    getArrowProps,
+    getTooltipProps,
+    setTooltipRef,
+    setTriggerRef,
+    visible
+  } = usePopperTooltip()
 
   return (
     <Layout>
@@ -1226,9 +1228,32 @@ export default function IncorporationPackage(params) {
                   let currentItem = dataPackagesTmp.find(
                     (item) => item.PackageType.id === id
                   )
-                  let imgNamePackageVn = `${sanitizeTitle(
+                  let imgNamePackageVn = sanitizeTitle(
                     currentItem.PackageType.name
-                  )}.svg`
+                  )
+                    .split('-')
+                    .join('')
+                  let linkImgPackageVn = ''
+                  if (isVN) {
+                    switch (imgNamePackageVn) {
+                      case 'jointventurecompanyindividual':
+                        linkImgPackageVn = jointventurecompanyindividual
+                        break
+                      case 'jointventurecompanyorganization':
+                        linkImgPackageVn = jointventurecompanyorganization
+                        break
+                      case 'establishmentofwhollyownedforeignenterprise':
+                        linkImgPackageVn =
+                          establishmentofwhollyownedforeignenterprise
+                        break
+                      case 'establishmentofbranch':
+                        linkImgPackageVn = establishmentofbranch
+                        break
+                      case 'establishmentofrepresentativeoffice':
+                        linkImgPackageVn = establishmentofrepresentativeoffice
+                        break
+                    }
+                  }
                   let pacName = isVN
                     ? currentItem.name
                     : currentItem?.PackageType?.name.toLowerCase()
@@ -1237,11 +1262,6 @@ export default function IncorporationPackage(params) {
                     (sum, item) => sum + item?.Fee?.value,
                     0
                   )
-                  //   let link = currentItem.PackageType.image
-                  //     ? currentItem.PackageType.image
-                  //     : `/custom-public/onboarding/images/items/${packageName
-                  //         .split(' ')
-                  //         .join('-')}.png`
                   let link
                   pacName = pacName.split(' ').join('-')
                   let des = ''
@@ -1282,7 +1302,6 @@ export default function IncorporationPackage(params) {
                         break
                     }
                   }
-
                   return (
                     <div
                       className={`${styles.card_wrapper} ${
@@ -1302,16 +1321,23 @@ export default function IncorporationPackage(params) {
                             >
                               <div className={styles.content_wrapper_vn}>
                                 <img
-                                  src={`/onboarding/custom-public/onboarding/images/items/${imgNamePackageVn}`}
-                                  className={`w-auto`}
+                                  src={linkImgPackageVn}
+                                  style={{ width: 'auto' }}
                                   alt={packageName}
                                 />
                                 <div
-                                  className={`${styles.cardPriceVN} font-weight-bold pt-2`}
+                                  className={styles.cardPriceVN}
+                                  style={{
+                                    fontWeight: 'bold',
+                                    paddingTop: '8px'
+                                  }}
                                 >
                                   US${price}
                                 </div>
-                                <div className={`${styles.cardNameVN} pt-2`}>
+                                <div
+                                  className={styles.cardNameVN}
+                                  style={{ paddingTop: '8px' }}
+                                >
                                   {packageName}
                                 </div>
                               </div>
@@ -1323,48 +1349,49 @@ export default function IncorporationPackage(params) {
                             </div>
                             {packageTypeId === 5 && (
                               <div
-                                className='p-3'
                                 style={{
-                                  background: 'rgba(207,207,207,.4)'
+                                  background: 'rgba(207,207,207,.4)',
+                                  padding: '16px'
                                 }}
                               >
-                                <div
-                                  className={`row align-items-center justify-content-between mx-n1`}
-                                >
-                                  <div className='col-auto px-1'>
-                                    <OverlayTrigger
-                                      placement='bottom-start'
-                                      overlay={
-                                        <Popover
-                                          id='popover'
-                                          className={`${styles.info}`}
-                                        >
-                                          <Popover.Content
-                                            className='bg-primary rounded'
-                                            style={{
-                                              maxWidth: '380px',
-                                              zIndex: 99
-                                            }}
-                                          >
-                                            <p className='text-white mb-0'>
-                                              The price will change depending on
-                                              whether company member is an
-                                              individual or a corporation.
-                                            </p>
-                                          </Popover.Content>
-                                        </Popover>
-                                      }
-                                    >
-                                      <button className='btn p-0'>
-                                        <IconContext.Provider
-                                          value={{ color: '#007eff' }}
-                                        >
-                                          <AiOutlineInfoCircle size='20px' />
-                                        </IconContext.Provider>
-                                      </button>
-                                    </OverlayTrigger>
+                                <div className={styles.switchPackageWrapper}>
+                                  <div className={styles.switchItem}>
+                                    <button ref={setTriggerRef}>
+                                      <IconContext.Provider
+                                        value={{ color: '#007eff' }}
+                                      >
+                                        <AiOutlineInfoCircle size='20px' />
+                                      </IconContext.Provider>
+                                    </button>
+                                    {visible && (
+                                      <div
+                                        ref={setTooltipRef}
+                                        {...getTooltipProps({
+                                          style: {
+                                            width: '300px',
+                                            backgroundColor: '#007eff',
+                                            color: '#fff',
+                                            borderRadius: '10px'
+                                          },
+                                          className: 'tooltip-container'
+                                        })}
+                                      >
+                                        <div
+                                          {...getArrowProps({
+                                            style: {
+                                              borderTopColor:
+                                                '#007eff!important'
+                                            },
+                                            className: 'tooltip-arrow'
+                                          })}
+                                        />
+                                        The price will change depending on
+                                        whether company member is an individual
+                                        or a corporation.
+                                      </div>
+                                    )}
                                   </div>
-                                  <div className='col-auto px-1'>
+                                  <div className={styles.switchItem}>
                                     <div
                                       style={{
                                         fontWeight: 500,
@@ -1375,13 +1402,30 @@ export default function IncorporationPackage(params) {
                                       Individual
                                     </div>
                                   </div>
-                                  <div className='col-auto px-1'>
-                                    <Form.Check
-                                      type='switch'
-                                      id='custom-switch'
-                                      className={`${styles.formSwich}`}
+                                  <div className={styles.switchItem}>
+                                    <Switch
+                                      checked={isSwitch}
                                       onChange={(e) => handleSwitch(!isSwitch)}
-                                    />
+                                      style={{ background: 'transparent' }}
+                                    >
+                                      <button
+                                        className={styles.buttonSwitch}
+                                        style={{
+                                          backgroundColor: isSwitch
+                                            ? '#007eff'
+                                            : '#ccc'
+                                        }}
+                                      >
+                                        <span
+                                          style={{
+                                            transform: isSwitch
+                                              ? 'translateX(1.15rem)'
+                                              : 'translateX(-0.15rem)'
+                                          }}
+                                          className={styles.switchToggle}
+                                        ></span>
+                                      </button>
+                                    </Switch>
                                   </div>
                                 </div>
                               </div>

@@ -426,6 +426,10 @@
   width: 60%;
 }
 
+.FatfScreen .noteText {
+  margin-top: 0;
+}
+
 @media (max-width: 575px) {
 }
 
@@ -452,6 +456,9 @@
 }
 
 @media (max-width: 991px) {
+  .FatfScreen .noteText {
+    margin-top: 8px;
+  }
   .registerCheckText {
     margin-top: 16px;
     color: #fff;

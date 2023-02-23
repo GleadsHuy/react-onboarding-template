@@ -769,15 +769,7 @@ export default function IncorporationEntityNameCheck({ data }) {
                                 </div>
                               </div>
                               {loadingSuggest && (
-                                <div
-                                  className={styles.spinner_wrapper}
-                                  style={{
-                                    top: 0,
-                                    left: 0,
-                                    zIndex: 2,
-                                    opacity: 0.7
-                                  }}
-                                >
+                                <div className={styles.spinnerWrapper}>
                                   <BiLoaderAlt
                                     className='animate_spin'
                                     size={20}
