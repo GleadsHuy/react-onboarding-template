@@ -4,6 +4,20 @@
 
 [![NPM](https://img.shields.io/npm/v/react-onboarding-template.svg)](https://www.npmjs.com/package/react-onboarding-template) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+## Test on local
+
+Install on root folder
+
+```bash
+npm install
+```
+
+Then go to example folder to run local
+
+```bash
+npm start 
+```
+
 ## Install
 
 ```bash
